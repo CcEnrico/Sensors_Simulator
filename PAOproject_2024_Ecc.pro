@@ -9,9 +9,10 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Sensor/EnvironmentalConditions/Abstractenviromentalcondition.cpp \
+    Sensor/Airqualitysensor.cpp \
     Sensor/EnvironmentalConditions/Airquality.cpp \
-    Sensor/EnvironmentalConditions/humidity.cpp \
+    Sensor/EnvironmentalConditions/Humidity.cpp \
+    Sensor/Humiditysensor.cpp \
     main.cpp \
     View/mainwindow.cpp \
     \
@@ -20,9 +21,12 @@ SOURCES += \
     Sensor/EnvironmentalConditions/Temperature.cpp
 
 HEADERS += \
-    Sensor/EnvironmentalConditions/Abstractenviromentalcondition.h \
+    Sensor/Airqualitysensor.h \
     Sensor/EnvironmentalConditions/Airquality.h \
-    Sensor/EnvironmentalConditions/humidity.h \
+    Sensor/EnvironmentalConditions/Humidity.h \
+    Sensor/Humiditysensor.h \
+    Sensor/SConstVisitor.h \
+    Sensor/SVisitor.h \
     View/mainwindow.h \
     \
     Sensor/AbstractSensor.h \

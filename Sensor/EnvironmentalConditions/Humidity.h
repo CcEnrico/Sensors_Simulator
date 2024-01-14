@@ -1,30 +1,21 @@
 #ifndef HUMIDITY_H
 #define HUMIDITY_H
 
-#include"Abstractenviromentalcondition.h"
-#include"Temperature.h"
 
 namespace Sensor{
 
 namespace EnviromentalConditions{
 
 
-class Humidity : public AbstractEnviromentalCondition
+class Humidity
 {
-    double absoluteHumidity;    // g/m3
     double relativeHumidity;    // %
-    Temperature temperature;
 
 public:
-    Humidity(double rh, Temperature t );
+    Humidity(double rh);
 
     double getRelativeHumidity()const ;
     Humidity& setRelativeHumidity(const double rh);
-    Temperature getTemperature()const;
-    Humidity& setTemperatureCelsius(const double t);
-
-private:
-    static void calculateAh();
 
 };
 
