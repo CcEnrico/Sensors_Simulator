@@ -3,11 +3,11 @@
 namespace Sensor{
 namespace EnviromentalConditions{
 
-AirQuality::AirQuality(const double pm_10, const double N_O2): pm10(pm_10), NO2(N_O2){
+AirQuality::AirQuality( double pm_10,  double N_O2): pm10(pm_10), NO2(N_O2){
     updateAQ();
 }
 
-AirQuality::AirQuality(const double IAQ): indexAQ(IAQ){
+AirQuality::AirQuality( double IAQ): indexAQ(IAQ){
     updateValues();
 }
 

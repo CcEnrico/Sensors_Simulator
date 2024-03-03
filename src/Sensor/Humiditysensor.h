@@ -13,6 +13,7 @@ class HumiditySensor: public AbstractSensor
     static const EnviromentalConditions::Humidity max;
 
     EnviromentalConditions::Humidity initial;
+    EnviromentalConditions::Humidity stdDeviation;
     EnviromentalConditions::Humidity target;
     std::vector<EnviromentalConditions::Humidity> humidities;
 
@@ -20,19 +21,21 @@ public:
     HumiditySensor( unsigned int id,
                     std::string  n,
                     unsigned int dn,
-                    double d,
                     double v,
-                    const EnviromentalConditions::Humidity initial,
-                    const EnviromentalConditions::Humidity target
+                    EnviromentalConditions::Humidity init,
+                    EnviromentalConditions::Humidity stddev,
+                    EnviromentalConditions::Humidity t
     );
 
     EnviromentalConditions::Humidity getHumInitial()const;
     HumiditySensor& setHumInitial(const EnviromentalConditions::Humidity init);
+    EnviromentalConditions::Humidity getHumStdDeviation()const;
+    HumiditySensor& setHumStdDeviation(const EnviromentalConditions::Humidity stddev);
     EnviromentalConditions::Humidity getHumTarget()const;
     HumiditySensor& setHumTargt(const EnviromentalConditions::Humidity t);
 
-    virtual void accept(SConstVisitor& visitor) override;
-    virtual void accept(SVisitor& visitor) override;
+    virtual void accept(SConstVisitor& visitor)const final;
+    virtual void accept(SVisitor& visitor) final;
 
     virtual void simulate() override;
     virtual void clear() override;

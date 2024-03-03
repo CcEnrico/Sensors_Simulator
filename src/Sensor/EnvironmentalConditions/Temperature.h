@@ -12,7 +12,7 @@ class Temperature
     double fahrenheit;
 
 public:
-    Temperature(double temperature, const char scale);
+    Temperature(double temperature, char scale);
 
     Temperature& setKelvin(const double k);
     double getKelvin() const;
@@ -22,12 +22,10 @@ public:
     double getFahrenheit() const;
 
 private:
-    // update functions to keep coerence over data
+
     void updateKelvin();
     void updateCelsius();
     void updateFahrenheit();
-
-    // absolute zeros T 3 scale
 
     static const double minK;
     static const double minC;

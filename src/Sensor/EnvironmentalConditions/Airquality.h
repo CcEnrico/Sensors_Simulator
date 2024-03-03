@@ -13,10 +13,10 @@ class AirQuality
     double NO2;     //  micro_g/m3 (micrograms per cubic meter) hour avarage
 
 public:
-    AirQuality(const double pm_10,
-               const double N_O2
+    AirQuality( double pm_10,
+                double N_O2
     );
-    AirQuality(const double IAQ);
+    AirQuality( double IAQ);
 
     double getPm10()const;
     AirQuality& setPm10(const double pm_10);

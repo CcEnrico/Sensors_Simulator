@@ -13,14 +13,12 @@ class AbstractSensor{
     unsigned int identifier;
     std::string name;
     unsigned int dataNum;
-    double deviation;
     double variance;
 
 public:
     AbstractSensor(unsigned int id,
                    std::string  n,
                    unsigned int dn,
-                   double d,
                    double v
     );
 
@@ -31,8 +29,6 @@ public:
     AbstractSensor& setName(const std::string s);
     unsigned int getDataNum() const;
     AbstractSensor& setDataNum(const unsigned int dn);
-    double getDeviation()const;
-    AbstractSensor& setDeviation(const double d);
     double getVariance()const;
     AbstractSensor& setVariance(const double v);
 

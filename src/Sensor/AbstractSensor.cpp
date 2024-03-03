@@ -5,9 +5,8 @@ namespace Sensor{
 AbstractSensor::AbstractSensor(unsigned int id,
                               std::string  n,
                               unsigned int dn,
-                              double d,
                               double v
-                               ): identifier(id), name(n), dataNum(dn), deviation(d), variance(v){}
+                               ): identifier(id), name(n), dataNum(dn), variance(v){}
 
 AbstractSensor::~AbstractSensor(){
 
@@ -28,13 +27,6 @@ unsigned int AbstractSensor::getDataNum() const{
 }
 AbstractSensor& AbstractSensor::setDataNum(const unsigned int dn){
     this->dataNum = dn;
-    return *this;
-}
-double AbstractSensor::getDeviation()const{
-    return deviation;
-}
-AbstractSensor& AbstractSensor::setDeviation(const double d){
-    this->deviation = d;
     return *this;
 }
 double AbstractSensor::getVariance()const{

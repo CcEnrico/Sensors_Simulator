@@ -2,7 +2,7 @@
 
 namespace Sensor::EnviromentalConditions{
 
-Temperature::Temperature(double temperature, const char scale){
+Temperature::Temperature(double temperature, char scale = 'c'){
     if(scale == 'k'){
         kelvin = temperature;
         updateKelvin();

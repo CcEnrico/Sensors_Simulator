@@ -2,35 +2,49 @@
 
 namespace Sensor{
 
-AirQualitySensor::AirQualitySensor(
-    unsigned int id,
+AirQualitySensor::AirQualitySensor(unsigned int id,
     std::string  n,
     unsigned int dn,
-    double d,
     double v,
     EnviromentalConditions::AirQuality init,
+    EnviromentalConditions::AirQuality stddev,
     EnviromentalConditions::AirQuality t
     ):
-    AbstractSensor(id, n, dn, d, v),
+    AbstractSensor(id, n, dn, v),
     initial(init),
+    stdDeviation(stddev),
     target(t)
 {
 }
 
-EnviromentalConditions::AirQuality AirQualitySensor::getHumInitial()const{
+EnviromentalConditions::AirQuality AirQualitySensor::getAQInitial()const{
     return initial;
 }
 
-AirQualitySensor& AirQualitySensor::setHumInitial(const EnviromentalConditions::AirQuality init){
+AirQualitySensor& AirQualitySensor::setAQInitial(const EnviromentalConditions::AirQuality init){
     this->initial = init;
     return *this;
 }
-EnviromentalConditions::AirQuality AirQualitySensor::getHumTarget()const{
+EnviromentalConditions::AirQuality AirQualitySensor::getAQStdDeviation()const{
+    return stdDeviation;
+}
+AirQualitySensor& AirQualitySensor::setAQStdDeviation(const EnviromentalConditions::AirQuality stddev){
+    this->stdDeviation = stddev;
+    return *this;
+}
+EnviromentalConditions::AirQuality AirQualitySensor::getAQTarget()const{
     return target;
 }
-AirQualitySensor& AirQualitySensor::setHumTargt(const EnviromentalConditions::AirQuality t){
+AirQualitySensor& AirQualitySensor::setAQTarget(const EnviromentalConditions::AirQuality t){
     this->target = t;
     return *this;
+}
+
+void AirQualitySensor::accept(SConstVisitor &visitor) const{
+    visitor.visit(*this);
+}
+void AirQualitySensor::accept(SVisitor &visitor){
+    visitor.visit(*this);
 }
 
 

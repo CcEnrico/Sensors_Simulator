@@ -17,6 +17,7 @@ class AirQualitySensor: public AbstractSensor
     static const EnviromentalConditions::AirQuality veryBad;
 
     EnviromentalConditions::AirQuality initial;
+    EnviromentalConditions::AirQuality stdDeviation;
     EnviromentalConditions::AirQuality target;
     std::vector<EnviromentalConditions::AirQuality> airQualityData;
 
@@ -24,20 +25,22 @@ public:
     AirQualitySensor(unsigned int id,
                      std::string  n,
                      unsigned int dn,
-                     double d,
                      double v,
                      EnviromentalConditions::AirQuality init,
+                     EnviromentalConditions::AirQuality stddev,
                      EnviromentalConditions::AirQuality t
     );
 
-    EnviromentalConditions::AirQuality getHumInitial()const;
-    AirQualitySensor& setHumInitial(const EnviromentalConditions::AirQuality init);
-    EnviromentalConditions::AirQuality getHumTarget()const;
-    AirQualitySensor& setHumTargt(const EnviromentalConditions::AirQuality t);
+    EnviromentalConditions::AirQuality getAQInitial()const;
+    AirQualitySensor& setAQInitial(const EnviromentalConditions::AirQuality init);
+    EnviromentalConditions::AirQuality getAQStdDeviation()const;
+    AirQualitySensor& setAQStdDeviation(const EnviromentalConditions::AirQuality stddev);
+    EnviromentalConditions::AirQuality getAQTarget()const;
+    AirQualitySensor& setAQTarget(const EnviromentalConditions::AirQuality t);
 
 
-    virtual void accept(SConstVisitor& visitor) override;
-    virtual void accept(SVisitor& visitor) override;
+    virtual void accept(SConstVisitor& visitor)const final;
+    virtual void accept(SVisitor& visitor) final;
 
     virtual void simulate() override;
     virtual void clear() override;

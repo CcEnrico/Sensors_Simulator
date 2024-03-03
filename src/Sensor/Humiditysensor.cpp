@@ -2,17 +2,17 @@
 
 namespace Sensor{
 
-HumiditySensor::HumiditySensor(
-    unsigned int id,
+HumiditySensor::HumiditySensor(unsigned int id,
     std::string  n,
     unsigned int dn,
-    double d,
     double v,
-    const EnviromentalConditions::Humidity init,
-    const EnviromentalConditions::Humidity t
+    EnviromentalConditions::Humidity init,
+    EnviromentalConditions::Humidity stddev,
+    EnviromentalConditions::Humidity t
     ):
-    AbstractSensor(id,n,dn,d,v),
+    AbstractSensor(id,n,dn,v),
     initial(init),
+    stdDeviation(stddev),
     target(t)
 {}
 
@@ -25,6 +25,13 @@ HumiditySensor& HumiditySensor::setHumInitial(const EnviromentalConditions::Humi
     this->initial = init;
     return *this;
 }
+EnviromentalConditions::Humidity HumiditySensor::getHumStdDeviation()const{
+    return stdDeviation;
+}
+HumiditySensor& HumiditySensor::setHumStdDeviation(const EnviromentalConditions::Humidity stddev){
+    this->stdDeviation = stddev;
+    return *this;
+}
 
 EnviromentalConditions::Humidity HumiditySensor::getHumTarget()const{
     return target;
@@ -33,6 +40,13 @@ EnviromentalConditions::Humidity HumiditySensor::getHumTarget()const{
 HumiditySensor& HumiditySensor::setHumTargt(const EnviromentalConditions::Humidity t){
     this->target = t;
     return *this;
+}
+
+void HumiditySensor::accept(SConstVisitor &visitor) const{
+    visitor.visit(*this);
+}
+void HumiditySensor::accept(SVisitor &visitor){
+    visitor.visit(*this);
 }
 
 void HumiditySensor::simulate() {
