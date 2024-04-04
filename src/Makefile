@@ -60,7 +60,8 @@ SOURCES       = Sensor/Airqualitysensor.cpp \
 		View/mainwindow.cpp \
 		Sensor/AbstractSensor.cpp \
 		Sensor/TemperatureSensor.cpp \
-		Sensor/EnvironmentalConditions/Temperature.cpp moc_mainwindow.cpp
+		Sensor/EnvironmentalConditions/Temperature.cpp qrc_resources.cpp \
+		moc_mainwindow.cpp
 OBJECTS       = Airqualitysensor.o \
 		Airquality.o \
 		Humidity.o \
@@ -70,6 +71,7 @@ OBJECTS       = Airqualitysensor.o \
 		AbstractSensor.o \
 		TemperatureSensor.o \
 		Temperature.o \
+		qrc_resources.o \
 		moc_mainwindow.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/unix.conf \
@@ -231,6 +233,7 @@ Makefile: Pao_Sensori_Ecc.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qm
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/lex.prf \
 		Pao_Sensori_Ecc.pro \
+		resources.qrc \
 		/usr/lib/x86_64-linux-gnu/libQt6Widgets.prl \
 		/usr/lib/x86_64-linux-gnu/libQt6Gui.prl \
 		/usr/lib/x86_64-linux-gnu/libQt6Core.prl
@@ -301,6 +304,7 @@ Makefile: Pao_Sensori_Ecc.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qm
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/yacc.prf:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/lex.prf:
 Pao_Sensori_Ecc.pro:
+resources.qrc:
 /usr/lib/x86_64-linux-gnu/libQt6Widgets.prl:
 /usr/lib/x86_64-linux-gnu/libQt6Gui.prl:
 /usr/lib/x86_64-linux-gnu/libQt6Core.prl:
@@ -318,6 +322,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents Sensor/Airqualitysensor.h Sensor/EnvironmentalConditions/Airquality.h Sensor/EnvironmentalConditions/Humidity.h Sensor/Humiditysensor.h Sensor/SConstVisitor.h Sensor/SVisitor.h View/mainwindow.h Sensor/AbstractSensor.h Sensor/TemperatureSensor.h Sensor/EnvironmentalConditions/Temperature.h $(DISTDIR)/
 	$(COPY_FILE) --parents Sensor/Airqualitysensor.cpp Sensor/EnvironmentalConditions/Airquality.cpp Sensor/EnvironmentalConditions/Humidity.cpp Sensor/Humiditysensor.cpp main.cpp View/mainwindow.cpp Sensor/AbstractSensor.cpp Sensor/TemperatureSensor.cpp Sensor/EnvironmentalConditions/Temperature.cpp $(DISTDIR)/
@@ -344,8 +349,28 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_resources.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_resources.cpp
+qrc_resources.cpp: resources.qrc \
+		/usr/lib/qt6/libexec/rcc \
+		Assets/icon.svg \
+		Assets/icons/grid.svg \
+		Assets/icons/new.svg \
+		Assets/icons/save_as.svg \
+		Assets/icons/edit.svg \
+		Assets/icons/previous.svg \
+		Assets/icons/delete.svg \
+		Assets/icons/close.svg \
+		Assets/icons/open.svg \
+		Assets/icons/next.svg \
+		Assets/icons/search.svg \
+		Assets/icons/new_item.svg \
+		Assets/icons/hero.svg \
+		Assets/icons/list.svg \
+		Assets/icons/save.svg
+	/usr/lib/qt6/libexec/rcc -name resources resources.qrc -o qrc_resources.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -372,7 +397,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
 
@@ -416,6 +441,9 @@ TemperatureSensor.o: Sensor/TemperatureSensor.cpp Sensor/TemperatureSensor.h \
 
 Temperature.o: Sensor/EnvironmentalConditions/Temperature.cpp Sensor/EnvironmentalConditions/Temperature.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Temperature.o Sensor/EnvironmentalConditions/Temperature.cpp
+
+qrc_resources.o: qrc_resources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
