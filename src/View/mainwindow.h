@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+namespace View{
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -12,3 +14,5 @@ public:
     ~MainWindow();
 };
 #endif // MAINWINDOW_H
+
+}
