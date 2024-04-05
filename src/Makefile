@@ -57,20 +57,28 @@ SOURCES       = Sensor/Airqualitysensor.cpp \
 		Sensor/EnvironmentalConditions/Humidity.cpp \
 		Sensor/Humiditysensor.cpp \
 		main.cpp \
-		View/mainwindow.cpp \
 		Sensor/AbstractSensor.cpp \
 		Sensor/TemperatureSensor.cpp \
-		Sensor/EnvironmentalConditions/Temperature.cpp qrc_resources.cpp \
+		Sensor/EnvironmentalConditions/Temperature.cpp \
+		View/mainwindow.cpp \
+		View/ResultWidget.cpp \
+		View/SearchWidget.cpp \
+		View/SensorRenderer/Full.cpp \
+		View/SensorRenderer/ListSensor.cpp qrc_resources.cpp \
 		moc_mainwindow.cpp
 OBJECTS       = Airqualitysensor.o \
 		Airquality.o \
 		Humidity.o \
 		Humiditysensor.o \
 		main.o \
-		mainwindow.o \
 		AbstractSensor.o \
 		TemperatureSensor.o \
 		Temperature.o \
+		mainwindow.o \
+		ResultWidget.o \
+		SearchWidget.o \
+		Full.o \
+		ListSensor.o \
 		qrc_resources.o \
 		moc_mainwindow.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
@@ -144,18 +152,27 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		Sensor/Humiditysensor.h \
 		Sensor/SConstVisitor.h \
 		Sensor/SVisitor.h \
-		View/mainwindow.h \
 		Sensor/AbstractSensor.h \
 		Sensor/TemperatureSensor.h \
-		Sensor/EnvironmentalConditions/Temperature.h Sensor/Airqualitysensor.cpp \
+		Sensor/EnvironmentalConditions/Temperature.h \
+		View/mainwindow.h \
+		View/ResultWidget.h \
+		View/SearchWidget.h \
+		View/SensorRenderer/SSensorRenderer.h \
+		View/SensorRenderer/Full.h \
+		View/SensorRenderer/ListSensor.h Sensor/Airqualitysensor.cpp \
 		Sensor/EnvironmentalConditions/Airquality.cpp \
 		Sensor/EnvironmentalConditions/Humidity.cpp \
 		Sensor/Humiditysensor.cpp \
 		main.cpp \
-		View/mainwindow.cpp \
 		Sensor/AbstractSensor.cpp \
 		Sensor/TemperatureSensor.cpp \
-		Sensor/EnvironmentalConditions/Temperature.cpp
+		Sensor/EnvironmentalConditions/Temperature.cpp \
+		View/mainwindow.cpp \
+		View/ResultWidget.cpp \
+		View/SearchWidget.cpp \
+		View/SensorRenderer/Full.cpp \
+		View/SensorRenderer/ListSensor.cpp
 QMAKE_TARGET  = Pao_Sensori_Ecc
 DESTDIR       = 
 TARGET        = Pao_Sensori_Ecc
@@ -324,8 +341,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Sensor/Airqualitysensor.h Sensor/EnvironmentalConditions/Airquality.h Sensor/EnvironmentalConditions/Humidity.h Sensor/Humiditysensor.h Sensor/SConstVisitor.h Sensor/SVisitor.h View/mainwindow.h Sensor/AbstractSensor.h Sensor/TemperatureSensor.h Sensor/EnvironmentalConditions/Temperature.h $(DISTDIR)/
-	$(COPY_FILE) --parents Sensor/Airqualitysensor.cpp Sensor/EnvironmentalConditions/Airquality.cpp Sensor/EnvironmentalConditions/Humidity.cpp Sensor/Humiditysensor.cpp main.cpp View/mainwindow.cpp Sensor/AbstractSensor.cpp Sensor/TemperatureSensor.cpp Sensor/EnvironmentalConditions/Temperature.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents Sensor/Airqualitysensor.h Sensor/EnvironmentalConditions/Airquality.h Sensor/EnvironmentalConditions/Humidity.h Sensor/Humiditysensor.h Sensor/SConstVisitor.h Sensor/SVisitor.h Sensor/AbstractSensor.h Sensor/TemperatureSensor.h Sensor/EnvironmentalConditions/Temperature.h View/mainwindow.h View/ResultWidget.h View/SearchWidget.h View/SensorRenderer/SSensorRenderer.h View/SensorRenderer/Full.h View/SensorRenderer/ListSensor.h $(DISTDIR)/
+	$(COPY_FILE) --parents Sensor/Airqualitysensor.cpp Sensor/EnvironmentalConditions/Airquality.cpp Sensor/EnvironmentalConditions/Humidity.cpp Sensor/Humiditysensor.cpp main.cpp Sensor/AbstractSensor.cpp Sensor/TemperatureSensor.cpp Sensor/EnvironmentalConditions/Temperature.cpp View/mainwindow.cpp View/ResultWidget.cpp View/SearchWidget.cpp View/SensorRenderer/Full.cpp View/SensorRenderer/ListSensor.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -381,6 +398,14 @@ compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp
 moc_mainwindow.cpp: View/mainwindow.h \
+		View/SearchWidget.h \
+		View/ResultWidget.h \
+		View/SensorRenderer/Full.h \
+		View/SensorRenderer/SSensorRenderer.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		View/SensorRenderer/ListSensor.h \
 		moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
 	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/enrico/QtProjects/Pao_Sensori_Ecc/src/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/enrico/QtProjects/Pao_Sensori_Ecc/src -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include View/mainwindow.h -o moc_mainwindow.cpp
@@ -421,11 +446,16 @@ Humiditysensor.o: Sensor/Humiditysensor.cpp Sensor/Humiditysensor.h \
 		Sensor/EnvironmentalConditions/Humidity.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Humiditysensor.o Sensor/Humiditysensor.cpp
 
-main.o: main.cpp View/mainwindow.h
+main.o: main.cpp View/mainwindow.h \
+		View/SearchWidget.h \
+		View/ResultWidget.h \
+		View/SensorRenderer/Full.h \
+		View/SensorRenderer/SSensorRenderer.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		View/SensorRenderer/ListSensor.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
-
-mainwindow.o: View/mainwindow.cpp View/mainwindow.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o View/mainwindow.cpp
 
 AbstractSensor.o: Sensor/AbstractSensor.cpp Sensor/AbstractSensor.h \
 		Sensor/SConstVisitor.h \
@@ -441,6 +471,35 @@ TemperatureSensor.o: Sensor/TemperatureSensor.cpp Sensor/TemperatureSensor.h \
 
 Temperature.o: Sensor/EnvironmentalConditions/Temperature.cpp Sensor/EnvironmentalConditions/Temperature.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Temperature.o Sensor/EnvironmentalConditions/Temperature.cpp
+
+mainwindow.o: View/mainwindow.cpp View/mainwindow.h \
+		View/SearchWidget.h \
+		View/ResultWidget.h \
+		View/SensorRenderer/Full.h \
+		View/SensorRenderer/SSensorRenderer.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		View/SensorRenderer/ListSensor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o View/mainwindow.cpp
+
+ResultWidget.o: View/ResultWidget.cpp View/ResultWidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ResultWidget.o View/ResultWidget.cpp
+
+SearchWidget.o: View/SearchWidget.cpp View/SearchWidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SearchWidget.o View/SearchWidget.cpp
+
+Full.o: View/SensorRenderer/Full.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Full.o View/SensorRenderer/Full.cpp
+
+ListSensor.o: View/SensorRenderer/ListSensor.cpp Sensor/Airqualitysensor.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		Sensor/EnvironmentalConditions/Airquality.h \
+		Sensor/Humiditysensor.h \
+		Sensor/EnvironmentalConditions/Humidity.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ListSensor.o View/SensorRenderer/ListSensor.cpp
 
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp

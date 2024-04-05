@@ -1,5 +1,5 @@
-#ifndef HUMIDITYSENSOR_H
-#define HUMIDITYSENSOR_H
+#ifndef SENSOR_HUMIDITYSENSOR_H
+#define SENSOR_HUMIDITYSENSOR_H
 
 #include"AbstractSensor.h"
 #include"EnvironmentalConditions/Humidity.h"

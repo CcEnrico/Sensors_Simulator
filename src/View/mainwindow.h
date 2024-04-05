@@ -4,6 +4,11 @@
 #include <QMainWindow>
 #include <QStackedWidget>
 
+#include "SearchWidget.h"
+#include "ResultWidget.h"
+
+#include "SensorRenderer/Full.h"
+
 namespace View{
 
 class MainWindow : public QMainWindow
@@ -17,11 +22,14 @@ private:
     // SearchWidget* search_widget;
     QStackedWidget* stacked_widget;
     // ResultsWidget* results_widget;
+    SensorRenderer::Full full_renderer;
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
+    // aggiungi metodi
     void showStatusBar(QString m);
 };
 #endif // MAINWINDOW_H

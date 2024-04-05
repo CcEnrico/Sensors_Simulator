@@ -14,11 +14,15 @@ SOURCES += \
     Sensor/EnvironmentalConditions/Humidity.cpp \
     Sensor/Humiditysensor.cpp \
     main.cpp \
-    View/mainwindow.cpp \
     \
     Sensor/AbstractSensor.cpp \
     Sensor/TemperatureSensor.cpp \
-    Sensor/EnvironmentalConditions/Temperature.cpp
+    Sensor/EnvironmentalConditions/Temperature.cpp \
+    View/mainwindow.cpp \
+    View/ResultWidget.cpp \
+    View/SearchWidget.cpp \
+    View/SensorRenderer/Full.cpp \
+    View/SensorRenderer/ListSensor.cpp
 
 HEADERS += \
     Sensor/Airqualitysensor.h \
@@ -27,11 +31,16 @@ HEADERS += \
     Sensor/Humiditysensor.h \
     Sensor/SConstVisitor.h \
     Sensor/SVisitor.h \
-    View/mainwindow.h \
     \
     Sensor/AbstractSensor.h \
     Sensor/TemperatureSensor.h \
-    Sensor/EnvironmentalConditions/Temperature.h
+    Sensor/EnvironmentalConditions/Temperature.h \
+    View/mainwindow.h \
+    View/ResultWidget.h \
+    View/SearchWidget.h \
+    View/SensorRenderer/SSensorRenderer.h \
+    View/SensorRenderer/Full.h \
+    View/SensorRenderer/ListSensor.h
 
 RESOURCES += \
     resources.qrc

@@ -1,5 +1,5 @@
-#ifndef AIRQUALITYSENSOR_H
-#define AIRQUALITYSENSOR_H
+#ifndef SENSOR_AIRQUALITYSENSOR_H
+#define SENSOR_AIRQUALITYSENSOR_H
 
 #include"AbstractSensor.h"
 #include"EnvironmentalConditions/Airquality.h"
