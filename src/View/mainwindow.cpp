@@ -7,6 +7,9 @@
 #include <QAction>
 #include <QIcon>
 #include <QSplitter>
+#include <QScrollArea>
+
+#include "EditWidget.h"
 
 namespace View{
 
@@ -48,7 +51,7 @@ MainWindow::MainWindow(QWidget *parent)
         "New Item"
     );
     create_item->setShortcut(QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_N));
-    create_item->setEnabled(false);
+    create_item->setEnabled(true);
 
     // Menu
     QMenu* menu_bar = menuBar()->addMenu("&File");
@@ -88,11 +91,37 @@ MainWindow::MainWindow(QWidget *parent)
 
     splitter->setSizes(QList<int>() << 1000 << 3000);
 
+    // connect
+    connect(create_item, &QAction::triggered, this, &MainWindow::createItem);
+
     showStatusBar("Ready.");
 }
 
 MainWindow::~MainWindow()
 {
+}
+
+void MainWindow::clearStack() {
+    QWidget* widget = stacked_widget->widget(1);
+    while (widget) {
+        stacked_widget->removeWidget(widget);
+        delete widget;
+        widget = stacked_widget->widget(1);
+    }
+}
+
+void MainWindow::createItem()
+{
+    clearStack();
+    QScrollArea* scroll_area = new QScrollArea();
+    scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    scroll_area->setWidgetResizable(true);
+    EditWidget* edit_widget = new EditWidget(this, nullptr);
+    scroll_area->setWidget(edit_widget);
+    stacked_widget->addWidget(scroll_area);
+    stacked_widget->setCurrentIndex(1);
+    showStatusBar("Creating a new item.");
 }
 
 void MainWindow::showStatusBar(QString message)

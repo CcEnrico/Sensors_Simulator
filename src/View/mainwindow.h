@@ -24,14 +24,21 @@ private:
     // ResultsWidget* results_widget;
     SensorRenderer::Full full_renderer;
 
+    void clearStack();
+
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 
     // aggiungi metodi
+    
     void showStatusBar(QString m);
+
+    public slots:
+    void createItem();
 };
-#endif // MAINWINDOW_H
 
 }
+
+#endif // MAINWINDOW_H

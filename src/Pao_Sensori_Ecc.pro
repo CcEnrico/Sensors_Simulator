@@ -21,6 +21,8 @@ SOURCES += \
     View/mainwindow.cpp \
     View/ResultWidget.cpp \
     View/SearchWidget.cpp \
+    View/EditWidget.cpp \
+    View/SensorEditor/AbstractSensorEditor.cpp \
     View/SensorRenderer/Full.cpp \
     View/SensorRenderer/ListSensor.cpp
 
@@ -38,6 +40,8 @@ HEADERS += \
     View/mainwindow.h \
     View/ResultWidget.h \
     View/SearchWidget.h \
+    View/EditWidget.h \
+    View/SensorEditor/AbstractSensorEditor.h \
     View/SensorRenderer/SSensorRenderer.h \
     View/SensorRenderer/Full.h \
     View/SensorRenderer/ListSensor.h

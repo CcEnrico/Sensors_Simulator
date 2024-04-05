@@ -19,7 +19,15 @@ ListSensor::ListSensor()
 }
 
 // da implementare
-void ListSensor::visit(const Sensor::AirQualitySensor& air_quality){}
+void ListSensor::visit(const Sensor::AirQualitySensor& air_quality){
+    QLabel* label = new QLabel("Air Quality Sensor");
+    QVBoxLayout* layout = new QVBoxLayout();
+    layout->addWidget(label);
+    widget = new QWidget();
+    widget->setLayout(layout);
+
+}
+
 void ListSensor::visit(const Sensor::HumiditySensor& humidity){}
 void ListSensor::visit(const Sensor::TemperatureSensor& temperature){}
 bool ListSensor::hasControls() const{}
