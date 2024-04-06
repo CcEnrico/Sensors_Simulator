@@ -1,4 +1,9 @@
 #include"EditWidget.h"
+#include"TypeSelector.h"
+#include"SensorEditor/AirQualityEditor.h"
+#include"SensorEditor/HumidityEditor.h"
+#include"SensorEditor/TemperatureEditor.h"
+#include"SensorEditor/SensorInjector.h"
 
 #include <iostream>
 
@@ -19,60 +24,104 @@ EditWidget::EditWidget(
     )
     : main_window(main_window), subject()
 {
-    QVBoxLayout* vbox = new QVBoxLayout(this);
-    vbox->setObjectName("widget-edit");
-    vbox->setAlignment(Qt::AlignLeft | Qt::AlignTop);
 
-    QLabel* title = new QLabel("Item properties");
+    QVBoxLayout* layout = new QVBoxLayout(this);
+    layout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+    layout->setObjectName("Edit Widget");
+
+    QLabel* title = new QLabel("Edit Sensor");
     title->setObjectName("title");
-    vbox->addWidget(title);
+    layout->addWidget(title);
 
     QFormLayout* form = new QFormLayout();
-    form->setObjectName("properties-form");
+    form->setObjectName("Properties Form");
     form->setLabelAlignment(Qt::AlignRight | Qt::AlignTop);
-    vbox->addLayout(form);
+    layout->addLayout(form);
 
-    identifier_input = new QSpinBox();
-    identifier_input->setObjectName("identifier-input");
-    identifier_input->setMinimum(1);
-    identifier_input->setMaximum(INT_MAX);
+    id_input = new QSpinBox();
+    id_input->setObjectName("Identifier Input");
+    id_input->setRange(0, 9999);
 
-    if (subject != nullptr) {
-        identifier_input->setValue(subject->getIdentifier());
+    if(subject != nullptr){
+        id_input->setValue(subject->getIdentifier());
     }
-    form->addRow("identifier", identifier_input);
+    form->addRow("Identifier", id_input);
 
-    name_input = new QLineEdit();
-    name_input->setObjectName("name-input");
-    if (subject != nullptr) {
+    QLineEdit* name_input = new QLineEdit();
+    name_input->setObjectName("Name Input");
+    name_input->setPlaceholderText("Sensor Name");
+
+    if (subject != nullptr){
         name_input->setText(QString::fromStdString(subject->getName()));
+    }   
+    form->addRow("Name", name_input);
+
+    dataNum_input = new QSpinBox();
+    dataNum_input->setObjectName("Data Number Input");
+    dataNum_input->setRange(1, 1000);
+
+    if(subject != nullptr){
+        dataNum_input->setValue(subject->getDataNum());
     }
-    form->addRow("name", name_input);
+    form->addRow("Data Number", dataNum_input);
+
+    variance_input = new QDoubleSpinBox();
+    variance_input->setObjectName("Variance Input");
+    variance_input->setRange(0.0, 1000.0);
+    variance_input->setDecimals(2);
+    if(subject != nullptr){
+        variance_input->setValue(subject->getVariance());
+    }
+    form->addRow("Variance", variance_input);
+
+
+    QComboBox* type_input = new QComboBox();
+    type_input->setObjectName("Type Input");
+    type_input->addItem("AirqualitySensor");
+    type_input->addItem("HumiditySensor");
+    type_input->addItem("TemperatureSensor");
     
+    if (subject != nullptr) {
+        TypeSelector type_selector(type_input);
+        subject->accept(type_selector);
+    }
+
+    form->addRow("type", type_input);
 
     stacked_editor = new QStackedLayout();
-    vbox->addLayout(stacked_editor);
+    layout->addLayout(stacked_editor);
 
-    // modifica editors
-    // ItemEditor::WebPageEditor* web_page_editor = new ItemEditor::WebPageEditor();
-    // stacked_editor->addWidget(web_page_editor);
-    // editors.push_back(web_page_editor);
+    
 
-    // ItemEditor::SimpleEditor* simple_editor = new ItemEditor::SimpleEditor();
-    // stacked_editor->addWidget(simple_editor);
-    // editors.push_back(simple_editor);
+    SensorEditor::AirQualityEditor* air_quality_editor = new SensorEditor::AirQualityEditor();
+    stacked_editor->addWidget(air_quality_editor);
+    editors.push_back(air_quality_editor);
 
-    // ItemEditor::VirtualEditor* virtual_editor = new ItemEditor::VirtualEditor();
-    // stacked_editor->addWidget(virtual_editor);
-    // editors.push_back(virtual_editor);
+    // SensorEditor::HumidityEditor* humidity_editor = new SensorEditor::HumidityEditor();
+    // stacked_editor->addWidget(humidity_editor);
+    // editors.push_back(humidity_editor);
+
+    // SensorEditor::TemperatureEditor* temperature_editor = new SensorEditor::TemperatureEditor();
+    // stacked_editor->addWidget(temperature_editor);
+    // editors.push_back(temperature_editor);
+
+    if (subject != nullptr) {
+        SensorEditor::SensorInjector sensor_injector(
+            *air_quality_editor
+            // *humidity_editor,
+            // *temperature_editor
+        );
+        subject->accept(sensor_injector);
+    }
+    showType(type_input->currentIndex());
 
 
-    vbox->addStretch();
+    layout->addStretch();
 
     QHBoxLayout* actions = new QHBoxLayout();
     actions->setObjectName("actions");
     actions->setAlignment(Qt::AlignLeft | Qt::AlignTop);
-    vbox->addLayout(actions);
+    layout->addLayout(actions);
 
     actions->addStretch();
 
@@ -84,12 +133,27 @@ EditWidget::EditWidget(
     cancel_button->setObjectName("cancel");
     actions->addWidget(cancel_button);
 
+
+
     // Connects signals
+    connect(type_input, qOverload<int>(&QComboBox::currentIndexChanged), this, &EditWidget::showType);
+    connect(apply_button, &QPushButton::clicked, this, &EditWidget::apply);
+    // connect(cancel_button, &QPushButton::clicked, main_window->getSensorListWidget(), &SensorListWidget::show);
 
 }
 
 void EditWidget::selectImage(){}
 void EditWidget::showType(int index){}
-void EditWidget::apply(){}
+void EditWidget::apply(){
+    int id = id_input->value();
+    QString name = name_input->text();
+    int dn = dataNum_input->value();
+    double v = variance_input->value();
+    SensorEditor::AbstractSensorEditor* editor = editors[stacked_editor->currentIndex()];
+    Sensor::AbstractSensor* sensor = editor->create(id, name, dn, v);
+    // main_window->getRepository()->update(item);
+    // main_window->reloadData();
+    // main_window->getSearchWidget()->search();
+}
 
 }

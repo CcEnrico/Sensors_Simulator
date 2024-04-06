@@ -3,7 +3,7 @@
 
 #include"SSensorRenderer.h"
 
-#include "../ResultWidget.h"
+#include "../SensorListWidget.h"
 
 namespace View {
 namespace SensorRenderer {

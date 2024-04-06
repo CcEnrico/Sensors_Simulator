@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 
+#include <QWidget>
 #include <QStatusBar>
 #include <QMenu>
 #include <QMenuBar>
@@ -8,6 +9,8 @@
 #include <QIcon>
 #include <QSplitter>
 #include <QScrollArea>
+#include <QLabel>
+
 
 #include "EditWidget.h"
 
@@ -83,6 +86,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // search_widget = new SearchWidget();
 
+
     stacked_widget = new QStackedWidget(this);
     splitter->addWidget(stacked_widget);
 
@@ -112,16 +116,26 @@ void MainWindow::clearStack() {
 
 void MainWindow::createItem()
 {
+    create_item->setEnabled(false);
+
     clearStack();
     QScrollArea* scroll_area = new QScrollArea();
     scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     scroll_area->setWidgetResizable(true);
+
     EditWidget* edit_widget = new EditWidget(this, nullptr);
+    
     scroll_area->setWidget(edit_widget);
     stacked_widget->addWidget(scroll_area);
     stacked_widget->setCurrentIndex(1);
     showStatusBar("Creating a new item.");
+
+}
+
+SensorListWidget* MainWindow::getSensorListWidget(){
+    return sensor_list_widget;
+
 }
 
 void MainWindow::showStatusBar(QString message)

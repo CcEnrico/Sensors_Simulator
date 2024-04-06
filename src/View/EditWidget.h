@@ -21,10 +21,10 @@ class EditWidget : public QWidget{
   private:
     MainWindow* main_window;
     const Sensor::AbstractSensor* subject;
-    QSpinBox* identifier_input;
+    QSpinBox* id_input;
     QLineEdit* name_input;
-    QTextEdit* description_input;
-    QLineEdit* image_input;
+    QSpinBox* dataNum_input;
+    QDoubleSpinBox* variance_input;
     QStackedLayout* stacked_editor;
     QVector<SensorEditor::AbstractSensorEditor*> editors;
 

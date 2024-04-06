@@ -25,6 +25,8 @@ public:
     double getIndexAQ()const;
     AirQuality& setIndexAQ(const double IAQ);
 
+    explicit operator double() const;
+
 private:
     void updateAQ();
     void updateValues();

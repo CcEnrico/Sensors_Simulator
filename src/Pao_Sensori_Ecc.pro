@@ -19,10 +19,16 @@ SOURCES += \
     Sensor/TemperatureSensor.cpp \
     Sensor/EnvironmentalConditions/Temperature.cpp \
     View/mainwindow.cpp \
-    View/ResultWidget.cpp \
+    View/SensorListWidget.cpp \
     View/SearchWidget.cpp \
     View/EditWidget.cpp \
+    View/TypeSelector.cpp \
+    View/WidgetLookup.cpp \
     View/SensorEditor/AbstractSensorEditor.cpp \
+    View/SensorEditor/AirQualityEditor.cpp \
+    View/SensorEditor/HumidityEditor.cpp \
+    View/SensorEditor/TemperatureEditor.cpp \
+    View/SensorEditor/SensorInjector.cpp \
     View/SensorRenderer/Full.cpp \
     View/SensorRenderer/ListSensor.cpp
 
@@ -38,10 +44,16 @@ HEADERS += \
     Sensor/TemperatureSensor.h \
     Sensor/EnvironmentalConditions/Temperature.h \
     View/mainwindow.h \
-    View/ResultWidget.h \
+    View/SensorListWidget.h \
     View/SearchWidget.h \
     View/EditWidget.h \
+    View/TypeSelector.h \
+    View/WidgetLookup.h \
     View/SensorEditor/AbstractSensorEditor.h \
+    View/SensorEditor/AirQualityEditor.h \
+    View/SensorEditor/HumidityEditor.h \
+    View/SensorEditor/SensorInjector.h \
+    View/SensorEditor/TemperatureEditor.h \
     View/SensorRenderer/SSensorRenderer.h \
     View/SensorRenderer/Full.h \
     View/SensorRenderer/ListSensor.h

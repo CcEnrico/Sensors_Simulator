@@ -17,8 +17,8 @@ class AbstractSensorEditor: public QWidget {
     virtual Sensor::AbstractSensor* create(
         const unsigned int identifier,
         const QString& name,
-        const QString& description,
-        const QString& image_path
+        const unsigned int data_number,
+        const double variance
     ) const = 0;
 };
 

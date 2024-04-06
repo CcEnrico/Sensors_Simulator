@@ -38,6 +38,10 @@ AirQuality& AirQuality::setIndexAQ(const double IAQ){
     return *this;
 }
 
+AirQuality::operator double() const{
+    return indexAQ;
+}
+
 void AirQuality::updateAQ(){
     double Ipm10 = (pm10/indexLimitPm10) * 100;
     double INO2 = (NO2/indexLimitNO2) * 100;

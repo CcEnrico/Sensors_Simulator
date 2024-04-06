@@ -4,8 +4,9 @@
 #include <QMainWindow>
 #include <QStackedWidget>
 
+
 #include "SearchWidget.h"
-#include "ResultWidget.h"
+#include "SensorListWidget.h"
 
 #include "SensorRenderer/Full.h"
 
@@ -21,7 +22,7 @@ private:
     QToolBar* toolbar;
     // SearchWidget* search_widget;
     QStackedWidget* stacked_widget;
-    // ResultsWidget* results_widget;
+    SensorListWidget* sensor_list_widget;
     SensorRenderer::Full full_renderer;
 
     void clearStack();
@@ -29,6 +30,8 @@ private:
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    SensorListWidget* getSensorListWidget();
 
 
     // aggiungi metodi
