@@ -1,7 +1,8 @@
-#ifndef ABSTRACT_SENSOR_H
-#define ABSTRACT_SENSOR_H
+#ifndef SENSOR_ABSTRACT_SENSOR_H
+#define SENSOR_ABSTRACT_SENSOR_H
 
 #include<string>
+#include<iostream>
 
 #include "SConstVisitor.h"
 #include "SVisitor.h"
@@ -41,6 +42,7 @@ public:
 
 
 };
+
 
 }
 

@@ -1,5 +1,5 @@
-#ifndef TEMPERATURESENSOR_H
-#define TEMPERATURESENSOR_H
+#ifndef SENSOR_TEMPERATURESENSOR_H
+#define SENSOR_TEMPERATURESENSOR_H
 
 #include"AbstractSensor.h"
 #include"EnvironmentalConditions/Temperature.h"

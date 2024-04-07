@@ -57,20 +57,50 @@ SOURCES       = Sensor/Airqualitysensor.cpp \
 		Sensor/EnvironmentalConditions/Humidity.cpp \
 		Sensor/Humiditysensor.cpp \
 		main.cpp \
-		View/mainwindow.cpp \
 		Sensor/AbstractSensor.cpp \
 		Sensor/TemperatureSensor.cpp \
-		Sensor/EnvironmentalConditions/Temperature.cpp moc_mainwindow.cpp
+		Sensor/EnvironmentalConditions/Temperature.cpp \
+		View/mainwindow.cpp \
+		View/SensorListWidget.cpp \
+		View/SearchWidget.cpp \
+		View/EditWidget.cpp \
+		View/TypeSelector.cpp \
+		View/WidgetLookup.cpp \
+		View/SensorEditor/AbstractSensorEditor.cpp \
+		View/SensorEditor/AirQualityEditor.cpp \
+		View/SensorEditor/HumidityEditor.cpp \
+		View/SensorEditor/TemperatureEditor.cpp \
+		View/SensorEditor/SensorInjector.cpp \
+		View/SensorRenderer/Full.cpp \
+		View/SensorRenderer/ListSensor.cpp qrc_resources.cpp \
+		moc_mainwindow.cpp \
+		moc_EditWidget.cpp \
+		moc_AbstractSensorEditor.cpp
 OBJECTS       = Airqualitysensor.o \
 		Airquality.o \
 		Humidity.o \
 		Humiditysensor.o \
 		main.o \
-		mainwindow.o \
 		AbstractSensor.o \
 		TemperatureSensor.o \
 		Temperature.o \
-		moc_mainwindow.o
+		mainwindow.o \
+		SensorListWidget.o \
+		SearchWidget.o \
+		EditWidget.o \
+		TypeSelector.o \
+		WidgetLookup.o \
+		AbstractSensorEditor.o \
+		AirQualityEditor.o \
+		HumidityEditor.o \
+		TemperatureEditor.o \
+		SensorInjector.o \
+		Full.o \
+		ListSensor.o \
+		qrc_resources.o \
+		moc_mainwindow.o \
+		moc_EditWidget.o \
+		moc_AbstractSensorEditor.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/linux.conf \
@@ -142,18 +172,43 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		Sensor/Humiditysensor.h \
 		Sensor/SConstVisitor.h \
 		Sensor/SVisitor.h \
-		View/mainwindow.h \
 		Sensor/AbstractSensor.h \
 		Sensor/TemperatureSensor.h \
-		Sensor/EnvironmentalConditions/Temperature.h Sensor/Airqualitysensor.cpp \
+		Sensor/EnvironmentalConditions/Temperature.h \
+		View/mainwindow.h \
+		View/SensorListWidget.h \
+		View/SearchWidget.h \
+		View/EditWidget.h \
+		View/TypeSelector.h \
+		View/WidgetLookup.h \
+		View/SensorEditor/AbstractSensorEditor.h \
+		View/SensorEditor/AirQualityEditor.h \
+		View/SensorEditor/HumidityEditor.h \
+		View/SensorEditor/SensorInjector.h \
+		View/SensorEditor/TemperatureEditor.h \
+		View/SensorRenderer/SSensorRenderer.h \
+		View/SensorRenderer/Full.h \
+		View/SensorRenderer/ListSensor.h Sensor/Airqualitysensor.cpp \
 		Sensor/EnvironmentalConditions/Airquality.cpp \
 		Sensor/EnvironmentalConditions/Humidity.cpp \
 		Sensor/Humiditysensor.cpp \
 		main.cpp \
-		View/mainwindow.cpp \
 		Sensor/AbstractSensor.cpp \
 		Sensor/TemperatureSensor.cpp \
-		Sensor/EnvironmentalConditions/Temperature.cpp
+		Sensor/EnvironmentalConditions/Temperature.cpp \
+		View/mainwindow.cpp \
+		View/SensorListWidget.cpp \
+		View/SearchWidget.cpp \
+		View/EditWidget.cpp \
+		View/TypeSelector.cpp \
+		View/WidgetLookup.cpp \
+		View/SensorEditor/AbstractSensorEditor.cpp \
+		View/SensorEditor/AirQualityEditor.cpp \
+		View/SensorEditor/HumidityEditor.cpp \
+		View/SensorEditor/TemperatureEditor.cpp \
+		View/SensorEditor/SensorInjector.cpp \
+		View/SensorRenderer/Full.cpp \
+		View/SensorRenderer/ListSensor.cpp
 QMAKE_TARGET  = Pao_Sensori_Ecc
 DESTDIR       = 
 TARGET        = Pao_Sensori_Ecc
@@ -231,6 +286,7 @@ Makefile: Pao_Sensori_Ecc.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qm
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/lex.prf \
 		Pao_Sensori_Ecc.pro \
+		resources.qrc \
 		/usr/lib/x86_64-linux-gnu/libQt6Widgets.prl \
 		/usr/lib/x86_64-linux-gnu/libQt6Gui.prl \
 		/usr/lib/x86_64-linux-gnu/libQt6Core.prl
@@ -301,6 +357,7 @@ Makefile: Pao_Sensori_Ecc.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qm
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/yacc.prf:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/lex.prf:
 Pao_Sensori_Ecc.pro:
+resources.qrc:
 /usr/lib/x86_64-linux-gnu/libQt6Widgets.prl:
 /usr/lib/x86_64-linux-gnu/libQt6Gui.prl:
 /usr/lib/x86_64-linux-gnu/libQt6Core.prl:
@@ -318,9 +375,10 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Sensor/Airqualitysensor.h Sensor/EnvironmentalConditions/Airquality.h Sensor/EnvironmentalConditions/Humidity.h Sensor/Humiditysensor.h Sensor/SConstVisitor.h Sensor/SVisitor.h View/mainwindow.h Sensor/AbstractSensor.h Sensor/TemperatureSensor.h Sensor/EnvironmentalConditions/Temperature.h $(DISTDIR)/
-	$(COPY_FILE) --parents Sensor/Airqualitysensor.cpp Sensor/EnvironmentalConditions/Airquality.cpp Sensor/EnvironmentalConditions/Humidity.cpp Sensor/Humiditysensor.cpp main.cpp View/mainwindow.cpp Sensor/AbstractSensor.cpp Sensor/TemperatureSensor.cpp Sensor/EnvironmentalConditions/Temperature.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents Sensor/Airqualitysensor.h Sensor/EnvironmentalConditions/Airquality.h Sensor/EnvironmentalConditions/Humidity.h Sensor/Humiditysensor.h Sensor/SConstVisitor.h Sensor/SVisitor.h Sensor/AbstractSensor.h Sensor/TemperatureSensor.h Sensor/EnvironmentalConditions/Temperature.h View/mainwindow.h View/SensorListWidget.h View/SearchWidget.h View/EditWidget.h View/TypeSelector.h View/WidgetLookup.h View/SensorEditor/AbstractSensorEditor.h View/SensorEditor/AirQualityEditor.h View/SensorEditor/HumidityEditor.h View/SensorEditor/SensorInjector.h View/SensorEditor/TemperatureEditor.h View/SensorRenderer/SSensorRenderer.h View/SensorRenderer/Full.h View/SensorRenderer/ListSensor.h $(DISTDIR)/
+	$(COPY_FILE) --parents Sensor/Airqualitysensor.cpp Sensor/EnvironmentalConditions/Airquality.cpp Sensor/EnvironmentalConditions/Humidity.cpp Sensor/Humiditysensor.cpp main.cpp Sensor/AbstractSensor.cpp Sensor/TemperatureSensor.cpp Sensor/EnvironmentalConditions/Temperature.cpp View/mainwindow.cpp View/SensorListWidget.cpp View/SearchWidget.cpp View/EditWidget.cpp View/TypeSelector.cpp View/WidgetLookup.cpp View/SensorEditor/AbstractSensorEditor.cpp View/SensorEditor/AirQualityEditor.cpp View/SensorEditor/HumidityEditor.cpp View/SensorEditor/TemperatureEditor.cpp View/SensorEditor/SensorInjector.cpp View/SensorRenderer/Full.cpp View/SensorRenderer/ListSensor.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -344,21 +402,74 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_resources.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_resources.cpp
+qrc_resources.cpp: resources.qrc \
+		/usr/lib/qt6/libexec/rcc \
+		Assets/icon.svg \
+		Assets/icons/grid.svg \
+		Assets/icons/new.svg \
+		Assets/icons/save_as.svg \
+		Assets/icons/edit.svg \
+		Assets/icons/previous.svg \
+		Assets/icons/delete.svg \
+		Assets/icons/close.svg \
+		Assets/icons/open.svg \
+		Assets/icons/next.svg \
+		Assets/icons/search.svg \
+		Assets/icons/new_item.svg \
+		Assets/icons/hero.svg \
+		Assets/icons/list.svg \
+		Assets/icons/save.svg
+	/usr/lib/qt6/libexec/rcc -name resources resources.qrc -o qrc_resources.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -std=gnu++1z -Wall -Wextra -fPIC -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_EditWidget.cpp moc_AbstractSensorEditor.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_EditWidget.cpp moc_AbstractSensorEditor.cpp
 moc_mainwindow.cpp: View/mainwindow.h \
+		View/SearchWidget.h \
+		View/SensorListWidget.h \
+		View/WidgetLookup.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		View/SensorRenderer/Full.h \
+		View/SensorRenderer/SSensorRenderer.h \
+		View/SensorRenderer/ListSensor.h \
 		moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
 	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/enrico/QtProjects/Pao_Sensori_Ecc/src/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/enrico/QtProjects/Pao_Sensori_Ecc/src -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include View/mainwindow.h -o moc_mainwindow.cpp
+
+moc_EditWidget.cpp: View/EditWidget.h \
+		View/mainwindow.h \
+		View/SearchWidget.h \
+		View/SensorListWidget.h \
+		View/WidgetLookup.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		View/SensorRenderer/Full.h \
+		View/SensorRenderer/SSensorRenderer.h \
+		View/SensorRenderer/ListSensor.h \
+		View/SensorEditor/AbstractSensorEditor.h \
+		moc_predefs.h \
+		/usr/lib/qt6/libexec/moc
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/enrico/QtProjects/Pao_Sensori_Ecc/src/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/enrico/QtProjects/Pao_Sensori_Ecc/src -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include View/EditWidget.h -o moc_EditWidget.cpp
+
+moc_AbstractSensorEditor.cpp: View/SensorEditor/AbstractSensorEditor.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		moc_predefs.h \
+		/usr/lib/qt6/libexec/moc
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/enrico/QtProjects/Pao_Sensori_Ecc/src/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/enrico/QtProjects/Pao_Sensori_Ecc/src -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include View/SensorEditor/AbstractSensorEditor.h -o moc_AbstractSensorEditor.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -372,7 +483,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
 
@@ -396,11 +507,17 @@ Humiditysensor.o: Sensor/Humiditysensor.cpp Sensor/Humiditysensor.h \
 		Sensor/EnvironmentalConditions/Humidity.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Humiditysensor.o Sensor/Humiditysensor.cpp
 
-main.o: main.cpp View/mainwindow.h
+main.o: main.cpp View/mainwindow.h \
+		View/SearchWidget.h \
+		View/SensorListWidget.h \
+		View/WidgetLookup.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		View/SensorRenderer/Full.h \
+		View/SensorRenderer/SSensorRenderer.h \
+		View/SensorRenderer/ListSensor.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
-
-mainwindow.o: View/mainwindow.cpp View/mainwindow.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o View/mainwindow.cpp
 
 AbstractSensor.o: Sensor/AbstractSensor.cpp Sensor/AbstractSensor.h \
 		Sensor/SConstVisitor.h \
@@ -417,8 +534,140 @@ TemperatureSensor.o: Sensor/TemperatureSensor.cpp Sensor/TemperatureSensor.h \
 Temperature.o: Sensor/EnvironmentalConditions/Temperature.cpp Sensor/EnvironmentalConditions/Temperature.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Temperature.o Sensor/EnvironmentalConditions/Temperature.cpp
 
+mainwindow.o: View/mainwindow.cpp View/mainwindow.h \
+		View/SearchWidget.h \
+		View/SensorListWidget.h \
+		View/WidgetLookup.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		View/SensorRenderer/Full.h \
+		View/SensorRenderer/SSensorRenderer.h \
+		View/SensorRenderer/ListSensor.h \
+		View/EditWidget.h \
+		View/SensorEditor/AbstractSensorEditor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o View/mainwindow.cpp
+
+SensorListWidget.o: View/SensorListWidget.cpp View/SensorListWidget.h \
+		View/WidgetLookup.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SensorListWidget.o View/SensorListWidget.cpp
+
+SearchWidget.o: View/SearchWidget.cpp View/SearchWidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SearchWidget.o View/SearchWidget.cpp
+
+EditWidget.o: View/EditWidget.cpp View/EditWidget.h \
+		View/mainwindow.h \
+		View/SearchWidget.h \
+		View/SensorListWidget.h \
+		View/WidgetLookup.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		View/SensorRenderer/Full.h \
+		View/SensorRenderer/SSensorRenderer.h \
+		View/SensorRenderer/ListSensor.h \
+		View/SensorEditor/AbstractSensorEditor.h \
+		View/TypeSelector.h \
+		View/SensorEditor/AirQualityEditor.h \
+		View/SensorEditor/HumidityEditor.h \
+		View/SensorEditor/TemperatureEditor.h \
+		View/SensorEditor/SensorInjector.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o EditWidget.o View/EditWidget.cpp
+
+TypeSelector.o: View/TypeSelector.cpp View/TypeSelector.h \
+		Sensor/SConstVisitor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TypeSelector.o View/TypeSelector.cpp
+
+WidgetLookup.o: View/WidgetLookup.cpp View/WidgetLookup.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o WidgetLookup.o View/WidgetLookup.cpp
+
+AbstractSensorEditor.o: View/SensorEditor/AbstractSensorEditor.cpp View/SensorEditor/AbstractSensorEditor.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AbstractSensorEditor.o View/SensorEditor/AbstractSensorEditor.cpp
+
+AirQualityEditor.o: View/SensorEditor/AirQualityEditor.cpp View/SensorEditor/AirQualityEditor.h \
+		View/SensorEditor/AbstractSensorEditor.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		Sensor/Airqualitysensor.h \
+		Sensor/EnvironmentalConditions/Airquality.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AirQualityEditor.o View/SensorEditor/AirQualityEditor.cpp
+
+HumidityEditor.o: View/SensorEditor/HumidityEditor.cpp View/SensorEditor/HumidityEditor.h \
+		View/SensorEditor/AbstractSensorEditor.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o HumidityEditor.o View/SensorEditor/HumidityEditor.cpp
+
+TemperatureEditor.o: View/SensorEditor/TemperatureEditor.cpp View/SensorEditor/TemperatureEditor.h \
+		View/SensorEditor/AbstractSensorEditor.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TemperatureEditor.o View/SensorEditor/TemperatureEditor.cpp
+
+SensorInjector.o: View/SensorEditor/SensorInjector.cpp View/SensorEditor/SensorInjector.h \
+		Sensor/SConstVisitor.h \
+		View/SensorEditor/AirQualityEditor.h \
+		View/SensorEditor/AbstractSensorEditor.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SVisitor.h \
+		View/SensorEditor/TemperatureEditor.h \
+		View/SensorEditor/HumidityEditor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SensorInjector.o View/SensorEditor/SensorInjector.cpp
+
+Full.o: View/SensorRenderer/Full.cpp View/SensorRenderer/Full.h \
+		View/SensorRenderer/SSensorRenderer.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		View/SensorRenderer/ListSensor.h \
+		View/SensorListWidget.h \
+		View/WidgetLookup.h \
+		Sensor/Airqualitysensor.h \
+		Sensor/EnvironmentalConditions/Airquality.h \
+		Sensor/Humiditysensor.h \
+		Sensor/EnvironmentalConditions/Humidity.h \
+		Sensor/TemperatureSensor.h \
+		Sensor/EnvironmentalConditions/Temperature.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Full.o View/SensorRenderer/Full.cpp
+
+ListSensor.o: View/SensorRenderer/ListSensor.cpp View/SensorRenderer/ListSensor.h \
+		View/SensorRenderer/SSensorRenderer.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		View/SensorListWidget.h \
+		View/WidgetLookup.h \
+		Sensor/Airqualitysensor.h \
+		Sensor/EnvironmentalConditions/Airquality.h \
+		Sensor/Humiditysensor.h \
+		Sensor/EnvironmentalConditions/Humidity.h \
+		Sensor/TemperatureSensor.h \
+		Sensor/EnvironmentalConditions/Temperature.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ListSensor.o View/SensorRenderer/ListSensor.cpp
+
+qrc_resources.o: qrc_resources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
+
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_EditWidget.o: moc_EditWidget.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_EditWidget.o moc_EditWidget.cpp
+
+moc_AbstractSensorEditor.o: moc_AbstractSensorEditor.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_AbstractSensorEditor.o moc_AbstractSensorEditor.cpp
 
 ####### Install
 

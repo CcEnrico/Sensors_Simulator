@@ -1,5 +1,5 @@
-#ifndef AIRQUALITY_H
-#define AIRQUALITY_H
+#ifndef SENSOR_ENVIROMENTALCONDITION_AIRQUALITY_H
+#define SENSOR_ENVIROMENTALCONDITION_AIRQUALITY_H
 
 namespace Sensor{
 
@@ -24,6 +24,8 @@ public:
     AirQuality& setNO2(const double N_O2);
     double getIndexAQ()const;
     AirQuality& setIndexAQ(const double IAQ);
+
+    explicit operator double() const;
 
 private:
     void updateAQ();

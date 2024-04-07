@@ -1,0 +1,6 @@
+#ifndef VIEW_SEARCHWIDGET_H
+#define VIEW_SEARCHWIDGET_H
+
+
+
+#endif // SEARCHWIDGET_H
