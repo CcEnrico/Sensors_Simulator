@@ -32,12 +32,25 @@ public:
     );
 
     EnviromentalConditions::AirQuality getAQInitial()const;
+    double getInitialPm10()const;
+    double getInitialNO2()const;
     AirQualitySensor& setAQInitial(const EnviromentalConditions::AirQuality init);
-    EnviromentalConditions::AirQuality getAQStdDeviation()const;
-    AirQualitySensor& setAQStdDeviation(const EnviromentalConditions::AirQuality stddev);
-    EnviromentalConditions::AirQuality getAQTarget()const;
-    AirQualitySensor& setAQTarget(const EnviromentalConditions::AirQuality t);
+    AirQualitySensor& setInitialPm10(const double pm10);
+    AirQualitySensor& setInitialNO2(const double no2);
 
+    EnviromentalConditions::AirQuality getAQStdDeviation()const;
+    double getStdDeviationPm10()const;
+    double getStdDeviationNO2()const;
+    AirQualitySensor& setAQStdDeviation(const EnviromentalConditions::AirQuality stddev);
+    AirQualitySensor& setStdDeviationPm10(const double pm10);
+    AirQualitySensor& setStdDeviationNO2(const double no2);
+
+    EnviromentalConditions::AirQuality getAQTarget()const;
+    double getTargetPm10()const;
+    double getTargetNO2()const;
+    AirQualitySensor& setAQTarget(const EnviromentalConditions::AirQuality t);
+    AirQualitySensor& setTargetPm10(const double pm10);
+    AirQualitySensor& setTargetNO2(const double no2);
 
     virtual void accept(SConstVisitor& visitor)const final;
     virtual void accept(SVisitor& visitor) final;

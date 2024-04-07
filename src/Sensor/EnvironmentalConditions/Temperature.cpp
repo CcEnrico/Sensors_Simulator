@@ -15,6 +15,11 @@ Temperature::Temperature(double temperature, char scale = 'c'){
     }
 }
 
+Temperature::operator double() const{
+    // default scale is celsius
+    return celsius;
+}
+
 Temperature& Temperature::setKelvin(const double k){
     this->kelvin = k;
     updateKelvin();

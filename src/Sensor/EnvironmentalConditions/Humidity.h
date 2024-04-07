@@ -14,6 +14,8 @@ class Humidity
 public:
     Humidity(double rh);
 
+    explicit operator double()const;
+
     double getRelativeHumidity()const ;
     Humidity& setRelativeHumidity(const double rh);
 

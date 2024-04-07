@@ -20,7 +20,7 @@ class EditWidget : public QWidget{
     Q_OBJECT
   private:
     MainWindow* main_window;
-    const Sensor::AbstractSensor* subject;
+    const Sensor::AbstractSensor* sensor;
     QSpinBox* id_input;
     QLineEdit* name_input;
     QSpinBox* dataNum_input;
@@ -31,7 +31,7 @@ class EditWidget : public QWidget{
   public:
     EditWidget(
       MainWindow* main_window,
-      const Sensor::AbstractSensor* subject
+      const Sensor::AbstractSensor* sensor
     );
     
   public slots:

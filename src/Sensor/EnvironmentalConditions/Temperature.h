@@ -14,6 +14,8 @@ class Temperature
 public:
     Temperature(double temperature, char scale);
 
+    explicit operator double()const;
+
     Temperature& setKelvin(const double k);
     double getKelvin() const;
     Temperature& setCelsius(const double c);

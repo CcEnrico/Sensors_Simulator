@@ -11,9 +11,12 @@ namespace SensorEditor {
 
 class AirQualityEditor: public AbstractSensorEditor {
   private:
-    QDoubleSpinBox* initial;
-    QDoubleSpinBox* stdDeviation;
-    QDoubleSpinBox* target;
+    QDoubleSpinBox* initial_pm10;
+    QDoubleSpinBox* initial_n02;
+    QDoubleSpinBox* stdDeviation_pm10;
+    QDoubleSpinBox* stdDeviation_n02;
+    QDoubleSpinBox* target_pm10;
+    QDoubleSpinBox* target_n02;
 
   public:
     AirQualityEditor(QWidget* parent = 0);
