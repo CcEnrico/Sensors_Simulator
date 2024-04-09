@@ -3,6 +3,7 @@
 #include <QWidget>
 
 
+
 namespace View::SensorEditor {
 
 AbstractSensorEditor::AbstractSensorEditor(QWidget* parent)

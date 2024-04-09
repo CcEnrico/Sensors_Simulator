@@ -2,6 +2,7 @@
 #define VIEW_SENSORLISTWIDGET_H
 
 #include"WidgetLookup.h"
+#include "ListRenderer/SRendererStrategy.h"
 
 #include <QVector>
 #include <QGridLayout>
@@ -15,13 +16,14 @@ private:
     
     QVector<WidgetLookup> lookup;
     QGridLayout* layout;
+    ListRenderer::SRendererStrategy* renderer;
 
 
 public:
 
     explicit SensorListWidget(QWidget* parent = 0);
 
-    void show();
+    void showList(Engine::SensorList* list);
 
 };
 

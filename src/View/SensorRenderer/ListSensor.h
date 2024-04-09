@@ -23,7 +23,7 @@ class ListSensor : public SSensorRenderer
     void visit(const Sensor::HumiditySensor& humidity) override;
     void visit(const Sensor::TemperatureSensor& temperature) override;
     bool hasControls() const;
-    void setHasControls(const bool has_controls);
+    void setHasControls(const bool c);
     virtual QWidget* getWidget() const;
     virtual QPushButton* getViewButton() const;
     virtual QPushButton* getEditButton() const;

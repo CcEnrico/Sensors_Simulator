@@ -14,6 +14,8 @@
 #include "../Sensor/AbstractSensor.h"
 #include "SensorEditor/AbstractSensorEditor.h"
 
+class MainWindow;
+
 namespace View {
 
 class EditWidget : public QWidget{
@@ -30,8 +32,8 @@ class EditWidget : public QWidget{
 
   public:
     EditWidget(
-      MainWindow* main_window,
-      const Sensor::AbstractSensor* sensor
+      MainWindow* m,
+      const Sensor::AbstractSensor* s
     );
     
   public slots:

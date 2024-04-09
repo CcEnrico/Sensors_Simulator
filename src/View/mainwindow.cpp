@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "EditWidget.h"
 
 #include <QWidget>
 #include <QStatusBar>
@@ -12,13 +13,17 @@
 #include <QLabel>
 
 
-#include "EditWidget.h"
-
 namespace View{
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+MainWindow::MainWindow( QWidget *parent)
+    :   QMainWindow(parent)
 {
+    // create objects
+
+    sensor_list = new Engine::SensorList();
+
+    sensor_list_widget = new SensorListWidget();
+
     // Action
 
     QAction* create = new QAction(
@@ -101,7 +106,10 @@ MainWindow::MainWindow(QWidget *parent)
     showStatusBar("Ready.");
 }
 
-MainWindow::~MainWindow() = default;
+MainWindow::~MainWindow() 
+{
+    delete sensor_list;
+}
 
 void MainWindow::clearStack() {
     QWidget* widget = stacked_widget->widget(1);
@@ -122,18 +130,33 @@ void MainWindow::createItem()
     scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     scroll_area->setWidgetResizable(true);
 
-    EditWidget* edit_widget = new EditWidget(this, nullptr);
+    EditWidget* e = new EditWidget(this, nullptr);
     
-    scroll_area->setWidget(edit_widget);
+    scroll_area->setWidget(e);
     stacked_widget->addWidget(scroll_area);
     stacked_widget->setCurrentIndex(1);
     showStatusBar("Creating a new item.");
 
 }
 
+void MainWindow::finishEdit()
+{
+    create_item->setEnabled(true);
+    
+    clearStack();
+
+    stacked_widget->setCurrentIndex(0);
+    sensor_list_widget->showList(sensor_list);
+    showStatusBar("Ready.");
+}
+
 SensorListWidget* MainWindow::getSensorListWidget(){
     return sensor_list_widget;
 
+}
+
+Engine::SensorList* MainWindow::getList() const {
+    return sensor_list;
 }
 
 void MainWindow::showStatusBar(const QString& message)

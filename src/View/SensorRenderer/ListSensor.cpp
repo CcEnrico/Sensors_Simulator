@@ -29,13 +29,32 @@ void ListSensor::visit(const Sensor::AirQualitySensor& air_quality){
 }
 
 void ListSensor::visit(const Sensor::HumiditySensor& humidity){}
+
 void ListSensor::visit(const Sensor::TemperatureSensor& temperature){}
-bool ListSensor::hasControls() const{}
-void ListSensor::setHasControls(const bool has_controls){}
-QWidget* ListSensor::getWidget() const{}
-QPushButton* ListSensor::getViewButton() const{}
-QPushButton* ListSensor::getEditButton() const{}
-QPushButton* ListSensor::getDeleteButton() const{}
+
+bool ListSensor::hasControls() const{
+    return has_controls;
+}
+
+void ListSensor::setHasControls(const bool c){
+    this->has_controls = c;
+}
+
+QWidget* ListSensor::getWidget() const{
+    return widget;
+}
+
+QPushButton* ListSensor::getViewButton() const{
+    return view_button;
+}
+
+QPushButton* ListSensor::getEditButton() const{
+    return edit_button;
+}
+
+QPushButton* ListSensor::getDeleteButton() const{
+    return delete_button;
+}
 
 
 }
