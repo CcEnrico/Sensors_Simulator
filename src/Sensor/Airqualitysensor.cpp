@@ -105,7 +105,6 @@ void AirQualitySensor::accept(SVisitor &visitor){
     visitor.visit(*this);
 }
 
-
 void AirQualitySensor::simulate(){
 
 }

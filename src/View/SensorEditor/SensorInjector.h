@@ -6,8 +6,8 @@
 #include "TemperatureEditor.h"
 #include "HumidityEditor.h"
 
-namespace View {
-namespace SensorEditor {
+
+namespace View::SensorEditor {
 
 class SensorInjector: public Sensor::SConstVisitor {
   private:
@@ -21,12 +21,12 @@ class SensorInjector: public Sensor::SConstVisitor {
         HumidityEditor& humidity_editor,
         TemperatureEditor& temperature_editor
     );
-    virtual void visit(const Sensor::AirQualitySensor& air_quality);
-    virtual void visit(const Sensor::HumiditySensor& humidity);
-    virtual void visit(const Sensor::TemperatureSensor& temperature);
+    void visit(const Sensor::AirQualitySensor& air_quality) override;
+    void visit(const Sensor::HumiditySensor& humidity) override;
+    void visit(const Sensor::TemperatureSensor& temperature) override;
 };
 
 }
-}
+
 
 #endif

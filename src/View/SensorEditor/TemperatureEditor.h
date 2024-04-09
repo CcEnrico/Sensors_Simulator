@@ -7,8 +7,8 @@
 #include <QDoubleSpinBox>
 #include <QComboBox>
 
-namespace View{
-namespace SensorEditor{
+
+namespace View::SensorEditor{
 
 class TemperatureEditor: public AbstractSensorEditor {
   private:
@@ -21,23 +21,17 @@ class TemperatureEditor: public AbstractSensorEditor {
     QDoubleSpinBox* stdDeviation;
     QDoubleSpinBox* target;
 
-    // EnviromentalConditions::Temperature min;
-    // EnviromentalConditions::Temperature max;
-    // EnviromentalConditions::Temperature initial;
-    // EnviromentalConditions::Temperature stdDeviation;
-    // EnviromentalConditions::Temperature target;
-
     public:
     
-    TemperatureEditor(QWidget* parent = 0);
-    virtual ~TemperatureEditor();
+    explicit TemperatureEditor(QWidget* parent = 0);
+    ~TemperatureEditor() override;
 
-    virtual Sensor::AbstractSensor* create(
+    Sensor::AbstractSensor* create(
         const unsigned int identifier,
         const QString& name,
         const unsigned int data_number,
         const double variance
-    ) const;
+    ) const override;
     
     void setValues(const Sensor::TemperatureSensor& temperature_sensor);
 
@@ -47,6 +41,6 @@ class TemperatureEditor: public AbstractSensorEditor {
 };
 
 }
-}
+
 
 #endif

@@ -6,8 +6,8 @@
 
 #include <QDoubleSpinBox>
 
-namespace View{
-namespace SensorEditor{
+
+namespace View::SensorEditor{
 
 class HumidityEditor: public AbstractSensorEditor {
   private:
@@ -16,20 +16,20 @@ class HumidityEditor: public AbstractSensorEditor {
     QDoubleSpinBox* target;
 
   public:
-    HumidityEditor(QWidget* parent = 0);
-    virtual ~HumidityEditor();
+    explicit HumidityEditor(QWidget* parent = 0);
+    ~HumidityEditor() override;
 
-    virtual Sensor::AbstractSensor* create(
+    Sensor::AbstractSensor* create(
         const unsigned int identifier,
         const QString& name,
         const unsigned int data_number,
         const double variance
-    ) const;
+    ) const override;
     
     void setValues(const Sensor::HumiditySensor& humidity_sensor);
 };
 
 }
-}
+
 
 #endif

@@ -10,8 +10,8 @@
 #include "../../Sensor/Humiditysensor.h"
 #include "../../Sensor/TemperatureSensor.h"
 
-namespace View {
-namespace SensorRenderer {
+
+namespace View::SensorRenderer {
 
 ListSensor::ListSensor()
     : has_controls(true)
@@ -38,5 +38,4 @@ QPushButton* ListSensor::getEditButton() const{}
 QPushButton* ListSensor::getDeleteButton() const{}
 
 
-}
 }

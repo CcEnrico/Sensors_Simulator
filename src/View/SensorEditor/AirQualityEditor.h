@@ -6,8 +6,8 @@
 
 #include "AbstractSensorEditor.h"
 
-namespace View {
-namespace SensorEditor {
+
+namespace View::SensorEditor {
 
 class AirQualityEditor: public AbstractSensorEditor {
   private:
@@ -19,20 +19,20 @@ class AirQualityEditor: public AbstractSensorEditor {
     QDoubleSpinBox* target_n02;
 
   public:
-    AirQualityEditor(QWidget* parent = 0);
-    virtual ~AirQualityEditor();
+    explicit AirQualityEditor(QWidget* parent = 0);
+    ~AirQualityEditor() override;
 
-    virtual Sensor::AbstractSensor* create(
+    Sensor::AbstractSensor* create(
         const unsigned int identifier,
         const QString& name,
         const unsigned int data_number,
         const double variance
-    ) const;
+    ) const override;
     
     void setValues(const Sensor::AirQualitySensor& air_quality_sensor);
 };
 
 }
-}
+
 
 #endif

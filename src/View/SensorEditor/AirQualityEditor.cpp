@@ -5,8 +5,8 @@
 #include "../../Sensor/Airqualitysensor.h"
 #include "../../Sensor/EnvironmentalConditions/Airquality.h"
 
-namespace View {
-namespace SensorEditor {
+
+namespace View::SensorEditor {
 
 AirQualityEditor::AirQualityEditor(QWidget* parent)
     : AbstractSensorEditor(parent)
@@ -53,7 +53,7 @@ AirQualityEditor::AirQualityEditor(QWidget* parent)
 
 }
 
-AirQualityEditor::~AirQualityEditor() {}
+AirQualityEditor::~AirQualityEditor() = default;
 
 Sensor::AbstractSensor* AirQualityEditor::create(
     const unsigned int i,
@@ -83,5 +83,4 @@ void AirQualityEditor::setValues(const Sensor::AirQualitySensor& air_quality_sen
     target_n02->setValue((air_quality_sensor.getTargetNO2()));
 }
 
-}
 }

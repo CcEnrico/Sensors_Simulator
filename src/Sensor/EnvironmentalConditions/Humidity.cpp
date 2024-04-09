@@ -1,8 +1,8 @@
 #include "Humidity.h"
 
-namespace Sensor{
 
-namespace EnviromentalConditions{
+
+namespace Sensor::EnviromentalConditions{
 
 Humidity::Humidity(double rh): relativeHumidity(rh){}
 
@@ -20,6 +20,6 @@ Humidity& Humidity::setRelativeHumidity(const double rh){
 }
 
 }
-}
+
 
 

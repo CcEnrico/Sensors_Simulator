@@ -5,8 +5,8 @@
 
 #include "../SensorListWidget.h"
 
-namespace View {
-namespace SensorRenderer {
+
+namespace View::SensorRenderer {
 
 class ListSensor : public SSensorRenderer
 {
@@ -19,9 +19,9 @@ class ListSensor : public SSensorRenderer
 
   public:
     ListSensor();
-    virtual void visit(const Sensor::AirQualitySensor& air_quality);
-    virtual void visit(const Sensor::HumiditySensor& humidity);
-    virtual void visit(const Sensor::TemperatureSensor& temperature);
+    void visit(const Sensor::AirQualitySensor& air_quality) override;
+    void visit(const Sensor::HumiditySensor& humidity) override;
+    void visit(const Sensor::TemperatureSensor& temperature) override;
     bool hasControls() const;
     void setHasControls(const bool has_controls);
     virtual QWidget* getWidget() const;
@@ -31,6 +31,6 @@ class ListSensor : public SSensorRenderer
 
 };
 }
-}
+
 
 #endif

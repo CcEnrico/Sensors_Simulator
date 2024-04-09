@@ -29,14 +29,14 @@ private:
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    ~MainWindow() override;
 
     SensorListWidget* getSensorListWidget();
 
 
     // aggiungi metodi
     
-    void showStatusBar(QString m);
+    void showStatusBar(const QString& m);
 
     public slots:
     void createItem();

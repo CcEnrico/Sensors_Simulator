@@ -2,8 +2,8 @@
 
 #include <QFormLayout>
 
-namespace View{
-namespace SensorEditor{
+
+namespace View::SensorEditor{
 
 TemperatureEditor::TemperatureEditor(QWidget* parent)
     : AbstractSensorEditor(parent)
@@ -60,7 +60,7 @@ TemperatureEditor::TemperatureEditor(QWidget* parent)
 
 }
 
-TemperatureEditor::~TemperatureEditor() {}
+TemperatureEditor::~TemperatureEditor() = default;
 
 Sensor::AbstractSensor* TemperatureEditor::create(
     const unsigned int i,
@@ -144,5 +144,4 @@ void TemperatureEditor::unitChanged(int index){
 
 }
 
-}
 }

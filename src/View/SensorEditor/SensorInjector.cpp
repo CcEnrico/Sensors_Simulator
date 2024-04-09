@@ -1,7 +1,7 @@
 #include "SensorInjector.h"
 
-namespace View {
-namespace SensorEditor {
+
+namespace View::SensorEditor {
 
 
 
@@ -29,5 +29,4 @@ void SensorInjector::visit(const Sensor::TemperatureSensor& temperature_sensor) 
 }
 
 
-}
 }

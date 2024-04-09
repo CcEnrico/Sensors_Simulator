@@ -3,8 +3,8 @@
 
 #include <QFormLayout>
 
-namespace View{
-namespace SensorEditor{
+
+namespace View::SensorEditor{
 
 HumidityEditor::HumidityEditor(QWidget* parent)
     :AbstractSensorEditor(parent)
@@ -33,7 +33,7 @@ HumidityEditor::HumidityEditor(QWidget* parent)
  
 }
 
-HumidityEditor::~HumidityEditor() {}
+HumidityEditor::~HumidityEditor() = default;
 
 Sensor::AbstractSensor* HumidityEditor::create(
     const unsigned int i,
@@ -46,9 +46,9 @@ Sensor::AbstractSensor* HumidityEditor::create(
         n.toStdString(),
         dn,
         v,
-        initial->value(),
-        stdDeviation->value(),
-        target->value()
+        Sensor::EnviromentalConditions::Humidity(initial->value()),
+        Sensor::EnviromentalConditions::Humidity(stdDeviation->value()),
+        Sensor::EnviromentalConditions::Humidity(target->value())
     );
 }
 
@@ -58,5 +58,4 @@ void HumidityEditor::setValues(const Sensor::HumiditySensor& humidity_sensor){
     target->setValue(double(humidity_sensor.getHumTarget()));
 }
 
-}
 }

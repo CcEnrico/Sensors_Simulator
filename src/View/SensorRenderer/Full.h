@@ -6,8 +6,8 @@
 
 
 
-namespace View {
-namespace SensorRenderer {
+
+namespace View::SensorRenderer {
 
 class Full: public SSensorRenderer {
   private:
@@ -18,9 +18,9 @@ class Full: public SSensorRenderer {
     QPushButton* delete_button;
 
   public:
-    virtual void visit(const Sensor::AirQualitySensor& air_quality);
-    virtual void visit(const Sensor::HumiditySensor& humidity);
-    virtual void visit(const Sensor::TemperatureSensor& temperature);
+    void visit(const Sensor::AirQualitySensor& air_quality) override;
+    void visit(const Sensor::HumiditySensor& humidity) override;
+    void visit(const Sensor::TemperatureSensor& temperature) override;
     virtual QWidget* getWidget() const;
     virtual QPushButton* getViewButton() const;
     virtual QPushButton* getEditButton() const;
@@ -28,6 +28,6 @@ class Full: public SSensorRenderer {
 };
 
 }
-}
+
 
 #endif

@@ -10,8 +10,8 @@
 #include "../../Sensor/Humiditysensor.h"
 #include "../../Sensor/TemperatureSensor.h"
 
-namespace View {
-namespace SensorRenderer {
+
+namespace View::SensorRenderer {
 
 void Full::visit(const Sensor::AirQualitySensor& air_quality){}
 void Full::visit(const Sensor::HumiditySensor& humidity){}
@@ -22,5 +22,4 @@ QPushButton* Full::getEditButton() const{}
 QPushButton* Full::getDeleteButton() const{}
 
 
-}
 }

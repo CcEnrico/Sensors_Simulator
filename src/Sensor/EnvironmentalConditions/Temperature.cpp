@@ -51,7 +51,7 @@ double Temperature::getFahrenheit() const{
 
 void Temperature::updateKelvin(){
     celsius = kelvin - 273.15;
-    fahrenheit = (kelvin - 273.15)*(9/5)+32.0;
+    fahrenheit = (kelvin - 273.15)*(9.0/5)+32.0;
 }
 
 void Temperature::updateCelsius(){

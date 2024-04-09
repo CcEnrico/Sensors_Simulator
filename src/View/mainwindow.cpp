@@ -101,9 +101,7 @@ MainWindow::MainWindow(QWidget *parent)
     showStatusBar("Ready.");
 }
 
-MainWindow::~MainWindow()
-{
-}
+MainWindow::~MainWindow() = default;
 
 void MainWindow::clearStack() {
     QWidget* widget = stacked_widget->widget(1);
@@ -138,7 +136,7 @@ SensorListWidget* MainWindow::getSensorListWidget(){
 
 }
 
-void MainWindow::showStatusBar(QString message)
+void MainWindow::showStatusBar(const QString& message)
 {
     statusBar()->showMessage(message);
 }
