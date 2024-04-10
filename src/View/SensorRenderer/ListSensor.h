@@ -8,8 +8,7 @@
 
 namespace View::SensorRenderer {
 
-class ListSensor : public SSensorRenderer
-{
+class ListSensor : public SSensorRenderer {
   private:
     bool has_controls;
     QWidget* widget;

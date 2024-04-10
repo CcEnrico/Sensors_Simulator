@@ -1,5 +1,5 @@
-#ifndef PAO_SENSORI_ECC_LIST_H
-#define PAO_SENSORI_ECC_LIST_H
+#ifndef VIEW_LIST_RENDERER_LIST_H
+#define VIEW_LIST_RENDERER_LIST_H
 
 #include <QGridLayout>
 #include <QVector>
@@ -12,6 +12,7 @@
 
 namespace View::ListRenderer {
     class List : public SRendererStrategy{
+
         SensorRenderer::ListSensor list_sensor;
 
     public:
@@ -20,4 +21,4 @@ namespace View::ListRenderer {
 
 }
 
-#endif //PAO_SENSORI_ECC_LIST_H
+#endif //VIEW_LIST_RENDERER_LIST_H

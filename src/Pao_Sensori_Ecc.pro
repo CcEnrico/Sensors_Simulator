@@ -1,5 +1,6 @@
 QT       += core gui
 
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -26,6 +27,8 @@ SOURCES += \
     View/EditWidget.cpp \
     View/TypeSelector.cpp \
     View/WidgetLookup.cpp \
+    View/SensorWidget.cpp \
+    View/GraphLookup.cpp \
     View/SensorEditor/AbstractSensorEditor.cpp \
     View/SensorEditor/AirQualityEditor.cpp \
     View/SensorEditor/HumidityEditor.cpp \
@@ -33,7 +36,8 @@ SOURCES += \
     View/SensorEditor/SensorInjector.cpp \
     View/SensorRenderer/Full.cpp \
     View/SensorRenderer/ListSensor.cpp \
-    View/ListRenderer/List.cpp
+    View/ListRenderer/List.cpp \
+    View/GraphRenderer/Graph.cpp
 
 HEADERS += \
     Engine/SensorList.h \
@@ -55,16 +59,21 @@ HEADERS += \
     View/EditWidget.h \
     View/TypeSelector.h \
     View/WidgetLookup.h \
+    View/SensorWidget.h \
+    View/GraphLookup.h \
     View/SensorEditor/AbstractSensorEditor.h \
     View/SensorEditor/AirQualityEditor.h \
     View/SensorEditor/HumidityEditor.h \
     View/SensorEditor/SensorInjector.h \
     View/SensorEditor/TemperatureEditor.h \
     View/SensorRenderer/SSensorRenderer.h \
+    View/SensorRenderer/SSensorFullRenderer.h \
     View/SensorRenderer/Full.h \
     View/SensorRenderer/ListSensor.h \
     View/ListRenderer/SRendererStrategy.h \
-    View/ListRenderer/List.h
+    View/ListRenderer/List.h \
+    View/GraphRenderer/SGraphRenderer.h \
+    View/GraphRenderer/Graph.h
 
 RESOURCES += \
     resources.qrc

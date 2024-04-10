@@ -1,16 +1,23 @@
 #include"SensorListWidget.h"
 #include "ListRenderer/List.h"
+#include "SensorWidget.h"
+#include "Sensor/AbstractSensor.h"
 
 #include <QScrollArea>
+#include <QLabel>
+#include <functional>
 
 namespace View{
 
-SensorListWidget::SensorListWidget(QWidget* parent)
-    : QWidget(parent)
+SensorListWidget::SensorListWidget(SensorWidget* s_w, QWidget* parent)
+    : QWidget(parent),
+    sensor_widget(s_w)
 {
     QVBoxLayout* vbox = new QVBoxLayout(this);
     vbox->setAlignment(Qt::AlignLeft | Qt::AlignTop);
 
+    QLabel* lista = new QLabel("Lista Sensori");
+    vbox->addWidget(lista);
 
     layout = new QGridLayout();
     layout->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
@@ -24,9 +31,6 @@ SensorListWidget::SensorListWidget(QWidget* parent)
     vbox->addWidget(scroll_area);
 
     renderer = new ListRenderer::List();
-
-    
-    
 
 }
 
@@ -45,13 +49,21 @@ void SensorListWidget::showList(Engine::SensorList* list){
         it++
     ) {
         if (it->getViewButton()) {
-            // connect(it->getViewButton(), &QPushButton::clicked, std::bind(&ResultsWidget::showItem, this, it->getItem()));
+            QPushButton* button = it->getViewButton();
+            const Sensor::AbstractSensor* sensor = it->getSensor();
+            connect(button, &QPushButton::clicked, this, [=]() {
+                sensor_widget->show(sensor);
+            });
         }
         if (it->getEditButton()) {
-            // connect(it->getEditButton(), &QPushButton::clicked, std::bind(&ResultsWidget::editItem, this, it->getItem()));
+            // connect(it->getEditButton(), &QPushButton::clicked, [this, it]() {
+            //     editItem(it->getItem());
+            // });
         }
         if (it->getDeleteButton()) {
-            // connect(it->getDeleteButton(), &QPushButton::clicked, std::bind(&ResultsWidget::deleteItem, this, it->getItem()));
+            // connect(it->getDeleteButton(), &QPushButton::clicked, [this, it]() {
+            //     deleteItem(it->getItem());
+            // });
         }
     }
 

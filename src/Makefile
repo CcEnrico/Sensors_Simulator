@@ -67,6 +67,8 @@ SOURCES       = Engine/SensorList.cpp \
 		View/EditWidget.cpp \
 		View/TypeSelector.cpp \
 		View/WidgetLookup.cpp \
+		View/SensorWidget.cpp \
+		View/GraphLookup.cpp \
 		View/SensorEditor/AbstractSensorEditor.cpp \
 		View/SensorEditor/AirQualityEditor.cpp \
 		View/SensorEditor/HumidityEditor.cpp \
@@ -74,9 +76,11 @@ SOURCES       = Engine/SensorList.cpp \
 		View/SensorEditor/SensorInjector.cpp \
 		View/SensorRenderer/Full.cpp \
 		View/SensorRenderer/ListSensor.cpp \
-		View/ListRenderer/List.cpp qrc_resources.cpp \
+		View/ListRenderer/List.cpp \
+		View/GraphRenderer/Graph.cpp qrc_resources.cpp \
 		moc_mainwindow.cpp \
 		moc_EditWidget.cpp \
+		moc_SensorWidget.cpp \
 		moc_AbstractSensorEditor.cpp
 OBJECTS       = SensorList.o \
 		Airqualitysensor.o \
@@ -93,6 +97,8 @@ OBJECTS       = SensorList.o \
 		EditWidget.o \
 		TypeSelector.o \
 		WidgetLookup.o \
+		SensorWidget.o \
+		GraphLookup.o \
 		AbstractSensorEditor.o \
 		AirQualityEditor.o \
 		HumidityEditor.o \
@@ -101,9 +107,11 @@ OBJECTS       = SensorList.o \
 		Full.o \
 		ListSensor.o \
 		List.o \
+		Graph.o \
 		qrc_resources.o \
 		moc_mainwindow.o \
 		moc_EditWidget.o \
+		moc_SensorWidget.o \
 		moc_AbstractSensorEditor.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/unix.conf \
@@ -186,16 +194,21 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		View/EditWidget.h \
 		View/TypeSelector.h \
 		View/WidgetLookup.h \
+		View/SensorWidget.h \
+		View/GraphLookup.h \
 		View/SensorEditor/AbstractSensorEditor.h \
 		View/SensorEditor/AirQualityEditor.h \
 		View/SensorEditor/HumidityEditor.h \
 		View/SensorEditor/SensorInjector.h \
 		View/SensorEditor/TemperatureEditor.h \
 		View/SensorRenderer/SSensorRenderer.h \
+		View/SensorRenderer/SSensorFullRenderer.h \
 		View/SensorRenderer/Full.h \
 		View/SensorRenderer/ListSensor.h \
 		View/ListRenderer/SRendererStrategy.h \
-		View/ListRenderer/List.h Engine/SensorList.cpp \
+		View/ListRenderer/List.h \
+		View/GraphRenderer/SGraphRenderer.h \
+		View/GraphRenderer/Graph.h Engine/SensorList.cpp \
 		Sensor/Airqualitysensor.cpp \
 		Sensor/EnvironmentalConditions/Airquality.cpp \
 		Sensor/EnvironmentalConditions/Humidity.cpp \
@@ -210,6 +223,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		View/EditWidget.cpp \
 		View/TypeSelector.cpp \
 		View/WidgetLookup.cpp \
+		View/SensorWidget.cpp \
+		View/GraphLookup.cpp \
 		View/SensorEditor/AbstractSensorEditor.cpp \
 		View/SensorEditor/AirQualityEditor.cpp \
 		View/SensorEditor/HumidityEditor.cpp \
@@ -217,7 +232,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		View/SensorEditor/SensorInjector.cpp \
 		View/SensorRenderer/Full.cpp \
 		View/SensorRenderer/ListSensor.cpp \
-		View/ListRenderer/List.cpp
+		View/ListRenderer/List.cpp \
+		View/GraphRenderer/Graph.cpp
 QMAKE_TARGET  = Pao_Sensori_Ecc
 DESTDIR       = 
 TARGET        = Pao_Sensori_Ecc
@@ -386,8 +402,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Engine/SensorList.h Sensor/Airqualitysensor.h Sensor/EnvironmentalConditions/Airquality.h Sensor/EnvironmentalConditions/Humidity.h Sensor/Humiditysensor.h Sensor/SConstVisitor.h Sensor/SVisitor.h Sensor/AbstractSensor.h Sensor/TemperatureSensor.h Sensor/EnvironmentalConditions/Temperature.h View/mainwindow.h View/SensorListWidget.h View/SearchWidget.h View/EditWidget.h View/TypeSelector.h View/WidgetLookup.h View/SensorEditor/AbstractSensorEditor.h View/SensorEditor/AirQualityEditor.h View/SensorEditor/HumidityEditor.h View/SensorEditor/SensorInjector.h View/SensorEditor/TemperatureEditor.h View/SensorRenderer/SSensorRenderer.h View/SensorRenderer/Full.h View/SensorRenderer/ListSensor.h View/ListRenderer/SRendererStrategy.h View/ListRenderer/List.h $(DISTDIR)/
-	$(COPY_FILE) --parents Engine/SensorList.cpp Sensor/Airqualitysensor.cpp Sensor/EnvironmentalConditions/Airquality.cpp Sensor/EnvironmentalConditions/Humidity.cpp Sensor/Humiditysensor.cpp main.cpp Sensor/AbstractSensor.cpp Sensor/TemperatureSensor.cpp Sensor/EnvironmentalConditions/Temperature.cpp View/mainwindow.cpp View/SensorListWidget.cpp View/SearchWidget.cpp View/EditWidget.cpp View/TypeSelector.cpp View/WidgetLookup.cpp View/SensorEditor/AbstractSensorEditor.cpp View/SensorEditor/AirQualityEditor.cpp View/SensorEditor/HumidityEditor.cpp View/SensorEditor/TemperatureEditor.cpp View/SensorEditor/SensorInjector.cpp View/SensorRenderer/Full.cpp View/SensorRenderer/ListSensor.cpp View/ListRenderer/List.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents Engine/SensorList.h Sensor/Airqualitysensor.h Sensor/EnvironmentalConditions/Airquality.h Sensor/EnvironmentalConditions/Humidity.h Sensor/Humiditysensor.h Sensor/SConstVisitor.h Sensor/SVisitor.h Sensor/AbstractSensor.h Sensor/TemperatureSensor.h Sensor/EnvironmentalConditions/Temperature.h View/mainwindow.h View/SensorListWidget.h View/SearchWidget.h View/EditWidget.h View/TypeSelector.h View/WidgetLookup.h View/SensorWidget.h View/GraphLookup.h View/SensorEditor/AbstractSensorEditor.h View/SensorEditor/AirQualityEditor.h View/SensorEditor/HumidityEditor.h View/SensorEditor/SensorInjector.h View/SensorEditor/TemperatureEditor.h View/SensorRenderer/SSensorRenderer.h View/SensorRenderer/SSensorFullRenderer.h View/SensorRenderer/Full.h View/SensorRenderer/ListSensor.h View/ListRenderer/SRendererStrategy.h View/ListRenderer/List.h View/GraphRenderer/SGraphRenderer.h View/GraphRenderer/Graph.h $(DISTDIR)/
+	$(COPY_FILE) --parents Engine/SensorList.cpp Sensor/Airqualitysensor.cpp Sensor/EnvironmentalConditions/Airquality.cpp Sensor/EnvironmentalConditions/Humidity.cpp Sensor/Humiditysensor.cpp main.cpp Sensor/AbstractSensor.cpp Sensor/TemperatureSensor.cpp Sensor/EnvironmentalConditions/Temperature.cpp View/mainwindow.cpp View/SensorListWidget.cpp View/SearchWidget.cpp View/EditWidget.cpp View/TypeSelector.cpp View/WidgetLookup.cpp View/SensorWidget.cpp View/GraphLookup.cpp View/SensorEditor/AbstractSensorEditor.cpp View/SensorEditor/AirQualityEditor.cpp View/SensorEditor/HumidityEditor.cpp View/SensorEditor/TemperatureEditor.cpp View/SensorEditor/SensorInjector.cpp View/SensorRenderer/Full.cpp View/SensorRenderer/ListSensor.cpp View/ListRenderer/List.cpp View/GraphRenderer/Graph.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -417,8 +433,10 @@ compiler_rcc_clean:
 qrc_resources.cpp: resources.qrc \
 		/usr/lib/qt6/libexec/rcc \
 		Assets/icon.svg \
+		Assets/icons/temperature.svg \
 		Assets/icons/grid.svg \
 		Assets/icons/new.svg \
+		Assets/icons/humidity.svg \
 		Assets/icons/save_as.svg \
 		Assets/icons/edit.svg \
 		Assets/icons/previous.svg \
@@ -430,6 +448,7 @@ qrc_resources.cpp: resources.qrc \
 		Assets/icons/new_item.svg \
 		Assets/icons/hero.svg \
 		Assets/icons/list.svg \
+		Assets/icons/air-quality.svg \
 		Assets/icons/save.svg
 	/usr/lib/qt6/libexec/rcc -name resources resources.qrc -o qrc_resources.cpp
 
@@ -439,9 +458,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -std=gnu++1z -Wall -Wextra -fPIC -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_EditWidget.cpp moc_AbstractSensorEditor.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_EditWidget.cpp moc_SensorWidget.cpp moc_AbstractSensorEditor.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_EditWidget.cpp moc_AbstractSensorEditor.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_EditWidget.cpp moc_SensorWidget.cpp moc_AbstractSensorEditor.cpp
 moc_mainwindow.cpp: View/mainwindow.h \
 		View/SearchWidget.h \
 		View/SensorListWidget.h \
@@ -451,12 +470,9 @@ moc_mainwindow.cpp: View/mainwindow.h \
 		Sensor/SVisitor.h \
 		View/ListRenderer/SRendererStrategy.h \
 		Engine/SensorList.h \
-		View/SensorRenderer/Full.h \
-		View/SensorRenderer/SSensorRenderer.h \
-		View/SensorRenderer/ListSensor.h \
-		View/EditWidget.h \
-		View/mainwindow.h \
-		View/SensorEditor/AbstractSensorEditor.h \
+		View/SensorWidget.h \
+		View/GraphLookup.h \
+		View/GraphRenderer/SGraphRenderer.h \
 		moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
 	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/enrico/QtProjects/Pao_Sensori_Ecc/src/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/enrico/QtProjects/Pao_Sensori_Ecc/src -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include View/mainwindow.h -o moc_mainwindow.cpp
@@ -471,14 +487,23 @@ moc_EditWidget.cpp: View/EditWidget.h \
 		Sensor/SVisitor.h \
 		View/ListRenderer/SRendererStrategy.h \
 		Engine/SensorList.h \
-		View/SensorRenderer/Full.h \
-		View/SensorRenderer/SSensorRenderer.h \
-		View/SensorRenderer/ListSensor.h \
-		View/EditWidget.h \
+		View/SensorWidget.h \
+		View/GraphLookup.h \
+		View/GraphRenderer/SGraphRenderer.h \
 		View/SensorEditor/AbstractSensorEditor.h \
 		moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
 	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/enrico/QtProjects/Pao_Sensori_Ecc/src/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/enrico/QtProjects/Pao_Sensori_Ecc/src -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include View/EditWidget.h -o moc_EditWidget.cpp
+
+moc_SensorWidget.cpp: View/SensorWidget.h \
+		View/GraphLookup.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		View/GraphRenderer/SGraphRenderer.h \
+		moc_predefs.h \
+		/usr/lib/qt6/libexec/moc
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/enrico/QtProjects/Pao_Sensori_Ecc/src/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/enrico/QtProjects/Pao_Sensori_Ecc/src -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include View/SensorWidget.h -o moc_SensorWidget.cpp
 
 moc_AbstractSensorEditor.cpp: View/SensorEditor/AbstractSensorEditor.h \
 		Sensor/AbstractSensor.h \
@@ -539,11 +564,9 @@ main.o: main.cpp View/mainwindow.h \
 		Sensor/SVisitor.h \
 		View/ListRenderer/SRendererStrategy.h \
 		Engine/SensorList.h \
-		View/SensorRenderer/Full.h \
-		View/SensorRenderer/SSensorRenderer.h \
-		View/SensorRenderer/ListSensor.h \
-		View/EditWidget.h \
-		View/SensorEditor/AbstractSensorEditor.h
+		View/SensorWidget.h \
+		View/GraphLookup.h \
+		View/GraphRenderer/SGraphRenderer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 AbstractSensor.o: Sensor/AbstractSensor.cpp Sensor/AbstractSensor.h \
@@ -570,9 +593,9 @@ mainwindow.o: View/mainwindow.cpp View/mainwindow.h \
 		Sensor/SVisitor.h \
 		View/ListRenderer/SRendererStrategy.h \
 		Engine/SensorList.h \
-		View/SensorRenderer/Full.h \
-		View/SensorRenderer/SSensorRenderer.h \
-		View/SensorRenderer/ListSensor.h \
+		View/SensorWidget.h \
+		View/GraphLookup.h \
+		View/GraphRenderer/SGraphRenderer.h \
 		View/EditWidget.h \
 		View/SensorEditor/AbstractSensorEditor.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o View/mainwindow.cpp
@@ -584,6 +607,9 @@ SensorListWidget.o: View/SensorListWidget.cpp View/SensorListWidget.h \
 		Sensor/SVisitor.h \
 		View/ListRenderer/SRendererStrategy.h \
 		Engine/SensorList.h \
+		View/SensorWidget.h \
+		View/GraphLookup.h \
+		View/GraphRenderer/SGraphRenderer.h \
 		View/ListRenderer/List.h \
 		View/SensorRenderer/ListSensor.h \
 		View/SensorRenderer/SSensorRenderer.h
@@ -602,9 +628,9 @@ EditWidget.o: View/EditWidget.cpp View/EditWidget.h \
 		Sensor/SVisitor.h \
 		View/ListRenderer/SRendererStrategy.h \
 		Engine/SensorList.h \
-		View/SensorRenderer/Full.h \
-		View/SensorRenderer/SSensorRenderer.h \
-		View/SensorRenderer/ListSensor.h \
+		View/SensorWidget.h \
+		View/GraphLookup.h \
+		View/GraphRenderer/SGraphRenderer.h \
 		View/SensorEditor/AbstractSensorEditor.h \
 		View/TypeSelector.h \
 		View/SensorEditor/AirQualityEditor.h \
@@ -626,6 +652,29 @@ WidgetLookup.o: View/WidgetLookup.cpp View/WidgetLookup.h \
 		Sensor/SConstVisitor.h \
 		Sensor/SVisitor.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o WidgetLookup.o View/WidgetLookup.cpp
+
+SensorWidget.o: View/SensorWidget.cpp View/SensorWidget.h \
+		View/GraphLookup.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		View/GraphRenderer/SGraphRenderer.h \
+		View/GraphRenderer/Graph.h \
+		View/SensorRenderer/Full.h \
+		View/SensorRenderer/ListSensor.h \
+		View/SensorRenderer/SSensorRenderer.h \
+		View/SensorListWidget.h \
+		View/WidgetLookup.h \
+		View/ListRenderer/SRendererStrategy.h \
+		Engine/SensorList.h \
+		View/SensorRenderer/SSensorFullRenderer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SensorWidget.o View/SensorWidget.cpp
+
+GraphLookup.o: View/GraphLookup.cpp View/GraphLookup.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GraphLookup.o View/GraphLookup.cpp
 
 AbstractSensorEditor.o: View/SensorEditor/AbstractSensorEditor.cpp View/SensorEditor/AbstractSensorEditor.h \
 		Sensor/AbstractSensor.h \
@@ -675,15 +724,19 @@ SensorInjector.o: View/SensorEditor/SensorInjector.cpp View/SensorEditor/SensorI
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SensorInjector.o View/SensorEditor/SensorInjector.cpp
 
 Full.o: View/SensorRenderer/Full.cpp View/SensorRenderer/Full.h \
+		View/SensorRenderer/ListSensor.h \
 		View/SensorRenderer/SSensorRenderer.h \
 		Sensor/AbstractSensor.h \
 		Sensor/SConstVisitor.h \
 		Sensor/SVisitor.h \
-		View/SensorRenderer/ListSensor.h \
 		View/SensorListWidget.h \
 		View/WidgetLookup.h \
 		View/ListRenderer/SRendererStrategy.h \
 		Engine/SensorList.h \
+		View/SensorWidget.h \
+		View/GraphLookup.h \
+		View/GraphRenderer/SGraphRenderer.h \
+		View/SensorRenderer/SSensorFullRenderer.h \
 		Sensor/Airqualitysensor.h \
 		Sensor/EnvironmentalConditions/Airquality.h \
 		Sensor/Humiditysensor.h \
@@ -701,6 +754,9 @@ ListSensor.o: View/SensorRenderer/ListSensor.cpp View/SensorRenderer/ListSensor.
 		View/WidgetLookup.h \
 		View/ListRenderer/SRendererStrategy.h \
 		Engine/SensorList.h \
+		View/SensorWidget.h \
+		View/GraphLookup.h \
+		View/GraphRenderer/SGraphRenderer.h \
 		Sensor/Airqualitysensor.h \
 		Sensor/EnvironmentalConditions/Airquality.h \
 		Sensor/Humiditysensor.h \
@@ -718,8 +774,28 @@ List.o: View/ListRenderer/List.cpp View/ListRenderer/List.h \
 		Engine/SensorList.h \
 		View/SensorRenderer/ListSensor.h \
 		View/SensorRenderer/SSensorRenderer.h \
-		View/SensorListWidget.h
+		View/SensorListWidget.h \
+		View/SensorWidget.h \
+		View/GraphLookup.h \
+		View/GraphRenderer/SGraphRenderer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o List.o View/ListRenderer/List.cpp
+
+Graph.o: View/GraphRenderer/Graph.cpp View/GraphRenderer/Graph.h \
+		View/GraphRenderer/SGraphRenderer.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		View/GraphLookup.h \
+		View/SensorRenderer/Full.h \
+		View/SensorRenderer/ListSensor.h \
+		View/SensorRenderer/SSensorRenderer.h \
+		View/SensorListWidget.h \
+		View/WidgetLookup.h \
+		View/ListRenderer/SRendererStrategy.h \
+		Engine/SensorList.h \
+		View/SensorWidget.h \
+		View/SensorRenderer/SSensorFullRenderer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Graph.o View/GraphRenderer/Graph.cpp
 
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
@@ -729,6 +805,9 @@ moc_mainwindow.o: moc_mainwindow.cpp
 
 moc_EditWidget.o: moc_EditWidget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_EditWidget.o moc_EditWidget.cpp
+
+moc_SensorWidget.o: moc_SensorWidget.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_SensorWidget.o moc_SensorWidget.cpp
 
 moc_AbstractSensorEditor.o: moc_AbstractSensorEditor.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_AbstractSensorEditor.o moc_AbstractSensorEditor.cpp

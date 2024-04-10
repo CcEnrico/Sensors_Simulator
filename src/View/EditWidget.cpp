@@ -51,6 +51,7 @@ EditWidget::EditWidget(
     name_input = new QLineEdit();
     name_input->setObjectName("Name Input");
     name_input->setPlaceholderText("Sensor Name");
+    name_input->setMaxLength(20);
 
     if (sensor != nullptr){
         name_input->setText(QString::fromStdString(sensor->getName()));
@@ -150,6 +151,7 @@ void EditWidget::showType(int index){
 }
 
 void EditWidget::apply(){
+
     int id = id_input->value();
     QString name = name_input->text();
     int dn = dataNum_input->value();
@@ -161,9 +163,9 @@ void EditWidget::apply(){
     list->add(sensor);
     main_window->finishEdit();
     
-    // delete this;
+    delete this;
 
-    //    inizialmente teniamo a runtime poi fare classe che legge e refresha un json
+    // inizialmente teniamo a runtime poi fare classe che legge e refresha un json
     // main_window->getRepository()->update(sensor);
     // main_window->reloadData();
     // main_window->getSearchWidget()->search();

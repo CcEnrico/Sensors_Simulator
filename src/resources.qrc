@@ -15,5 +15,8 @@
     <file>Assets/icons/edit.svg</file>
     <file>Assets/icons/delete.svg</file>
     <file>Assets/icons/new_item.svg</file>
+    <file>Assets/icons/air-quality.svg</file>
+    <file>Assets/icons/humidity.svg</file>
+    <file>Assets/icons/temperature.svg</file>
 </qresource>
 </RCC>

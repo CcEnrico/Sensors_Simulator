@@ -7,9 +7,7 @@
 
 #include "SearchWidget.h"
 #include "SensorListWidget.h"
-
-#include "SensorRenderer/Full.h"
-#include "../Engine/SensorList.h"
+#include "SensorWidget.h"
 
 
 
@@ -24,15 +22,13 @@ private:
     QAction* create_item;
     QToolBar* toolbar;
     Engine::SensorList* sensor_list;
-    // SearchWidget* search_widget;
-    QStackedWidget* stacked_widget;
+    SensorWidget* sensor_widget;
+    QMainWindow* edit_window;
     SensorListWidget* sensor_list_widget;
-    SensorRenderer::Full full_renderer;
 
-    void clearStack();
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(Engine::SensorList* mem, QWidget *parent = nullptr);
     ~MainWindow() override;
 
     SensorListWidget* getSensorListWidget();
