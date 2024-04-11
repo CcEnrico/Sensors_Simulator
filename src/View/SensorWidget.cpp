@@ -39,17 +39,7 @@ namespace View{
 
     void SensorWidget::show(const Sensor::AbstractSensor* sensor) {
 
-       if (lookup != nullptr){
-           delete lookup;
-       }
-
        renderer->render(layout , sensor, lookup);
-
-
-
-//        renderer->render(layout , sensor, lookup);
-
-
 
     }
 

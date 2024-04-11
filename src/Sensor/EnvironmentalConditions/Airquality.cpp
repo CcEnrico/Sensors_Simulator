@@ -45,6 +45,15 @@ AirQuality::operator double() const{
     return indexAQ;
 }
 
+//AirQuality& AirQuality::operator=(const AirQuality& aq){
+//    if (this != &aq){
+//        indexAQ = aq.indexAQ;
+//        pm10 = aq.pm10;
+//        NO2 = aq.NO2;
+//    }
+//    return *this;
+//}
+
 void AirQuality::updateAQ(){
     double Ipm10 = (pm10/indexLimitPm10) * 100;
     double INO2 = (NO2/indexLimitNO2) * 100;

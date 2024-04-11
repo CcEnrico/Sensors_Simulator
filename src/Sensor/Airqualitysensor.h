@@ -55,6 +55,9 @@ public:
     virtual void accept(SConstVisitor& visitor)const final;
     virtual void accept(SVisitor& visitor) final;
 
+    std::vector<double> getAQDataPm10()const;
+    std::vector<double> getAQDataN02()const;
+
     virtual void simulate() override;
     virtual void clear() override;
     virtual void modify() override;
