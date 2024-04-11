@@ -5,7 +5,8 @@
 namespace View{
 
     SensorWidget::SensorWidget(QWidget* parent)
-        : QWidget(parent)
+        : QWidget(parent),
+        lookup()
     {
         renderer = new GraphRenderer::Graph();
 
@@ -32,18 +33,23 @@ namespace View{
 
         // container->setLayout(vbox);
 
-        // lookup = new GraphLookup(nullptr, container, id, name, data_name, variance, simulate_button, edit_button, clear_button);
+//         lookup = new GraphLookup(nullptr, container, id, name, data_name, variance, simulate_button, edit_button, clear_button);
         
     }
 
     void SensorWidget::show(const Sensor::AbstractSensor* sensor) {
-        
-       if (!lookup){
-    
+
+       if (lookup != nullptr){
            delete lookup;
        }
 
-        renderer->render(layout , sensor, lookup);
+       renderer->render(layout , sensor, lookup);
+
+
+
+//        renderer->render(layout , sensor, lookup);
+
+
 
     }
 

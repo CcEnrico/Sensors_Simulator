@@ -13,8 +13,9 @@ namespace View{
 
     class SensorWidget : public QWidget {
 
-        Q_OBJECT
+        Q_OBJECT;
 
+    private:
         GraphLookup* lookup;
         QGridLayout* layout;
         GraphRenderer::SGraphRenderer* renderer;

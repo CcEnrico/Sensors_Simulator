@@ -28,7 +28,7 @@ class Full: public Sensor::SConstVisitor {
     virtual QWidget* getWidget() const;
     virtual QLabel* getId()const;
     virtual QLabel* getName()const;
-    virtual QLabel* getDataName()const;
+    virtual QLabel* getDataNum()const;
     virtual QLabel* getVariance()const;
     virtual QPushButton* getSimulateButton() const;
     virtual QPushButton* getEditButton() const;

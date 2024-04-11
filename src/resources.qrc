@@ -1,6 +1,6 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
-    <file>Assets/icon.svg</file>
+    <file>Assets/icons/icon.svg</file>
     <file>Assets/icons/new.svg</file>
     <file>Assets/icons/open.svg</file>
     <file>Assets/icons/save.svg</file>

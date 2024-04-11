@@ -30,6 +30,12 @@ namespace View{
     QWidget* GraphLookup::getWidget() const{
         return widget;
     }
+
+    GraphLookup& GraphLookup::setWidget(QWidget* w){
+        this->widget = w;
+        return *this;
+    }
+
     QLabel* GraphLookup::getId()const{
         return id;
     }

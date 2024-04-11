@@ -36,6 +36,7 @@ namespace View {
         );
         const Sensor::AbstractSensor* getSensor() const;
         QWidget* getWidget() const;
+        GraphLookup& setWidget(QWidget* w);
         QLabel* getId()const;
         QLabel* getName()const;
         QLabel* getDataName()const;
