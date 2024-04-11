@@ -15,7 +15,7 @@ class HumiditySensor: public AbstractSensor
     EnviromentalConditions::Humidity initial;
     EnviromentalConditions::Humidity stdDeviation;
     EnviromentalConditions::Humidity target;
-    std::vector<EnviromentalConditions::Humidity> humidities;
+    std::vector<EnviromentalConditions::Humidity> vector;
 
 public:
     HumiditySensor( unsigned int id,

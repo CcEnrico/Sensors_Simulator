@@ -18,7 +18,7 @@ class AbstractSensor{
 
 public:
     AbstractSensor(unsigned int id,
-                   std::string  n,
+                   std::string n,
                    unsigned int dn,
                    double v
     );

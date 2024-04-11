@@ -1,9 +1,9 @@
 #ifndef SENSOR_ENVIROMENTALCONDITION_TEMPERATURE_H
 #define SENSOR_ENVIROMENTALCONDITION_TEMPERATURE_H
 
-namespace Sensor{
 
-namespace EnviromentalConditions{
+
+namespace Sensor::EnviromentalConditions{
 
 class Temperature
 {
@@ -13,6 +13,8 @@ class Temperature
 
 public:
     Temperature(double temperature, char scale);
+
+    explicit operator double()const;
 
     Temperature& setKelvin(const double k);
     double getKelvin() const;
@@ -35,6 +37,6 @@ private:
 
 }
 
-}
+
 
 #endif // TEMPERATURE_H

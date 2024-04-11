@@ -1,9 +1,9 @@
 #ifndef SENSOR_ENVIROMENTALCONDITION_AIRQUALITY_H
 #define SENSOR_ENVIROMENTALCONDITION_AIRQUALITY_H
 
-namespace Sensor{
 
-namespace EnviromentalConditions{
+
+namespace Sensor::EnviromentalConditions{
 
 class AirQuality
 {
@@ -16,7 +16,7 @@ public:
     AirQuality( double pm_10,
                 double N_O2
     );
-    AirQuality( double IAQ);
+    explicit AirQuality( double IAQ);
 
     double getPm10()const;
     AirQuality& setPm10(const double pm_10);
@@ -37,6 +37,6 @@ private:
 
 }
 
-}
+
 
 #endif // AIRQUALITY_H

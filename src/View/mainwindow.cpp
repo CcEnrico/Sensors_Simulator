@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "EditWidget.h"
 
 #include <QWidget>
 #include <QStatusBar>
@@ -10,15 +11,16 @@
 #include <QSplitter>
 #include <QScrollArea>
 #include <QLabel>
+#include <QWindow>
 
-
-#include "EditWidget.h"
 
 namespace View{
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+MainWindow::MainWindow( Engine::SensorList* mem, QWidget *parent )
+    :   QMainWindow(parent),
+    sensor_list(mem)
 {
+
     // Action
 
     QAction* create = new QAction(
@@ -69,7 +71,7 @@ MainWindow::MainWindow(QWidget *parent)
     QMenu* item_menu = menuBar()->addMenu("&Item");
     item_menu->addAction(create_item);
 
-    // toolbar 
+    // toolbar
     toolbar = addToolBar("Toolbar");
     toolbar->setOrientation(Qt::Vertical);
     addToolBar(Qt::LeftToolBarArea, toolbar);
@@ -86,12 +88,14 @@ MainWindow::MainWindow(QWidget *parent)
 
     // search_widget = new SearchWidget();
 
+    sensor_widget = new SensorWidget(this); 
+    sensor_list_widget = new SensorListWidget(sensor_widget ,this);
 
-    stacked_widget = new QStackedWidget(this);
-    splitter->addWidget(stacked_widget);
+    splitter->addWidget(sensor_list_widget);   
+    splitter->addWidget(sensor_widget);
 
     // item_widget = new ItemWidget();
-    
+
 
     splitter->setSizes(QList<int>() << 1000 << 3000);
 
@@ -103,34 +107,31 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    delete sensor_list;
 }
 
-void MainWindow::clearStack() {
-    QWidget* widget = stacked_widget->widget(1);
-    while (widget) {
-        stacked_widget->removeWidget(widget);
-        delete widget;
-        widget = stacked_widget->widget(1);
-    }
-}
 
 void MainWindow::createItem()
 {
     create_item->setEnabled(false);
 
-    clearStack();
-    QScrollArea* scroll_area = new QScrollArea();
-    scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    scroll_area->setWidgetResizable(true);
 
-    EditWidget* edit_widget = new EditWidget(this, nullptr);
-    
-    scroll_area->setWidget(edit_widget);
-    stacked_widget->addWidget(scroll_area);
-    stacked_widget->setCurrentIndex(1);
+    edit_window = new QMainWindow();
+    EditWidget* edit = new EditWidget(this, nullptr);
+
+    edit_window->setCentralWidget(edit);
+    edit_window->show();
+
     showStatusBar("Creating a new item.");
+}
 
+void MainWindow::finishEdit()
+{
+    edit_window->close();
+    create_item->setEnabled(true);
+
+    sensor_list_widget->showList(sensor_list);
+    showStatusBar("Ready.");
 }
 
 SensorListWidget* MainWindow::getSensorListWidget(){
@@ -138,7 +139,11 @@ SensorListWidget* MainWindow::getSensorListWidget(){
 
 }
 
-void MainWindow::showStatusBar(QString message)
+Engine::SensorList* MainWindow::getList() const {
+    return sensor_list;
+}
+
+void MainWindow::showStatusBar(const QString& message)
 {
     statusBar()->showMessage(message);
 }

@@ -1,5 +1,5 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef VIEW_MAINWINDOW_H
+#define VIEW_MAINWINDOW_H
 
 #include <QMainWindow>
 #include <QStackedWidget>
@@ -7,8 +7,9 @@
 
 #include "SearchWidget.h"
 #include "SensorListWidget.h"
+#include "SensorWidget.h"
 
-#include "SensorRenderer/Full.h"
+
 
 namespace View{
 
@@ -20,23 +21,25 @@ private:
 
     QAction* create_item;
     QToolBar* toolbar;
-    // SearchWidget* search_widget;
-    QStackedWidget* stacked_widget;
+    Engine::SensorList* sensor_list;
+    SensorWidget* sensor_widget;
+    QMainWindow* edit_window;
     SensorListWidget* sensor_list_widget;
-    SensorRenderer::Full full_renderer;
 
-    void clearStack();
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    explicit MainWindow(Engine::SensorList* mem, QWidget *parent = nullptr);
+    ~MainWindow() override;
 
     SensorListWidget* getSensorListWidget();
+    Engine::SensorList* getList() const;
 
 
     // aggiungi metodi
     
-    void showStatusBar(QString m);
+    void showStatusBar(const QString& m);
+    void finishEdit();
+    
 
     public slots:
     void createItem();

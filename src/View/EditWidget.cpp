@@ -19,10 +19,10 @@
 namespace View {
 
 EditWidget::EditWidget(
-    MainWindow* mainWindow, 
-    const Sensor::AbstractSensor* sensor
+    MainWindow* m, 
+    const Sensor::AbstractSensor* s
     )
-    : main_window(main_window), subject()
+    : main_window(m), sensor(s)
 {
 
     QVBoxLayout* layout = new QVBoxLayout(this);
@@ -42,17 +42,19 @@ EditWidget::EditWidget(
     id_input->setObjectName("Identifier Input");
     id_input->setRange(0, 9999);
 
-    if(subject != nullptr){
-        id_input->setValue(subject->getIdentifier());
+    if(sensor != nullptr){
+        std::cout << "sensor is not null" << std::endl;
+        id_input->setValue(sensor->getIdentifier());
     }
     form->addRow("Identifier", id_input);
 
-    QLineEdit* name_input = new QLineEdit();
+    name_input = new QLineEdit();
     name_input->setObjectName("Name Input");
     name_input->setPlaceholderText("Sensor Name");
+    name_input->setMaxLength(20);
 
-    if (subject != nullptr){
-        name_input->setText(QString::fromStdString(subject->getName()));
+    if (sensor != nullptr){
+        name_input->setText(QString::fromStdString(sensor->getName()));
     }   
     form->addRow("Name", name_input);
 
@@ -60,8 +62,8 @@ EditWidget::EditWidget(
     dataNum_input->setObjectName("Data Number Input");
     dataNum_input->setRange(1, 1000);
 
-    if(subject != nullptr){
-        dataNum_input->setValue(subject->getDataNum());
+    if(sensor != nullptr){
+        dataNum_input->setValue(sensor->getDataNum());
     }
     form->addRow("Data Number", dataNum_input);
 
@@ -69,8 +71,8 @@ EditWidget::EditWidget(
     variance_input->setObjectName("Variance Input");
     variance_input->setRange(0.0, 1000.0);
     variance_input->setDecimals(2);
-    if(subject != nullptr){
-        variance_input->setValue(subject->getVariance());
+    if(sensor != nullptr){
+        variance_input->setValue(sensor->getVariance());
     }
     form->addRow("Variance", variance_input);
 
@@ -81,9 +83,9 @@ EditWidget::EditWidget(
     type_input->addItem("HumiditySensor");
     type_input->addItem("TemperatureSensor");
     
-    if (subject != nullptr) {
+    if (sensor != nullptr) {
         TypeSelector type_selector(type_input);
-        subject->accept(type_selector);
+        sensor->accept(type_selector);
     }
 
     form->addRow("type", type_input);
@@ -97,21 +99,21 @@ EditWidget::EditWidget(
     stacked_editor->addWidget(air_quality_editor);
     editors.push_back(air_quality_editor);
 
-    // SensorEditor::HumidityEditor* humidity_editor = new SensorEditor::HumidityEditor();
-    // stacked_editor->addWidget(humidity_editor);
-    // editors.push_back(humidity_editor);
+    SensorEditor::HumidityEditor* humidity_editor = new SensorEditor::HumidityEditor();
+    stacked_editor->addWidget(humidity_editor);
+    editors.push_back(humidity_editor);
 
-    // SensorEditor::TemperatureEditor* temperature_editor = new SensorEditor::TemperatureEditor();
-    // stacked_editor->addWidget(temperature_editor);
-    // editors.push_back(temperature_editor);
+    SensorEditor::TemperatureEditor* temperature_editor = new SensorEditor::TemperatureEditor();
+    stacked_editor->addWidget(temperature_editor);
+    editors.push_back(temperature_editor);
 
-    if (subject != nullptr) {
+    if (sensor != nullptr) {
         SensorEditor::SensorInjector sensor_injector(
-            *air_quality_editor
-            // *humidity_editor,
-            // *temperature_editor
+            *air_quality_editor,
+            *humidity_editor,
+            *temperature_editor
         );
-        subject->accept(sensor_injector);
+        sensor->accept(sensor_injector);
     }
     showType(type_input->currentIndex());
 
@@ -143,15 +145,28 @@ EditWidget::EditWidget(
 }
 
 void EditWidget::selectImage(){}
-void EditWidget::showType(int index){}
+
+void EditWidget::showType(int index){
+    stacked_editor->setCurrentIndex(index);
+}
+
 void EditWidget::apply(){
+
     int id = id_input->value();
     QString name = name_input->text();
     int dn = dataNum_input->value();
     double v = variance_input->value();
     SensorEditor::AbstractSensorEditor* editor = editors[stacked_editor->currentIndex()];
     Sensor::AbstractSensor* sensor = editor->create(id, name, dn, v);
-    // main_window->getRepository()->update(item);
+
+    Engine::SensorList* list = main_window->getList();
+    list->add(sensor);
+    main_window->finishEdit();
+    
+    delete this;
+
+    // inizialmente teniamo a runtime poi fare classe che legge e refresha un json
+    // main_window->getRepository()->update(sensor);
     // main_window->reloadData();
     // main_window->getSearchWidget()->search();
 }

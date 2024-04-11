@@ -1,4 +1,6 @@
 QT       += core gui
+QT += charts
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -9,6 +11,8 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Engine/SensorList.cpp \
+    \
     Sensor/Airqualitysensor.cpp \
     Sensor/EnvironmentalConditions/Airquality.cpp \
     Sensor/EnvironmentalConditions/Humidity.cpp \
@@ -24,15 +28,21 @@ SOURCES += \
     View/EditWidget.cpp \
     View/TypeSelector.cpp \
     View/WidgetLookup.cpp \
+    View/SensorWidget.cpp \
+    View/GraphLookup.cpp \
     View/SensorEditor/AbstractSensorEditor.cpp \
     View/SensorEditor/AirQualityEditor.cpp \
     View/SensorEditor/HumidityEditor.cpp \
     View/SensorEditor/TemperatureEditor.cpp \
     View/SensorEditor/SensorInjector.cpp \
     View/SensorRenderer/Full.cpp \
-    View/SensorRenderer/ListSensor.cpp
+    View/SensorRenderer/ListSensor.cpp \
+    View/ListRenderer/List.cpp \
+    View/GraphRenderer/Graph.cpp
 
 HEADERS += \
+    Engine/SensorList.h \
+    \
     Sensor/Airqualitysensor.h \
     Sensor/EnvironmentalConditions/Airquality.h \
     Sensor/EnvironmentalConditions/Humidity.h \
@@ -43,20 +53,28 @@ HEADERS += \
     Sensor/AbstractSensor.h \
     Sensor/TemperatureSensor.h \
     Sensor/EnvironmentalConditions/Temperature.h \
+    \
     View/mainwindow.h \
     View/SensorListWidget.h \
     View/SearchWidget.h \
     View/EditWidget.h \
     View/TypeSelector.h \
     View/WidgetLookup.h \
+    View/SensorWidget.h \
+    View/GraphLookup.h \
     View/SensorEditor/AbstractSensorEditor.h \
     View/SensorEditor/AirQualityEditor.h \
     View/SensorEditor/HumidityEditor.h \
     View/SensorEditor/SensorInjector.h \
     View/SensorEditor/TemperatureEditor.h \
     View/SensorRenderer/SSensorRenderer.h \
+    View/SensorRenderer/SSensorFullRenderer.h \
     View/SensorRenderer/Full.h \
-    View/SensorRenderer/ListSensor.h
+    View/SensorRenderer/ListSensor.h \
+    View/ListRenderer/SRendererStrategy.h \
+    View/ListRenderer/List.h \
+    View/GraphRenderer/SGraphRenderer.h \
+    View/GraphRenderer/Graph.h
 
 RESOURCES += \
     resources.qrc

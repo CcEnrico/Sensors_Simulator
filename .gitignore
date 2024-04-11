@@ -1,3 +1,6 @@
 .vscode/
 build-Pao_Sensori_Ecc-PAO-Debug/
+.idea/
+.gitignore
+.clang-tidy
 

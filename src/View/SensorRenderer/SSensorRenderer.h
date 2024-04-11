@@ -7,8 +7,8 @@
 #include "../../Sensor/AbstractSensor.h"
 #include "../../Sensor/SConstVisitor.h"
 
-namespace View {
-namespace SensorRenderer {
+
+namespace View::SensorRenderer {
 
 class SSensorRenderer: public Sensor::SConstVisitor {
   public:
@@ -19,6 +19,6 @@ class SSensorRenderer: public Sensor::SConstVisitor {
 };
 
 }
-}
+
 
 #endif

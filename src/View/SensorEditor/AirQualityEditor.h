@@ -6,30 +6,33 @@
 
 #include "AbstractSensorEditor.h"
 
-namespace View {
-namespace SensorEditor {
+
+namespace View::SensorEditor {
 
 class AirQualityEditor: public AbstractSensorEditor {
   private:
-    QDoubleSpinBox* initial;
-    QDoubleSpinBox* stdDeviation;
-    QDoubleSpinBox* target;
+    QDoubleSpinBox* initial_pm10;
+    QDoubleSpinBox* initial_n02;
+    QDoubleSpinBox* stdDeviation_pm10;
+    QDoubleSpinBox* stdDeviation_n02;
+    QDoubleSpinBox* target_pm10;
+    QDoubleSpinBox* target_n02;
 
   public:
-    AirQualityEditor(QWidget* parent = 0);
-    virtual ~AirQualityEditor();
+    explicit AirQualityEditor(QWidget* parent = 0);
+    ~AirQualityEditor() override;
 
-    virtual Sensor::AbstractSensor* create(
+    Sensor::AbstractSensor* create(
         const unsigned int identifier,
         const QString& name,
         const unsigned int data_number,
         const double variance
-    ) const;
+    ) const override;
     
     void setValues(const Sensor::AirQualitySensor& air_quality_sensor);
 };
 
 }
-}
+
 
 #endif

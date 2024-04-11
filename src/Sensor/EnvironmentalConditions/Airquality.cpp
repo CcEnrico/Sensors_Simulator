@@ -1,7 +1,7 @@
 #include "Airquality.h"
 
-namespace Sensor{
-namespace EnviromentalConditions{
+
+namespace Sensor::EnviromentalConditions{
 
 AirQuality::AirQuality( double pm_10,  double N_O2): pm10(pm_10), NO2(N_O2){
     updateAQ();
@@ -17,6 +17,7 @@ double AirQuality::getPm10()const{
 
 AirQuality& AirQuality::setPm10(const double pm_10){
     this->pm10 = pm_10;
+    updateAQ();
     return *this;
 }
 
@@ -26,6 +27,7 @@ double AirQuality::getNO2()const{
 
 AirQuality& AirQuality::setNO2(const double N_O2){
     this->NO2 = N_O2;
+    updateAQ();
     return *this;
 }
 
@@ -35,6 +37,7 @@ double AirQuality::getIndexAQ()const{
 
 AirQuality& AirQuality::setIndexAQ(const double IAQ){
     this->indexAQ = IAQ;
+    updateValues();
     return *this;
 }
 
@@ -63,5 +66,5 @@ const double AirQuality::indexLimitPm10 = 50.0 ;    // micro_g/m3
 const double AirQuality::indexLimitNO2 = 200.0 ;     // micro_g/m3
 
 }
-}
+
 

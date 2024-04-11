@@ -6,14 +6,14 @@
 
 #include "../../Sensor/AbstractSensor.h"
 
-namespace View {
-namespace SensorEditor {
+
+namespace View::SensorEditor {
 
 class AbstractSensorEditor: public QWidget {
     Q_OBJECT
   public:
     AbstractSensorEditor(QWidget* parent = 0);
-    virtual ~AbstractSensorEditor();
+    ~AbstractSensorEditor() override;
     virtual Sensor::AbstractSensor* create(
         const unsigned int identifier,
         const QString& name,
@@ -23,6 +23,6 @@ class AbstractSensorEditor: public QWidget {
 };
 
 }
-}
+
 
 #endif

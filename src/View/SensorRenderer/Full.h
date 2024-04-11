@@ -1,33 +1,41 @@
 #ifndef VIEW_ITEM_RENDERER_FULL_H
 #define VIEW_ITEM_RENDERER_FULL_H
 
-#include "SSensorRenderer.h"
+
+#include <QLabel>
 #include "ListSensor.h"
+#include "SSensorFullRenderer.h"
 
 
+namespace View::SensorRenderer {
 
-namespace View {
-namespace SensorRenderer {
-
-class Full: public SSensorRenderer {
+class Full: public Sensor::SConstVisitor {
   private:
-    ListSensor list_sensor;
     QWidget* widget;
-    QPushButton* view_button;
+    QLabel* id;
+    QLabel* name;
+    QLabel* data_num;
+    QLabel* variance;
+    QPushButton* simulate_button;
     QPushButton* edit_button;
-    QPushButton* delete_button;
+    QPushButton* clear_button;
 
   public:
-    virtual void visit(const Sensor::AirQualitySensor& air_quality);
-    virtual void visit(const Sensor::HumiditySensor& humidity);
-    virtual void visit(const Sensor::TemperatureSensor& temperature);
+    Full();
+    void visit(const Sensor::AirQualitySensor& air_quality) override;
+    void visit(const Sensor::HumiditySensor& humidity) override;
+    void visit(const Sensor::TemperatureSensor& temperature) override;
     virtual QWidget* getWidget() const;
-    virtual QPushButton* getViewButton() const;
+    virtual QLabel* getId()const;
+    virtual QLabel* getName()const;
+    virtual QLabel* getDataNum()const;
+    virtual QLabel* getVariance()const;
+    virtual QPushButton* getSimulateButton() const;
     virtual QPushButton* getEditButton() const;
-    virtual QPushButton* getDeleteButton() const; 
+    virtual QPushButton* getClearButton() const;
 };
 
 }
-}
+
 
 #endif

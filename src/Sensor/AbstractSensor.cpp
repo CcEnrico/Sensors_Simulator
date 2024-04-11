@@ -1,16 +1,16 @@
 #include "AbstractSensor.h"
 
+#include <utility>
+
 namespace Sensor{
 
 AbstractSensor::AbstractSensor(unsigned int id,
-                              std::string  n,
+                              std::string n,
                               unsigned int dn,
                               double v
                                ): identifier(id), name(n), dataNum(dn), variance(v){}
 
-AbstractSensor::~AbstractSensor(){
-
-}
+AbstractSensor::~AbstractSensor()= default;
 
 unsigned int AbstractSensor::getIdentifier() const{
     return identifier;
