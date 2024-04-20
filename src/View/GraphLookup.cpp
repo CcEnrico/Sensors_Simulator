@@ -12,8 +12,11 @@ namespace View{
             QLabel* v,
             QPushButton* simu,
             QPushButton* edit,
-            QPushButton* clear
-    ):sensor(s),
+            QPushButton* clear,
+            QChart* c,
+            QChartView* vc
+    )
+    :sensor(s),
     widget(w),
     id(i),
     name(n),
@@ -21,7 +24,9 @@ namespace View{
     variance(v),
     simulate_button(simu),
     edit_button(edit),
-    clear_button(clear)
+    clear_button(clear),
+    chart(c),
+    view_chart(vc)
     {}
 
     const Sensor::AbstractSensor* GraphLookup::getSensor() const{

@@ -68,31 +68,15 @@ namespace View::SensorRenderer {
         third->setLayout(third_column);
 
 
-        QLineSeries *series = new QLineSeries();
-        series->append(0, 6);
-        series->append(1, 4);
-        series->append(2, 8);
-        series->append(3, 4);
-        series->append(4, 5);
+        chart = new QChart();
 
-        QLineSeries *series_1 = new QLineSeries();
-        *series_1 << QPointF(0, 1) << QPointF(1, 3) << QPointF(2, 6) << QPointF(3, 3) << QPointF(4, 2);
-
-
-        QChart *chart = new QChart();
-        chart->legend()->hide();
-        chart->addSeries(series);
-        chart->addSeries(series_1);
-        chart->createDefaultAxes();
-        chart->setTitle("Simple line chart example");
-
-        QChartView *chartView = new QChartView(chart);
-        chartView->setRenderHint(QPainter::Antialiasing);
+        view_chart = new QChartView(chart);
+        view_chart->setRenderHint(QPainter::Antialiasing);
 
         grid->addWidget(first, 0, 0);
         grid->addWidget(second, 0, 1);
         grid->addWidget(third, 0, 2);
-        grid->addWidget(chartView, 1, 0, 1, 3);
+        grid->addWidget(view_chart, 1, 0, 1, 3);
 
         widget->setLayout(grid);
     }
@@ -127,6 +111,13 @@ namespace View::SensorRenderer {
     QPushButton* Full::getClearButton() const {
         return clear_button;
     }
+    QChart* Full::getChart() const{
+        return chart;
+    }
+    QChartView* Full::getChartView() const{
+        return view_chart;
+    }
+
 
 
 }

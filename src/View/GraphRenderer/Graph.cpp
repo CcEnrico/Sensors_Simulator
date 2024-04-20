@@ -2,12 +2,10 @@
 
 namespace View::GraphRenderer {
 
-    void Graph::render(QGridLayout* grid , const Sensor::AbstractSensor* sensor, GraphLookup* lookup) {
-
-        if (full.getWidget() != nullptr) delete full.getWidget();
+    void Graph::render(QGridLayout* grid , const Sensor::AbstractSensor* sensor, GraphLookup*& lookup) {
 
         sensor->accept(full);
-        GraphLookup* item = new GraphLookup(
+        lookup = new GraphLookup(
                 sensor,
                 full.getWidget(),
                 full.getId(),
@@ -16,9 +14,10 @@ namespace View::GraphRenderer {
                 full.getVariance(),
                 full.getSimulateButton(),
                 full.getEditButton(),
-                full.getClearButton()
+                full.getClearButton(),
+                full.getChart(),
+                full.getChartView()
                 );
-        lookup = item;
         QWidget* widget = full.getWidget();
         grid->addWidget(widget, 0, 0);
 

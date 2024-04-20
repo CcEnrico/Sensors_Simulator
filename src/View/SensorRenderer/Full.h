@@ -3,6 +3,7 @@
 
 
 #include <QLabel>
+#include <QChartView>
 #include "ListSensor.h"
 #include "SSensorFullRenderer.h"
 
@@ -19,6 +20,8 @@ class Full: public Sensor::SConstVisitor {
     QPushButton* simulate_button;
     QPushButton* edit_button;
     QPushButton* clear_button;
+    QChart* chart;
+    QChartView* view_chart;
 
   public:
     Full();
@@ -33,6 +36,8 @@ class Full: public Sensor::SConstVisitor {
     virtual QPushButton* getSimulateButton() const;
     virtual QPushButton* getEditButton() const;
     virtual QPushButton* getClearButton() const;
+    virtual QChart* getChart() const;
+    virtual QChartView* getChartView() const;
 };
 
 }

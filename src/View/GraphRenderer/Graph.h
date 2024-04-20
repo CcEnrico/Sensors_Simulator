@@ -16,7 +16,7 @@ namespace View::GraphRenderer{
 
     public:
 
-        void render(QGridLayout* grid, const Sensor::AbstractSensor* sensor, GraphLookup* lookup) override;
+        void render(QGridLayout* grid, const Sensor::AbstractSensor* sensor, GraphLookup*& lookup) override;
 
 
     };

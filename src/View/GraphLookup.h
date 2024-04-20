@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QLabel>
+#include <QChart>
+#include <QChartView>
 
 #include "../Sensor/AbstractSensor.h"
 
@@ -21,6 +23,8 @@ namespace View {
         QPushButton* simulate_button;
         QPushButton* edit_button;
         QPushButton* clear_button;
+        QChart* chart;
+        QChartView* view_chart;
 
     public:
         GraphLookup(
@@ -32,8 +36,11 @@ namespace View {
                 QLabel* variance,
                 QPushButton* simulate_button,
                 QPushButton* edit_button,
-                QPushButton* clear_button
+                QPushButton* clear_button,
+                QChart* chart,
+                QChartView* view_chart
         );
+
         const Sensor::AbstractSensor* getSensor() const;
         QWidget* getWidget() const;
         GraphLookup& setWidget(QWidget* w);

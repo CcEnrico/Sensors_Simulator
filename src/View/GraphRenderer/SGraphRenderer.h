@@ -11,7 +11,7 @@ namespace View::GraphRenderer {
 
     public:
         virtual ~SGraphRenderer() = default;
-        virtual void render(QGridLayout* grid, const Sensor::AbstractSensor* sensor, GraphLookup* lookup) = 0;
+        virtual void render(QGridLayout* grid, const Sensor::AbstractSensor* sensor, GraphLookup*& lookup) = 0;
 
     };
 
