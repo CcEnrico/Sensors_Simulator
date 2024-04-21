@@ -1,5 +1,6 @@
 #include "SensorWidget.h"
 #include "GraphRenderer/Graph.h"
+#include "GraphRenderer/StandardSimulator.h"
 
 
 namespace View{
@@ -11,6 +12,8 @@ namespace View{
         renderer = new GraphRenderer::Graph();
 
         layout = new QGridLayout(this);
+
+        simulator = new GraphRenderer::StandardSimulator();
         
         // QVBoxLayout* vbox = new QVBoxLayout(this);
 
@@ -45,6 +48,17 @@ namespace View{
 
        renderer->render(layout , sensor, lookup);
 
+        if (lookup->getSimulateButton()){
+            QPushButton* button = lookup->getSimulateButton();
+            connect(button, &QPushButton::clicked, this, &SensorWidget::simulate );
+        }
+
+    }
+
+    void SensorWidget::simulate() {
+
+        Sensor::AbstractSensor* sensor = lookup->getSensor();
+        simulator->simulate(sensor, lookup);
 
 
     }

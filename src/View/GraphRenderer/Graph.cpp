@@ -6,7 +6,7 @@ namespace View::GraphRenderer {
 
         sensor->accept(full);
         lookup = new GraphLookup(
-                sensor,
+                const_cast<Sensor::AbstractSensor*>(sensor),
                 full.getWidget(),
                 full.getId(),
                 full.getName(),
@@ -16,6 +16,8 @@ namespace View::GraphRenderer {
                 full.getEditButton(),
                 full.getClearButton(),
                 full.getChart(),
+                full.getXAxis(),
+                full.getYAxis(),
                 full.getChartView()
                 );
         QWidget* widget = full.getWidget();

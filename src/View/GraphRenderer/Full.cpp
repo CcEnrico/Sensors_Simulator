@@ -1,25 +1,24 @@
 #include "Full.h"
 
-#include <QLabel>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QPixmap>
-#include <QPushButton>
-#include <QGroupBox>
+#include "QtWidgets/QLabel"
+#include "QtWidgets/QVBoxLayout"
+#include "QtWidgets/QHBoxLayout"
+#include "QtGui/QPixmap"
+#include "QtWidgets/QPushButton"
+#include "QtWidgets/QGroupBox"
 
-#include <QChart>
-#include <QChartView>
-#include <QLineSeries>
+#include "QtCharts/QChart"
+#include "QtCharts/QChartView"
+#include "QtCharts/QLineSeries"
 
-#include "../../Sensor/Airqualitysensor.h"
-#include "../../Sensor/Humiditysensor.h"
-#include "../../Sensor/TemperatureSensor.h"
+#include "Sensor/Airqualitysensor.h"
+#include "Sensor/Humiditysensor.h"
+#include "Sensor/TemperatureSensor.h"
 
 
-namespace View::SensorRenderer {
+namespace View::GraphRenderer {
 
     Full::Full(){
-
     }
 
     void Full::visit(const Sensor::AirQualitySensor& air_quality){
@@ -70,8 +69,17 @@ namespace View::SensorRenderer {
 
         chart = new QChart();
 
+        axisX = new QValueAxis();
+        axisX->setTitleText("Data Num");
+        axisX->setRange(0, 100);
+        chart->addAxis(axisX, Qt::AlignBottom);
+        axisY = new QValueAxis();
+        axisY->setRange(0, 100);
+        chart->addAxis(axisY, Qt::AlignLeft);
+
         view_chart = new QChartView(chart);
         view_chart->setRenderHint(QPainter::Antialiasing);
+
 
         grid->addWidget(first, 0, 0);
         grid->addWidget(second, 0, 1);
@@ -113,6 +121,12 @@ namespace View::SensorRenderer {
     }
     QChart* Full::getChart() const{
         return chart;
+    }
+    QValueAxis* Full::getXAxis(){
+        return axisX;
+    }
+    QValueAxis* Full::getYAxis(){
+        return axisY;
     }
     QChartView* Full::getChartView() const{
         return view_chart;

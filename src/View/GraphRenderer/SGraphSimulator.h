@@ -9,7 +9,7 @@ namespace View::GraphRenderer{
     class SGraphSimulator  {
     public:
         virtual ~SGraphSimulator() = default;
-        virtual void simulate(const Sensor::AbstractSensor* sensor, GraphLookup* lookup) = 0;
+        virtual void simulate(Sensor::AbstractSensor* sensor, GraphLookup*& lookup) = 0;
     };
 
 }
