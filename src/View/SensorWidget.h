@@ -26,9 +26,11 @@ namespace View{
         explicit SensorWidget(QWidget* parent = nullptr);
 
         void show(const Sensor::AbstractSensor* sensor);
+        void clearChart();
 
     public slots:
         void simulate();
+        void clear();
     };
 }
 

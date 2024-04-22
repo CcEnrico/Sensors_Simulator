@@ -52,15 +52,36 @@ namespace View{
             QPushButton* button = lookup->getSimulateButton();
             connect(button, &QPushButton::clicked, this, &SensorWidget::simulate );
         }
+        if (lookup->getClearButton()){
+            QPushButton* button = lookup->getClearButton();
+            connect(button, &QPushButton::clicked, this, &SensorWidget::clear );
+        }
+
 
     }
 
+    void SensorWidget::clearChart() {
+        QChart* chart = lookup->getChart();
+
+        QList<QAbstractSeries*> seriesList = chart->series();
+        for (auto series : seriesList) {
+            chart->removeSeries(series);
+            delete series;
+        }
+        chart->legend()->markers().clear();
+    }
+
     void SensorWidget::simulate() {
+        clearChart();
 
         Sensor::AbstractSensor* sensor = lookup->getSensor();
         simulator->simulate(sensor, lookup);
 
 
+    }
+
+    void SensorWidget::clear(){
+        clearChart();
     }
 
 }

@@ -119,6 +119,13 @@ std::vector<double> AirQualitySensor::getAQDataN02()const{
     }
     return n02_data;
 }
+std::vector<double> AirQualitySensor::getAQDataIAQ()const{
+    std::vector<double> IAQ_data;
+    for (const auto & it : airQualityData) {
+        IAQ_data.push_back( it.getIndexAQ() );
+    }
+    return IAQ_data;
+}
 
 void AirQualitySensor::simulate(){
 
@@ -153,12 +160,12 @@ void AirQualitySensor::modify(){
 
 }
 
-const EnviromentalConditions::AirQuality optimal = EnviromentalConditions::AirQuality(0.0);
-const EnviromentalConditions::AirQuality good = EnviromentalConditions::AirQuality(50.0);
-const EnviromentalConditions::AirQuality acceptable = EnviromentalConditions::AirQuality(70.0);
-const EnviromentalConditions::AirQuality mediocre = EnviromentalConditions::AirQuality(100.0);
-const EnviromentalConditions::AirQuality poor = EnviromentalConditions::AirQuality(150.0);
-const EnviromentalConditions::AirQuality veryBad = EnviromentalConditions::AirQuality(200.0);
+const EnviromentalConditions::AirQuality AirQualitySensor::optimal = EnviromentalConditions::AirQuality(0.0);
+const EnviromentalConditions::AirQuality AirQualitySensor::good = EnviromentalConditions::AirQuality(50.0);
+const EnviromentalConditions::AirQuality AirQualitySensor::acceptable = EnviromentalConditions::AirQuality(70.0);
+const EnviromentalConditions::AirQuality AirQualitySensor::mediocre = EnviromentalConditions::AirQuality(100.0);
+const EnviromentalConditions::AirQuality AirQualitySensor::poor = EnviromentalConditions::AirQuality(150.0);
+const EnviromentalConditions::AirQuality AirQualitySensor::veryBad = EnviromentalConditions::AirQuality(200.0);
 
 
 }
