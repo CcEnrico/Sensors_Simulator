@@ -25,6 +25,7 @@ TemperatureEditor::TemperatureEditor(QWidget* parent)
     min->setObjectName("Min");
     min->setSuffix("°C");
     min->setMinimum(-273.15);
+    min->setValue(-10.0);
     min->setMaximum(std::numeric_limits<double>::max());
     form->addRow("Min ", min);
 
@@ -32,6 +33,7 @@ TemperatureEditor::TemperatureEditor(QWidget* parent)
     max->setObjectName("Max");
     max->setSuffix("°C");
     min->setMinimum(-273.15);
+    max->setValue(10.0);
     max->setMaximum(std::numeric_limits<double>::max());
     form->addRow("Max ", max);
 
@@ -46,6 +48,7 @@ TemperatureEditor::TemperatureEditor(QWidget* parent)
     stdDeviation->setObjectName("Standard Deviation");
     stdDeviation->setSuffix("°C");
     stdDeviation->setMinimum(-273.15);
+    stdDeviation->setValue(0.5);
     stdDeviation->setMaximum(std::numeric_limits<double>::max());
     form->addRow("Standard Deviation ", stdDeviation);
 

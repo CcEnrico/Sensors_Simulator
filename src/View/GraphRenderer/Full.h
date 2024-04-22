@@ -41,6 +41,7 @@ class Full: public Sensor::SConstVisitor {
     QValueAxis* getXAxis();
     QValueAxis* getYAxis();
     virtual QChartView* getChartView() const;
+
 };
 
 }

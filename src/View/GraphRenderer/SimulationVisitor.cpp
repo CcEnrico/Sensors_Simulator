@@ -8,6 +8,8 @@
 #include <iostream>
 #include <vector>
 #include <QLineSeries>
+#include <QBarSet>
+#include <QStackedBarSeries>
 
 
 
@@ -177,12 +179,97 @@ namespace View::GraphRenderer{
 
         chart->legend()->setVisible(true);
         chart->legend()->setAlignment(Qt::AlignRight);
+        chart->setAnimationOptions(QChart::SeriesAnimations);
 
     }
     void SimulationVisitor::visit(Sensor::HumiditySensor& humidity) {
 
     }
     void SimulationVisitor::visit(Sensor::TemperatureSensor& temperature) {
+
+
+        temperature.clear();
+        temperature.simulate();
+
+        std::vector<double> min_data = temperature.getTempDataMinCelsius();
+        std::vector<double> max_data = temperature.getTempDataMaxCelsius();
+        std::vector<double> mean_data = temperature.getTempDataMeanCelsius();
+        double max = 0;
+        double min = 0;
+
+        if (temperature.getDataNum() < 200){
+
+            auto low = new QBarSet("Min");
+            auto high = new QBarSet("Max");
+
+            for (auto it = min_data.begin(); it != min_data.end(); ++it) {
+                *low << *it;
+                if ( min > *it ) min = *it;
+            }
+
+            for (auto it = max_data.begin(); it != max_data.end(); ++it) {
+                *high << *it;
+                if ( max < *it ) max = *it;
+            }
+
+            auto series = new QStackedBarSeries;
+            series->append(low);
+            series->append(high);
+
+            chart->addSeries(series);
+            series->attachAxis(axisX);
+            series->attachAxis(axisY);
+        }else{
+            QLineSeries* series_min = new QLineSeries();
+            unsigned int i = 0;
+            for (auto it = min_data.begin(); it != min_data.end(); ++it) {
+                series_min->append(i, *it);
+                if ( min > *it ) min = *it;
+                i++;
+            }
+            QLineSeries* series_max = new QLineSeries();
+            unsigned int j = 0;
+            for (auto it = max_data.begin(); it != max_data.end(); ++it) {
+                series_max->append(j, *it);
+                if ( max < *it ) max = *it;
+                j++;
+            }
+            chart->addSeries(series_min);
+            chart->addSeries(series_max);
+
+            series_min->attachAxis(axisX);
+            series_min->attachAxis(axisY);
+            series_max->attachAxis(axisX);
+            series_max->attachAxis(axisY);
+
+            series_min->setName("Min");
+            series_max->setName("Max");
+        }
+
+        QLineSeries* series_mean = new QLineSeries();
+        unsigned int k = 0;
+        for (auto it = mean_data.begin(); it != mean_data.end(); ++it) {
+            series_mean->append(k, *it);
+            k++;
+        }
+
+        chart->addSeries(series_mean);
+
+
+        series_mean->attachAxis(axisX);
+        series_mean->attachAxis(axisY);
+        series_mean->setName("Mean");
+
+        axisX->setRange(0, k);
+        axisY->setRange(min, max);
+
+//        display e stili:
+
+        axisY->setTitleText("Temperature C°");
+
+        chart->legend()->setVisible(true);
+        chart->legend()->setAlignment(Qt::AlignRight);
+        chart->setAnimationOptions(QChart::SeriesAnimations);
 
     }
 

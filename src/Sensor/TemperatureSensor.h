@@ -14,7 +14,9 @@ class TemperatureSensor: public AbstractSensor{
     EnviromentalConditions::Temperature initial;
     EnviromentalConditions::Temperature stdDeviation;
     EnviromentalConditions::Temperature target;
-    std::vector<EnviromentalConditions::Temperature> temperatures;
+    std::vector<EnviromentalConditions::Temperature> mean_temperatures;
+    std::vector<EnviromentalConditions::Temperature> min_temperatures;
+    std::vector<EnviromentalConditions::Temperature> max_temperatures;
 
 public:
 
@@ -46,6 +48,10 @@ public:
 
     virtual void accept(SConstVisitor& visitor)const final;
     virtual void accept(SVisitor& visitor) final;
+
+    std::vector<double> getTempDataMinCelsius()const;
+    std::vector<double> getTempDataMaxCelsius()const;
+    std::vector<double> getTempDataMeanCelsius()const;
 
     virtual void simulate() override;
     virtual void clear() override;
