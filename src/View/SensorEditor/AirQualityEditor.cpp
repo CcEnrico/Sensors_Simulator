@@ -31,12 +31,14 @@ AirQualityEditor::AirQualityEditor(QWidget* parent)
     stdDeviation_pm10->setObjectName("Standard Deviation Pm10");
     stdDeviation_pm10->setMinimum(0);
     stdDeviation_pm10->setMaximum(std::numeric_limits<double>::max());
+    stdDeviation_pm10->setValue(5.0);
     form->addRow("Standard Deviation Pm10 micro_g/m3 ", stdDeviation_pm10);
 
     stdDeviation_n02 = new QDoubleSpinBox();
     stdDeviation_n02->setObjectName("Standard Deviation NO2");
     stdDeviation_n02->setMinimum(0);
     stdDeviation_n02->setMaximum(std::numeric_limits<double>::max());
+    stdDeviation_n02->setValue(5.0);
     form->addRow("Standard Deviation NO2 micro_g/m3 ", stdDeviation_n02);
 
     target_pm10 = new QDoubleSpinBox();

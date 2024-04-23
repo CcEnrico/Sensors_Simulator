@@ -8,6 +8,7 @@
 
 #include "GraphLookup.h"
 #include "GraphRenderer/SGraphRenderer.h"
+#include "GraphRenderer/SGraphSimulator.h"
 
 namespace View{
 
@@ -19,12 +20,18 @@ namespace View{
         GraphLookup* lookup;
         QGridLayout* layout;
         GraphRenderer::SGraphRenderer* renderer;
+        GraphRenderer::SGraphSimulator* simulator;
 
     public:
         explicit SensorWidget(QWidget* parent = nullptr);
 
         void show(const Sensor::AbstractSensor* sensor);
+        void clearChart();
 
+    public slots:
+        void simulate();
+        void clear();
+        void edit();
     };
 }
 

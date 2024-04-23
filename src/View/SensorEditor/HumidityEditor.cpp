@@ -23,13 +23,15 @@ HumidityEditor::HumidityEditor(QWidget* parent)
     stdDeviation->setObjectName("Standard Deviation Humidity");
     stdDeviation->setSuffix("%");
     stdDeviation->setRange(0, 100);
+    stdDeviation->setValue(1.0);
     form->addRow("Standard Deviation Humidity ", stdDeviation);
 
-    target = new QDoubleSpinBox();
-    target->setObjectName("Target Humidity");
-    target->setSuffix("%");
-    target->setRange(0, 100);
-    form->addRow("Target Humidity ", target);   
+    rain_probability = new QDoubleSpinBox();
+    rain_probability->setObjectName("Rain Probability");
+    rain_probability->setSuffix("%");
+    rain_probability->setRange(0, 100);
+    rain_probability->setValue(1.0);
+    form->addRow("Rain Probability ", rain_probability);
  
 }
 
@@ -48,14 +50,14 @@ Sensor::AbstractSensor* HumidityEditor::create(
         v,
         Sensor::EnviromentalConditions::Humidity(initial->value()),
         Sensor::EnviromentalConditions::Humidity(stdDeviation->value()),
-        Sensor::EnviromentalConditions::Humidity(target->value())
+        rain_probability->value()
     );
 }
 
 void HumidityEditor::setValues(const Sensor::HumiditySensor& humidity_sensor){
     initial->setValue(double(humidity_sensor.getHumInitial()));
     stdDeviation->setValue(double(humidity_sensor.getHumStdDeviation()));
-    target->setValue(double(humidity_sensor.getHumTarget()));
+    rain_probability->setValue(humidity_sensor.getRainProbability());
 }
 
 }

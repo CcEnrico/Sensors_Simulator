@@ -60,7 +60,8 @@ EditWidget::EditWidget(
 
     dataNum_input = new QSpinBox();
     dataNum_input->setObjectName("Data Number Input");
-    dataNum_input->setRange(1, 1000);
+    dataNum_input->setRange(1, 10000);
+    dataNum_input->setValue(100);
 
     if(sensor != nullptr){
         dataNum_input->setValue(sensor->getDataNum());

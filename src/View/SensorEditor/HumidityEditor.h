@@ -13,7 +13,7 @@ class HumidityEditor: public AbstractSensorEditor {
   private:
     QDoubleSpinBox* initial;
     QDoubleSpinBox* stdDeviation;
-    QDoubleSpinBox* target;
+    QDoubleSpinBox* rain_probability;
 
   public:
     explicit HumidityEditor(QWidget* parent = 0);

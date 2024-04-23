@@ -35,10 +35,12 @@ SOURCES += \
     View/SensorEditor/HumidityEditor.cpp \
     View/SensorEditor/TemperatureEditor.cpp \
     View/SensorEditor/SensorInjector.cpp \
-    View/SensorRenderer/Full.cpp \
     View/SensorRenderer/ListSensor.cpp \
     View/ListRenderer/List.cpp \
-    View/GraphRenderer/Graph.cpp
+    View/GraphRenderer/StandardSimulator.cpp \
+    View/GraphRenderer/SimulationVisitor.cpp \
+    View/GraphRenderer/Graph.cpp \
+    View/GraphRenderer/Full.cpp
 
 HEADERS += \
     Engine/SensorList.h \
@@ -68,13 +70,15 @@ HEADERS += \
     View/SensorEditor/SensorInjector.h \
     View/SensorEditor/TemperatureEditor.h \
     View/SensorRenderer/SSensorRenderer.h \
-    View/SensorRenderer/SSensorFullRenderer.h \
-    View/SensorRenderer/Full.h \
     View/SensorRenderer/ListSensor.h \
     View/ListRenderer/SRendererStrategy.h \
     View/ListRenderer/List.h \
     View/GraphRenderer/SGraphRenderer.h \
-    View/GraphRenderer/Graph.h
+    View/GraphRenderer/SGraphSimulator.h \
+    View/GraphRenderer/StandardSimulator.h \
+    View/GraphRenderer/SimulationVisitor.h \
+    View/GraphRenderer/Graph.h \
+    View/GraphRenderer/Full.h
 
 RESOURCES += \
     resources.qrc

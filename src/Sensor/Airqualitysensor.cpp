@@ -105,22 +105,67 @@ void AirQualitySensor::accept(SVisitor &visitor){
     visitor.visit(*this);
 }
 
+std::vector<double> AirQualitySensor::getAQDataPm10()const{
+    std::vector<double> pm10_data;
+    for (const auto & it : airQualityData){
+        pm10_data.push_back( it.getPm10() );
+    }
+    return pm10_data;
+}
+std::vector<double> AirQualitySensor::getAQDataN02()const{
+    std::vector<double> n02_data;
+    for (const auto & it : airQualityData) {
+        n02_data.push_back( it.getNO2() );
+    }
+    return n02_data;
+}
+std::vector<double> AirQualitySensor::getAQDataIAQ()const{
+    std::vector<double> IAQ_data;
+    for (const auto & it : airQualityData) {
+        IAQ_data.push_back( it.getIndexAQ() );
+    }
+    return IAQ_data;
+}
+
 void AirQualitySensor::simulate(){
 
-}
-void AirQualitySensor::clear(){
+    airQualityData.push_back(initial);
 
+    double current_pm10 = initial.getPm10();
+    double current_n02 = initial.getNO2();
+
+    std::random_device rand;
+    std::mt19937 gen(rand());
+    std::normal_distribution<> distribution_pm10(0.0, stdDeviation.getPm10());
+    std::normal_distribution<> distribution_n02(0.0, stdDeviation.getNO2());
+
+    for (unsigned int i = 0; i < dataNum; ++i) {
+
+        current_pm10 += distribution_pm10(gen);
+        current_n02 += distribution_n02(gen);;
+
+        current_pm10 = std::max(0.0, current_pm10);
+        current_n02 = std::max(0.0, current_n02);
+
+        // e' un push back senza necessita' di costruire un oggetto temporaneo anonimo
+        airQualityData.emplace_back(current_pm10, current_n02);
+
+    }
+}
+
+void AirQualitySensor::clear(){
+    airQualityData.clear();
 }
 void AirQualitySensor::modify(){
 
 }
 
-const EnviromentalConditions::AirQuality optimal = EnviromentalConditions::AirQuality(0.0);
-const EnviromentalConditions::AirQuality good = EnviromentalConditions::AirQuality(50.0);
-const EnviromentalConditions::AirQuality acceptable = EnviromentalConditions::AirQuality(70.0);
-const EnviromentalConditions::AirQuality mediocre = EnviromentalConditions::AirQuality(100.0);
-const EnviromentalConditions::AirQuality poor = EnviromentalConditions::AirQuality(150.0);
-const EnviromentalConditions::AirQuality veryBad = EnviromentalConditions::AirQuality(200.0);
+const EnviromentalConditions::AirQuality AirQualitySensor::optimal = EnviromentalConditions::AirQuality(0.0);
+const EnviromentalConditions::AirQuality AirQualitySensor::good = EnviromentalConditions::AirQuality(50.0);
+const EnviromentalConditions::AirQuality AirQualitySensor::acceptable = EnviromentalConditions::AirQuality(70.0);
+const EnviromentalConditions::AirQuality AirQualitySensor::mediocre = EnviromentalConditions::AirQuality(100.0);
+const EnviromentalConditions::AirQuality AirQualitySensor::poor = EnviromentalConditions::AirQuality(150.0);
+const EnviromentalConditions::AirQuality AirQualitySensor::veryBad = EnviromentalConditions::AirQuality(200.0);
 
 
 }

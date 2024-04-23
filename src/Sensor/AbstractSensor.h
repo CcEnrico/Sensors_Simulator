@@ -3,6 +3,7 @@
 
 #include<string>
 #include<iostream>
+#include <random>
 
 #include "SConstVisitor.h"
 #include "SVisitor.h"
@@ -13,8 +14,9 @@ class AbstractSensor{
     private:
     unsigned int identifier;
     std::string name;
-    unsigned int dataNum;
     double variance;
+protected:
+    unsigned int dataNum;
 
 public:
     AbstractSensor(unsigned int id,

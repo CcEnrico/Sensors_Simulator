@@ -9,6 +9,7 @@ namespace Sensor{
 
 class AirQualitySensor: public AbstractSensor
 {
+public:
     static const EnviromentalConditions::AirQuality optimal;
     static const EnviromentalConditions::AirQuality good;
     static const EnviromentalConditions::AirQuality acceptable;
@@ -16,6 +17,7 @@ class AirQualitySensor: public AbstractSensor
     static const EnviromentalConditions::AirQuality poor;
     static const EnviromentalConditions::AirQuality veryBad;
 
+private:
     EnviromentalConditions::AirQuality initial;
     EnviromentalConditions::AirQuality stdDeviation;
     EnviromentalConditions::AirQuality target;
@@ -55,11 +57,16 @@ public:
     virtual void accept(SConstVisitor& visitor)const final;
     virtual void accept(SVisitor& visitor) final;
 
+    std::vector<double> getAQDataPm10()const;
+    std::vector<double> getAQDataN02()const;
+    std::vector<double> getAQDataIAQ()const;
+
     virtual void simulate() override;
     virtual void clear() override;
     virtual void modify() override;
 
 };
+
 
 }
 

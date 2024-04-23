@@ -4,6 +4,9 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QLabel>
+#include <QChart>
+#include <QChartView>
+#include <QValueAxis>
 
 #include "../Sensor/AbstractSensor.h"
 
@@ -11,7 +14,7 @@ namespace View {
 
     class GraphLookup {
     private:
-        const Sensor::AbstractSensor* sensor;
+        Sensor::AbstractSensor* sensor;
         QWidget* widget;
 
         QLabel* id;
@@ -21,10 +24,14 @@ namespace View {
         QPushButton* simulate_button;
         QPushButton* edit_button;
         QPushButton* clear_button;
+        QChart* chart;
+        QValueAxis* axisX;
+        QValueAxis* axisY;
+        QChartView* view_chart;
 
     public:
         GraphLookup(
-                const Sensor::AbstractSensor* sensor,
+                Sensor::AbstractSensor* sensor,
                 QWidget* widget,
                 QLabel* id,
                 QLabel* name,
@@ -32,9 +39,15 @@ namespace View {
                 QLabel* variance,
                 QPushButton* simulate_button,
                 QPushButton* edit_button,
-                QPushButton* clear_button
+                QPushButton* clear_button,
+                QChart* chart,
+                QValueAxis* axisX,
+                QValueAxis* axisY,
+                QChartView* view_chart
         );
-        const Sensor::AbstractSensor* getSensor() const;
+
+        Sensor::AbstractSensor* getSensor() const;
+        GraphLookup& setSensor(QWidget* w);
         QWidget* getWidget() const;
         GraphLookup& setWidget(QWidget* w);
         QLabel* getId()const;
@@ -44,6 +57,10 @@ namespace View {
         QPushButton* getSimulateButton() const;
         QPushButton* getEditButton() const;
         QPushButton* getClearButton() const;
+        QChart* getChart() const;
+        QValueAxis* getXAxis();
+        QValueAxis* getYAxis();
+        QChartView* getChartView() const;
     };
 
 }

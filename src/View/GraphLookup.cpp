@@ -4,7 +4,7 @@
 #include <QPushButton>
 
 namespace View{
-    GraphLookup::GraphLookup(const Sensor::AbstractSensor* s,
+    GraphLookup::GraphLookup(Sensor::AbstractSensor* s,
             QWidget* w,
             QLabel* i,
             QLabel* n,
@@ -12,8 +12,14 @@ namespace View{
             QLabel* v,
             QPushButton* simu,
             QPushButton* edit,
-            QPushButton* clear
-    ):sensor(s),
+            QPushButton* clear,
+            QChart* c,
+            QValueAxis* x,
+            QValueAxis* y,
+            QChartView* vc
+
+    )
+    :sensor(s),
     widget(w),
     id(i),
     name(n),
@@ -21,10 +27,14 @@ namespace View{
     variance(v),
     simulate_button(simu),
     edit_button(edit),
-    clear_button(clear)
+    clear_button(clear),
+    chart(c),
+    axisX(x),
+    axisY(y),
+    view_chart(vc)
     {}
 
-    const Sensor::AbstractSensor* GraphLookup::getSensor() const{
+    Sensor::AbstractSensor* GraphLookup::getSensor() const{
         return sensor;
     }
     QWidget* GraphLookup::getWidget() const{
@@ -56,6 +66,18 @@ namespace View{
     }
     QPushButton* GraphLookup::getClearButton() const{
         return clear_button;
+    }
+    QChart* GraphLookup::getChart() const{
+        return chart;
+    }
+    QValueAxis* GraphLookup::getXAxis(){
+        return axisX;
+    }
+    QValueAxis* GraphLookup::getYAxis(){
+        return axisY;
+    }
+    QChartView* GraphLookup::getChartView() const{
+        return view_chart;
     }
 
 }

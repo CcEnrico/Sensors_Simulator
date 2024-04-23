@@ -6,7 +6,7 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    app.setWindowIcon(QIcon("Assets/icon.svg"));
+    app.setWindowIcon(QIcon(":Assets/icons/icon.svg"));
 
     Engine::SensorList* memory = new Engine::SensorList();
 
