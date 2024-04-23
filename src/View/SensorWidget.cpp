@@ -17,6 +17,14 @@ namespace View{
 
     }
 
+    GraphLookup* SensorWidget::getLookup(){
+        return lookup;
+    }
+
+    bool SensorWidget::isEmpty() const{
+        return layout->isEmpty();
+    }
+
     void SensorWidget::show(const Sensor::AbstractSensor* sensor) {
 
         if (lookup != nullptr){
@@ -70,5 +78,9 @@ namespace View{
     void SensorWidget::edit(){
 
     }
+
+    void SensorWidget::hideSensorWidget(){
+        lookup->getWidget()->setVisible(false);
+    };
 
 }

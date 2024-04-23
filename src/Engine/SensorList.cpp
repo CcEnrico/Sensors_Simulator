@@ -13,12 +13,14 @@ namespace Engine{
         return *this;
     }
 
+    // deletes abstract item mem alloc
     SensorList& SensorList::remove(const Sensor::AbstractSensor *s) {
 
         for (auto it = sensors.begin(); it != sensors.end(); ++it) {
             if (*it == s){
-                delete *it;
                 sensors.erase(it);
+                delete *it;
+                return *this;
             }
         }
 
@@ -31,6 +33,14 @@ namespace Engine{
         }
         sensors.clear();
         return *this;
+    }
+
+    bool SensorList::find(const Sensor::AbstractSensor* sensor){
+        for (std::list<const Sensor::AbstractSensor*>::const_iterator it = sensors.begin(); it != sensors.end(); ++it) {
+            const Sensor::AbstractSensor* current = *it;
+            if (current->getIdentifier() == sensor->getIdentifier()) return true;
+        }
+        return false;
     }
 
     std::list<const Sensor::AbstractSensor*>& SensorList::getSensors() {

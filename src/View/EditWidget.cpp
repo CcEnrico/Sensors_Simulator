@@ -14,6 +14,7 @@
 #include <QPushButton>
 #include <QFileDialog>
 #include <QComboBox>
+#include <QMessageBox>
 
 
 namespace View {
@@ -159,12 +160,17 @@ void EditWidget::apply(){
     double v = variance_input->value();
     SensorEditor::AbstractSensorEditor* editor = editors[stacked_editor->currentIndex()];
     Sensor::AbstractSensor* sensor = editor->create(id, name, dn, v);
-
     Engine::SensorList* list = main_window->getList();
-    list->add(sensor);
-    main_window->finishEdit();
-    
-    delete this;
+
+
+    // se il sensore esiste già
+    if (list->find(sensor)){
+        QMessageBox::critical(this, "Error", "ID taken");
+    }else{
+        list->add(sensor);
+        main_window->finishEdit();
+        delete this;
+    }
 
     // inizialmente teniamo a runtime poi fare classe che legge e refresha un json
     // main_window->getRepository()->update(sensor);

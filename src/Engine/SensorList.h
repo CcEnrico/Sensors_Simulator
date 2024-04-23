@@ -15,6 +15,7 @@ namespace Engine{
         SensorList& add(const Sensor::AbstractSensor* sensor);
         SensorList& remove(const Sensor::AbstractSensor* sensor);
         SensorList& clear();
+        bool find(const Sensor::AbstractSensor* sensor);
 
         std::list<const Sensor::AbstractSensor*>& getSensors();
         std::list<const Sensor::AbstractSensor*>::const_iterator begin() const;

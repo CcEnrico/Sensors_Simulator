@@ -49,24 +49,34 @@ void SensorListWidget::showList(Engine::SensorList* list){
         it++
     ) {
         if (it->getViewButton()) {
-            QPushButton* button = it->getViewButton();
-            const Sensor::AbstractSensor* sensor = it->getSensor();
-            connect(button, &QPushButton::clicked, this, [=]() {
-                sensor_widget->show(sensor);
+            connect(it->getViewButton(), &QPushButton::clicked, this, [=]() {
+                sensor_widget->show(it->getSensor());
             });
         }
         if (it->getEditButton()) {
-            // connect(it->getEditButton(), &QPushButton::clicked, [this, it]() {
-            //     editItem(it->getItem());
-            // });
+             connect(it->getEditButton(), &QPushButton::clicked, [this, it]() {
+//                 editItem(it->getSensor());
+             });
         }
         if (it->getDeleteButton()) {
-            // connect(it->getDeleteButton(), &QPushButton::clicked, [this, it]() {
-            //     deleteItem(it->getItem());
-            // });
+             connect(it->getDeleteButton(), &QPushButton::clicked, [this, it, list]() {
+                 deleteSensor(it, list);
+             });
         }
     }
-
 }
+
+    void SensorListWidget::deleteSensor(QVector<WidgetLookup>::const_iterator it, Engine::SensorList* list ){
+        lookup.erase(it);
+        list->remove(it->getSensor());
+
+        delete it->getWidget();
+
+        // se il sensore che voglio cancellare è quello che è attualmente nel lookup del sensor widget
+        if (sensor_widget->getLookup()->getSensor()->getIdentifier() == it->getSensor()->getIdentifier() && !sensor_widget->isEmpty() ){
+            sensor_widget->hideSensorWidget();
+        }
+
+    }
 
 }

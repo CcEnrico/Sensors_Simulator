@@ -1318,6 +1318,8 @@ moc_mainwindow.cpp: View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		View/GraphRenderer/SGraphRenderer.h \
 		View/GraphRenderer/SGraphSimulator.h \
 		moc_predefs.h \
@@ -1537,6 +1539,8 @@ moc_EditWidget.cpp: View/EditWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qpainter.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		View/GraphRenderer/SGraphRenderer.h \
 		View/GraphRenderer/SGraphSimulator.h \
 		View/SensorEditor/AbstractSensorEditor.h \
@@ -1727,6 +1731,8 @@ moc_SensorWidget.cpp: View/SensorWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		Sensor/AbstractSensor.h \
 		Sensor/SConstVisitor.h \
 		Sensor/SVisitor.h \
@@ -2120,6 +2126,8 @@ main.o: main.cpp View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		View/GraphRenderer/SGraphRenderer.h \
 		View/GraphRenderer/SGraphSimulator.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QApplication \
@@ -2360,6 +2368,8 @@ mainwindow.o: View/mainwindow.cpp View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		View/GraphRenderer/SGraphRenderer.h \
 		View/GraphRenderer/SGraphSimulator.h \
 		View/EditWidget.h \
@@ -2590,6 +2600,8 @@ SensorListWidget.o: View/SensorListWidget.cpp View/SensorListWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		View/GraphRenderer/SGraphRenderer.h \
 		View/GraphRenderer/SGraphSimulator.h \
 		View/ListRenderer/List.h \
@@ -2814,6 +2826,8 @@ EditWidget.o: View/EditWidget.cpp View/EditWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qpainter.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		View/GraphRenderer/SGraphRenderer.h \
 		View/GraphRenderer/SGraphSimulator.h \
 		View/SensorEditor/AbstractSensorEditor.h \
@@ -3334,6 +3348,8 @@ SensorWidget.o: View/SensorWidget.cpp View/SensorWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		Sensor/AbstractSensor.h \
 		Sensor/SConstVisitor.h \
 		Sensor/SVisitor.h \
@@ -3348,7 +3364,9 @@ SensorWidget.o: View/SensorWidget.cpp View/SensorWidget.h \
 		View/ListRenderer/SRendererStrategy.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/QVector \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qvector.h \
-		Engine/SensorList.h
+		Engine/SensorList.h \
+		View/GraphRenderer/StandardSimulator.h \
+		View/GraphRenderer/SimulationVisitor.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SensorWidget.o View/SensorWidget.cpp
 
 GraphLookup.o: View/GraphLookup.cpp View/GraphLookup.h \
@@ -3527,6 +3545,8 @@ GraphLookup.o: View/GraphLookup.cpp View/GraphLookup.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		Sensor/AbstractSensor.h \
 		Sensor/SConstVisitor.h \
 		Sensor/SVisitor.h
@@ -4521,6 +4541,8 @@ ListSensor.o: View/SensorRenderer/ListSensor.cpp View/SensorRenderer/ListSensor.
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		View/GraphRenderer/SGraphRenderer.h \
 		View/GraphRenderer/SGraphSimulator.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGroupBox \
@@ -4730,6 +4752,8 @@ List.o: View/ListRenderer/List.cpp View/ListRenderer/List.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		View/GraphRenderer/SGraphRenderer.h \
 		View/GraphRenderer/SGraphSimulator.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o List.o View/ListRenderer/List.cpp
@@ -4915,11 +4939,20 @@ StandardSimulator.o: View/GraphRenderer/StandardSimulator.cpp View/GraphRenderer
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
-		View/GraphRenderer/SimulationVisitor.h
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
+		View/GraphRenderer/SimulationVisitor.h \
+		View/SensorWidget.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGridLayout \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qboxlayout.h \
+		View/GraphRenderer/SGraphRenderer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o StandardSimulator.o View/GraphRenderer/StandardSimulator.cpp
 
 SimulationVisitor.o: View/GraphRenderer/SimulationVisitor.cpp View/GraphRenderer/SimulationVisitor.h \
-		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QWidget \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qwidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -5094,7 +5127,31 @@ SimulationVisitor.o: View/GraphRenderer/SimulationVisitor.cpp View/GraphRenderer
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qtextoption.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
+		Sensor/Airqualitysensor.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/EnvironmentalConditions/Airquality.h \
+		Sensor/Humiditysensor.h \
+		Sensor/EnvironmentalConditions/Humidity.h \
+		Sensor/TemperatureSensor.h \
+		Sensor/EnvironmentalConditions/Temperature.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QLineSeries \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qlineseries.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QXYSeries \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qxyseries.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/QImage \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QBarSet \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qbarset.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QStackedBarSeries \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qstackedbarseries.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QStringList \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QAbstractBarSeries \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qabstractbarseries.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QLegendMarker \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qlegendmarker.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SimulationVisitor.o View/GraphRenderer/SimulationVisitor.cpp
 
 Graph.o: View/GraphRenderer/Graph.cpp View/GraphRenderer/Graph.h \
@@ -5278,6 +5335,8 @@ Graph.o: View/GraphRenderer/Graph.cpp View/GraphRenderer/Graph.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGridLayout \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlayout.h \
@@ -5490,6 +5549,8 @@ Full.o: View/GraphRenderer/Full.cpp View/GraphRenderer/Full.h \
 		Engine/SensorList.h \
 		View/SensorWidget.h \
 		View/GraphLookup.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
+		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		View/GraphRenderer/SGraphRenderer.h \
 		View/GraphRenderer/SGraphSimulator.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QVBoxLayout \
@@ -5497,6 +5558,21 @@ Full.o: View/GraphRenderer/Full.cpp View/GraphRenderer/Full.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/QPixmap \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGroupBox \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgroupbox.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QComboBox \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qcombobox.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qslider.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstyle.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/QLineSeries \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/qlineseries.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/QXYSeries \

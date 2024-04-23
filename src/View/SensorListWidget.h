@@ -25,6 +25,7 @@ public:
     explicit SensorListWidget( SensorWidget* s_w , QWidget* parent = nullptr);
 
     void showList(Engine::SensorList* list);
+    void deleteSensor(QVector<WidgetLookup>::const_iterator it, Engine::SensorList* list);
 
 };
 

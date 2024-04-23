@@ -25,13 +25,21 @@ namespace View{
     public:
         explicit SensorWidget(QWidget* parent = nullptr);
 
+        GraphLookup* getLookup();
+
+        bool isEmpty() const;
+
         void show(const Sensor::AbstractSensor* sensor);
+
+
         void clearChart();
+        void hideSensorWidget();
 
     public slots:
         void simulate();
         void clear();
         void edit();
+
     };
 }
 
