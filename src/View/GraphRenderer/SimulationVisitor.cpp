@@ -5,11 +5,11 @@
 #include "Sensor/TemperatureSensor.h"
 
 
-#include <iostream>
 #include <vector>
 #include <QLineSeries>
 #include <QBarSet>
 #include <QStackedBarSeries>
+#include <QLegendMarker>
 
 
 
@@ -183,6 +183,76 @@ namespace View::GraphRenderer{
 
     }
     void SimulationVisitor::visit(Sensor::HumiditySensor& humidity) {
+
+        humidity.clear();
+        humidity.simulate();
+
+        std::vector<double> hum_data = humidity.getHumData();
+        std::vector<unsigned int> rains = humidity.getWeatherRainy();
+        double max = Sensor::HumiditySensor::max.getRelativeHumidity();
+        double min = Sensor::HumiditySensor::min.getRelativeHumidity();
+
+        QLineSeries* series = new QLineSeries();
+        unsigned int i = 0;
+        for (auto it = hum_data.begin(); it != hum_data.end(); ++it) {
+            series->append(i, *it);
+            if ( min > *it ) min = *it;
+            i++;
+        }
+        chart->addSeries(series);
+        series->attachAxis(axisX);
+        series->attachAxis(axisY);
+
+        series->setName("Humidity %");
+
+        unsigned int j = 0;
+        for (auto it = rains.begin(); it != rains.end(); ++it) {
+            if (j % 2 == 0){ // inizio pioggia
+                QLineSeries* rain_start = new QLineSeries();
+                rain_start->append(*it, min);
+                rain_start->append(*it, max);
+                chart->addSeries(rain_start);
+
+                rain_start->attachAxis(axisX);
+                rain_start->attachAxis(axisY);
+
+                QPen rain_start_pen;
+                rain_start_pen.setColor(QColor(0, 0, 255));
+                rain_start_pen.setStyle(Qt::DashLine);
+                rain_start->setPen(rain_start_pen);
+
+                rain_start->setName("Rain start");
+            }else{  //fine pioggia
+                QLineSeries* rain_end = new QLineSeries();
+                rain_end->append(*it, min);
+                rain_end->append(*it, max);
+                chart->addSeries(rain_end);
+
+                rain_end->attachAxis(axisX);
+                rain_end->attachAxis(axisY);
+
+                QPen rain_end_pen;
+                rain_end_pen.setColor(QColor(0, 255, 0));
+                rain_end_pen.setStyle(Qt::DashLine);
+                rain_end->setPen(rain_end_pen);
+
+                rain_end->setName("Rain end");
+            }
+            j++;
+        }
+
+        axisX->setRange(0, i);
+        axisY->setRange(0, 100);
+
+        int count = 0;
+        for (QLegendMarker* marker : chart->legend()->markers()) {
+            marker->setVisible(count < 3);
+            count++;
+        }
+
+        chart->legend()->setVisible(true);
+        chart->legend()->setAlignment(Qt::AlignRight);
+        chart->setAnimationOptions(QChart::SeriesAnimations);
 
     }
     void SimulationVisitor::visit(Sensor::TemperatureSensor& temperature) {

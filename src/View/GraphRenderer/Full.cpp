@@ -110,9 +110,9 @@ namespace View::GraphRenderer {
 
         QWidget* second = new QWidget();
         QVBoxLayout* second_column = new QVBoxLayout();
-        QLabel* initial = new QLabel("Initial: " + QString::number(double(humidity.getHumInitial())));
-        QLabel* std_dev = new QLabel("Standard Deviation: " + QString::number(double(humidity.getHumStdDeviation())));
-        QLabel* target = new QLabel("Target: " + QString::number(double(humidity.getHumTarget())));
+        QLabel* initial = new QLabel("Initial: " + QString::number(double(humidity.getHumInitial())) + "%");
+        QLabel* std_dev = new QLabel("Standard Deviation: " + QString::number(double(humidity.getHumStdDeviation()))+ "%");
+        QLabel* target = new QLabel("Rain Probability: " + QString::number(double(humidity.getRainProbability()))+ "%");
         second_column->addWidget(initial);
         second_column->addWidget(std_dev);
         second_column->addWidget(target);
