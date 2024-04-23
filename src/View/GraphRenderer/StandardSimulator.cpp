@@ -9,6 +9,9 @@ namespace View::GraphRenderer{
         simulation_visitor.setYAxis(lookup->getYAxis());
         simulation_visitor.setChartView(lookup->getChartView());
 
+        sensor->clear();
+        sensor->simulate();
+
         sensor->accept(simulation_visitor);
 
     }

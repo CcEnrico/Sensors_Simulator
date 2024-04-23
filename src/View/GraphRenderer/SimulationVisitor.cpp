@@ -19,9 +19,6 @@ namespace View::GraphRenderer{
 
     void SimulationVisitor::visit(Sensor::AirQualitySensor& air_quality) {
 
-        air_quality.clear();
-        air_quality.simulate();
-
         std::vector<double> pm10_data = air_quality.getAQDataPm10();
         std::vector<double> n02_data = air_quality.getAQDataN02();
         std::vector<double> IAQ_data = air_quality.getAQDataIAQ();
@@ -114,10 +111,12 @@ namespace View::GraphRenderer{
         qreal maxX = 0;
         qreal maxY = 0;
         for (QAbstractSeries *series : chart->series()) {
-            QLineSeries *lineSeries = static_cast<QLineSeries*>(series);
-            for (QPointF point : lineSeries->points()) {
-                maxX = qMax(maxX, point.x());
-                maxY = qMax(maxY, point.y());
+            QLineSeries *lineSeries = dynamic_cast<QLineSeries*>(series);
+            if (lineSeries != nullptr){
+                for (QPointF point : lineSeries->points()) {
+                    maxX = qMax(maxX, point.x());
+                    maxY = qMax(maxY, point.y());
+                }
             }
         }
 
@@ -183,9 +182,6 @@ namespace View::GraphRenderer{
 
     }
     void SimulationVisitor::visit(Sensor::HumiditySensor& humidity) {
-
-        humidity.clear();
-        humidity.simulate();
 
         std::vector<double> hum_data = humidity.getHumData();
         std::vector<unsigned int> rains = humidity.getWeatherRainy();
@@ -256,10 +252,6 @@ namespace View::GraphRenderer{
 
     }
     void SimulationVisitor::visit(Sensor::TemperatureSensor& temperature) {
-
-
-        temperature.clear();
-        temperature.simulate();
 
         std::vector<double> min_data = temperature.getTempDataMinCelsius();
         std::vector<double> max_data = temperature.getTempDataMaxCelsius();

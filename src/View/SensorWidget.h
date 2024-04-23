@@ -31,6 +31,7 @@ namespace View{
     public slots:
         void simulate();
         void clear();
+        void edit();
     };
 }
 
