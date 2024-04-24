@@ -37,6 +37,9 @@ class EditWidget : public QWidget{
       const Sensor::AbstractSensor* s
     );
 
+signals:
+    void widgetClosed();
+
     
   public slots:
     void selectImage();

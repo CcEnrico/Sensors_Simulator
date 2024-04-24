@@ -147,6 +147,7 @@ EditWidget::EditWidget(
 
 }
 
+
 void EditWidget::selectImage(){}
 
 void EditWidget::showType(int index){
@@ -170,7 +171,6 @@ void EditWidget::apply(){
     }else{
         list->add(sensor);
         main_window->finishEdit();
-        delete this;
     }
 
     // inizialmente teniamo a runtime poi fare classe che legge e refresha un json

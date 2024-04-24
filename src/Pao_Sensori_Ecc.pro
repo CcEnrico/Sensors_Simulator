@@ -26,6 +26,7 @@ SOURCES += \
     View/SensorListWidget.cpp \
     View/SearchWidget.cpp \
     View/EditWidget.cpp \
+    View/EditWindow.cpp \
     View/TypeSelector.cpp \
     View/WidgetLookup.cpp \
     View/SensorWidget.cpp \
@@ -60,6 +61,7 @@ HEADERS += \
     View/SensorListWidget.h \
     View/SearchWidget.h \
     View/EditWidget.h \
+    View/EditWindow.h \
     View/TypeSelector.h \
     View/WidgetLookup.h \
     View/SensorWidget.h \

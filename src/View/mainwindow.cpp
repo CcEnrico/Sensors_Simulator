@@ -99,8 +99,13 @@ MainWindow::MainWindow( Engine::SensorList* mem, QWidget *parent )
 
     splitter->setSizes(QList<int>() << 1000 << 3000);
 
+    edit_window = new EditWindow();
+
     // connect
     connect(create_item, &QAction::triggered, this, &MainWindow::createItem);
+    connect(edit_window, &EditWindow::windowClosed, this, &MainWindow::finishEdit);
+
+
 
     showStatusBar("Ready.");
 }
@@ -115,8 +120,6 @@ void MainWindow::createItem()
 {
     create_item->setEnabled(false);
 
-
-    edit_window = new QMainWindow();
     EditWidget* edit = new EditWidget(this, nullptr);
 
     edit_window->setCentralWidget(edit);
@@ -128,6 +131,8 @@ void MainWindow::createItem()
 void MainWindow::finishEdit()
 {
     edit_window->close();
+    delete edit_window->centralWidget();
+
     create_item->setEnabled(true);
 
     sensor_list_widget->showList(sensor_list);

@@ -8,6 +8,7 @@
 #include "SearchWidget.h"
 #include "SensorListWidget.h"
 #include "SensorWidget.h"
+#include "EditWindow.h"
 
 
 
@@ -23,8 +24,10 @@ private:
     QToolBar* toolbar;
     Engine::SensorList* sensor_list;
     SensorWidget* sensor_widget;
-    QMainWindow* edit_window;
+    EditWindow* edit_window;
     SensorListWidget* sensor_list_widget;
+    QWidget* previousCentralWidget;
+
 
 
 public:
@@ -39,11 +42,12 @@ public:
     // aggiungi metodi
     
     void showStatusBar(const QString& m);
-    void finishEdit();
+
     
 
     public slots:
     void createItem();
+    void finishEdit();
 };
 
 }
