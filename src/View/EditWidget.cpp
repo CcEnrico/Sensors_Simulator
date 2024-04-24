@@ -45,7 +45,6 @@ EditWidget::EditWidget(
     id_input->setRange(0, 9999);
 
     if(sensor != nullptr){
-        std::cout << "sensor is not null" << std::endl;
         id_input->setValue(sensor->getIdentifier());
     }
     form->addRow("Identifier", id_input);
@@ -161,8 +160,14 @@ void EditWidget::apply(){
     int dn = dataNum_input->value();
     double v = variance_input->value();
     SensorEditor::AbstractSensorEditor* editor = editors[stacked_editor->currentIndex()];
-    Sensor::AbstractSensor* sensor = editor->create(id, name, dn, v);
+
     Engine::SensorList* list = main_window->getList();
+
+    // in caso io stia solo modificando un sensore preesistente
+    if (sensor != nullptr) {
+        list->remove(sensor);
+    }
+    sensor = editor->create(id, name, dn, v);
 
 
     // se il sensore esiste già
@@ -178,6 +183,7 @@ void EditWidget::apply(){
     // main_window->reloadData();
     // main_window->getSearchWidget()->search();
 }
+
 
 void EditWidget::closeWindow(){
     main_window->finishEdit();

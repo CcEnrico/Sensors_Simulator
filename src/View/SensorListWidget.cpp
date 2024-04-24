@@ -2,10 +2,13 @@
 #include "ListRenderer/List.h"
 #include "SensorWidget.h"
 #include "Sensor/AbstractSensor.h"
+#include "mainwindow.h"
 
 #include <QScrollArea>
 #include <QLabel>
+
 #include <functional>
+#include <typeinfo>
 
 namespace View{
 
@@ -55,7 +58,7 @@ void SensorListWidget::showList(Engine::SensorList* list){
         }
         if (it->getEditButton()) {
              connect(it->getEditButton(), &QPushButton::clicked, [this, it]() {
-//                 editItem(it->getSensor());
+                 editSensor(it);
              });
         }
         if (it->getDeleteButton()) {
@@ -65,6 +68,17 @@ void SensorListWidget::showList(Engine::SensorList* list){
         }
     }
 }
+
+    void SensorListWidget::editSensor(QVector<WidgetLookup>::const_iterator it ){
+        MainWindow* main = qobject_cast<MainWindow*>(this->parent()->parent());
+        Sensor::AbstractSensor* s = const_cast<Sensor::AbstractSensor*> (it->getSensor());
+        if (main != nullptr) {
+            main->editItem(s);
+        }
+        // controllo di tipo sugli oggetti genitori parent è Qsplitter :) ;
+//        std::cout << "Type of object: " << typeid( *(this->parent()->parent() ) ).name() << std::endl;
+
+    }
 
     void SensorListWidget::deleteSensor(QVector<WidgetLookup>::const_iterator it, Engine::SensorList* list ){
         lookup.erase(it);
@@ -78,5 +92,7 @@ void SensorListWidget::showList(Engine::SensorList* list){
         }
 
     }
+
+
 
 }

@@ -47,6 +47,7 @@ public:
 
     public slots:
     void createItem();
+    void editItem(Sensor::AbstractSensor* s);
     void finishEdit();
 };
 

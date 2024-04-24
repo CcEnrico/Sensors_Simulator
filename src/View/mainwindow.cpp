@@ -128,6 +128,15 @@ void MainWindow::createItem()
     showStatusBar("Creating a new item.");
 }
 
+void MainWindow::editItem(Sensor::AbstractSensor* s)
+{
+    create_item->setEnabled(false);
+    EditWidget* edit = new EditWidget(this, s);
+    edit_window->setCentralWidget(edit);
+    edit_window->show();
+    showStatusBar("Editing a Sensor.");
+}
+
 void MainWindow::finishEdit()
 {
     edit_window->close();
@@ -136,6 +145,7 @@ void MainWindow::finishEdit()
     create_item->setEnabled(true);
 
     sensor_list_widget->showList(sensor_list);
+    if (!sensor_widget->isEmpty()) sensor_widget->hideSensorWidget();
     showStatusBar("Ready.");
 }
 
