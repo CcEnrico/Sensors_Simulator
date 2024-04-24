@@ -17,6 +17,7 @@
 #include <QMessageBox>
 
 
+
 namespace View {
 
 EditWidget::EditWidget(
@@ -142,7 +143,7 @@ EditWidget::EditWidget(
     // Connects signals
     connect(type_input, qOverload<int>(&QComboBox::currentIndexChanged), this, &EditWidget::showType);
     connect(apply_button, &QPushButton::clicked, this, &EditWidget::apply);
-    // connect(cancel_button, &QPushButton::clicked, main_window->getSensorListWidget(), &SensorListWidget::show);
+    connect(cancel_button, &QPushButton::clicked, this, &EditWidget::closeWindow);
 
 }
 
@@ -176,6 +177,10 @@ void EditWidget::apply(){
     // main_window->getRepository()->update(sensor);
     // main_window->reloadData();
     // main_window->getSearchWidget()->search();
+}
+
+void EditWidget::closeWindow(){
+    main_window->finishEdit();
 }
 
 }

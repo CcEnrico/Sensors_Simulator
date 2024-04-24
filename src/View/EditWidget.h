@@ -30,16 +30,19 @@ class EditWidget : public QWidget{
     QStackedLayout* stacked_editor;
     QVector<SensorEditor::AbstractSensorEditor*> editors;
 
+
   public:
     EditWidget(
       MainWindow* m,
       const Sensor::AbstractSensor* s
     );
+
     
   public slots:
     void selectImage();
     void showType(int index);
     void apply();
+    void closeWindow();
 };
 
 }

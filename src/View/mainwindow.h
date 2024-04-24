@@ -33,6 +33,7 @@ public:
 
     SensorListWidget* getSensorListWidget();
     Engine::SensorList* getList() const;
+    QAction* getCreateItem();
 
 
     // aggiungi metodi

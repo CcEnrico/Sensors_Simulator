@@ -143,6 +143,10 @@ Engine::SensorList* MainWindow::getList() const {
     return sensor_list;
 }
 
+QAction* MainWindow::getCreateItem(){
+    return create_item;
+}
+
 void MainWindow::showStatusBar(const QString& message)
 {
     statusBar()->showMessage(message);
