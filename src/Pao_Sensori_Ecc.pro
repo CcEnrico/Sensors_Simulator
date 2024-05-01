@@ -21,6 +21,8 @@ SOURCES += \
     Sensor/Converter/Json/Json.cpp \
     Sensor/Converter/Json/JsonVisitor.cpp \
     Sensor/Converter/Json/Reader.cpp \
+    Sensor/DataMapper/JsonFile.cpp \
+    Sensor/Repository/JsonRepository.cpp \
     \
     Sensor/AbstractSensor.cpp \
     Sensor/TemperatureSensor.cpp \
@@ -63,6 +65,9 @@ HEADERS += \
     Sensor/Converter/Json/Json.h \
     Sensor/Converter/Json/JsonVisitor.h \
     Sensor/Converter/Json/Reader.h \
+    Sensor/DataMapper/JsonFile.h \
+    Sensor/Repository/IRepository.h \
+    Sensor/Repository/JsonRepository.h \
     \
     View/mainwindow.h \
     View/SensorListWidget.h \
