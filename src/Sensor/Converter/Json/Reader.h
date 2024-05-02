@@ -22,10 +22,9 @@ namespace Sensor {
                 AbstractSensor* read(const QJsonObject& object) override;
 
             private:
-                AbstractSensor* readWebPage(const QJsonObject& object) const;
-                AbstractSensor* readSimple(const QJsonObject& object) const;
-                AbstractSensor* readVirtual(const QJsonObject& object) const;
-                AbstractSensor* readBundle(const QJsonObject& object);
+                AbstractSensor* readAirQuality(const QJsonObject& object) const;
+                AbstractSensor* readHumidity(const QJsonObject& object) const;
+                AbstractSensor* readTemperature(const QJsonObject& object) const;
 
 
             };

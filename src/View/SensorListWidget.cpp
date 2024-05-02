@@ -39,10 +39,7 @@ SensorListWidget::SensorListWidget(SensorWidget* s_w, QWidget* parent)
 
 void SensorListWidget::showList(Engine::SensorList* list){
 
-    while(!lookup.isEmpty()){
-        WidgetLookup info = lookup.takeLast();
-        delete info.getWidget();
-    }
+    clean();
 
     renderer->render(layout, list , &lookup);
 
@@ -91,6 +88,13 @@ void SensorListWidget::showList(Engine::SensorList* list){
             sensor_widget->hideSensorWidget();
         }
 
+    }
+
+    void SensorListWidget::clean(){
+        while(!lookup.isEmpty()){
+            WidgetLookup info = lookup.takeLast();
+            delete info.getWidget();
+        }
     }
 
 

@@ -4,13 +4,11 @@
 #include <QMainWindow>
 #include <QStackedWidget>
 
-
+#include "../Sensor/Repository/JsonRepository.h"
 #include "SearchWidget.h"
 #include "SensorListWidget.h"
 #include "SensorWidget.h"
 #include "EditWindow.h"
-
-
 
 namespace View{
 
@@ -23,6 +21,7 @@ private:
     QAction* create_item;
     QToolBar* toolbar;
     Engine::SensorList* sensor_list;
+    Sensor::Repository::JsonRepository* repository;
     SensorWidget* sensor_widget;
     EditWindow* edit_window;
     SensorListWidget* sensor_list_widget;
@@ -36,16 +35,17 @@ public:
 
     SensorListWidget* getSensorListWidget();
     Engine::SensorList* getList() const;
+    Sensor::Repository::JsonRepository* getRepository() const;
     QAction* getCreateItem();
-
-
-    // aggiungi metodi
     
     void showStatusBar(const QString& m);
 
-    
-
     public slots:
+
+    void newDataset();
+    void openDataset();
+    void saveDataset();
+    void saveAsDataset();
     void createItem();
     void editItem(Sensor::AbstractSensor* s);
     void finishEdit();

@@ -34,6 +34,7 @@ namespace View{
 
         void clearChart();
         void hideSensorWidget();
+        void clean();
 
     public slots:
         void simulate();

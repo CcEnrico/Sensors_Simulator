@@ -27,6 +27,7 @@ public:
     void showList(Engine::SensorList* list);
     void editSensor(QVector<WidgetLookup>::const_iterator i);
     void deleteSensor(QVector<WidgetLookup>::const_iterator it, Engine::SensorList* list);
+    void clean();
 
 };
 
