@@ -1,0 +1,21 @@
+[
+    {
+        "Rain Probability": 1,
+        "dataNumber": 100,
+        "id": 32,
+        "initial Relative Humidity": 0,
+        "initialN02 Relative Humidity": 1,
+        "name": "Kebab",
+        "type": "humidity_sensor"
+    },
+    {
+        "dataNumber": 100,
+        "id": 543,
+        "initialN02 micro_g/m3": 0,
+        "initialPm10 micro_g/m3": 0,
+        "name": "",
+        "standardDeviationN02 micro_g/m3": 5,
+        "standardDeviationPm10 micro_g/m3": 5,
+        "type": "air_quality_sensor"
+    }
+]

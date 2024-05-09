@@ -28,9 +28,7 @@ namespace View{
 
     void SensorWidget::show(const Sensor::AbstractSensor* sensor) {
 
-        if (lookup != nullptr){
-            delete lookup->getWidget();
-        }
+        clean();
 
         renderer->render(layout , sensor, lookup);
         simulate();
@@ -75,6 +73,13 @@ namespace View{
     void SensorWidget::clear(){
         clearChart();
     }
+
+    void SensorWidget::clean(){
+        if (!isEmpty()){
+            delete lookup->getWidget();
+        }
+    }
+
 
     void SensorWidget::edit(){
         MainWindow* main = qobject_cast<MainWindow*>(this->parent()->parent());

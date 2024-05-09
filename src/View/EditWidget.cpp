@@ -7,6 +7,8 @@
 
 #include <iostream>
 
+#include <typeinfo>
+
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QFormLayout>
@@ -16,15 +18,13 @@
 #include <QComboBox>
 #include <QMessageBox>
 
-
-
 namespace View {
 
 EditWidget::EditWidget(
-    MainWindow* m, 
-    const Sensor::AbstractSensor* s
-    )
-    : main_window(m), sensor(s)
+    Sensor::AbstractSensor* s,
+    MainWindow* m,
+    Sensor::Repository::JsonRepository* repo
+    ): sensor(s), main_window(m), repository(repo)
 {
 
     QVBoxLayout* layout = new QVBoxLayout(this);
@@ -146,7 +146,6 @@ EditWidget::EditWidget(
 
 }
 
-
 void EditWidget::selectImage(){}
 
 void EditWidget::showType(int index){
@@ -175,13 +174,14 @@ void EditWidget::apply(){
         QMessageBox::critical(this, "Error", "ID taken");
     }else{
         list->add(sensor);
+
+        // json aggiornamento
+        if(repository != nullptr) {
+            repository->update(sensor);
+        }
+
         main_window->finishEdit();
     }
-
-    // inizialmente teniamo a runtime poi fare classe che legge e refresha un json
-    // main_window->getRepository()->update(sensor);
-    // main_window->reloadData();
-    // main_window->getSearchWidget()->search();
 }
 
 

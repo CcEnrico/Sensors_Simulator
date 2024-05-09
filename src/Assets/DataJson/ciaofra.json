@@ -1,0 +1,11 @@
+[
+    {
+        "Rain Probability": 6,
+        "dataNumber": 100,
+        "id": 3123,
+        "initial Relative Humidity": 0,
+        "initialN02 Relative Humidity": 1,
+        "name": "pilto",
+        "type": "humidity_sensor"
+    }
+]

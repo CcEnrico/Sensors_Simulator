@@ -1,0 +1,12 @@
+[
+    {
+        "dataNumber": 100,
+        "id": 0,
+        "initialN02 micro_g/m3": 0,
+        "initialPm10 micro_g/m3": 0,
+        "name": "",
+        "standardDeviationN02 micro_g/m3": 0,
+        "standardDeviationPm10 micro_g/m3": 0,
+        "type": "air_quality_sensor"
+    }
+]

@@ -1,0 +1,11 @@
+[
+    {
+        "Rain Probability": 1,
+        "dataNumber": 1004,
+        "id": 4324,
+        "initial Relative Humidity": 0,
+        "initialN02 Relative Humidity": 1,
+        "name": "4535433",
+        "type": "humidity_sensor"
+    }
+]

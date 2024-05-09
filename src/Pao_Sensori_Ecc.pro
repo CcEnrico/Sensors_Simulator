@@ -18,6 +18,11 @@ SOURCES += \
     Sensor/EnvironmentalConditions/Humidity.cpp \
     Sensor/Humiditysensor.cpp \
     main.cpp \
+    Sensor/Converter/Json/Json.cpp \
+    Sensor/Converter/Json/JsonVisitor.cpp \
+    Sensor/Converter/Json/Reader.cpp \
+    Sensor/DataMapper/JsonFile.cpp \
+    Sensor/Repository/JsonRepository.cpp \
     \
     Sensor/AbstractSensor.cpp \
     Sensor/TemperatureSensor.cpp \
@@ -49,13 +54,20 @@ HEADERS += \
     Sensor/Airqualitysensor.h \
     Sensor/EnvironmentalConditions/Airquality.h \
     Sensor/EnvironmentalConditions/Humidity.h \
+    Sensor/EnvironmentalConditions/Temperature.h \
     Sensor/Humiditysensor.h \
     Sensor/SConstVisitor.h \
     Sensor/SVisitor.h \
     \
     Sensor/AbstractSensor.h \
     Sensor/TemperatureSensor.h \
-    Sensor/EnvironmentalConditions/Temperature.h \
+    Sensor/Converter/Json/SReader.h \
+    Sensor/Converter/Json/Json.h \
+    Sensor/Converter/Json/JsonVisitor.h \
+    Sensor/Converter/Json/Reader.h \
+    Sensor/DataMapper/JsonFile.h \
+    Sensor/Repository/IRepository.h \
+    Sensor/Repository/JsonRepository.h \
     \
     View/mainwindow.h \
     View/SensorListWidget.h \
