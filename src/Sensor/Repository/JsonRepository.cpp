@@ -45,8 +45,20 @@ namespace Sensor {
         JsonRepository& JsonRepository::update(AbstractSensor* item){
             return create(item);
         }
-        JsonRepository& JsonRepository::remove(const unsigned int identifier){
-
+        JsonRepository& JsonRepository::remove(const unsigned int identifier) {
+            std::map<unsigned int, AbstractSensor*>::const_iterator it = repository.find(identifier);
+            if (it != repository.end()) {
+                delete it->second;
+                repository.erase(it);
+            }
+            return *this;
+        }
+        JsonRepository& JsonRepository::erase(const unsigned int identifier) {
+            std::map<unsigned int, AbstractSensor*>::const_iterator it = repository.find(identifier);
+            if (it != repository.end()) {
+                repository.erase(it);
+            }
+            return *this;
         }
         std::vector<AbstractSensor*> JsonRepository::readAll() const{
             std::vector<AbstractSensor*> sensors;
@@ -58,6 +70,9 @@ namespace Sensor {
         JsonRepository& JsonRepository::store(){
             data_mapper.store(readAll());
             return *this;
+        }
+        bool JsonRepository::empty(){
+            return repository.empty();
         }
 
     } // Repository

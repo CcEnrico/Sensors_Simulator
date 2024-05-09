@@ -20,8 +20,16 @@ private:
 
     QAction* create_item;
     QToolBar* toolbar;
+
+    // Concettualmente sensor_list e repository condividono la stessa memoria (quando repository esiste e non nullo)
+    // Quindi la loro copia e' shallow
+    // Altrimenti dovrei fare una deep copy della memoria di sensor_list e repository
+    // Ma non voglio perche andrei a creare degli oggetti AbstractSensor duplicati inutili
+    // Quindi nei metodi che manipolano la memoria come quelli di aggiunta, rimozione o caricamento di nuovi dataset
+    // devo stare attento ad usare la stessa memoria ad aggiungere le stesse locazioni di memoria nei due contenitori
     Engine::SensorList* sensor_list;
     Sensor::Repository::JsonRepository* repository;
+
     SensorWidget* sensor_widget;
     EditWindow* edit_window;
     SensorListWidget* sensor_list_widget;
@@ -39,6 +47,9 @@ public:
     QAction* getCreateItem();
     
     void showStatusBar(const QString& m);
+
+    MainWindow& reloadMemory();
+    MainWindow& ClearMemory();
 
     public slots:
 

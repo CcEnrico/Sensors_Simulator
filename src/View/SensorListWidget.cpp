@@ -37,7 +37,7 @@ SensorListWidget::SensorListWidget(SensorWidget* s_w, QWidget* parent)
 
 }
 
-void SensorListWidget::showList(Engine::SensorList* list){
+void SensorListWidget::showList(Engine::SensorList* list, Sensor::Repository::JsonRepository* repository){
 
     clean();
 
@@ -59,8 +59,8 @@ void SensorListWidget::showList(Engine::SensorList* list){
              });
         }
         if (it->getDeleteButton()) {
-             connect(it->getDeleteButton(), &QPushButton::clicked, [this, it, list]() {
-                 deleteSensor(it, list);
+             connect(it->getDeleteButton(), &QPushButton::clicked, [this, it, list, repository]() {
+                 deleteSensor(it, list, repository);
              });
         }
     }
@@ -77,23 +77,25 @@ void SensorListWidget::showList(Engine::SensorList* list){
 
     }
 
-    void SensorListWidget::deleteSensor(QVector<WidgetLookup>::const_iterator it, Engine::SensorList* list ){
+    void SensorListWidget::deleteSensor(QVector<WidgetLookup>::const_iterator it, Engine::SensorList* list, Sensor::Repository::JsonRepository* repository ){
         lookup.erase(it);
-        list->remove(it->getSensor());
+        if(repository != nullptr) repository->erase(it->getSensor()->getIdentifier());   // cancella dalla mappa
+        list->erase(it->getSensor()); // cancella dalla lista
 
-        delete it->getWidget();
-
-        // se il sensore che voglio cancellare è quello che è attualmente nel lookup del sensor widget
-        if (sensor_widget->getLookup()->getSensor()->getIdentifier() == it->getSensor()->getIdentifier() && !sensor_widget->isEmpty() ){
+        // se il sensore che voglio cancellare non e' vuoto e è quello che è attualmente nel lookup del sensor widget
+        // ovvero se il sensore che sto cancellando e' quello mostrato nell widget del grafo allora lo nascondo
+        if ( !(sensor_widget->isEmpty()) && sensor_widget->getLookup()->getSensor()->getIdentifier() == it->getSensor()->getIdentifier() && !sensor_widget->isEmpty() ){
             sensor_widget->hideSensorWidget();
         }
+        delete it->getSensor(); // Dealloca oggetto
+        delete it->getWidget();
 
     }
 
     void SensorListWidget::clean(){
         while(!lookup.isEmpty()){
             WidgetLookup info = lookup.takeLast();
-            delete info.getWidget();
+            delete info.getWidget();    // questo dealloca la memoria del widget
         }
     }
 

@@ -17,6 +17,7 @@
 #include <QLabel>
 #include <QWindow>
 #include <QFileDialog>
+#include <QMessageBox>
 
 
 namespace View{
@@ -112,6 +113,7 @@ MainWindow::MainWindow( Engine::SensorList* mem, QWidget *parent )
     // connect
     connect(create, &QAction::triggered, this, &MainWindow::newDataset);
     connect(save, &QAction::triggered, this, &MainWindow::saveDataset);
+    connect(open, &QAction::triggered, this, &MainWindow::openDataset);
     connect(create_item, &QAction::triggered, this, &MainWindow::createItem);
     connect(edit_window, &EditWindow::windowClosed, this, &MainWindow::finishEdit);
 
@@ -123,6 +125,31 @@ MainWindow::MainWindow( Engine::SensorList* mem, QWidget *parent )
 MainWindow::~MainWindow()
 {
     delete sensor_list;
+}
+
+MainWindow& MainWindow::ClearMemory(){
+
+    if (repository != nullptr) {
+
+        delete repository;  // dealloca gli oggetti contenuti nella map (distruttore ridefinito)
+        repository = nullptr;
+
+        sensor_list->clean();   // svuota lista
+
+    }else if( repository == nullptr && !(sensor_list->isEmpty())){
+        sensor_list->clear();   // dealloca e svuota lista
+    }
+    return *this;
+}
+
+MainWindow& MainWindow::reloadMemory() {
+
+    std::vector<Sensor::AbstractSensor*> sensors(repository->readAll());
+    for (auto it = sensors.begin(); it != sensors.end(); ++it ) {
+        sensor_list->add(*it);
+    }
+
+    return *this;
 }
 
 
@@ -137,21 +164,30 @@ void MainWindow::newDataset(){
     if (path.isEmpty()) {
         return;
     }
-    if (repository != nullptr) {
-        delete repository;
+
+    try{
+        Sensor::Converter::Json::Reader reader;
+        Sensor::Converter::Json::Json converter(reader);
+        Sensor::DataMapper::JsonFile data_mapper(path.toStdString(), converter);
+        Sensor::Repository::JsonRepository* r = new Sensor::Repository::JsonRepository(data_mapper);
+        if (!r->empty()) {
+            throw std::runtime_error("Repository is not empty as expected");
+        }
+        ClearMemory();
+
+        repository = r;
+
+        sensor_widget->clean();
+        sensor_list_widget->clean();
+
+        sensor_list_widget->showList(sensor_list, repository);
+
+        showStatusBar("New dataset created.");
+
+    }catch (const std::exception& e) {
+        qDebug() << "Error creating new dataset: " << e.what();
+        QMessageBox::critical(this, "Error", e.what());
     }
-    Sensor::Converter::Json::Reader reader;
-    Sensor::Converter::Json::Json converter(reader);
-    Sensor::DataMapper::JsonFile data_mapper(path.toStdString(), converter);
-    repository = new Sensor::Repository::JsonRepository(data_mapper);
-    sensor_widget->clean();
-    sensor_list_widget->clean();
-    sensor_list->clear();
-
-    sensor_list_widget->showList(sensor_list);
-
-
-    showStatusBar("New dataset created.");
 }
 
 void MainWindow::saveDataset() {
@@ -165,6 +201,31 @@ void MainWindow::saveDataset() {
 
 void MainWindow::openDataset(){
 
+    QString path = QFileDialog::getOpenFileName(
+            this,
+            "Open Dataset",
+            "./Assets/DataJson/",
+            "JSON files *.json"
+    );
+    if (path.isEmpty()) {
+        return;
+    }
+
+    ClearMemory();
+
+    Sensor::Converter::Json::Reader reader;
+    Sensor::Converter::Json::Json converter(reader);
+    Sensor::DataMapper::JsonFile data_mapper(path.toStdString(), converter);
+    repository = new Sensor::Repository::JsonRepository(data_mapper);
+    sensor_widget->clean();
+    sensor_list_widget->clean();
+
+    reloadMemory();
+
+    sensor_list_widget->showList(sensor_list, repository);
+
+
+    showStatusBar("Data successfully loaded from " + path + ".");
 }
 
 

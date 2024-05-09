@@ -1289,6 +1289,24 @@ moc_mainwindow.cpp: View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QStackedWidget \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstackedwidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qframe.h \
+		Sensor/Repository/JsonRepository.h \
+		Sensor/Repository/IRepository.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		Sensor/DataMapper/JsonFile.h \
+		Sensor/Converter/Json/Json.h \
+		Sensor/Converter/Json/SReader.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcalendar.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
 		View/SearchWidget.h \
 		View/SensorListWidget.h \
 		View/WidgetLookup.h \
@@ -1296,9 +1314,6 @@ moc_mainwindow.cpp: View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QPushButton \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractbutton.h \
-		Sensor/AbstractSensor.h \
-		Sensor/SConstVisitor.h \
-		Sensor/SVisitor.h \
 		View/ListRenderer/SRendererStrategy.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGridLayout \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgridlayout.h \
@@ -1525,12 +1540,25 @@ moc_EditWidget.cpp: View/EditWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QStackedWidget \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstackedwidget.h \
-		View/SearchWidget.h \
-		View/SensorListWidget.h \
-		View/WidgetLookup.h \
+		Sensor/Repository/JsonRepository.h \
+		Sensor/Repository/IRepository.h \
 		Sensor/AbstractSensor.h \
 		Sensor/SConstVisitor.h \
 		Sensor/SVisitor.h \
+		Sensor/DataMapper/JsonFile.h \
+		Sensor/Converter/Json/Json.h \
+		Sensor/Converter/Json/SReader.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcalendar.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
+		View/SearchWidget.h \
+		View/SensorListWidget.h \
+		View/WidgetLookup.h \
 		View/ListRenderer/SRendererStrategy.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGridLayout \
 		Engine/SensorList.h \
@@ -2241,6 +2269,24 @@ main.o: main.cpp View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QStackedWidget \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstackedwidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qframe.h \
+		Sensor/Repository/JsonRepository.h \
+		Sensor/Repository/IRepository.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		Sensor/DataMapper/JsonFile.h \
+		Sensor/Converter/Json/Json.h \
+		Sensor/Converter/Json/SReader.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcalendar.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
 		View/SearchWidget.h \
 		View/SensorListWidget.h \
 		View/WidgetLookup.h \
@@ -2248,9 +2294,6 @@ main.o: main.cpp View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QPushButton \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractbutton.h \
-		Sensor/AbstractSensor.h \
-		Sensor/SConstVisitor.h \
-		Sensor/SVisitor.h \
 		View/ListRenderer/SRendererStrategy.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGridLayout \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgridlayout.h \
@@ -2324,7 +2367,6 @@ main.o: main.cpp View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qpromise.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qguiapplication.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qinputmethod.h \
-		../../../Qt/6.4.2/gcc_64/include/QtCore/qlocale.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qguiapplication_platform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
@@ -2425,7 +2467,14 @@ Json.o: Sensor/Converter/Json/Json.cpp Sensor/Converter/Json/Json.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
 		Sensor/AbstractSensor.h \
 		Sensor/SConstVisitor.h \
-		Sensor/SVisitor.h
+		Sensor/SVisitor.h \
+		Sensor/Converter/Json/JsonVisitor.h \
+		Sensor/Airqualitysensor.h \
+		Sensor/EnvironmentalConditions/Airquality.h \
+		Sensor/Humiditysensor.h \
+		Sensor/EnvironmentalConditions/Humidity.h \
+		Sensor/TemperatureSensor.h \
+		Sensor/EnvironmentalConditions/Temperature.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Json.o Sensor/Converter/Json/Json.cpp
 
 JsonVisitor.o: Sensor/Converter/Json/JsonVisitor.cpp Sensor/Converter/Json/JsonVisitor.h \
@@ -2630,7 +2679,13 @@ Reader.o: Sensor/Converter/Json/Reader.cpp Sensor/Converter/Json/Reader.h \
 		Sensor/Converter/Json/SReader.h \
 		Sensor/AbstractSensor.h \
 		Sensor/SConstVisitor.h \
-		Sensor/SVisitor.h
+		Sensor/SVisitor.h \
+		Sensor/Airqualitysensor.h \
+		Sensor/EnvironmentalConditions/Airquality.h \
+		Sensor/Humiditysensor.h \
+		Sensor/EnvironmentalConditions/Humidity.h \
+		Sensor/TemperatureSensor.h \
+		Sensor/EnvironmentalConditions/Temperature.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Reader.o Sensor/Converter/Json/Reader.cpp
 
 JsonFile.o: Sensor/DataMapper/JsonFile.cpp Sensor/DataMapper/JsonFile.h \
@@ -2731,14 +2786,118 @@ JsonFile.o: Sensor/DataMapper/JsonFile.cpp Sensor/DataMapper/JsonFile.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qurl.h \
-		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h
+		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QFile \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qfile.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qiodevice.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QJsonDocument \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsondocument.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QJsonArray \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonarray.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o JsonFile.o Sensor/DataMapper/JsonFile.cpp
 
 JsonRepository.o: Sensor/Repository/JsonRepository.cpp Sensor/Repository/JsonRepository.h \
 		Sensor/Repository/IRepository.h \
 		Sensor/AbstractSensor.h \
 		Sensor/SConstVisitor.h \
-		Sensor/SVisitor.h
+		Sensor/SVisitor.h \
+		Sensor/DataMapper/JsonFile.h \
+		Sensor/Converter/Json/Json.h \
+		Sensor/Converter/Json/SReader.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qtconfigmacros.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qtcoreexports.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qflags.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcompare_impl.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qforeach.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qstring.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qchar.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qstringview.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qtmetamacros.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qpair.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qarraydatapointer.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qarraydataops.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qbytearrayview.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qstringfwd.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qstringliteral.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qanystringview.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qutf8stringview.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qstringtokenizer.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcalendar.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qvariant.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcompare.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qscopeguard.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qdatastream.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qiodevicebase.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qiterable.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qmetacontainer.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcontainerinfo.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qtaggedpointer.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qmath.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qdebug.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qtextstream.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qstringconverter_base.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qlist.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qmap.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qshareddata_impl.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qset.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qhash.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qobject.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qbindingstorage.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qurl.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o JsonRepository.o Sensor/Repository/JsonRepository.cpp
 
 AbstractSensor.o: Sensor/AbstractSensor.cpp Sensor/AbstractSensor.h \
@@ -2897,6 +3056,24 @@ mainwindow.o: View/mainwindow.cpp View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QStackedWidget \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstackedwidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qframe.h \
+		Sensor/Repository/JsonRepository.h \
+		Sensor/Repository/IRepository.h \
+		Sensor/AbstractSensor.h \
+		Sensor/SConstVisitor.h \
+		Sensor/SVisitor.h \
+		Sensor/DataMapper/JsonFile.h \
+		Sensor/Converter/Json/Json.h \
+		Sensor/Converter/Json/SReader.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcalendar.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
 		View/SearchWidget.h \
 		View/SensorListWidget.h \
 		View/WidgetLookup.h \
@@ -2904,9 +3081,6 @@ mainwindow.o: View/mainwindow.cpp View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QPushButton \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractbutton.h \
-		Sensor/AbstractSensor.h \
-		Sensor/SConstVisitor.h \
-		Sensor/SVisitor.h \
 		View/ListRenderer/SRendererStrategy.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGridLayout \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgridlayout.h \
@@ -2968,14 +3142,13 @@ mainwindow.o: View/mainwindow.cpp View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qspinbox.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractspinbox.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qvalidator.h \
-		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
-		../../../Qt/6.4.2/gcc_64/include/QtCore/qlocale.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QTextEdit \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtextedit.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QStackedLayout \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstackedlayout.h \
 		View/SensorEditor/AbstractSensorEditor.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/QString \
+		Sensor/Converter/Json/Reader.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QStatusBar \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstatusbar.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QMenu \
@@ -2993,7 +3166,16 @@ mainwindow.o: View/mainwindow.cpp View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/QEvent \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qsurface.h \
-		../../../Qt/6.4.2/gcc_64/include/QtGui/qsurfaceformat.h
+		../../../Qt/6.4.2/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QFileDialog \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qfiledialog.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qdir.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qfile.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qfileinfo.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qdialog.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QMessageBox \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o View/mainwindow.cpp
 
 SensorListWidget.o: View/SensorListWidget.cpp View/SensorListWidget.h \
@@ -3200,6 +3382,21 @@ SensorListWidget.o: View/SensorListWidget.cpp View/SensorListWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QStackedWidget \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstackedwidget.h \
+		Sensor/Repository/JsonRepository.h \
+		Sensor/Repository/IRepository.h \
+		Sensor/DataMapper/JsonFile.h \
+		Sensor/Converter/Json/Json.h \
+		Sensor/Converter/Json/SReader.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcalendar.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
 		View/SearchWidget.h \
 		View/EditWindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QScrollArea
@@ -3378,12 +3575,25 @@ EditWidget.o: View/EditWidget.cpp View/EditWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QStackedWidget \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstackedwidget.h \
-		View/SearchWidget.h \
-		View/SensorListWidget.h \
-		View/WidgetLookup.h \
+		Sensor/Repository/JsonRepository.h \
+		Sensor/Repository/IRepository.h \
 		Sensor/AbstractSensor.h \
 		Sensor/SConstVisitor.h \
 		Sensor/SVisitor.h \
+		Sensor/DataMapper/JsonFile.h \
+		Sensor/Converter/Json/Json.h \
+		Sensor/Converter/Json/SReader.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcalendar.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
+		View/SearchWidget.h \
+		View/SensorListWidget.h \
+		View/WidgetLookup.h \
 		View/ListRenderer/SRendererStrategy.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGridLayout \
 		Engine/SensorList.h \
@@ -3459,8 +3669,6 @@ EditWidget.o: View/EditWidget.cpp View/EditWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qfile.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qfileinfo.h \
-		../../../Qt/6.4.2/gcc_64/include/QtCore/qdatetime.h \
-		../../../Qt/6.4.2/gcc_64/include/QtCore/qcalendar.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qdialog.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QMessageBox \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qmessagebox.h
@@ -4111,6 +4319,21 @@ SensorWidget.o: View/SensorWidget.cpp View/SensorWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QStackedWidget \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstackedwidget.h \
+		Sensor/Repository/JsonRepository.h \
+		Sensor/Repository/IRepository.h \
+		Sensor/DataMapper/JsonFile.h \
+		Sensor/Converter/Json/Json.h \
+		Sensor/Converter/Json/SReader.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcalendar.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
 		View/SearchWidget.h \
 		View/EditWindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SensorWidget.o View/SensorWidget.cpp

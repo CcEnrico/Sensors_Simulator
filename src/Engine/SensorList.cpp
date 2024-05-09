@@ -27,9 +27,31 @@ namespace Engine{
         return *this;
     }
 
+    SensorList& SensorList::erase(const Sensor::AbstractSensor *s) {
+
+        for (auto it = sensors.begin(); it != sensors.end(); ++it) {
+            if (*it == s){
+                sensors.erase(it);
+                return *this;
+            }
+        }
+
+        return *this;
+    }
+
+    bool SensorList::isEmpty(){
+        return sensors.empty();
+    }
+
+    SensorList& SensorList::clean() {
+        sensors.clear();
+        return *this;
+    }
+
     SensorList& SensorList::clear() {
         for (auto it = sensors.begin(); it != sensors.end(); ++it) {
             delete *it;
+//            *it = nullptr;
         }
         sensors.clear();
         return *this;

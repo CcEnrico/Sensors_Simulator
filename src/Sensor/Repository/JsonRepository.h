@@ -30,9 +30,11 @@ namespace Sensor {
             virtual JsonRepository& create(AbstractSensor* item);
             virtual AbstractSensor* read(const unsigned int identifier) const;
             virtual JsonRepository& update(AbstractSensor* item);
-            virtual JsonRepository& remove(const unsigned int identifier);
+            virtual JsonRepository& remove(const unsigned int identifier);  // rimuove e dealloca
+            virtual JsonRepository& erase(const unsigned int identifier); // rimuove senza deallocare
             virtual std::vector<AbstractSensor*> readAll() const;
             JsonRepository& store();
+            bool empty();
         };
 
     }

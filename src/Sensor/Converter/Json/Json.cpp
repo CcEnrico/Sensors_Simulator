@@ -16,7 +16,7 @@ namespace Sensor {
             }
 
             const SReader& Json::getReader() const{
-
+                return reader;
             }
             QJsonObject Json::fromObject(const AbstractSensor& item) const{
                 JsonVisitor json_visitor;
@@ -24,7 +24,7 @@ namespace Sensor {
                 return json_visitor.getObject();
             }
             AbstractSensor* Json::toObject(const QJsonObject& json) const{
-//                todo
+                return reader.read(json);
             }
 
         } // Json
