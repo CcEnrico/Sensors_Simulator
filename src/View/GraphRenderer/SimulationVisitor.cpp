@@ -253,9 +253,9 @@ namespace View::GraphRenderer{
     }
     void SimulationVisitor::visit(Sensor::TemperatureSensor& temperature) {
 
-        std::vector<double> min_data = temperature.getTempDataMinCelsius();
-        std::vector<double> max_data = temperature.getTempDataMaxCelsius();
-        std::vector<double> mean_data = temperature.getTempDataMeanCelsius();
+        std::vector<double> min_data = temperature.getTempDataMin();
+        std::vector<double> max_data = temperature.getTempDataMax();
+        std::vector<double> mean_data = temperature.getTempDataMean();
         double max = 0;
         double min = 0;
 
@@ -327,7 +327,9 @@ namespace View::GraphRenderer{
 
 //        display e stili:
 
-        axisY->setTitleText("Temperature C°");
+        if (temperature.getSimulationScale() == 'c') axisY->setTitleText("Temperature C°");
+        else if (temperature.getSimulationScale() == 'f') axisY->setTitleText("Temperature F°");
+        else if (temperature.getSimulationScale() == 'k') axisY->setTitleText("Temperature K°");
 
         chart->legend()->setVisible(true);
         chart->legend()->setAlignment(Qt::AlignRight);

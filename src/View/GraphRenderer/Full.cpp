@@ -176,17 +176,22 @@ namespace View::GraphRenderer {
         QLabel *max = new QLabel("Max: " + QString::number(temperature.getTempMax().getCelsius()) + "C° = " + QString::number(temperature.getTempMax().getFahrenheit()) + "F = " + QString::number(temperature.getTempMax().getKelvin()) + "K");
         QLabel *initial = new QLabel("Initial: " + QString::number(temperature.getTempInitial().getCelsius()) + "C° = " + QString::number(temperature.getTempInitial().getFahrenheit()) + "F = " + QString::number(temperature.getTempInitial().getKelvin()) + "K");
         QLabel *std_dev = new QLabel("Standard Deviation: " + QString::number(temperature.getStdDeviation().getCelsius()) + "C° = " + QString::number(temperature.getStdDeviation().getFahrenheit()) + "F = " + QString::number(temperature.getStdDeviation().getKelvin()) + "K");
-        QLabel *target = new QLabel("Target: " + QString::number(temperature.getTempTarget().getCelsius()) + "C° = " + QString::number(temperature.getTempTarget().getFahrenheit()) + "F = " + QString::number(temperature.getTempTarget().getKelvin()) + "K");
+        QLabel *sim_scale ;
+        if (temperature.getSimulationScale() == 'c'){sim_scale = new QLabel("Simulation Scale: C°" );}
+        else if (temperature.getSimulationScale() == 'f'){sim_scale = new QLabel("Simulation Scale: F°" );}
+        else if (temperature.getSimulationScale() == 'k'){sim_scale = new QLabel("Simulation Scale: K°" );}
+        else{ sim_scale = new QLabel("Simulation Scale:" ); }
+
         min->setAlignment(Qt::AlignRight);
         max->setAlignment(Qt::AlignRight);
         initial->setAlignment(Qt::AlignRight);
         std_dev->setAlignment(Qt::AlignRight);
-        target->setAlignment(Qt::AlignRight);
+        sim_scale->setAlignment(Qt::AlignRight);
         second_column->addWidget(min);
         second_column->addWidget(max);
         second_column->addWidget(initial);
         second_column->addWidget(std_dev);
-        second_column->addWidget(target);
+        second_column->addWidget(sim_scale);
         second->setLayout(second_column);
 
         QWidget *third = new QWidget();

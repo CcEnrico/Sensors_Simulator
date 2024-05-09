@@ -1,0 +1,35 @@
+[
+    {
+        "Initial Temperature C°": -140,
+        "Simulation Scale": "c",
+        "dataNumber": 100,
+        "id": 1,
+        "initial Maximum Temp C°": 10,
+        "initial Minimum Temp C°": -273.15,
+        "name": "Prova",
+        "standardDeviation Temp C°": 10,
+        "type": "temperature_sensor"
+    },
+    {
+        "Initial Temperature F°": -57.6,
+        "Simulation Scale": "f",
+        "dataNumber": 100,
+        "id": 2,
+        "initial Maximum Temp F°": 10,
+        "initial Minimum Temp F°": -459.67,
+        "name": "Far",
+        "standardDeviation Temp F°": 10,
+        "type": "temperature_sensor"
+    },
+    {
+        "Initial Temperature K°": 20,
+        "Simulation Scale": "k",
+        "dataNumber": 100,
+        "id": 3,
+        "initial Maximum Temp K°": 50,
+        "initial Minimum Temp K°": 0,
+        "name": "kelvin",
+        "standardDeviation Temp K°": 1,
+        "type": "temperature_sensor"
+    }
+]

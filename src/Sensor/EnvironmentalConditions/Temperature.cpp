@@ -49,6 +49,13 @@ double Temperature::getFahrenheit() const{
     return fahrenheit;
 }
 
+double Temperature::getTempscale(const char &scale) const {
+    if (scale == 'c') return celsius;
+    if (scale == 'f') return fahrenheit;
+    if (scale == 'k') return kelvin;
+    return 0;
+}
+
 void Temperature::updateKelvin(){
     celsius = kelvin - 273.15;
     fahrenheit = (kelvin - 273.15)*(9.0/5)+32.0;
@@ -64,9 +71,9 @@ void Temperature::updateFahrenheit(){
     kelvin = (fahrenheit-32.0)*(9.0/5.0)+273.15;
 }
 
-const double minK = 0;
-const double minC = -273.15 ;
-const double minF = -459.67;
+const double Temperature::minK = 0;
+const double Temperature::minC = -273.15 ;
+const double Temperature::minF = -459.67;
 
 }
 

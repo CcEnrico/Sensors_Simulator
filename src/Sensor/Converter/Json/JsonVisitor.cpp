@@ -41,16 +41,33 @@ namespace Sensor {
 
             }
             void JsonVisitor::visit(const TemperatureSensor& temperature){
+                char scale = temperature.getSimulationScale();
+
                 QJsonObject temperature_sensor_object;
                 temperature_sensor_object.insert("type", QJsonValue::fromVariant("temperature_sensor"));
                 temperature_sensor_object.insert("id", QJsonValue::fromVariant(temperature.getIdentifier()));
                 temperature_sensor_object.insert("name", QJsonValue::fromVariant(temperature.getName().c_str()));
                 temperature_sensor_object.insert("dataNumber", QJsonValue::fromVariant(temperature.getDataNum()));
 
-                temperature_sensor_object.insert("initial Minimum Temp C°", QJsonValue::fromVariant(temperature.getTempMin().getCelsius()));
-                temperature_sensor_object.insert("initial Maximum Temp C°", QJsonValue::fromVariant(temperature.getTempMax().getCelsius()));
-                temperature_sensor_object.insert("Initial Temperature C°", QJsonValue::fromVariant(temperature.getTempInitial().getCelsius()));
-                temperature_sensor_object.insert("standardDeviation Temp C°", QJsonValue::fromVariant(temperature.getStdDeviation().getCelsius()));
+                if (scale == 'c'){
+                    temperature_sensor_object.insert("initial Minimum Temp C°", QJsonValue::fromVariant(temperature.getTempMin().getCelsius()));
+                    temperature_sensor_object.insert("initial Maximum Temp C°", QJsonValue::fromVariant(temperature.getTempMax().getCelsius()));
+                    temperature_sensor_object.insert("Initial Temperature C°", QJsonValue::fromVariant(temperature.getTempInitial().getCelsius()));
+                    temperature_sensor_object.insert("standardDeviation Temp C°", QJsonValue::fromVariant(temperature.getStdDeviation().getCelsius()));
+                }
+                if (scale == 'f'){
+                    temperature_sensor_object.insert("initial Minimum Temp F°", QJsonValue::fromVariant(temperature.getTempMin().getFahrenheit()));
+                    temperature_sensor_object.insert("initial Maximum Temp F°", QJsonValue::fromVariant(temperature.getTempMax().getFahrenheit()));
+                    temperature_sensor_object.insert("Initial Temperature F°", QJsonValue::fromVariant(temperature.getTempInitial().getFahrenheit()));
+                    temperature_sensor_object.insert("standardDeviation Temp F°", QJsonValue::fromVariant(temperature.getStdDeviation().getFahrenheit()));
+                }
+                if (scale == 'k'){
+                    temperature_sensor_object.insert("initial Minimum Temp K°", QJsonValue::fromVariant(temperature.getTempMin().getKelvin()));
+                    temperature_sensor_object.insert("initial Maximum Temp K°", QJsonValue::fromVariant(temperature.getTempMax().getKelvin()));
+                    temperature_sensor_object.insert("Initial Temperature K°", QJsonValue::fromVariant(temperature.getTempInitial().getKelvin()));
+                    temperature_sensor_object.insert("standardDeviation Temp K°", QJsonValue::fromVariant(temperature.getStdDeviation().getKelvin()));
+                }
+                temperature_sensor_object.insert("Simulation Scale", QJsonValue(QString(scale)) );
 
                 object = temperature_sensor_object;
             }

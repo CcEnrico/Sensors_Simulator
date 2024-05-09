@@ -66,17 +66,57 @@ namespace Sensor {
                 );
             }
             AbstractSensor* Reader::readTemperature(const QJsonObject& object) const{
-                return new TemperatureSensor(
-                        object.value("id").toInt(),
-                        object.value("name").toString().toStdString(),
-                        object.value("dataNumber").toInt(),
-                        0.0,    // variaza da togliere.. ininfluente come Target
-                        Sensor::EnviromentalConditions::Temperature( object.value("initial Minimum Temp C°").toDouble(), 'c'),
-                        Sensor::EnviromentalConditions::Temperature( object.value("initial Maximum Temp C°").toDouble(), 'c'),
-                        Sensor::EnviromentalConditions::Temperature( object.value("Initial Temperature C°").toDouble(), 'c'),
-                        Sensor::EnviromentalConditions::Temperature( object.value("standardDeviation Temp C°").toDouble(), 'c'),
-                        Sensor::EnviromentalConditions::Temperature( 0.0 , 'c')
-                );
+                char simulation_scale = ' ';
+
+                QString storedString = object["Simulation Scale"].toString();
+                if (!storedString.isEmpty()) {
+                    simulation_scale = storedString.at(0).toLatin1();
+                }
+
+                if (simulation_scale == 'c'){
+                    return new TemperatureSensor(
+                            object.value("id").toInt(),
+                            object.value("name").toString().toStdString(),
+                            object.value("dataNumber").toInt(),
+                            0.0,    // variaza da togliere.. ininfluente come Target
+                            Sensor::EnviromentalConditions::Temperature( object.value("initial Minimum Temp C°").toDouble(), 'c'),
+                            Sensor::EnviromentalConditions::Temperature( object.value("initial Maximum Temp C°").toDouble(), 'c'),
+                            Sensor::EnviromentalConditions::Temperature( object.value("Initial Temperature C°").toDouble(), 'c'),
+                            Sensor::EnviromentalConditions::Temperature( object.value("standardDeviation Temp C°").toDouble(), 'c'),
+                            Sensor::EnviromentalConditions::Temperature( 0.0 , 'c'),
+                            'c'
+                    );
+                }
+                if (simulation_scale == 'f'){
+                    return new TemperatureSensor(
+                            object.value("id").toInt(),
+                            object.value("name").toString().toStdString(),
+                            object.value("dataNumber").toInt(),
+                            0.0,    // variaza da togliere.. ininfluente come Target
+                            Sensor::EnviromentalConditions::Temperature( object.value("initial Minimum Temp F°").toDouble(), 'f'),
+                            Sensor::EnviromentalConditions::Temperature( object.value("initial Maximum Temp F°").toDouble(), 'f'),
+                            Sensor::EnviromentalConditions::Temperature( object.value("Initial Temperature F°").toDouble(), 'f'),
+                            Sensor::EnviromentalConditions::Temperature( object.value("standardDeviation Temp F°").toDouble(), 'f'),
+                            Sensor::EnviromentalConditions::Temperature( 0.0 , 'f'),
+                            'f'
+                    );
+                }
+                if (simulation_scale == 'k'){
+                    return new TemperatureSensor(
+                            object.value("id").toInt(),
+                            object.value("name").toString().toStdString(),
+                            object.value("dataNumber").toInt(),
+                            0.0,    // variaza da togliere.. ininfluente come Target
+                            Sensor::EnviromentalConditions::Temperature( object.value("initial Minimum Temp K°").toDouble(), 'k'),
+                            Sensor::EnviromentalConditions::Temperature( object.value("initial Maximum Temp K°").toDouble(), 'k'),
+                            Sensor::EnviromentalConditions::Temperature( object.value("Initial Temperature K°").toDouble(), 'k'),
+                            Sensor::EnviromentalConditions::Temperature( object.value("standardDeviation Temp K°").toDouble(), 'k'),
+                            Sensor::EnviromentalConditions::Temperature( 0.0 , 'k'),
+                            'k'
+                    );
+                }
+                // altrimenti la scala non e' ben definita
+                throw std::invalid_argument("error reading Simulation scale in Json File");
 
             }
         } // Json

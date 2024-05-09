@@ -212,18 +212,23 @@ void MainWindow::openDataset(){
         return;
     }
 
-    ClearMemory();
+    try{
+        ClearMemory();
+        repository = Sensor::Repository::JsonRepository::fromPath(path.toStdString());
+        sensor_widget->clean();
+        sensor_list_widget->clean();
 
-    repository = Sensor::Repository::JsonRepository::fromPath(path.toStdString());
-    sensor_widget->clean();
-    sensor_list_widget->clean();
+        reloadMemory();
 
-    reloadMemory();
-
-    sensor_list_widget->showList(sensor_list, repository);
+        sensor_list_widget->showList(sensor_list, repository);
 
 
-    showStatusBar("Data successfully loaded from " + path + ".");
+        showStatusBar("Data successfully loaded from " + path + ".");
+    }catch(const std::exception& e){
+        qDebug() << "Error Opening File: " << e.what();
+        QMessageBox::critical(this, "Error", e.what());
+    }
+
 }
 
 

@@ -80,7 +80,8 @@ Sensor::AbstractSensor* TemperatureEditor::create(
         Sensor::EnviromentalConditions::Temperature(max->value(), unit_char),
         Sensor::EnviromentalConditions::Temperature(initial->value(), unit_char),
         Sensor::EnviromentalConditions::Temperature(stdDeviation->value(), unit_char),
-        Sensor::EnviromentalConditions::Temperature(target->value(), unit_char)
+        Sensor::EnviromentalConditions::Temperature(target->value(), unit_char),
+        unit_char
     ); 
 }
 

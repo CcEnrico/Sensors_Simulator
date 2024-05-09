@@ -13,7 +13,7 @@ EQ            = =
 ####### Compiler, tools and options
 
 CC            = gcc
-CXX           = g++ -g
+CXX           = g++
 DEFINES       = -DQT_NO_DEBUG -DQT_CHARTS_LIB -DQT_OPENGLWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_OPENGL_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -Wextra -fPIC -D_REENTRANT $(DEFINES)
 CXXFLAGS      = -pipe -O2 -std=gnu++1z -Wall -Wextra -fPIC -D_REENTRANT $(DEFINES)
@@ -1307,6 +1307,7 @@ moc_mainwindow.cpp: View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
+		Sensor/Converter/Json/Reader.h \
 		View/SearchWidget.h \
 		View/SensorListWidget.h \
 		View/WidgetLookup.h \
@@ -1556,6 +1557,7 @@ moc_EditWidget.cpp: View/EditWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qcalendar.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
+		Sensor/Converter/Json/Reader.h \
 		View/SearchWidget.h \
 		View/SensorListWidget.h \
 		View/WidgetLookup.h \
@@ -2287,6 +2289,7 @@ main.o: main.cpp View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
+		Sensor/Converter/Json/Reader.h \
 		View/SearchWidget.h \
 		View/SensorListWidget.h \
 		View/WidgetLookup.h \
@@ -2897,7 +2900,8 @@ JsonRepository.o: Sensor/Repository/JsonRepository.cpp Sensor/Repository/JsonRep
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qurl.h \
-		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h
+		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
+		Sensor/Converter/Json/Reader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o JsonRepository.o Sensor/Repository/JsonRepository.cpp
 
 AbstractSensor.o: Sensor/AbstractSensor.cpp Sensor/AbstractSensor.h \
@@ -3074,6 +3078,7 @@ mainwindow.o: View/mainwindow.cpp View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
+		Sensor/Converter/Json/Reader.h \
 		View/SearchWidget.h \
 		View/SensorListWidget.h \
 		View/WidgetLookup.h \
@@ -3148,7 +3153,6 @@ mainwindow.o: View/mainwindow.cpp View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstackedlayout.h \
 		View/SensorEditor/AbstractSensorEditor.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/QString \
-		Sensor/Converter/Json/Reader.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QStatusBar \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstatusbar.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QMenu \
@@ -3373,15 +3377,6 @@ SensorListWidget.o: View/SensorListWidget.cpp View/SensorListWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		View/GraphRenderer/SGraphRenderer.h \
 		View/GraphRenderer/SGraphSimulator.h \
-		View/ListRenderer/List.h \
-		View/SensorRenderer/ListSensor.h \
-		View/SensorRenderer/SSensorRenderer.h \
-		View/mainwindow.h \
-		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QMainWindow \
-		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qmainwindow.h \
-		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QStackedWidget \
-		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstackedwidget.h \
 		Sensor/Repository/JsonRepository.h \
 		Sensor/Repository/IRepository.h \
 		Sensor/DataMapper/JsonFile.h \
@@ -3397,6 +3392,16 @@ SensorListWidget.o: View/SensorListWidget.cpp View/SensorListWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
+		Sensor/Converter/Json/Reader.h \
+		View/ListRenderer/List.h \
+		View/SensorRenderer/ListSensor.h \
+		View/SensorRenderer/SSensorRenderer.h \
+		View/mainwindow.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QMainWindow \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qmainwindow.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QStackedWidget \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstackedwidget.h \
 		View/SearchWidget.h \
 		View/EditWindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QScrollArea
@@ -3591,6 +3596,7 @@ EditWidget.o: View/EditWidget.cpp View/EditWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qcalendar.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
+		Sensor/Converter/Json/Reader.h \
 		View/SearchWidget.h \
 		View/SensorListWidget.h \
 		View/WidgetLookup.h \
@@ -4311,14 +4317,6 @@ SensorWidget.o: View/SensorWidget.cpp View/SensorWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/QVector \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qvector.h \
 		Engine/SensorList.h \
-		View/GraphRenderer/StandardSimulator.h \
-		View/GraphRenderer/SimulationVisitor.h \
-		View/mainwindow.h \
-		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QMainWindow \
-		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qmainwindow.h \
-		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QStackedWidget \
-		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstackedwidget.h \
 		Sensor/Repository/JsonRepository.h \
 		Sensor/Repository/IRepository.h \
 		Sensor/DataMapper/JsonFile.h \
@@ -4334,6 +4332,15 @@ SensorWidget.o: View/SensorWidget.cpp View/SensorWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
+		Sensor/Converter/Json/Reader.h \
+		View/GraphRenderer/StandardSimulator.h \
+		View/GraphRenderer/SimulationVisitor.h \
+		View/mainwindow.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QMainWindow \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qmainwindow.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QStackedWidget \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstackedwidget.h \
 		View/SearchWidget.h \
 		View/EditWindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SensorWidget.o View/SensorWidget.cpp
@@ -5514,6 +5521,22 @@ ListSensor.o: View/SensorRenderer/ListSensor.cpp View/SensorRenderer/ListSensor.
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		View/GraphRenderer/SGraphRenderer.h \
 		View/GraphRenderer/SGraphSimulator.h \
+		Sensor/Repository/JsonRepository.h \
+		Sensor/Repository/IRepository.h \
+		Sensor/DataMapper/JsonFile.h \
+		Sensor/Converter/Json/Json.h \
+		Sensor/Converter/Json/SReader.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcalendar.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
+		Sensor/Converter/Json/Reader.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QGroupBox \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgroupbox.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/QPixmap \
@@ -5724,7 +5747,23 @@ List.o: View/ListRenderer/List.cpp View/ListRenderer/List.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		View/GraphRenderer/SGraphRenderer.h \
-		View/GraphRenderer/SGraphSimulator.h
+		View/GraphRenderer/SGraphSimulator.h \
+		Sensor/Repository/JsonRepository.h \
+		Sensor/Repository/IRepository.h \
+		Sensor/DataMapper/JsonFile.h \
+		Sensor/Converter/Json/Json.h \
+		Sensor/Converter/Json/SReader.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcalendar.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
+		Sensor/Converter/Json/Reader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o List.o View/ListRenderer/List.cpp
 
 StandardSimulator.o: View/GraphRenderer/StandardSimulator.cpp View/GraphRenderer/StandardSimulator.h \
@@ -6321,7 +6360,23 @@ Graph.o: View/GraphRenderer/Graph.cpp View/GraphRenderer/Graph.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qvector.h \
 		Engine/SensorList.h \
 		View/SensorWidget.h \
-		View/GraphRenderer/SGraphSimulator.h
+		View/GraphRenderer/SGraphSimulator.h \
+		Sensor/Repository/JsonRepository.h \
+		Sensor/Repository/IRepository.h \
+		Sensor/DataMapper/JsonFile.h \
+		Sensor/Converter/Json/Json.h \
+		Sensor/Converter/Json/SReader.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcalendar.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
+		Sensor/Converter/Json/Reader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Graph.o View/GraphRenderer/Graph.cpp
 
 Full.o: View/GraphRenderer/Full.cpp View/GraphRenderer/Full.h \
@@ -6522,6 +6577,22 @@ Full.o: View/GraphRenderer/Full.cpp View/GraphRenderer/Full.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
 		View/GraphRenderer/SGraphRenderer.h \
 		View/GraphRenderer/SGraphSimulator.h \
+		Sensor/Repository/JsonRepository.h \
+		Sensor/Repository/IRepository.h \
+		Sensor/DataMapper/JsonFile.h \
+		Sensor/Converter/Json/Json.h \
+		Sensor/Converter/Json/SReader.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborvalue.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcalendar.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qcborcommon.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
+		Sensor/Converter/Json/Reader.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QVBoxLayout \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QHBoxLayout \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/QPixmap \
@@ -6531,10 +6602,8 @@ Full.o: View/GraphRenderer/Full.cpp View/GraphRenderer/Full.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qcombobox.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstyleoption.h \
-		../../../Qt/6.4.2/gcc_64/include/QtCore/qlocale.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractspinbox.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qvalidator.h \
-		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qslider.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qabstractslider.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qstyle.h \

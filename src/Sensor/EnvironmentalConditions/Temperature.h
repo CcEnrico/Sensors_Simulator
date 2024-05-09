@@ -23,11 +23,15 @@ public:
     Temperature& setFahrenheit(const double f);
     double getFahrenheit() const;
 
+    double getTempscale(const char& scale) const;
+
 private:
 
     void updateKelvin();
     void updateCelsius();
     void updateFahrenheit();
+
+public:
 
     static const double minK;
     static const double minC;
