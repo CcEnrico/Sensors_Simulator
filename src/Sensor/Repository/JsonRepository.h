@@ -10,6 +10,7 @@
 
 #include "IRepository.h"
 #include "../DataMapper/JsonFile.h"
+#include "../Converter/Json/Reader.h"
 
 namespace Sensor {
     namespace Repository {
@@ -22,7 +23,10 @@ namespace Sensor {
         public:
             JsonRepository(DataMapper::JsonFile data_mapper);
             virtual ~JsonRepository();
-            static JsonRepository fromPath(const std::string path);
+
+            // warning: This static metod allocates memory (creates an onject JsonRepository)
+            static JsonRepository* fromPath(const std::string path);
+
             const DataMapper::JsonFile& getDataMapper() const;
             const std::map<unsigned int, AbstractSensor*>& getRepository() const;
             const std::string& getPath() const;

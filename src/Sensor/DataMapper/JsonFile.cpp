@@ -18,13 +18,14 @@ namespace Sensor {
 
         }
         const std::string& JsonFile::getPath() const{
-
+            return path;
         }
         JsonFile& JsonFile::setPath(const std::string& path){
-
+            this->path = path;
+            return *this;
         }
         const Converter::Json::Json& JsonFile::getConverter() const{
-
+            return converter;
         }
         JsonFile& JsonFile::store(const std::vector<AbstractSensor*> sensors){
             QJsonArray json_items;

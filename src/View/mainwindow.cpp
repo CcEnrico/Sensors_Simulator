@@ -113,11 +113,10 @@ MainWindow::MainWindow( Engine::SensorList* mem, QWidget *parent )
     // connect
     connect(create, &QAction::triggered, this, &MainWindow::newDataset);
     connect(save, &QAction::triggered, this, &MainWindow::saveDataset);
+    connect(save_as, &QAction::triggered, this, &MainWindow::saveAsDataset);
     connect(open, &QAction::triggered, this, &MainWindow::openDataset);
     connect(create_item, &QAction::triggered, this, &MainWindow::createItem);
     connect(edit_window, &EditWindow::windowClosed, this, &MainWindow::finishEdit);
-
-
 
     showStatusBar("Ready.");
 }
@@ -152,7 +151,6 @@ MainWindow& MainWindow::reloadMemory() {
     return *this;
 }
 
-
 void MainWindow::newDataset(){
 
     QString path = QFileDialog::getSaveFileName(
@@ -166,10 +164,13 @@ void MainWindow::newDataset(){
     }
 
     try{
-        Sensor::Converter::Json::Reader reader;
-        Sensor::Converter::Json::Json converter(reader);
-        Sensor::DataMapper::JsonFile data_mapper(path.toStdString(), converter);
-        Sensor::Repository::JsonRepository* r = new Sensor::Repository::JsonRepository(data_mapper);
+
+//        Sensor::Converter::Json::Reader reader;
+//        Sensor::Converter::Json::Json converter(reader);
+//        Sensor::DataMapper::JsonFile data_mapper(path.toStdString(), converter);
+//        Sensor::Repository::JsonRepository* r = new Sensor::Repository::JsonRepository(data_mapper);
+        // membro statico fa esattamente quello che fanno le righe commentate sopra, attenzione alloca memoria
+        Sensor::Repository::JsonRepository* r = Sensor::Repository::JsonRepository::fromPath(path.toStdString());
         if (!r->empty()) {
             throw std::runtime_error("Repository is not empty as expected");
         }
@@ -213,10 +214,7 @@ void MainWindow::openDataset(){
 
     ClearMemory();
 
-    Sensor::Converter::Json::Reader reader;
-    Sensor::Converter::Json::Json converter(reader);
-    Sensor::DataMapper::JsonFile data_mapper(path.toStdString(), converter);
-    repository = new Sensor::Repository::JsonRepository(data_mapper);
+    repository = Sensor::Repository::JsonRepository::fromPath(path.toStdString());
     sensor_widget->clean();
     sensor_list_widget->clean();
 
@@ -230,7 +228,17 @@ void MainWindow::openDataset(){
 
 
 void MainWindow::saveAsDataset(){
-
+    QString path = QFileDialog::getSaveFileName(
+            this,
+            "Creates new Dataset",
+            "./Assets/DataJson/",
+            "JSON files *.json"
+    );
+    if (path.isEmpty() || repository == nullptr) {
+        return;
+    }
+    repository->setPath(path.toStdString()).store();
+    showStatusBar("Dataset saved as \"" + path + "\".");
 }
 
 

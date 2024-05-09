@@ -20,20 +20,24 @@ namespace Sensor {
                 delete it->second;
             }
         }
-        JsonRepository JsonRepository::fromPath(const std::string path){
-
+        JsonRepository* JsonRepository::fromPath(const std::string path){
+            Converter::Json::Reader reader;
+            Converter::Json::Json converter(reader);
+            DataMapper::JsonFile data_mapper(path, converter);
+            return new JsonRepository(data_mapper);;
         }
         const DataMapper::JsonFile& JsonRepository::getDataMapper() const{
-
+            return data_mapper;
         }
         const std::map<unsigned int, AbstractSensor*>& JsonRepository::getRepository() const{
-
+            return repository;
         }
         const std::string& JsonRepository::getPath() const{
-
+            return data_mapper.getPath();
         }
         JsonRepository& JsonRepository::setPath(std::string path){
-
+            data_mapper.setPath(path);
+            return *this;
         }
         JsonRepository& JsonRepository::create(AbstractSensor* sensor){
             repository[sensor->getIdentifier()] = sensor;
