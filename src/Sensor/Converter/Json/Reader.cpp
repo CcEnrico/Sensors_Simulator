@@ -115,7 +115,7 @@ namespace Sensor {
                             'k'
                     );
                 }
-                // altrimenti la scala non e' ben definita
+                // altrimenti la scala non e' ben definita.
                 throw std::invalid_argument("error reading Simulation scale in Json File");
 
             }
