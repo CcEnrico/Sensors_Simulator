@@ -1,0 +1,33 @@
+[
+    {
+        "Rain Probability": 1,
+        "dataNumber": 100,
+        "id": 1,
+        "initial Relative Humidity": 0,
+        "initialN02 Relative Humidity": 1,
+        "name": "Prova",
+        "type": "humidity_sensor"
+    },
+    {
+        "Initial Temperature C°": -161.28,
+        "Simulation Scale": "c",
+        "dataNumber": 100,
+        "id": 2,
+        "initial Maximum Temp C°": -39.6,
+        "initial Minimum Temp C°": -273.15,
+        "name": "Far",
+        "standardDeviation Temp C°": -39.6,
+        "type": "temperature_sensor"
+    },
+    {
+        "Initial Temperature K°": 20,
+        "Simulation Scale": "k",
+        "dataNumber": 100,
+        "id": 3,
+        "initial Maximum Temp K°": 50,
+        "initial Minimum Temp K°": 0,
+        "name": "kelvin",
+        "standardDeviation Temp K°": 1,
+        "type": "temperature_sensor"
+    }
+]

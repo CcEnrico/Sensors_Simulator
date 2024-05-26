@@ -92,20 +92,26 @@ MainWindow::MainWindow( Engine::SensorList* mem, QWidget *parent )
     toolbar->addAction(create_item);
 
     // panel
+
+    QSplitter* vertical_splitter = new QSplitter(Qt::Vertical,this);
+    setCentralWidget(vertical_splitter);
+
+    search_widget = new SearchWidget(this);
+    vertical_splitter->addWidget(search_widget);
+
     QSplitter* splitter = new QSplitter(this);
-    setCentralWidget(splitter);
+    vertical_splitter->addWidget(splitter);
 
-    // search_widget = new SearchWidget();
-
-    sensor_widget = new SensorWidget(this); 
+    sensor_widget = new SensorWidget(this);
     sensor_list_widget = new SensorListWidget(sensor_widget ,this);
 
-    splitter->addWidget(sensor_list_widget);   
+    splitter->addWidget(sensor_list_widget);
     splitter->addWidget(sensor_widget);
 
     // item_widget = new ItemWidget();
 
-
+    vertical_splitter->setHandleWidth(0);
+    vertical_splitter->setSizes(QList<int>() << 100 << 3000);
     splitter->setSizes(QList<int>() << 1000 << 3000);
 
     edit_window = new EditWindow();

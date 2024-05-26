@@ -7,7 +7,6 @@
 #include "../Sensor/Repository/JsonRepository.h"
 #include "SearchWidget.h"
 #include "SensorListWidget.h"
-#include "SensorWidget.h"
 #include "EditWindow.h"
 
 namespace View{
@@ -30,6 +29,7 @@ private:
     Engine::SensorList* sensor_list;
     Sensor::Repository::JsonRepository* repository;
 
+    SearchWidget* search_widget;
     SensorWidget* sensor_widget;
     EditWindow* edit_window;
     SensorListWidget* sensor_list_widget;
