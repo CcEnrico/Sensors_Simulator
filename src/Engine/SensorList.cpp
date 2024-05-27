@@ -1,5 +1,7 @@
 #include "SensorList.h"
 
+#include <algorithm>
+
 namespace Engine{
     SensorList::SensorList()
     :sensors(){}
@@ -75,6 +77,34 @@ namespace Engine{
 
     std::list<const Sensor::AbstractSensor*>::const_iterator SensorList::end() const {
         return sensors.end();
+    }
+
+    SensorList& SensorList::sort() {
+        sensors.sort();
+        return *this;
+    }
+
+    SensorList* SensorList::search(const std::string& query) const{
+
+        // creo un nuovo oggetto sullo heap
+        SensorList* result = new SensorList();
+
+        // ricerca fatta su id e nome
+        for (std::list<const Sensor::AbstractSensor*>::const_iterator it = sensors.begin(); it != sensors.end(); ++it) {
+
+            std::string id_string = std::to_string((*it)->getIdentifier());
+            if (    // ricerca nella stringa di getname se e' presente la sottoringa query,
+                    // se non vengono trovati match la funzione ritorna std::string::npos
+                    (id_string).find(query) != std::string::npos ||
+                    (*it)->getName().find(query) != std::string::npos
+                    )
+            {
+                result->add(*it);
+            }
+        }
+        result->sort();
+
+        return result;
     }
 
 

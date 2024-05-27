@@ -3713,7 +3713,7 @@ SearchWidget.o: View/SearchWidget.cpp View/SearchWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qtextformat.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qpen.h \
 		../../../Qt/6.4.2/gcc_64/include/QtGui/qtextoption.h \
-		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QHBoxLayout \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qboxlayout.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlayout.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlayoutitem.h \

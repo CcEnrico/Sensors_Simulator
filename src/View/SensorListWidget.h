@@ -20,18 +20,16 @@ private:
     QGridLayout* layout;
     ListRenderer::SRendererStrategy* renderer;
 
-
 public:
 
     explicit SensorListWidget( SensorWidget* s_w , QWidget* parent = nullptr);
 
-    void showList(Engine::SensorList* list, Sensor::Repository::JsonRepository* repository = nullptr);
+    void showList(Engine::SensorList* list, Sensor::Repository::JsonRepository* repository = nullptr, Engine::SensorList* query = nullptr);
     void editSensor(QVector<WidgetLookup>::const_iterator i);
-    void deleteSensor(QVector<WidgetLookup>::const_iterator it, Engine::SensorList* list, Sensor::Repository::JsonRepository* repository);
+    void deleteSensor(QVector<WidgetLookup>::const_iterator it, Engine::SensorList* list, Sensor::Repository::JsonRepository* repository, Engine::SensorList* query);
     void clean();
 
 };
-
 
 }
 

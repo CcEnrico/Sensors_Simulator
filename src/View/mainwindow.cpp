@@ -27,6 +27,7 @@ MainWindow::MainWindow( Engine::SensorList* mem, QWidget *parent )
     sensor_list(mem),
     repository(nullptr)
 {
+    query = nullptr;
 
     // Action
 
@@ -123,6 +124,7 @@ MainWindow::MainWindow( Engine::SensorList* mem, QWidget *parent )
     connect(open, &QAction::triggered, this, &MainWindow::openDataset);
     connect(create_item, &QAction::triggered, this, &MainWindow::createItem);
     connect(edit_window, &EditWindow::windowClosed, this, &MainWindow::finishEdit);
+    connect(search_widget, &SearchWidget::search_event, this, &MainWindow::search);
 
     showStatusBar("Ready.");
 }
@@ -281,9 +283,22 @@ void MainWindow::finishEdit()
 
     create_item->setEnabled(true);
 
-    sensor_list_widget->showList(sensor_list);
+    sensor_list_widget->showList(sensor_list, repository);
     if (!sensor_widget->isEmpty()) sensor_widget->hideSensorWidget();
     showStatusBar("Ready.");
+}
+
+void MainWindow::search(const std::string& query_text) {
+    // svuota la query prima di cancellarla
+    if (query != nullptr){
+        query->clean();
+        delete query;
+        query = nullptr;
+    }
+    query =  sensor_list->search(query_text);
+    sensor_list_widget->showList( sensor_list, repository, query );
+
+    showStatusBar("Search for Query \"" + QString::fromStdString(query_text) + "\"," );
 }
 
 SensorListWidget* MainWindow::getSensorListWidget(){

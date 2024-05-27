@@ -1,35 +1,12 @@
 [
     {
-        "Initial Temperature C°": 0,
-        "Simulation Scale": "c",
-        "dataNumber": 102,
-        "id": 1,
-        "initial Maximum Temp C°": 10,
-        "initial Minimum Temp C°": -10,
-        "name": "Prova",
-        "standardDeviation Temp C°": 0.5,
-        "type": "temperature_sensor"
-    },
-    {
-        "Initial Temperature F°": 0,
-        "Simulation Scale": "f",
-        "dataNumber": 100,
-        "id": 2,
-        "initial Maximum Temp F°": 10,
-        "initial Minimum Temp F°": -10,
-        "name": "Far",
-        "standardDeviation Temp F°": 0.5,
-        "type": "temperature_sensor"
-    },
-    {
-        "Initial Temperature K°": 0,
-        "Simulation Scale": "k",
         "dataNumber": 100,
         "id": 3,
-        "initial Maximum Temp K°": 10,
-        "initial Minimum Temp K°": 0,
+        "initialN02 micro_g/m3": 0,
+        "initialPm10 micro_g/m3": 0,
         "name": "kelvin",
-        "standardDeviation Temp K°": 0.5,
-        "type": "temperature_sensor"
+        "standardDeviationN02 micro_g/m3": 5,
+        "standardDeviationPm10 micro_g/m3": 5,
+        "type": "air_quality_sensor"
     }
 ]

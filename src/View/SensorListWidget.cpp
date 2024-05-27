@@ -37,11 +37,15 @@ SensorListWidget::SensorListWidget(SensorWidget* s_w, QWidget* parent)
 
 }
 
-void SensorListWidget::showList(Engine::SensorList* list, Sensor::Repository::JsonRepository* repository){
+void SensorListWidget::showList(Engine::SensorList* list, Sensor::Repository::JsonRepository* repository, Engine::SensorList* query ){
 
     clean();
 
-    renderer->render(layout, list , &lookup);
+    if(query != nullptr){
+        renderer->render(layout, query , &lookup);
+    }else{
+        renderer->render(layout, list , &lookup);
+    }
 
     for (
         QVector<WidgetLookup>::const_iterator it = lookup.begin();
@@ -59,15 +63,15 @@ void SensorListWidget::showList(Engine::SensorList* list, Sensor::Repository::Js
              });
         }
         if (it->getDeleteButton()) {
-             connect(it->getDeleteButton(), &QPushButton::clicked, [this, it, list, repository]() {
-                 deleteSensor(it, list, repository);
+             connect(it->getDeleteButton(), &QPushButton::clicked, [this, it, list, repository, query]() {
+                 deleteSensor(it, list, repository, query);
              });
         }
     }
 }
 
     void SensorListWidget::editSensor(QVector<WidgetLookup>::const_iterator it ){
-        MainWindow* main = qobject_cast<MainWindow*>(this->parent()->parent());
+        MainWindow* main = qobject_cast<MainWindow*>(this->parent()->parent()->parent());
         Sensor::AbstractSensor* s = const_cast<Sensor::AbstractSensor*> (it->getSensor());
         if (main != nullptr) {
             main->editItem(s);
@@ -77,9 +81,10 @@ void SensorListWidget::showList(Engine::SensorList* list, Sensor::Repository::Js
 
     }
 
-    void SensorListWidget::deleteSensor(QVector<WidgetLookup>::const_iterator it, Engine::SensorList* list, Sensor::Repository::JsonRepository* repository ){
+    void SensorListWidget::deleteSensor(QVector<WidgetLookup>::const_iterator it, Engine::SensorList* list, Sensor::Repository::JsonRepository* repository, Engine::SensorList* query ){
         lookup.erase(it);
         if(repository != nullptr) repository->erase(it->getSensor()->getIdentifier());   // cancella dalla mappa
+        if(query != nullptr) query->erase(it->getSensor()); // cancella dalla query se esiste
         list->erase(it->getSensor()); // cancella dalla lista
 
         // se il sensore che voglio cancellare non e' vuoto e è quello che è attualmente nel lookup del sensor widget

@@ -15,6 +15,11 @@ namespace View {
 
         explicit SearchWidget(QWidget* parent = nullptr);
 
+    public slots:
+        void search();
+
+    signals:
+        void search_event(std::string query_text);
 
     };
 }

@@ -25,7 +25,13 @@ namespace View{
         layout->addWidget(search_button);
 
 //        connetti segnali per effetuare la ricerca
+        connect(search_button, &QPushButton::clicked, this, &SearchWidget::search);
 
+    }
+    void SearchWidget::search(){
+
+        std::string query_text = query->text().toStdString();
+        emit search_event(query_text);
 
     }
 
