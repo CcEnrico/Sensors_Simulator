@@ -1,36 +1,53 @@
 [
     {
-    },
-    {
-        "Initial Temperature F°": 0,
-        "Simulation Scale": "f",
-        "dataNumber": 100,
+        "Rain Probability": 1,
+        "dataNumber": 1040,
         "id": 2,
-        "initial Maximum Temp F°": 10,
-        "initial Minimum Temp F°": -10,
-        "name": "Far",
-        "standardDeviation Temp F°": 0.5,
-        "type": "temperature_sensor"
+        "initial Relative Humidity": 0,
+        "initialN02 Relative Humidity": 1,
+        "name": "Cionter",
+        "type": "humidity_sensor"
     },
     {
-        "Initial Temperature K°": 20,
-        "Simulation Scale": "k",
         "dataNumber": 100,
         "id": 3,
-        "initial Maximum Temp K°": 50,
-        "initial Minimum Temp K°": 0,
-        "name": "kelvin",
-        "standardDeviation Temp K°": 1,
-        "type": "temperature_sensor"
-    },
-    {
-        "dataNumber": 100,
-        "id": 6,
         "initialN02 micro_g/m3": 0,
         "initialPm10 micro_g/m3": 0,
-        "name": "Prova",
+        "name": "",
         "standardDeviationN02 micro_g/m3": 5,
         "standardDeviationPm10 micro_g/m3": 5,
         "type": "air_quality_sensor"
+    },
+    {
+        "dataNumber": 100,
+        "id": 4,
+        "initialN02 micro_g/m3": 0,
+        "initialPm10 micro_g/m3": 0,
+        "name": "Caaaa",
+        "standardDeviationN02 micro_g/m3": 5,
+        "standardDeviationPm10 micro_g/m3": 5,
+        "type": "air_quality_sensor"
+    },
+    {
+        "Initial Temperature C°": 0,
+        "Simulation Scale": "c",
+        "dataNumber": 100,
+        "id": 5,
+        "initial Maximum Temp C°": 10,
+        "initial Minimum Temp C°": -10,
+        "name": "Ciao",
+        "standardDeviation Temp C°": 0.5,
+        "type": "temperature_sensor"
+    },
+    {
+        "Initial Temperature C°": 0,
+        "Simulation Scale": "c",
+        "dataNumber": 100,
+        "id": 13,
+        "initial Maximum Temp C°": 10,
+        "initial Minimum Temp C°": -10,
+        "name": "GRamsci",
+        "standardDeviation Temp C°": 0.5,
+        "type": "temperature_sensor"
     }
 ]

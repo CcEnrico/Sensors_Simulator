@@ -44,7 +44,12 @@ namespace Sensor {
             return *this;
         }
         AbstractSensor* JsonRepository::read(const unsigned int identifier) const{
-
+            auto it = repository.find(identifier);
+            if (it != repository.end()) {   // nel caso non venga ritrovato
+                return it->second;
+            } else {
+                return nullptr;
+            }
         }
         JsonRepository& JsonRepository::update(AbstractSensor* item){
             return create(item);

@@ -79,15 +79,25 @@ namespace Engine{
         return sensors.end();
     }
 
-    SensorList& SensorList::sort() {
-        sensors.sort();
+    SensorList& SensorList::sortId() {
+        sensors.sort([](const Sensor::AbstractSensor* f, const Sensor::AbstractSensor* s){
+            return f->getIdentifier() < s->getIdentifier();
+        });
         return *this;
     }
 
-    SensorList* SensorList::search(const std::string& query) const{
+    SensorList& SensorList::sortName() {
+        sensors.sort([](const Sensor::AbstractSensor* f, const Sensor::AbstractSensor* s){
+            return f->getName() < s->getName();
+        });
+        return *this;
+    }
 
-        // creo un nuovo oggetto sullo heap
-        SensorList* result = new SensorList();
+    unsigned int SensorList::size() const {
+        return sensors.size();
+    }
+
+    void SensorList::search(SensorList* result , const std::string& query) const{
 
         // ricerca fatta su id e nome
         for (std::list<const Sensor::AbstractSensor*>::const_iterator it = sensors.begin(); it != sensors.end(); ++it) {
@@ -102,9 +112,6 @@ namespace Engine{
                 result->add(*it);
             }
         }
-        result->sort();
-
-        return result;
     }
 
 

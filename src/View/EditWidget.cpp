@@ -162,8 +162,9 @@ void EditWidget::apply(){
 
     Engine::SensorList* list = main_window->getList();
 
-    // in caso io stia solo modificando un sensore preesistente
+    // in caso io stia solo modificando un sensore preesistente, lo tolgo dalla  memoria della repo, e da quella della mem e dealloco
     if (sensor != nullptr) {
+        if (repository != nullptr) repository->erase(sensor->getIdentifier());
         list->remove(sensor);
     }
     sensor = editor->create(id, name, dn, v);
@@ -186,7 +187,7 @@ void EditWidget::apply(){
 
 
 void EditWidget::closeWindow(){
-    main_window->finishEdit();
+    main_window->closeEdit();
 }
 
 }

@@ -36,6 +36,10 @@ private:
     SensorListWidget* sensor_list_widget;
     QWidget* previousCentralWidget;
 
+    MainWindow& reloadMemory();
+    MainWindow& ClearMemory();
+    MainWindow& ClearQuery();
+
 public:
     explicit MainWindow(Engine::SensorList* mem, QWidget *parent = nullptr);
     ~MainWindow() override;
@@ -47,9 +51,6 @@ public:
     
     void showStatusBar(const QString& m);
 
-    MainWindow& reloadMemory();
-    MainWindow& ClearMemory();
-
     public slots:
 
     void newDataset();
@@ -59,7 +60,10 @@ public:
     void createItem();
     void editItem(Sensor::AbstractSensor* s);
     void finishEdit();
+    void closeEdit();
     void search(const std::string& query_text);
+    void sortSensorsId();
+    void sortSensorsName();
 };
 
 }
