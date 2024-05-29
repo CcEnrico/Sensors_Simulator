@@ -41,12 +41,15 @@ class EditWidget : public QWidget{
 signals:
     void widgetClosed();
 
+    void set_unit_event(int index);
+
     
   public slots:
     void selectImage();
     void showType(int index);
     void apply();
     void closeWindow();
+
 };
 
 }

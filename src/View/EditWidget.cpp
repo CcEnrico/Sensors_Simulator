@@ -81,9 +81,9 @@ EditWidget::EditWidget(
 
     QComboBox* type_input = new QComboBox();
     type_input->setObjectName("Type Input");
-    type_input->addItem("AirqualitySensor");
-    type_input->addItem("HumiditySensor");
-    type_input->addItem("TemperatureSensor");
+    type_input->addItem("AirqualitySensor");    // indice 0
+    type_input->addItem("HumiditySensor");  // indice 1
+    type_input->addItem("TemperatureSensor"); // indice 2
     
     if (sensor != nullptr) {
         TypeSelector type_selector(type_input);
@@ -108,6 +108,7 @@ EditWidget::EditWidget(
     SensorEditor::TemperatureEditor* temperature_editor = new SensorEditor::TemperatureEditor();
     stacked_editor->addWidget(temperature_editor);
     editors.push_back(temperature_editor);
+    connect(this, &EditWidget::set_unit_event, temperature_editor, &SensorEditor::TemperatureEditor::unitChangedChar);
 
     if (sensor != nullptr) {
         SensorEditor::SensorInjector sensor_injector(
@@ -116,6 +117,11 @@ EditWidget::EditWidget(
             *temperature_editor
         );
         sensor->accept(sensor_injector);
+
+        Sensor::TemperatureSensor* unit_setter = dynamic_cast<Sensor::TemperatureSensor*>(sensor);
+        if (unit_setter != nullptr){
+            emit set_unit_event(unit_setter->getSimulationScale());
+        }
     }
     showType(type_input->currentIndex());
 

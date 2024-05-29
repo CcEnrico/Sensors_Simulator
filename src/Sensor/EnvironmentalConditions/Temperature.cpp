@@ -67,8 +67,8 @@ void Temperature::updateCelsius(){
 }
 
 void Temperature::updateFahrenheit(){
-    celsius = (fahrenheit-32.0)*(9.0/5.0);
-    kelvin = (fahrenheit-32.0)*(9.0/5.0)+273.15;
+    celsius = (fahrenheit - 32.0) * (5.0 / 9.0);
+    kelvin = (fahrenheit + 459.67) * (5.0 / 9.0);
 }
 
 const double Temperature::minK = 0;
