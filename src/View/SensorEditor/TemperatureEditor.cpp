@@ -10,6 +10,7 @@ TemperatureEditor::TemperatureEditor(QWidget* parent)
       min_temp(0, 'c'),
       max_temp(0, 'c'),
       initial_temp(0, 'c'),
+      stdDeviation_temp(0, 'c'),
       target_temp(0, 'c')
 {
     // Default unit is Celsius 
@@ -92,14 +93,12 @@ void TemperatureEditor::setTemperatureValues(char u){
 Sensor::AbstractSensor* TemperatureEditor::create(
     const unsigned int i,
     const QString& n,
-    const unsigned int dn,
-    const double v
+    const unsigned int dn
 ) const {
     return new Sensor::TemperatureSensor(
         i,
         n.toStdString(),
         dn,
-        v,
         Sensor::EnviromentalConditions::Temperature(min->value(), unit_char),
         Sensor::EnviromentalConditions::Temperature(max->value(), unit_char),
         Sensor::EnviromentalConditions::Temperature(initial->value(), unit_char),
@@ -115,9 +114,19 @@ void TemperatureEditor::setValues(const Sensor::TemperatureSensor& temperature_s
     min_temp = (temperature_sensor.getTempMin());
     max_temp = (temperature_sensor.getTempMax());
     initial_temp = (temperature_sensor.getTempInitial());
+    stdDeviation_temp = (temperature_sensor.getStdDeviation());
     target_temp = (temperature_sensor.getTempTarget());
 
     unit_char = temperature_sensor.getSimulationScale();
+
+    // setta std dev che deve rimanere invariato indipendentemente dalla scala
+    if(unit_char == 'c'){
+        stdDeviation->setValue(stdDeviation_temp.getCelsius());
+    }else if(unit_char == 'f'){
+        stdDeviation->setValue(stdDeviation_temp.getFahrenheit());
+    }else if(unit_char == 'k'){
+        stdDeviation->setValue(stdDeviation_temp.getKelvin());
+    }
 
     setTemperatureValues(unit_char);
 }

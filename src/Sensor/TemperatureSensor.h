@@ -25,7 +25,6 @@ public:
     TemperatureSensor(unsigned int id,
                       std::string  n,
                       unsigned int dn,
-                      double v,
                       EnviromentalConditions::Temperature mn,
                       EnviromentalConditions::Temperature mx,
                       EnviromentalConditions::Temperature init,

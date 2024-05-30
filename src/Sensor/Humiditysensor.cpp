@@ -5,12 +5,11 @@ namespace Sensor{
 HumiditySensor::HumiditySensor(unsigned int id,
     std::string  n,
     unsigned int dn,
-    double v,
     EnviromentalConditions::Humidity init,
     EnviromentalConditions::Humidity stddev,
     double rp
     ):
-    AbstractSensor(id,n,dn,v),
+    AbstractSensor(id,n,dn),
     initial(init),
     stdDeviation(stddev),
     rain_probability(rp)

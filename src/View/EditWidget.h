@@ -25,7 +25,6 @@ class EditWidget : public QWidget{
     QSpinBox* id_input;
     QLineEdit* name_input;
     QSpinBox* dataNum_input;
-    QDoubleSpinBox* variance_input;
     QStackedLayout* stacked_editor;
     QVector<SensorEditor::AbstractSensorEditor*> editors;
     Sensor::Repository::JsonRepository* repository;

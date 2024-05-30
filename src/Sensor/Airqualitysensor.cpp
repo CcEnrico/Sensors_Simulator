@@ -5,12 +5,11 @@ namespace Sensor{
 AirQualitySensor::AirQualitySensor(unsigned int id,
     std::string  n,
     unsigned int dn,
-    double v,
     EnviromentalConditions::AirQuality init,
     EnviromentalConditions::AirQuality stddev,
     EnviromentalConditions::AirQuality t
     ):
-    AbstractSensor(id, n, dn, v),
+    AbstractSensor(id, n, dn),
     initial(init),
     stdDeviation(stddev),
     target(t)

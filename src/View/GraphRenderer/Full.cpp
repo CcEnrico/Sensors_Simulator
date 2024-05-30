@@ -32,12 +32,11 @@ namespace View::GraphRenderer {
         name = new QLabel("Name: " + QString::fromStdString(air_quality.getName()));
         id = new QLabel("ID: " + QString::number(air_quality.getIdentifier()));
         data_num = new QLabel("Data Num: " + QString::number(air_quality.getDataNum()));
-        variance = new QLabel("Variance: " + QString::number(air_quality.getVariance()));
+
         first_column->addWidget(type);
         first_column->addWidget(name);
         first_column->addWidget(id);
         first_column->addWidget(data_num);
-        first_column->addWidget(variance);
         first->setLayout(first_column);
 
 
@@ -99,12 +98,10 @@ namespace View::GraphRenderer {
         name = new QLabel("Name: " + QString::fromStdString(humidity.getName()));
         id = new QLabel("ID: " + QString::number(humidity.getIdentifier()));
         data_num = new QLabel("Data Num: " + QString::number(humidity.getDataNum()));
-        variance = new QLabel("Variance: " + QString::number(humidity.getVariance()));
         first_column->addWidget(type);
         first_column->addWidget(name);
         first_column->addWidget(id);
         first_column->addWidget(data_num);
-        first_column->addWidget(variance);
         first->setLayout(first_column);
 
 
@@ -161,12 +158,10 @@ namespace View::GraphRenderer {
         name = new QLabel("Name: " + QString::fromStdString(temperature.getName()));
         id = new QLabel("ID: " + QString::number(temperature.getIdentifier()));
         data_num = new QLabel("Data Num: " + QString::number(temperature.getDataNum()));
-        variance = new QLabel("Variance: " + QString::number(temperature.getVariance()));
         first_column->addWidget(type);
         first_column->addWidget(name);
         first_column->addWidget(id);
         first_column->addWidget(data_num);
-        first_column->addWidget(variance);
         first->setLayout(first_column);
 
 
@@ -249,9 +244,6 @@ namespace View::GraphRenderer {
     }
     QLabel* Full::getDataNum()const{
         return data_num;
-    }
-    QLabel* Full::getVariance()const{
-        return variance;
     }
     QPushButton* Full::getSimulateButton() const{
         return simulate_button;

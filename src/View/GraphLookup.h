@@ -20,7 +20,6 @@ namespace View {
         QLabel* id;
         QLabel* name;
         QLabel* data_name;
-        QLabel* variance;
         QPushButton* simulate_button;
         QPushButton* edit_button;
         QPushButton* clear_button;
@@ -36,7 +35,6 @@ namespace View {
                 QLabel* id,
                 QLabel* name,
                 QLabel* data_name,
-                QLabel* variance,
                 QPushButton* simulate_button,
                 QPushButton* edit_button,
                 QPushButton* clear_button,
@@ -53,7 +51,6 @@ namespace View {
         QLabel* getId()const;
         QLabel* getName()const;
         QLabel* getDataName()const;
-        QLabel* getVariance()const;
         QPushButton* getSimulateButton() const;
         QPushButton* getEditButton() const;
         QPushButton* getClearButton() const;

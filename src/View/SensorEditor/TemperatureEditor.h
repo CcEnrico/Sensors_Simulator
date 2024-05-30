@@ -23,6 +23,7 @@ class TemperatureEditor: public AbstractSensorEditor {
     Sensor::EnviromentalConditions::Temperature min_temp;
     Sensor::EnviromentalConditions::Temperature max_temp;
     Sensor::EnviromentalConditions::Temperature initial_temp;
+    Sensor::EnviromentalConditions::Temperature stdDeviation_temp;
     Sensor::EnviromentalConditions::Temperature target_temp;
 
 
@@ -36,8 +37,7 @@ class TemperatureEditor: public AbstractSensorEditor {
     Sensor::AbstractSensor* create(
         const unsigned int identifier,
         const QString& name,
-        const unsigned int data_number,
-        const double variance
+        const unsigned int data_number
     ) const override;
     
     void setValues(const Sensor::TemperatureSensor& temperature_sensor);

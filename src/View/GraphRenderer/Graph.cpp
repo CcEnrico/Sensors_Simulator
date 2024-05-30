@@ -11,7 +11,6 @@ namespace View::GraphRenderer {
                 full.getId(),
                 full.getName(),
                 full.getDataNum(),
-                full.getVariance(),
                 full.getSimulateButton(),
                 full.getEditButton(),
                 full.getClearButton(),

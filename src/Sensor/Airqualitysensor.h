@@ -27,7 +27,6 @@ public:
     AirQualitySensor(unsigned int id,
                      std::string  n,
                      unsigned int dn,
-                     double v,
                      EnviromentalConditions::AirQuality init,
                      EnviromentalConditions::AirQuality stddev,
                      EnviromentalConditions::AirQuality t

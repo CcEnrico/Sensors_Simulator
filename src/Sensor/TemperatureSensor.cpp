@@ -5,7 +5,6 @@ namespace Sensor {
 TemperatureSensor::TemperatureSensor(unsigned int id,
     std::string  n,
     unsigned int dn,
-    double v,
     EnviromentalConditions::Temperature mn,
     EnviromentalConditions::Temperature mx,
     EnviromentalConditions::Temperature init,
@@ -13,7 +12,7 @@ TemperatureSensor::TemperatureSensor(unsigned int id,
     EnviromentalConditions::Temperature t,
     char simulation_scale
 ):
-    AbstractSensor(id,n,dn,v),
+    AbstractSensor(id,n,dn),
     min(mn),
     max(mx),
     initial(init),

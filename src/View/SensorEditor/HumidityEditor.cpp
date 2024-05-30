@@ -40,14 +40,12 @@ HumidityEditor::~HumidityEditor() = default;
 Sensor::AbstractSensor* HumidityEditor::create(
     const unsigned int i,
     const QString& n,
-    const unsigned int dn,
-    const double v
+    const unsigned int dn
 ) const {
     return new Sensor::HumiditySensor(
         i,
         n.toStdString(),
         dn,
-        v,
         Sensor::EnviromentalConditions::Humidity(initial->value()),
         Sensor::EnviromentalConditions::Humidity(stdDeviation->value()),
         rain_probability->value()

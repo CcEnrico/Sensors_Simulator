@@ -60,15 +60,13 @@ AirQualityEditor::~AirQualityEditor() = default;
 Sensor::AbstractSensor* AirQualityEditor::create(
     const unsigned int i,
     const QString& n,
-    const unsigned int dn,
-    const double v
+    const unsigned int dn
 
 ) const {
     return new Sensor::AirQualitySensor(
         i,
         n.toStdString(),
         dn,
-        v,
         Sensor::EnviromentalConditions::AirQuality(initial_pm10->value(), initial_n02->value()),
         Sensor::EnviromentalConditions::AirQuality(stdDeviation_pm10->value(), stdDeviation_n02->value()),
         Sensor::EnviromentalConditions::AirQuality(target_pm10->value(), target_n02->value())

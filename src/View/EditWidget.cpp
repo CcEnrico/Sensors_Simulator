@@ -69,15 +69,6 @@ EditWidget::EditWidget(
     }
     form->addRow("Data Number", dataNum_input);
 
-    variance_input = new QDoubleSpinBox();
-    variance_input->setObjectName("Variance Input");
-    variance_input->setRange(0.0, 1000.0);
-    variance_input->setDecimals(2);
-    if(sensor != nullptr){
-        variance_input->setValue(sensor->getVariance());
-    }
-    form->addRow("Variance", variance_input);
-
 
     QComboBox* type_input = new QComboBox();
     type_input->setObjectName("Type Input");
@@ -163,7 +154,6 @@ void EditWidget::apply(){
     int id = id_input->value();
     QString name = name_input->text();
     int dn = dataNum_input->value();
-    double v = variance_input->value();
     SensorEditor::AbstractSensorEditor* editor = editors[stacked_editor->currentIndex()];
 
     Engine::SensorList* list = main_window->getList();
@@ -173,7 +163,7 @@ void EditWidget::apply(){
         if (repository != nullptr) repository->erase(sensor->getIdentifier());
         list->remove(sensor);
     }
-    sensor = editor->create(id, name, dn, v);
+    sensor = editor->create(id, name, dn);
 
 
     // se il sensore esiste già

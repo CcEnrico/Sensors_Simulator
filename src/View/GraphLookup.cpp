@@ -9,7 +9,6 @@ namespace View{
             QLabel* i,
             QLabel* n,
             QLabel* d,
-            QLabel* v,
             QPushButton* simu,
             QPushButton* edit,
             QPushButton* clear,
@@ -24,7 +23,6 @@ namespace View{
     id(i),
     name(n),
     data_name(d),
-    variance(v),
     simulate_button(simu),
     edit_button(edit),
     clear_button(clear),
@@ -54,9 +52,6 @@ namespace View{
     }
     QLabel* GraphLookup::getDataName()const{
         return data_name;
-    }
-    QLabel* GraphLookup::getVariance()const{
-        return variance;
     }
     QPushButton* GraphLookup::getSimulateButton() const{
         return simulate_button;
