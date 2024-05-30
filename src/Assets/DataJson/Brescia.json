@@ -1,0 +1,32 @@
+[
+    {
+        "Initial Temperature C°": 13.98,
+        "Simulation Scale": "c",
+        "dataNumber": 100,
+        "id": 1,
+        "initial Maximum Temp C°": 15.29,
+        "initial Minimum Temp C°": 12.36,
+        "name": "Brescia_Temp",
+        "standardDeviation Temp C°": 0.5,
+        "type": "temperature_sensor"
+    },
+    {
+        "Rain Probability": 0,
+        "dataNumber": 100,
+        "id": 2,
+        "initial Relative Humidity": 90.77,
+        "initialN02 Relative Humidity": 2,
+        "name": "Brescia_Hum",
+        "type": "humidity_sensor"
+    },
+    {
+        "dataNumber": 100,
+        "id": 3,
+        "initialN02 micro_g/m3": 1.03,
+        "initialPm10 micro_g/m3": 2.32,
+        "name": "Brescia_AQ",
+        "standardDeviationN02 micro_g/m3": 0.13,
+        "standardDeviationPm10 micro_g/m3": 0.05,
+        "type": "air_quality_sensor"
+    }
+]

@@ -175,7 +175,16 @@ namespace View::GraphRenderer {
         QLabel *min = new QLabel("Min: " + QString::number(temperature.getTempMin().getCelsius()) + "C° = " + QString::number(temperature.getTempMin().getFahrenheit()) + "F = " + QString::number(temperature.getTempMin().getKelvin()) + "K");
         QLabel *max = new QLabel("Max: " + QString::number(temperature.getTempMax().getCelsius()) + "C° = " + QString::number(temperature.getTempMax().getFahrenheit()) + "F = " + QString::number(temperature.getTempMax().getKelvin()) + "K");
         QLabel *initial = new QLabel("Initial: " + QString::number(temperature.getTempInitial().getCelsius()) + "C° = " + QString::number(temperature.getTempInitial().getFahrenheit()) + "F = " + QString::number(temperature.getTempInitial().getKelvin()) + "K");
-        QLabel *std_dev = new QLabel("Standard Deviation: " + QString::number(temperature.getStdDeviation().getCelsius()) + "C° = " + QString::number(temperature.getStdDeviation().getFahrenheit()) + "F = " + QString::number(temperature.getStdDeviation().getKelvin()) + "K");
+        QLabel *std_dev = nullptr;
+        if (temperature.getSimulationScale() == 'c' ){
+            std_dev = new QLabel("Standard Deviation: " + QString::number(temperature.getStdDeviation().getCelsius()) + "C°" );
+        }
+        else if(temperature.getSimulationScale() == 'f' ){
+            std_dev = new QLabel("Standard Deviation: " + QString::number(temperature.getStdDeviation().getFahrenheit()) + "F°" );
+        }
+        else if(temperature.getSimulationScale() == 'k' ){
+            std_dev = new QLabel("Standard Deviation: " + QString::number(temperature.getStdDeviation().getKelvin()) + "K°" );
+        }
         QLabel *sim_scale ;
         if (temperature.getSimulationScale() == 'c'){sim_scale = new QLabel("Simulation Scale: C°" );}
         else if (temperature.getSimulationScale() == 'f'){sim_scale = new QLabel("Simulation Scale: F°" );}
