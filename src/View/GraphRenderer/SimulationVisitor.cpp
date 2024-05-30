@@ -335,7 +335,7 @@ namespace View::GraphRenderer{
 
         chart->legend()->setVisible(true);
         chart->legend()->setAlignment(Qt::AlignRight);
-//        chart->setAnimationOptions(QChart::SeriesAnimations);
+        chart->setAnimationOptions(QChart::SeriesAnimations);
 
     }
 

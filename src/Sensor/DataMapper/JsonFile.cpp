@@ -15,7 +15,10 @@ namespace Sensor {
 
         }
         JsonFile JsonFile::fromPath(const std::string& path){
-
+            Converter::Json::Reader reader;
+            Converter::Json::Json converter(reader);
+            JsonFile data_mapper(path, converter);
+            return data_mapper;
         }
         const std::string& JsonFile::getPath() const{
             return path;

@@ -10,7 +10,7 @@ AbstractSensor::AbstractSensor(unsigned int id,
                               double v
                                ): identifier(id), name(n), dataNum(dn), variance(v){}
 
-AbstractSensor::~AbstractSensor()= default;
+AbstractSensor::~AbstractSensor() = default;
 
 unsigned int AbstractSensor::getIdentifier() const{
     return identifier;

@@ -59,28 +59,12 @@ MainWindow::MainWindow( Engine::SensorList* mem, QWidget *parent )
         "Close"
     );
     close->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_Q));
-    QAction* togge_toolbar = new QAction(
-        "Toolbar"
-    );
     create_item = new QAction(
         QIcon(QPixmap((":/Assets/icons/new_item.svg"))),
         "New Item"
     );
     create_item->setShortcut(QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_N));
     create_item->setEnabled(true);
-
-    // Menu
-//    QMenu* menu_bar = menuBar()->addMenu("&File");
-//    menu_bar->addAction(create);
-//    menu_bar->addAction(open);
-//    menu_bar->addAction(save);
-//    menu_bar->addAction(save_as);
-//    menu_bar->addSeparator();
-//    menu_bar->addAction(close);
-//    QMenu* view_menu = menuBar()->addMenu("&View");
-//    view_menu->addAction(togge_toolbar);
-//    QMenu* item_menu = menuBar()->addMenu("&Item");
-//    item_menu->addAction(create_item);
 
     // toolbar
     toolbar = addToolBar("Toolbar");
@@ -109,8 +93,6 @@ MainWindow::MainWindow( Engine::SensorList* mem, QWidget *parent )
 
     splitter->addWidget(sensor_list_widget);
     splitter->addWidget(sensor_widget);
-
-    // item_widget = new ItemWidget();
 
     vertical_splitter->setHandleWidth(0);
     vertical_splitter->setSizes(QList<int>() << 100 << 3000);

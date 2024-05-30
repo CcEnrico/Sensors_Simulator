@@ -34,7 +34,6 @@ private:
     SensorWidget* sensor_widget;
     EditWindow* edit_window;
     SensorListWidget* sensor_list_widget;
-    QWidget* previousCentralWidget;
 
     MainWindow& reloadMemory();
     MainWindow& ClearMemory();
