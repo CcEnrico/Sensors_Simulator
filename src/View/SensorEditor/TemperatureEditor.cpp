@@ -10,7 +10,6 @@ TemperatureEditor::TemperatureEditor(QWidget* parent)
       min_temp(0, 'c'),
       max_temp(0, 'c'),
       initial_temp(0, 'c'),
-      stdDeviation_temp(0, 'c'),
       target_temp(0, 'c')
 {
     // Default unit is Celsius 
@@ -46,13 +45,14 @@ TemperatureEditor::TemperatureEditor(QWidget* parent)
     initial->setObjectName("Initial");
     initial->setSuffix("°C");
     initial->setMinimum(-273.15);
+    initial->setMaximum(std::numeric_limits<double>::max());
 
     form->addRow("Initial ", initial);
 
     stdDeviation = new QDoubleSpinBox();
     stdDeviation->setObjectName("Standard Deviation");
     stdDeviation->setSuffix("°C");
-    stdDeviation->setMinimum(-273.15);
+    stdDeviation->setMinimum(0); // deviazione standard è positiva
     stdDeviation->setValue(0.5);
     stdDeviation->setMaximum(std::numeric_limits<double>::max());
     form->addRow("Standard Deviation ", stdDeviation);
@@ -74,19 +74,16 @@ void TemperatureEditor::setTemperatureValues(char u){
         min->setValue(min_temp.getCelsius());
         max->setValue(max_temp.getCelsius());
         initial->setValue(initial_temp.getCelsius());
-        stdDeviation->setValue(stdDeviation_temp.getCelsius());
         target->setValue(target_temp.getCelsius());
     }else if(u == 'f'){
         min->setValue(min_temp.getFahrenheit());
         max->setValue(max_temp.getFahrenheit());
         initial->setValue(initial_temp.getFahrenheit());
-        stdDeviation->setValue(stdDeviation_temp.getFahrenheit());
         target->setValue(target_temp.getFahrenheit());
     }else if(u == 'k'){
         min->setValue(min_temp.getKelvin());
         max->setValue(max_temp.getKelvin());
         initial->setValue(initial_temp.getKelvin());
-        stdDeviation->setValue(stdDeviation_temp.getKelvin());
         target->setValue(target_temp.getKelvin());
     }
 }
@@ -118,7 +115,6 @@ void TemperatureEditor::setValues(const Sensor::TemperatureSensor& temperature_s
     min_temp = (temperature_sensor.getTempMin());
     max_temp = (temperature_sensor.getTempMax());
     initial_temp = (temperature_sensor.getTempInitial());
-    stdDeviation_temp =(temperature_sensor.getStdDeviation());
     target_temp = (temperature_sensor.getTempTarget());
 
     unit_char = temperature_sensor.getSimulationScale();
@@ -144,7 +140,7 @@ void TemperatureEditor::unitChangedIndex(int index){
         min->setMinimum(-273.15);
         max->setMinimum(-273.15);
         initial->setMinimum(-273.15);
-        stdDeviation->setMinimum(-273.15);
+        stdDeviation->setMinimum(0);
         target->setMinimum(-273.15);
 
     }else if(index == 1){
@@ -160,7 +156,7 @@ void TemperatureEditor::unitChangedIndex(int index){
         min->setMinimum(-459.67);
         max->setMinimum(-459.67);
         initial->setMinimum(-459.67);
-        stdDeviation->setMinimum(-459.67);
+        stdDeviation->setMinimum(0);
         target->setMinimum(-459.67);
 
     }else if(index == 2){
