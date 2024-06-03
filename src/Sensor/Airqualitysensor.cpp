@@ -6,13 +6,11 @@ AirQualitySensor::AirQualitySensor(unsigned int id,
     std::string  n,
     unsigned int dn,
     EnviromentalConditions::AirQuality init,
-    EnviromentalConditions::AirQuality stddev,
-    EnviromentalConditions::AirQuality t
+    EnviromentalConditions::AirQuality stddev
     ):
     AbstractSensor(id, n, dn),
     initial(init),
-    stdDeviation(stddev),
-    target(t)
+    stdDeviation(stddev)
 {
 }
 
@@ -70,33 +68,6 @@ AirQualitySensor& AirQualitySensor::setStdDeviationNO2(const double no2){
     return *this;
 }
 
-EnviromentalConditions::AirQuality AirQualitySensor::getAQTarget()const{
-    return target;
-}
-
-double AirQualitySensor::getTargetPm10()const{
-    return target.getPm10();
-}
-
-double AirQualitySensor::getTargetNO2()const{
-    return target.getNO2();
-}
-
-AirQualitySensor& AirQualitySensor::setAQTarget(const EnviromentalConditions::AirQuality t){
-    this->target = t;
-    return *this;
-}
-
-AirQualitySensor& AirQualitySensor::setTargetPm10(const double pm10){
-    this->target.setPm10(pm10);
-    return *this;
-}
-
-AirQualitySensor& AirQualitySensor::setTargetNO2(const double no2){
-    this->target.setNO2(no2);
-    return *this;
-}
-
 void AirQualitySensor::accept(SConstVisitor &visitor) const{
     visitor.visit(*this);
 }
@@ -118,6 +89,7 @@ std::vector<double> AirQualitySensor::getAQDataN02()const{
     }
     return n02_data;
 }
+
 std::vector<double> AirQualitySensor::getAQDataIAQ()const{
     std::vector<double> IAQ_data;
     for (const auto & it : airQualityData) {

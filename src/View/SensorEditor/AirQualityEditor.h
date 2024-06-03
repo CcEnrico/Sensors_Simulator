@@ -15,8 +15,6 @@ class AirQualityEditor: public AbstractSensorEditor {
     QDoubleSpinBox* initial_n02;
     QDoubleSpinBox* stdDeviation_pm10;
     QDoubleSpinBox* stdDeviation_n02;
-    QDoubleSpinBox* target_pm10;
-    QDoubleSpinBox* target_n02;
 
   public:
     explicit AirQualityEditor(QWidget* parent = 0);

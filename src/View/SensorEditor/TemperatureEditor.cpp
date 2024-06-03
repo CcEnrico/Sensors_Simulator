@@ -10,8 +10,7 @@ TemperatureEditor::TemperatureEditor(QWidget* parent)
       min_temp(0, 'c'),
       max_temp(0, 'c'),
       initial_temp(0, 'c'),
-      stdDeviation_temp(0, 'c'),
-      target_temp(0, 'c')
+      stdDeviation_temp(0, 'c')
 {
     // Default unit is Celsius 
     unit_char = 'c';
@@ -62,14 +61,6 @@ TemperatureEditor::TemperatureEditor(QWidget* parent)
     stdDeviation->setMaximum(std::numeric_limits<double>::max());
     form->addRow("Standard Deviation ", stdDeviation);
 
-    target = new QDoubleSpinBox();
-    target->setObjectName("Target");
-    target->setSuffix("°C");
-    target->setMinimum(-273.15);
-    target->setDecimals(14);
-    target->setMaximum(std::numeric_limits<double>::max());
-    form->addRow("Target ", target);
-
     connect(unit, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &TemperatureEditor::unitChangedIndex);
 }
 
@@ -80,17 +71,14 @@ void TemperatureEditor::setTemperatureValues(char u){
         min->setValue(min_temp.getCelsius());
         max->setValue(max_temp.getCelsius());
         initial->setValue(initial_temp.getCelsius());
-        target->setValue(target_temp.getCelsius());
     }else if(u == 'f'){
         min->setValue(min_temp.getFahrenheit());
         max->setValue(max_temp.getFahrenheit());
         initial->setValue(initial_temp.getFahrenheit());
-        target->setValue(target_temp.getFahrenheit());
     }else if(u == 'k'){
         min->setValue(min_temp.getKelvin());
         max->setValue(max_temp.getKelvin());
         initial->setValue(initial_temp.getKelvin());
-        target->setValue(target_temp.getKelvin());
     }
 }
 
@@ -108,7 +96,6 @@ Sensor::AbstractSensor* TemperatureEditor::create(
         Sensor::EnviromentalConditions::Temperature(max->value(), unit_char),
         Sensor::EnviromentalConditions::Temperature(initial->value(), unit_char),
         Sensor::EnviromentalConditions::Temperature(stdDeviation->value(), unit_char),
-        Sensor::EnviromentalConditions::Temperature(target->value(), unit_char),
         unit_char
     ); 
 }
@@ -120,7 +107,6 @@ void TemperatureEditor::setValues(const Sensor::TemperatureSensor& temperature_s
     max_temp = (temperature_sensor.getTempMax());
     initial_temp = (temperature_sensor.getTempInitial());
     stdDeviation_temp = (temperature_sensor.getStdDeviation());
-    target_temp = (temperature_sensor.getTempTarget());
 
     unit_char = temperature_sensor.getSimulationScale();
 
@@ -146,7 +132,6 @@ void TemperatureEditor::unitChangedIndex(int index){
         max->setSuffix("°C");
         initial->setSuffix("°C");
         stdDeviation->setSuffix("°C");
-        target->setSuffix("°C");
 
         unit_char = 'c';
         setTemperatureValues(unit_char);
@@ -155,14 +140,12 @@ void TemperatureEditor::unitChangedIndex(int index){
         max->setMinimum(-273.15);
         initial->setMinimum(-273.15);
         stdDeviation->setMinimum(0);
-        target->setMinimum(-273.15);
 
     }else if(index == 1){
         min->setSuffix("°F");
         max->setSuffix("°F");
         initial->setSuffix("°F");
         stdDeviation->setSuffix("°F");
-        target->setSuffix("°F");
 
         unit_char = 'f';
         setTemperatureValues(unit_char);
@@ -171,14 +154,12 @@ void TemperatureEditor::unitChangedIndex(int index){
         max->setMinimum(-459.67);
         initial->setMinimum(-459.67);
         stdDeviation->setMinimum(0);
-        target->setMinimum(-459.67);
 
     }else if(index == 2){
         min->setSuffix("K");
         max->setSuffix("K");
         initial->setSuffix("K");
         stdDeviation->setSuffix("K");
-        target->setSuffix("K");
 
         unit_char = 'k';
         setTemperatureValues(unit_char);
@@ -187,7 +168,6 @@ void TemperatureEditor::unitChangedIndex(int index){
         max->setMinimum(0);
         initial->setMinimum(0);
         stdDeviation->setMinimum(0);
-        target->setMinimum(0);
     }
 }
     void TemperatureEditor::unitChangedChar(char u){
@@ -200,7 +180,6 @@ void TemperatureEditor::unitChangedIndex(int index){
             max->setSuffix("°C");
             initial->setSuffix("°C");
             stdDeviation->setSuffix("°C");
-            target->setSuffix("°C");
 
             unit->setCurrentIndex(0);
 
@@ -208,14 +187,12 @@ void TemperatureEditor::unitChangedIndex(int index){
             max->setMinimum(-273.15);
             initial->setMinimum(-273.15);
             stdDeviation->setMinimum(-273.15);
-            target->setMinimum(-273.15);
 
         }else if(u == 'f'){
             min->setSuffix("°F");
             max->setSuffix("°F");
             initial->setSuffix("°F");
             stdDeviation->setSuffix("°F");
-            target->setSuffix("°F");
 
             unit->setCurrentIndex(1);
 
@@ -223,14 +200,12 @@ void TemperatureEditor::unitChangedIndex(int index){
             max->setMinimum(-459.67);
             initial->setMinimum(-459.67);
             stdDeviation->setMinimum(-459.67);
-            target->setMinimum(-459.67);
 
         }else if(u == 'k'){
             min->setSuffix("K");
             max->setSuffix("K");
             initial->setSuffix("K");
             stdDeviation->setSuffix("K");
-            target->setSuffix("K");
 
             unit->setCurrentIndex(2);
 
@@ -238,7 +213,6 @@ void TemperatureEditor::unitChangedIndex(int index){
             max->setMinimum(0);
             initial->setMinimum(0);
             stdDeviation->setMinimum(0);
-            target->setMinimum(0);
         }
     }
 

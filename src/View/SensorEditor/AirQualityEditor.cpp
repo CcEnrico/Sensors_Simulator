@@ -45,20 +45,6 @@ AirQualityEditor::AirQualityEditor(QWidget* parent)
     stdDeviation_n02->setValue(5.0);
     form->addRow("Standard Deviation NO2 micro_g/m3 ", stdDeviation_n02);
 
-    target_pm10 = new QDoubleSpinBox();
-    target_pm10->setObjectName("Target Pm10");
-    target_pm10->setMinimum(0);
-    target_pm10->setDecimals(14);
-    target_pm10->setMaximum(std::numeric_limits<double>::max());
-    form->addRow("Target Pm10 micro_g/m3 ", target_pm10);
-
-    target_n02 = new QDoubleSpinBox();
-    target_n02->setObjectName("Target NO2");
-    target_n02->setMinimum(0);
-    target_n02->setDecimals(14);
-    target_n02->setMaximum(std::numeric_limits<double>::max());
-    form->addRow("Target NO2 micro_g/m3 ", target_n02);
-
 }
 
 AirQualityEditor::~AirQualityEditor() = default;
@@ -74,8 +60,7 @@ Sensor::AbstractSensor* AirQualityEditor::create(
         n.toStdString(),
         dn,
         Sensor::EnviromentalConditions::AirQuality(initial_pm10->value(), initial_n02->value()),
-        Sensor::EnviromentalConditions::AirQuality(stdDeviation_pm10->value(), stdDeviation_n02->value()),
-        Sensor::EnviromentalConditions::AirQuality(target_pm10->value(), target_n02->value())
+        Sensor::EnviromentalConditions::AirQuality(stdDeviation_pm10->value(), stdDeviation_n02->value())
     );
 }
 
@@ -84,8 +69,6 @@ void AirQualityEditor::setValues(const Sensor::AirQualitySensor& air_quality_sen
     initial_n02->setValue((air_quality_sensor.getInitialNO2()));
     stdDeviation_pm10->setValue((air_quality_sensor.getStdDeviationPm10()));
     stdDeviation_n02->setValue((air_quality_sensor.getStdDeviationNO2()));
-    target_pm10->setValue((air_quality_sensor.getTargetPm10()));
-    target_n02->setValue((air_quality_sensor.getTargetNO2()));
 }
 
 }

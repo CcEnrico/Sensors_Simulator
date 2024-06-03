@@ -46,14 +46,10 @@ namespace View::GraphRenderer {
         QLabel* initial_n02 = new QLabel("Initial NO2: " + QString::number(air_quality.getInitialNO2()));
         QLabel* std_dev_pm_10 = new QLabel("Standard Deviation PM10: " + QString::number(air_quality.getStdDeviationPm10()));
         QLabel* std_dev_n02 = new QLabel("Standard Deviation NO2: " + QString::number(air_quality.getStdDeviationNO2()));
-        QLabel* target_pm_10 = new QLabel("Target PM10: " + QString::number(air_quality.getTargetPm10()));
-        QLabel* target_n02 = new QLabel("Target NO2: " + QString::number(air_quality.getTargetNO2()));
         second_column->addWidget(initial_pm_10);
         second_column->addWidget(initial_n02);
         second_column->addWidget(std_dev_pm_10);
         second_column->addWidget(std_dev_n02);
-        second_column->addWidget(target_pm_10);
-        second_column->addWidget(target_n02);
         second->setLayout(second_column);
 
         QWidget* third = new QWidget();

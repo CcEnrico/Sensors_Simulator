@@ -19,13 +19,10 @@ class TemperatureEditor: public AbstractSensorEditor {
     QDoubleSpinBox* max;
     QDoubleSpinBox* initial;
     QDoubleSpinBox* stdDeviation;
-    QDoubleSpinBox* target;
     Sensor::EnviromentalConditions::Temperature min_temp;
     Sensor::EnviromentalConditions::Temperature max_temp;
     Sensor::EnviromentalConditions::Temperature initial_temp;
     Sensor::EnviromentalConditions::Temperature stdDeviation_temp;
-    Sensor::EnviromentalConditions::Temperature target_temp;
-
 
     void setTemperatureValues(char u);
 
