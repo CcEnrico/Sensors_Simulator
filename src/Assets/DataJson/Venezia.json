@@ -1,0 +1,32 @@
+[
+    {
+        "Initial Temperature K°": 291.99214814814815,
+        "Simulation Scale": "k",
+        "dataNumber": 100,
+        "id": 1,
+        "initial Maximum Temp K°": 293.5037407407408,
+        "initial Minimum Temp K°": 290.7517777777777,
+        "name": "Venezia_Temp",
+        "standardDeviation Temp K°": 3.2579748049829926,
+        "type": "temperature_sensor"
+    },
+    {
+        "Rain Probability": 0.18888888888888888,
+        "dataNumber": 100,
+        "id": 2,
+        "initial Relative Humidity": 77.28148148148148,
+        "name": "Venezia_Hum",
+        "standardDeviation Relative Humidity": 11.157227753279306,
+        "type": "humidity_sensor"
+    },
+    {
+        "dataNumber": 100,
+        "id": 3,
+        "initialN02 micro_g/m3": 5.616740740740741,
+        "initialPm10 micro_g/m3": 6.327999999999999,
+        "name": "Venezia_AQ",
+        "standardDeviationN02 micro_g/m3": 2.846982373757931,
+        "standardDeviationPm10 micro_g/m3": 1.7643331758926815,
+        "type": "air_quality_sensor"
+    }
+]

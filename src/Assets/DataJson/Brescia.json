@@ -1,32 +1,32 @@
 [
     {
-        "Initial Temperature C°": 13.98,
-        "Simulation Scale": "c",
+        "Initial Temperature K°": 284.9420802919708,
+        "Simulation Scale": "k",
         "dataNumber": 100,
         "id": 1,
-        "initial Maximum Temp C°": 15.29,
-        "initial Minimum Temp C°": 12.36,
+        "initial Maximum Temp K°": 286.57138686131384,
+        "initial Minimum Temp K°": 283.2876277372263,
         "name": "Brescia_Temp",
-        "standardDeviation Temp C°": 0.5,
+        "standardDeviation Temp K°": 3.6952791515867554,
         "type": "temperature_sensor"
     },
     {
-        "Rain Probability": 0,
+        "Rain Probability": 0.2956204379562044,
         "dataNumber": 100,
         "id": 2,
-        "initial Relative Humidity": 90.77,
-        "initialN02 Relative Humidity": 2,
+        "initial Relative Humidity": 79.45985401459853,
         "name": "Brescia_Hum",
+        "standardDeviation Relative Humidity": 14.273662438027133,
         "type": "humidity_sensor"
     },
     {
         "dataNumber": 100,
         "id": 3,
-        "initialN02 micro_g/m3": 1.03,
-        "initialPm10 micro_g/m3": 2.32,
+        "initialN02 micro_g/m3": 1.3752189781021897,
+        "initialPm10 micro_g/m3": 3.0487226277372264,
         "name": "Brescia_AQ",
-        "standardDeviationN02 micro_g/m3": 0.13,
-        "standardDeviationPm10 micro_g/m3": 0.05,
+        "standardDeviationN02 micro_g/m3": 0.7778353757425924,
+        "standardDeviationPm10 micro_g/m3": 1.6188678265543945,
         "type": "air_quality_sensor"
     }
 ]

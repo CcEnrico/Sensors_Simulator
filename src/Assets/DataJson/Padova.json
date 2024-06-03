@@ -1,0 +1,32 @@
+[
+    {
+        "Initial Temperature K°": 292.34230769230766,
+        "Simulation Scale": "k",
+        "dataNumber": 100,
+        "id": 1,
+        "initial Maximum Temp K°": 293.7605128205128,
+        "initial Minimum Temp K°": 290.7623443223443,
+        "name": "Padova_Temp",
+        "standardDeviation Temp K°": 3.4016025345065435,
+        "type": "temperature_sensor"
+    },
+    {
+        "Rain Probability": 0.16483516483516483,
+        "dataNumber": 100,
+        "id": 2,
+        "initial Relative Humidity": 76.61904761904762,
+        "name": "Padova_Hum",
+        "standardDeviation Relative Humidity": 11.822307862491765,
+        "type": "humidity_sensor"
+    },
+    {
+        "dataNumber": 100,
+        "id": 3,
+        "initialN02 micro_g/m3": 4.355494505494505,
+        "initialPm10 micro_g/m3": 5.715238095238095,
+        "name": "Padova_AQ",
+        "standardDeviationN02 micro_g/m3": 2.3568647752153984,
+        "standardDeviationPm10 micro_g/m3": 2.120936286373649,
+        "type": "air_quality_sensor"
+    }
+]

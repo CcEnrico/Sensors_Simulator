@@ -31,14 +31,16 @@ TemperatureEditor::TemperatureEditor(QWidget* parent)
     min->setSuffix("°C");
     min->setMinimum(-273.15);
     min->setValue(-10.0);
+    min->setDecimals(14);
     min->setMaximum(std::numeric_limits<double>::max());
     form->addRow("Min ", min);
 
     max = new QDoubleSpinBox();
     max->setObjectName("Max");
     max->setSuffix("°C");
-    min->setMinimum(-273.15);
+    max->setMinimum(-273.15);
     max->setValue(10.0);
+    max->setDecimals(14);
     max->setMaximum(std::numeric_limits<double>::max());
     form->addRow("Max ", max);
 
@@ -46,6 +48,7 @@ TemperatureEditor::TemperatureEditor(QWidget* parent)
     initial->setObjectName("Initial");
     initial->setSuffix("°C");
     initial->setMinimum(-273.15);
+    initial->setDecimals(14);
     initial->setMaximum(std::numeric_limits<double>::max());
 
     form->addRow("Initial ", initial);
@@ -55,6 +58,7 @@ TemperatureEditor::TemperatureEditor(QWidget* parent)
     stdDeviation->setSuffix("°C");
     stdDeviation->setMinimum(0); // deviazione standard è positiva
     stdDeviation->setValue(0.5);
+    stdDeviation->setDecimals(14);
     stdDeviation->setMaximum(std::numeric_limits<double>::max());
     form->addRow("Standard Deviation ", stdDeviation);
 
@@ -62,6 +66,7 @@ TemperatureEditor::TemperatureEditor(QWidget* parent)
     target->setObjectName("Target");
     target->setSuffix("°C");
     target->setMinimum(-273.15);
+    target->setDecimals(14);
     target->setMaximum(std::numeric_limits<double>::max());
     form->addRow("Target ", target);
 

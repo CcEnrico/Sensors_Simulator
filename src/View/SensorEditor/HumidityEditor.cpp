@@ -17,12 +17,14 @@ HumidityEditor::HumidityEditor(QWidget* parent)
     initial->setObjectName("Initial Humidity");
     initial->setSuffix("%");
     initial->setRange(0, 100);
+    initial->setDecimals(14);
     form->addRow("Initial Humidity ", initial);
 
     stdDeviation = new QDoubleSpinBox();
     stdDeviation->setObjectName("Standard Deviation Humidity");
     stdDeviation->setSuffix("%");
     stdDeviation->setRange(0, 100);
+    stdDeviation->setDecimals(14);
     stdDeviation->setValue(1.0);
     form->addRow("Standard Deviation Humidity ", stdDeviation);
 
@@ -30,6 +32,7 @@ HumidityEditor::HumidityEditor(QWidget* parent)
     rain_probability->setObjectName("Rain Probability");
     rain_probability->setSuffix("%");
     rain_probability->setRange(0, 100);
+    rain_probability->setDecimals(14);
     rain_probability->setValue(1.0);
     form->addRow("Rain Probability ", rain_probability);
  
