@@ -58,7 +58,7 @@ namespace Sensor {
                         object.value("name").toString().toStdString(),
                         object.value("dataNumber").toInt(),
                         Sensor::EnviromentalConditions::Humidity( object.value("initial Relative Humidity").toDouble()),
-                        Sensor::EnviromentalConditions::Humidity( object.value("initialN02 Relative Humidity").toDouble()),
+                        Sensor::EnviromentalConditions::Humidity( object.value("standardDeviation Relative Humidity").toDouble()),
                         object.value("Rain Probability").toDouble()
                 );
             }
