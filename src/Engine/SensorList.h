@@ -18,12 +18,17 @@ namespace Engine{
         SensorList& clean();    // non dealloca memoria pulisce solo il contenitore
         SensorList& clear();    // dealloca memoria e pulisce il contenitore
         bool find(const Sensor::AbstractSensor* sensor);
+        SensorList& sortId();
+        SensorList& sortName();
+        unsigned int size() const;
 
         bool isEmpty();
 
         std::list<const Sensor::AbstractSensor*>& getSensors();
         std::list<const Sensor::AbstractSensor*>::const_iterator begin() const;
         std::list<const Sensor::AbstractSensor*>::const_iterator end() const;
+
+        void search(SensorList* result, const std::string& query) const;
 
 
     };

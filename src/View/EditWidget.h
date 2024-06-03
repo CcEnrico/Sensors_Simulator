@@ -25,7 +25,6 @@ class EditWidget : public QWidget{
     QSpinBox* id_input;
     QLineEdit* name_input;
     QSpinBox* dataNum_input;
-    QDoubleSpinBox* variance_input;
     QStackedLayout* stacked_editor;
     QVector<SensorEditor::AbstractSensorEditor*> editors;
     Sensor::Repository::JsonRepository* repository;
@@ -41,12 +40,15 @@ class EditWidget : public QWidget{
 signals:
     void widgetClosed();
 
+    void set_unit_event(int index);
+
     
   public slots:
     void selectImage();
     void showType(int index);
     void apply();
     void closeWindow();
+
 };
 
 }

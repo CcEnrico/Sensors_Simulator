@@ -256,8 +256,9 @@ namespace View::GraphRenderer{
         std::vector<double> min_data = temperature.getTempDataMin();
         std::vector<double> max_data = temperature.getTempDataMax();
         std::vector<double> mean_data = temperature.getTempDataMean();
-        double max = 0;
-        double min = 0;
+        double min = std::numeric_limits<double>::max();
+        double max = std::numeric_limits<double>::lowest();
+
 
         if (temperature.getDataNum() < 200){
 
@@ -281,6 +282,7 @@ namespace View::GraphRenderer{
             chart->addSeries(series);
             series->attachAxis(axisX);
             series->attachAxis(axisY);
+
         }else{
             QLineSeries* series_min = new QLineSeries();
             unsigned int i = 0;

@@ -14,15 +14,13 @@ class AbstractSensor{
     private:
     unsigned int identifier;
     std::string name;
-    double variance;
 protected:
     unsigned int dataNum;
 
 public:
     AbstractSensor(unsigned int id,
                    std::string n,
-                   unsigned int dn,
-                   double v
+                   unsigned int dn
     );
 
     virtual ~AbstractSensor();
@@ -32,8 +30,6 @@ public:
     AbstractSensor& setName(const std::string s);
     unsigned int getDataNum() const;
     AbstractSensor& setDataNum(const unsigned int dn);
-    double getVariance()const;
-    AbstractSensor& setVariance(const double v);
 
     virtual void accept(SConstVisitor& visitor) const = 0;
     virtual void accept(SVisitor& visitor) = 0;

@@ -55,8 +55,8 @@ AirQuality::operator double() const{
 //}
 
 void AirQuality::updateAQ(){
-    double Ipm10 = pm10;
-    double INO2 = NO2;
+    double Ipm10 = (pm10 / indexLimitPm10) * 100.0 ;
+    double INO2 = (NO2/ indexLimitNO2) * 100.0;
     if(Ipm10 >= INO2) {
         indexAQ = Ipm10;
     }else{
@@ -65,10 +65,8 @@ void AirQuality::updateAQ(){
 }
 
 void AirQuality::updateValues(){
-    double Ipm10 = indexAQ;
-    double INO2 = indexAQ;
-    pm10 = Ipm10;
-    NO2 = INO2;
+    pm10 = (indexAQ / 100.0) * indexLimitPm10;;
+    NO2 = (indexAQ / 100.0) * indexLimitNO2;
 }
 
 const double AirQuality::indexLimitPm10 = 50.0 ;    // micro_g/m3

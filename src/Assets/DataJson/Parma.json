@@ -1,0 +1,32 @@
+[
+    {
+        "Initial Temperature K°": 291.86942857142856,
+        "Simulation Scale": "k",
+        "dataNumber": 100,
+        "id": 1,
+        "initial Maximum Temp K°": 293.16067857142855,
+        "initial Minimum Temp K°": 290.8944285714286,
+        "name": "Parma_Temp",
+        "standardDeviation Temp K°": 3.465530627568057,
+        "type": "temperature_sensor"
+    },
+    {
+        "Rain Probability": 0.16071428571428573,
+        "dataNumber": 100,
+        "id": 2,
+        "initial Relative Humidity": 71.73214285714286,
+        "name": "Parma_Hum",
+        "standardDeviation Relative Humidity": 14.22233036891103,
+        "type": "humidity_sensor"
+    },
+    {
+        "dataNumber": 100,
+        "id": 3,
+        "initialN02 micro_g/m3": 2.7058214285714284,
+        "initialPm10 micro_g/m3": 5.432607142857143,
+        "name": "Parma_AQ",
+        "standardDeviationN02 micro_g/m3": 1.4816826957784814,
+        "standardDeviationPm10 micro_g/m3": 2.216780803637913,
+        "type": "air_quality_sensor"
+    }
+]

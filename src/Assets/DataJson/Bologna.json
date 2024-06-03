@@ -1,0 +1,32 @@
+[
+    {
+        "Initial Temperature K°": 292.4606498194946,
+        "Simulation Scale": "k",
+        "dataNumber": 100,
+        "id": 1,
+        "initial Maximum Temp K°": 294.2946209386281,
+        "initial Minimum Temp K°": 290.7804332129964,
+        "name": "Bologna_Temp",
+        "standardDeviation Temp K°": 4.012246362995874,
+        "type": "temperature_sensor"
+    },
+    {
+        "Rain Probability": 0.1588447653429603,
+        "dataNumber": 100,
+        "id": 2,
+        "initial Relative Humidity": 69.45848375451264,
+        "name": "Bologna_Hum",
+        "standardDeviation Relative Humidity": 12.769940528228839,
+        "type": "humidity_sensor"
+    },
+    {
+        "dataNumber": 100,
+        "id": 3,
+        "initialN02 micro_g/m3": 4.463898916967509,
+        "initialPm10 micro_g/m3": 5.716570397111913,
+        "name": "Bologna_AQ",
+        "standardDeviationN02 micro_g/m3": 3.5383700734640278,
+        "standardDeviationPm10 micro_g/m3": 2.967806104746258,
+        "type": "air_quality_sensor"
+    }
+]

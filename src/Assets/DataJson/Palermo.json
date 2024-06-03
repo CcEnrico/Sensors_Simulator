@@ -1,0 +1,32 @@
+[
+    {
+        "Initial Temperature K°": 296.0700729927008,
+        "Simulation Scale": "k",
+        "dataNumber": 100,
+        "id": 1,
+        "initial Maximum Temp K°": 296.68397810218977,
+        "initial Minimum Temp K°": 292.86018248175185,
+        "name": "Palermo_Temp",
+        "standardDeviation Temp K°": 3.5801509767843434,
+        "type": "temperature_sensor"
+    },
+    {
+        "Rain Probability": 0.0036496350364963502,
+        "dataNumber": 100,
+        "id": 2,
+        "initial Relative Humidity": 46.01094890510949,
+        "name": "Palermo_Hum",
+        "standardDeviation Relative Humidity": 11.843407595753053,
+        "type": "humidity_sensor"
+    },
+    {
+        "dataNumber": 100,
+        "id": 3,
+        "initialN02 micro_g/m3": 5.768905109489051,
+        "initialPm10 micro_g/m3": 15.062189781021898,
+        "name": "Palermo_AQ",
+        "standardDeviationN02 micro_g/m3": 7.182112734200308,
+        "standardDeviationPm10 micro_g/m3": 7.6403073193940365,
+        "type": "air_quality_sensor"
+    }
+]

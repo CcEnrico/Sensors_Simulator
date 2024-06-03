@@ -34,7 +34,7 @@ namespace Sensor {
                 humidity_sensor_object.insert("dataNumber", QJsonValue::fromVariant(humidity.getDataNum()));
 
                 humidity_sensor_object.insert("initial Relative Humidity", QJsonValue::fromVariant(humidity.getHumInitial().getRelativeHumidity()));
-                humidity_sensor_object.insert("initialN02 Relative Humidity", QJsonValue::fromVariant(humidity.getHumStdDeviation().getRelativeHumidity()));
+                humidity_sensor_object.insert("standardDeviation Relative Humidity", QJsonValue::fromVariant(humidity.getHumStdDeviation().getRelativeHumidity()));
                 humidity_sensor_object.insert("Rain Probability", QJsonValue::fromVariant(humidity.getRainProbability()));
 
                 object = humidity_sensor_object;

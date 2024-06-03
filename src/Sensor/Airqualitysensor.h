@@ -20,17 +20,14 @@ public:
 private:
     EnviromentalConditions::AirQuality initial;
     EnviromentalConditions::AirQuality stdDeviation;
-    EnviromentalConditions::AirQuality target;
     std::vector<EnviromentalConditions::AirQuality> airQualityData;
 
 public:
     AirQualitySensor(unsigned int id,
                      std::string  n,
                      unsigned int dn,
-                     double v,
                      EnviromentalConditions::AirQuality init,
-                     EnviromentalConditions::AirQuality stddev,
-                     EnviromentalConditions::AirQuality t
+                     EnviromentalConditions::AirQuality stddev
     );
 
     EnviromentalConditions::AirQuality getAQInitial()const;
@@ -46,13 +43,6 @@ public:
     AirQualitySensor& setAQStdDeviation(const EnviromentalConditions::AirQuality stddev);
     AirQualitySensor& setStdDeviationPm10(const double pm10);
     AirQualitySensor& setStdDeviationNO2(const double no2);
-
-    EnviromentalConditions::AirQuality getAQTarget()const;
-    double getTargetPm10()const;
-    double getTargetNO2()const;
-    AirQualitySensor& setAQTarget(const EnviromentalConditions::AirQuality t);
-    AirQualitySensor& setTargetPm10(const double pm10);
-    AirQualitySensor& setTargetNO2(const double no2);
 
     virtual void accept(SConstVisitor& visitor)const final;
     virtual void accept(SVisitor& visitor) final;

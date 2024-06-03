@@ -10,6 +10,7 @@
 
 #include "../AbstractSensor.h"
 #include "../Converter/Json/Json.h"
+#include "../Converter/Json/Reader.h"
 
 namespace Sensor {
     namespace DataMapper {

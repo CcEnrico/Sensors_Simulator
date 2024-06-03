@@ -1,0 +1,32 @@
+[
+    {
+        "Initial Temperature K°": 296.2455514705883,
+        "Simulation Scale": "k",
+        "dataNumber": 100,
+        "id": 1,
+        "initial Maximum Temp K°": 298.2663970588235,
+        "initial Minimum Temp K°": 294.39639705882354,
+        "name": "Messina_Temp",
+        "standardDeviation Temp K°": 2.114198253405703,
+        "type": "temperature_sensor"
+    },
+    {
+        "Rain Probability": 0.04044117647058824,
+        "dataNumber": 100,
+        "id": 2,
+        "initial Relative Humidity": 70.0404411764706,
+        "name": "Messina_Hum",
+        "standardDeviation Relative Humidity": 12.955318455211803,
+        "type": "humidity_sensor"
+    },
+    {
+        "dataNumber": 100,
+        "id": 3,
+        "initialN02 micro_g/m3": 6.910588235294118,
+        "initialPm10 micro_g/m3": 102.00933823529412,
+        "name": "Messina_AQ",
+        "standardDeviationN02 micro_g/m3": 6.687927585528522,
+        "standardDeviationPm10 micro_g/m3": 73.57686602141094,
+        "type": "air_quality_sensor"
+    }
+]

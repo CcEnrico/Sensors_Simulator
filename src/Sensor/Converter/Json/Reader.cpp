@@ -48,18 +48,15 @@ namespace Sensor {
                         object.value("id").toInt(),
                         object.value("name").toString().toStdString(),
                         object.value("dataNumber").toInt(),
-                        0.0,    // variaza da togliere.. ininfluente come Target
                         Sensor::EnviromentalConditions::AirQuality( object.value("initialPm10 micro_g/m3").toDouble(), object.value("initialN02 micro_g/m3").toDouble()),
-                        Sensor::EnviromentalConditions::AirQuality( object.value("standardDeviationPm10 micro_g/m3").toDouble(), object.value("standardDeviationN02 micro_g/m3").toDouble()),
-                        Sensor::EnviromentalConditions::AirQuality( 0, 0)
-                );
+                        Sensor::EnviromentalConditions::AirQuality( object.value("standardDeviationPm10 micro_g/m3").toDouble(), object.value("standardDeviationN02 micro_g/m3").toDouble())
+                        );
             }
             AbstractSensor* Reader::readHumidity(const QJsonObject& object) const{
                 return new HumiditySensor(
                         object.value("id").toInt(),
                         object.value("name").toString().toStdString(),
                         object.value("dataNumber").toInt(),
-                        0.0,    // variaza da togliere.. ininfluente come Target
                         Sensor::EnviromentalConditions::Humidity( object.value("initial Relative Humidity").toDouble()),
                         Sensor::EnviromentalConditions::Humidity( object.value("initialN02 Relative Humidity").toDouble()),
                         object.value("Rain Probability").toDouble()
@@ -78,12 +75,10 @@ namespace Sensor {
                             object.value("id").toInt(),
                             object.value("name").toString().toStdString(),
                             object.value("dataNumber").toInt(),
-                            0.0,    // variaza da togliere.. ininfluente come Target
                             Sensor::EnviromentalConditions::Temperature( object.value("initial Minimum Temp C°").toDouble(), 'c'),
                             Sensor::EnviromentalConditions::Temperature( object.value("initial Maximum Temp C°").toDouble(), 'c'),
                             Sensor::EnviromentalConditions::Temperature( object.value("Initial Temperature C°").toDouble(), 'c'),
                             Sensor::EnviromentalConditions::Temperature( object.value("standardDeviation Temp C°").toDouble(), 'c'),
-                            Sensor::EnviromentalConditions::Temperature( 0.0 , 'c'),
                             'c'
                     );
                 }
@@ -92,12 +87,10 @@ namespace Sensor {
                             object.value("id").toInt(),
                             object.value("name").toString().toStdString(),
                             object.value("dataNumber").toInt(),
-                            0.0,    // variaza da togliere.. ininfluente come Target
                             Sensor::EnviromentalConditions::Temperature( object.value("initial Minimum Temp F°").toDouble(), 'f'),
                             Sensor::EnviromentalConditions::Temperature( object.value("initial Maximum Temp F°").toDouble(), 'f'),
                             Sensor::EnviromentalConditions::Temperature( object.value("Initial Temperature F°").toDouble(), 'f'),
                             Sensor::EnviromentalConditions::Temperature( object.value("standardDeviation Temp F°").toDouble(), 'f'),
-                            Sensor::EnviromentalConditions::Temperature( 0.0 , 'f'),
                             'f'
                     );
                 }
@@ -106,12 +99,10 @@ namespace Sensor {
                             object.value("id").toInt(),
                             object.value("name").toString().toStdString(),
                             object.value("dataNumber").toInt(),
-                            0.0,    // variaza da togliere.. ininfluente come Target
                             Sensor::EnviromentalConditions::Temperature( object.value("initial Minimum Temp K°").toDouble(), 'k'),
                             Sensor::EnviromentalConditions::Temperature( object.value("initial Maximum Temp K°").toDouble(), 'k'),
                             Sensor::EnviromentalConditions::Temperature( object.value("Initial Temperature K°").toDouble(), 'k'),
                             Sensor::EnviromentalConditions::Temperature( object.value("standardDeviation Temp K°").toDouble(), 'k'),
-                            Sensor::EnviromentalConditions::Temperature( 0.0 , 'k'),
                             'k'
                     );
                 }

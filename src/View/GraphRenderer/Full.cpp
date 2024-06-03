@@ -32,12 +32,11 @@ namespace View::GraphRenderer {
         name = new QLabel("Name: " + QString::fromStdString(air_quality.getName()));
         id = new QLabel("ID: " + QString::number(air_quality.getIdentifier()));
         data_num = new QLabel("Data Num: " + QString::number(air_quality.getDataNum()));
-        variance = new QLabel("Variance: " + QString::number(air_quality.getVariance()));
+
         first_column->addWidget(type);
         first_column->addWidget(name);
         first_column->addWidget(id);
         first_column->addWidget(data_num);
-        first_column->addWidget(variance);
         first->setLayout(first_column);
 
 
@@ -47,14 +46,10 @@ namespace View::GraphRenderer {
         QLabel* initial_n02 = new QLabel("Initial NO2: " + QString::number(air_quality.getInitialNO2()));
         QLabel* std_dev_pm_10 = new QLabel("Standard Deviation PM10: " + QString::number(air_quality.getStdDeviationPm10()));
         QLabel* std_dev_n02 = new QLabel("Standard Deviation NO2: " + QString::number(air_quality.getStdDeviationNO2()));
-        QLabel* target_pm_10 = new QLabel("Target PM10: " + QString::number(air_quality.getTargetPm10()));
-        QLabel* target_n02 = new QLabel("Target NO2: " + QString::number(air_quality.getTargetNO2()));
         second_column->addWidget(initial_pm_10);
         second_column->addWidget(initial_n02);
         second_column->addWidget(std_dev_pm_10);
         second_column->addWidget(std_dev_n02);
-        second_column->addWidget(target_pm_10);
-        second_column->addWidget(target_n02);
         second->setLayout(second_column);
 
         QWidget* third = new QWidget();
@@ -99,12 +94,10 @@ namespace View::GraphRenderer {
         name = new QLabel("Name: " + QString::fromStdString(humidity.getName()));
         id = new QLabel("ID: " + QString::number(humidity.getIdentifier()));
         data_num = new QLabel("Data Num: " + QString::number(humidity.getDataNum()));
-        variance = new QLabel("Variance: " + QString::number(humidity.getVariance()));
         first_column->addWidget(type);
         first_column->addWidget(name);
         first_column->addWidget(id);
         first_column->addWidget(data_num);
-        first_column->addWidget(variance);
         first->setLayout(first_column);
 
 
@@ -161,12 +154,10 @@ namespace View::GraphRenderer {
         name = new QLabel("Name: " + QString::fromStdString(temperature.getName()));
         id = new QLabel("ID: " + QString::number(temperature.getIdentifier()));
         data_num = new QLabel("Data Num: " + QString::number(temperature.getDataNum()));
-        variance = new QLabel("Variance: " + QString::number(temperature.getVariance()));
         first_column->addWidget(type);
         first_column->addWidget(name);
         first_column->addWidget(id);
         first_column->addWidget(data_num);
-        first_column->addWidget(variance);
         first->setLayout(first_column);
 
 
@@ -175,7 +166,16 @@ namespace View::GraphRenderer {
         QLabel *min = new QLabel("Min: " + QString::number(temperature.getTempMin().getCelsius()) + "C° = " + QString::number(temperature.getTempMin().getFahrenheit()) + "F = " + QString::number(temperature.getTempMin().getKelvin()) + "K");
         QLabel *max = new QLabel("Max: " + QString::number(temperature.getTempMax().getCelsius()) + "C° = " + QString::number(temperature.getTempMax().getFahrenheit()) + "F = " + QString::number(temperature.getTempMax().getKelvin()) + "K");
         QLabel *initial = new QLabel("Initial: " + QString::number(temperature.getTempInitial().getCelsius()) + "C° = " + QString::number(temperature.getTempInitial().getFahrenheit()) + "F = " + QString::number(temperature.getTempInitial().getKelvin()) + "K");
-        QLabel *std_dev = new QLabel("Standard Deviation: " + QString::number(temperature.getStdDeviation().getCelsius()) + "C° = " + QString::number(temperature.getStdDeviation().getFahrenheit()) + "F = " + QString::number(temperature.getStdDeviation().getKelvin()) + "K");
+        QLabel *std_dev = nullptr;
+        if (temperature.getSimulationScale() == 'c' ){
+            std_dev = new QLabel("Standard Deviation: " + QString::number(temperature.getStdDeviation().getCelsius()) + "C°" );
+        }
+        else if(temperature.getSimulationScale() == 'f' ){
+            std_dev = new QLabel("Standard Deviation: " + QString::number(temperature.getStdDeviation().getFahrenheit()) + "F°" );
+        }
+        else if(temperature.getSimulationScale() == 'k' ){
+            std_dev = new QLabel("Standard Deviation: " + QString::number(temperature.getStdDeviation().getKelvin()) + "K°" );
+        }
         QLabel *sim_scale ;
         if (temperature.getSimulationScale() == 'c'){sim_scale = new QLabel("Simulation Scale: C°" );}
         else if (temperature.getSimulationScale() == 'f'){sim_scale = new QLabel("Simulation Scale: F°" );}
@@ -240,9 +240,6 @@ namespace View::GraphRenderer {
     }
     QLabel* Full::getDataNum()const{
         return data_num;
-    }
-    QLabel* Full::getVariance()const{
-        return variance;
     }
     QPushButton* Full::getSimulateButton() const{
         return simulate_button;

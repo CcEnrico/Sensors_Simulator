@@ -19,7 +19,12 @@ class TemperatureEditor: public AbstractSensorEditor {
     QDoubleSpinBox* max;
     QDoubleSpinBox* initial;
     QDoubleSpinBox* stdDeviation;
-    QDoubleSpinBox* target;
+    Sensor::EnviromentalConditions::Temperature min_temp;
+    Sensor::EnviromentalConditions::Temperature max_temp;
+    Sensor::EnviromentalConditions::Temperature initial_temp;
+    Sensor::EnviromentalConditions::Temperature stdDeviation_temp;
+
+    void setTemperatureValues(char u);
 
     public:
     
@@ -29,15 +34,17 @@ class TemperatureEditor: public AbstractSensorEditor {
     Sensor::AbstractSensor* create(
         const unsigned int identifier,
         const QString& name,
-        const unsigned int data_number,
-        const double variance
+        const unsigned int data_number
     ) const override;
     
     void setValues(const Sensor::TemperatureSensor& temperature_sensor);
 
     public slots:
     
-    void unitChanged(int index);
+    void unitChangedIndex(int index);
+    void unitChangedChar(char u);
+
+
 };
 
 }

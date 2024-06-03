@@ -82,7 +82,7 @@ namespace View{
 
 
     void SensorWidget::edit(){
-        MainWindow* main = qobject_cast<MainWindow*>(this->parent()->parent());
+        MainWindow* main = qobject_cast<MainWindow*>(this->parent()->parent()->parent());
         if (main != nullptr) {
             main->editItem( lookup->getSensor() );
         }

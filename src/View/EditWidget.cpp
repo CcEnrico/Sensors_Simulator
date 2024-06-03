@@ -69,21 +69,12 @@ EditWidget::EditWidget(
     }
     form->addRow("Data Number", dataNum_input);
 
-    variance_input = new QDoubleSpinBox();
-    variance_input->setObjectName("Variance Input");
-    variance_input->setRange(0.0, 1000.0);
-    variance_input->setDecimals(2);
-    if(sensor != nullptr){
-        variance_input->setValue(sensor->getVariance());
-    }
-    form->addRow("Variance", variance_input);
-
 
     QComboBox* type_input = new QComboBox();
     type_input->setObjectName("Type Input");
-    type_input->addItem("AirqualitySensor");
-    type_input->addItem("HumiditySensor");
-    type_input->addItem("TemperatureSensor");
+    type_input->addItem("AirqualitySensor");    // indice 0
+    type_input->addItem("HumiditySensor");  // indice 1
+    type_input->addItem("TemperatureSensor"); // indice 2
     
     if (sensor != nullptr) {
         TypeSelector type_selector(type_input);
@@ -108,6 +99,7 @@ EditWidget::EditWidget(
     SensorEditor::TemperatureEditor* temperature_editor = new SensorEditor::TemperatureEditor();
     stacked_editor->addWidget(temperature_editor);
     editors.push_back(temperature_editor);
+    connect(this, &EditWidget::set_unit_event, temperature_editor, &SensorEditor::TemperatureEditor::unitChangedChar);
 
     if (sensor != nullptr) {
         SensorEditor::SensorInjector sensor_injector(
@@ -116,6 +108,11 @@ EditWidget::EditWidget(
             *temperature_editor
         );
         sensor->accept(sensor_injector);
+
+        Sensor::TemperatureSensor* unit_setter = dynamic_cast<Sensor::TemperatureSensor*>(sensor);
+        if (unit_setter != nullptr){
+            emit set_unit_event(unit_setter->getSimulationScale());
+        }
     }
     showType(type_input->currentIndex());
 
@@ -157,16 +154,16 @@ void EditWidget::apply(){
     int id = id_input->value();
     QString name = name_input->text();
     int dn = dataNum_input->value();
-    double v = variance_input->value();
     SensorEditor::AbstractSensorEditor* editor = editors[stacked_editor->currentIndex()];
 
     Engine::SensorList* list = main_window->getList();
 
-    // in caso io stia solo modificando un sensore preesistente
+    // in caso io stia solo modificando un sensore preesistente, lo tolgo dalla  memoria della repo, e da quella della mem e dealloco
     if (sensor != nullptr) {
+        if (repository != nullptr) repository->erase(sensor->getIdentifier());
         list->remove(sensor);
     }
-    sensor = editor->create(id, name, dn, v);
+    sensor = editor->create(id, name, dn);
 
 
     // se il sensore esiste già
@@ -186,7 +183,7 @@ void EditWidget::apply(){
 
 
 void EditWidget::closeWindow(){
-    main_window->finishEdit();
+    main_window->closeEdit();
 }
 
 }

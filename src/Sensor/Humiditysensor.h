@@ -25,7 +25,6 @@ public:
     HumiditySensor( unsigned int id,
                     std::string  n,
                     unsigned int dn,
-                    double v,
                     EnviromentalConditions::Humidity init,
                     EnviromentalConditions::Humidity stddev,
                     double rp
