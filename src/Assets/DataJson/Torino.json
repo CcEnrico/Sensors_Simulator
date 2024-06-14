@@ -1,32 +1,33 @@
 [
     {
-        "Initial Temperature K°": 288.8883211678832,
+        "Initial Temperature K°": 290.0802339181286,
         "Simulation Scale": "k",
         "dataNumber": 100,
         "id": 1,
-        "initial Maximum Temp K°": 290.55262773722626,
-        "initial Minimum Temp K°": 286.8882116788321,
+        "initial Maximum Temp K°": 291.80702923976605,
+        "initial Minimum Temp K°": 288.2406783625731,
         "name": "Torino_Temp",
-        "standardDeviation Temp K°": 3.8071771578756013,
+        "standardDeviation Temp K°": 3.9288781716887557,
+        "Collection per day": 24,
         "type": "temperature_sensor"
     },
     {
-        "Rain Probability": 0.11313868613138686,
+        "Rain Probability": 0.1216374269005848,
         "dataNumber": 100,
         "id": 2,
-        "initial Relative Humidity": 63.105839416058394,
+        "initial Relative Humidity": 72.62923976608187,
         "name": "Torino_Hum",
-        "standardDeviation Relative Humidity": 17.05400724115925,
+        "standardDeviation Relative Humidity": 15.609169182885395,
         "type": "humidity_sensor"
     },
     {
         "dataNumber": 100,
         "id": 3,
-        "initialN02 micro_g/m3": 1.2186131386861314,
-        "initialPm10 micro_g/m3": 1.1686496350364965,
+        "initialN02 micro_g/m3": 1.96706432748538,
+        "initialPm10 micro_g/m3": 2.456561403508772,
         "name": "Torino_AQ",
-        "standardDeviationN02 micro_g/m3": 1.0240745742132271,
-        "standardDeviationPm10 micro_g/m3": 0.7121515676782452,
+        "standardDeviationN02 micro_g/m3": 1.518468115211711,
+        "standardDeviationPm10 micro_g/m3": 2.941788589596256,
         "type": "air_quality_sensor"
     }
 ]

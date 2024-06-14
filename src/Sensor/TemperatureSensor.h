@@ -17,6 +17,8 @@ class TemperatureSensor: public AbstractSensor{
     std::vector<EnviromentalConditions::Temperature> min_temperatures;
     std::vector<EnviromentalConditions::Temperature> max_temperatures;
 
+    unsigned int collection_per_day;
+
     char simulation_scale;
 
 public:
@@ -28,10 +30,14 @@ public:
                       EnviromentalConditions::Temperature mx,
                       EnviromentalConditions::Temperature init,
                       EnviromentalConditions::Temperature stddev,
+                      unsigned int collection_per_day,
                       char simulation_scale
     );
     char getSimulationScale()const;
     TemperatureSensor& setSimulationScale(const char m);
+
+    unsigned int getCollectionPerDay() const;
+    TemperatureSensor& setCollectionPerDay(const unsigned int cd);
 
     EnviromentalConditions::Temperature getTempMin()const;
     TemperatureSensor& setTempMin(const EnviromentalConditions::Temperature m);

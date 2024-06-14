@@ -1,32 +1,33 @@
 [
     {
-        "Initial Temperature K°": 291.99214814814815,
+        "Initial Temperature K°": 294.3659787735849,
         "Simulation Scale": "k",
         "dataNumber": 100,
         "id": 1,
-        "initial Maximum Temp K°": 293.5037407407408,
-        "initial Minimum Temp K°": 290.7517777777777,
+        "initial Maximum Temp K°": 295.8039976415094,
+        "initial Minimum Temp K°": 293.15560141509434,
         "name": "Venezia_Temp",
-        "standardDeviation Temp K°": 3.2579748049829926,
+        "standardDeviation Temp K°": 3.744903295539908,
+        "Collection per day": 24,
         "type": "temperature_sensor"
     },
     {
-        "Rain Probability": 0.18888888888888888,
+        "Rain Probability": 0.09198113207547169,
         "dataNumber": 100,
         "id": 2,
-        "initial Relative Humidity": 77.28148148148148,
+        "initial Relative Humidity": 75.97995283018868,
         "name": "Venezia_Hum",
-        "standardDeviation Relative Humidity": 11.157227753279306,
+        "standardDeviation Relative Humidity": 12.777055053760689,
         "type": "humidity_sensor"
     },
     {
         "dataNumber": 100,
         "id": 3,
-        "initialN02 micro_g/m3": 5.616740740740741,
-        "initialPm10 micro_g/m3": 6.327999999999999,
+        "initialN02 micro_g/m3": 7.080459905660378,
+        "initialPm10 micro_g/m3": 8.61057783018868,
         "name": "Venezia_AQ",
-        "standardDeviationN02 micro_g/m3": 2.846982373757931,
-        "standardDeviationPm10 micro_g/m3": 1.7643331758926815,
+        "standardDeviationN02 micro_g/m3": 5.118330579913653,
+        "standardDeviationPm10 micro_g/m3": 3.6414133324331237,
         "type": "air_quality_sensor"
     }
 ]

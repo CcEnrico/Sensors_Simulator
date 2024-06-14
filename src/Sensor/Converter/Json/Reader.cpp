@@ -79,6 +79,7 @@ namespace Sensor {
                             Sensor::EnviromentalConditions::Temperature( object.value("initial Maximum Temp C°").toDouble(), 'c'),
                             Sensor::EnviromentalConditions::Temperature( object.value("Initial Temperature C°").toDouble(), 'c'),
                             Sensor::EnviromentalConditions::Temperature( object.value("standardDeviation Temp C°").toDouble(), 'c'),
+                            object.value("Collection per day").toInt(),
                             'c'
                     );
                 }
@@ -91,6 +92,7 @@ namespace Sensor {
                             Sensor::EnviromentalConditions::Temperature( object.value("initial Maximum Temp F°").toDouble(), 'f'),
                             Sensor::EnviromentalConditions::Temperature( object.value("Initial Temperature F°").toDouble(), 'f'),
                             Sensor::EnviromentalConditions::Temperature( object.value("standardDeviation Temp F°").toDouble(), 'f'),
+                            object.value("Collection per day").toInt(),
                             'f'
                     );
                 }
@@ -103,6 +105,7 @@ namespace Sensor {
                             Sensor::EnviromentalConditions::Temperature( object.value("initial Maximum Temp K°").toDouble(), 'k'),
                             Sensor::EnviromentalConditions::Temperature( object.value("Initial Temperature K°").toDouble(), 'k'),
                             Sensor::EnviromentalConditions::Temperature( object.value("standardDeviation Temp K°").toDouble(), 'k'),
+                            object.value("Collection per day").toInt(),
                             'k'
                     );
                 }

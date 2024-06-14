@@ -182,15 +182,19 @@ namespace View::GraphRenderer {
         else if (temperature.getSimulationScale() == 'k'){sim_scale = new QLabel("Simulation Scale: K°" );}
         else{ sim_scale = new QLabel("Simulation Scale:" ); }
 
+        QLabel* collection_per_day = new QLabel("Collection per day: " + QString::number(temperature.getCollectionPerDay()));
+
         min->setAlignment(Qt::AlignRight);
         max->setAlignment(Qt::AlignRight);
         initial->setAlignment(Qt::AlignRight);
         std_dev->setAlignment(Qt::AlignRight);
+        collection_per_day->setAlignment(Qt::AlignRight);
         sim_scale->setAlignment(Qt::AlignRight);
         second_column->addWidget(min);
         second_column->addWidget(max);
         second_column->addWidget(initial);
         second_column->addWidget(std_dev);
+        second_column->addWidget(collection_per_day);
         second_column->addWidget(sim_scale);
         second->setLayout(second_column);
 

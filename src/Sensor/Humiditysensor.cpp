@@ -73,7 +73,10 @@ void HumiditySensor::simulate() {
 
     std::random_device rand;
     std::mt19937 gen(rand());
-    std::normal_distribution<> distribution(0.0, stdDeviation.getRelativeHumidity());
+
+    double data_std_dev = stdDeviation.getRelativeHumidity() / std::sqrt(static_cast<double>(dataNum));
+
+    std::normal_distribution<> distribution(0.0, data_std_dev);
 
     for (unsigned int i = 0; i < dataNum; ++i) {
 

@@ -23,7 +23,6 @@ TemperatureEditor::TemperatureEditor(QWidget* parent)
     unit->addItem("Celsius");
     unit->addItem("Fahrenheit");
     unit->addItem("Kelvin");
-    
 
     min = new QDoubleSpinBox();
     min->setObjectName("Min");
@@ -61,6 +60,13 @@ TemperatureEditor::TemperatureEditor(QWidget* parent)
     stdDeviation->setMaximum(std::numeric_limits<double>::max());
     form->addRow("Standard Deviation ", stdDeviation);
 
+    collection_per_day = new QSpinBox();
+    collection_per_day->setObjectName("Collection per day");
+    collection_per_day->setRange(1, 10000);
+    collection_per_day->setValue(24);
+    form->addRow("Collection per day", collection_per_day);
+
+
     connect(unit, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &TemperatureEditor::unitChangedIndex);
 }
 
@@ -96,6 +102,7 @@ Sensor::AbstractSensor* TemperatureEditor::create(
         Sensor::EnviromentalConditions::Temperature(max->value(), unit_char),
         Sensor::EnviromentalConditions::Temperature(initial->value(), unit_char),
         Sensor::EnviromentalConditions::Temperature(stdDeviation->value(), unit_char),
+        collection_per_day->value(),
         unit_char
     ); 
 }
@@ -120,6 +127,8 @@ void TemperatureEditor::setValues(const Sensor::TemperatureSensor& temperature_s
     }
 
     setTemperatureValues(unit_char);
+
+    collection_per_day->setValue(temperature_sensor.getCollectionPerDay());
 }
 
 void TemperatureEditor::unitChangedIndex(int index){

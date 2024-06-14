@@ -1,32 +1,33 @@
 [
     {
-        "Initial Temperature K°": 294.6297435897436,
+        "Initial Temperature K°": 295.7914571092832,
         "Simulation Scale": "k",
         "dataNumber": 100,
         "id": 1,
-        "initial Maximum Temp K°": 296.0377655677656,
-        "initial Minimum Temp K°": 293.3477655677656,
+        "initial Maximum Temp K°": 297.6196474735605,
+        "initial Minimum Temp K°": 294.0503760282021,
         "name": "Napoli_Temp",
-        "standardDeviation Temp K°": 1.6205792864377442,
+        "standardDeviation Temp K°": 2.9343476671500857,
+        "Collection per day": 24,
         "type": "temperature_sensor"
     },
     {
-        "Rain Probability": 0.12454212454212454,
+        "Rain Probability": 0.05875440658049354,
         "dataNumber": 100,
         "id": 2,
-        "initial Relative Humidity": 79.83150183150182,
+        "initial Relative Humidity": 72.68742655699178,
         "name": "Napoli_Hum",
-        "standardDeviation Relative Humidity": 6.2088938584877855,
+        "standardDeviation Relative Humidity": 10.933881808545536,
         "type": "humidity_sensor"
     },
     {
         "dataNumber": 100,
         "id": 3,
-        "initialN02 micro_g/m3": 12.836849816849817,
-        "initialPm10 micro_g/m3": 8.466043956043956,
+        "initialN02 micro_g/m3": 13.299024676850765,
+        "initialPm10 micro_g/m3": 13.938801410105759,
         "name": "Napoli_AQ",
-        "standardDeviationN02 micro_g/m3": 10.257354708085398,
-        "standardDeviationPm10 micro_g/m3": 3.9199099785360003,
+        "standardDeviationN02 micro_g/m3": 11.44481497297132,
+        "standardDeviationPm10 micro_g/m3": 8.935623629955227,
         "type": "air_quality_sensor"
     }
 ]

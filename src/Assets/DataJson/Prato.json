@@ -1,32 +1,33 @@
 [
     {
-        "Initial Temperature K°": 292.75354014598537,
+        "Initial Temperature K°": 294.13526377491206,
         "Simulation Scale": "k",
         "dataNumber": 100,
         "id": 1,
-        "initial Maximum Temp K°": 294.6857299270073,
-        "initial Minimum Temp K°": 290.26773722627735,
+        "initial Maximum Temp K°": 295.9657327080891,
+        "initial Minimum Temp K°": 291.7217584994138,
         "name": "Prato_Temp",
-        "standardDeviation Temp K°": 3.7440858795179652,
+        "standardDeviation Temp K°": 4.031426439747854,
+        "Collection per day": 24,
         "type": "temperature_sensor"
     },
     {
-        "Rain Probability": 0.05474452554744526,
+        "Rain Probability": 0.032825322391559206,
         "dataNumber": 100,
         "id": 2,
-        "initial Relative Humidity": 68.87956204379562,
+        "initial Relative Humidity": 70.52872215709262,
         "name": "Prato_Hum",
-        "standardDeviation Relative Humidity": 14.396753682567315,
+        "standardDeviation Relative Humidity": 13.649547111560327,
         "type": "humidity_sensor"
     },
     {
         "dataNumber": 100,
         "id": 3,
-        "initialN02 micro_g/m3": 2.622846715328467,
-        "initialPm10 micro_g/m3": 5.516642335766424,
+        "initialN02 micro_g/m3": 3.0292614302461898,
+        "initialPm10 micro_g/m3": 7.148405627198124,
         "name": "Prato_AQ",
-        "standardDeviationN02 micro_g/m3": 1.9158007793449834,
-        "standardDeviationPm10 micro_g/m3": 2.8922600657850066,
+        "standardDeviationN02 micro_g/m3": 2.2617468880450664,
+        "standardDeviationPm10 micro_g/m3": 3.855078535875028,
         "type": "air_quality_sensor"
     }
 ]

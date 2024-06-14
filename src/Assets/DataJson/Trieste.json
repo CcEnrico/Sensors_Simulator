@@ -1,32 +1,33 @@
 [
     {
-        "Initial Temperature K°": 291.2482142857143,
+        "Initial Temperature K°": 293.39211428571434,
         "Simulation Scale": "k",
         "dataNumber": 100,
         "id": 1,
-        "initial Maximum Temp K°": 292.63075,
-        "initial Minimum Temp K°": 289.83732142857144,
+        "initial Maximum Temp K°": 294.8250628571429,
+        "initial Minimum Temp K°": 291.97740571428574,
         "name": "Trieste_Temp",
-        "standardDeviation Temp K°": 3.1242632886712314,
+        "standardDeviation Temp K°": 3.689674269567736,
+        "Collection per day": 24,
         "type": "temperature_sensor"
     },
     {
-        "Rain Probability": 0.30714285714285716,
+        "Rain Probability": 0.136,
         "dataNumber": 100,
         "id": 2,
-        "initial Relative Humidity": 76.01785714285714,
+        "initial Relative Humidity": 74.75771428571429,
         "name": "Trieste_Hum",
-        "standardDeviation Relative Humidity": 7.369074063342043,
+        "standardDeviation Relative Humidity": 9.253177704586305,
         "type": "humidity_sensor"
     },
     {
         "dataNumber": 100,
         "id": 3,
-        "initialN02 micro_g/m3": 3.2256428571428573,
-        "initialPm10 micro_g/m3": 4.338535714285714,
+        "initialN02 micro_g/m3": 3.9028457142857143,
+        "initialPm10 micro_g/m3": 6.435257142857143,
         "name": "Trieste_AQ",
-        "standardDeviationN02 micro_g/m3": 1.9669171711496307,
-        "standardDeviationPm10 micro_g/m3": 1.225590090590268,
+        "standardDeviationN02 micro_g/m3": 2.546842844256154,
+        "standardDeviationPm10 micro_g/m3": 2.850635180775953,
         "type": "air_quality_sensor"
     }
 ]

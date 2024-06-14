@@ -1,32 +1,33 @@
 [
     {
-        "Initial Temperature K°": 297.1559340659341,
+        "Initial Temperature K°": 297.28897260273976,
         "Simulation Scale": "k",
         "dataNumber": 100,
         "id": 1,
-        "initial Maximum Temp K°": 298.13787545787545,
-        "initial Minimum Temp K°": 296.1268498168498,
+        "initial Maximum Temp K°": 299.0381735159817,
+        "initial Minimum Temp K°": 296.1419292237443,
         "name": "Bari_Temp",
-        "standardDeviation Temp K°": 2.4782009210668354,
+        "standardDeviation Temp K°": 3.4426749507615426,
+        "Collection per day": 24,
         "type": "temperature_sensor"
     },
     {
-        "Rain Probability": 0.15384615384615385,
+        "Rain Probability": 0.06050228310502283,
         "dataNumber": 100,
         "id": 2,
-        "initial Relative Humidity": 63.07326007326007,
+        "initial Relative Humidity": 63.66438356164384,
         "name": "Bari_Hum",
-        "standardDeviation Relative Humidity": 14.247232852406004,
+        "standardDeviation Relative Humidity": 16.354356825539835,
         "type": "humidity_sensor"
     },
     {
         "dataNumber": 100,
         "id": 3,
-        "initialN02 micro_g/m3": 3.2327106227106226,
-        "initialPm10 micro_g/m3": 16.960073260073262,
+        "initialN02 micro_g/m3": 3.5981849315068497,
+        "initialPm10 micro_g/m3": 17.92382420091324,
         "name": "Bari_AQ",
-        "standardDeviationN02 micro_g/m3": 1.4836463769842325,
-        "standardDeviationPm10 micro_g/m3": 17.015794343417827,
+        "standardDeviationN02 micro_g/m3": 1.885710933253346,
+        "standardDeviationPm10 micro_g/m3": 17.678701781433418,
         "type": "air_quality_sensor"
     }
 ]

@@ -1,32 +1,33 @@
 [
     {
-        "Initial Temperature K°": 291.70541218637993,
+        "Initial Temperature K°": 294.1725229357798,
         "Simulation Scale": "k",
         "dataNumber": 100,
         "id": 1,
-        "initial Maximum Temp K°": 293.34064516129035,
-        "initial Minimum Temp K°": 289.93021505376345,
+        "initial Maximum Temp K°": 295.6738417431192,
+        "initial Minimum Temp K°": 292.3344724770642,
         "name": "Modena_Temp",
-        "standardDeviation Temp K°": 3.686553755683382,
+        "standardDeviation Temp K°": 4.597944401291066,
+        "Collection per day": 24,
         "type": "temperature_sensor"
     },
     {
-        "Rain Probability": 0.17921146953405018,
+        "Rain Probability": 0.07339449541284404,
         "dataNumber": 100,
         "id": 2,
-        "initial Relative Humidity": 68.415770609319,
+        "initial Relative Humidity": 65.1651376146789,
         "name": "Modena_Hum",
-        "standardDeviation Relative Humidity": 13.687994191247963,
+        "standardDeviation Relative Humidity": 13.668848103161462,
         "type": "humidity_sensor"
     },
     {
         "dataNumber": 100,
         "id": 3,
-        "initialN02 micro_g/m3": 3.404731182795699,
-        "initialPm10 micro_g/m3": 4.538924731182796,
+        "initialN02 micro_g/m3": 3.9283256880733943,
+        "initialPm10 micro_g/m3": 6.17519495412844,
         "name": "Modena_AQ",
-        "standardDeviationN02 micro_g/m3": 3.441882119757099,
-        "standardDeviationPm10 micro_g/m3": 2.306537131532348,
+        "standardDeviationN02 micro_g/m3": 3.7330604490077075,
+        "standardDeviationPm10 micro_g/m3": 3.1447703360627215,
         "type": "air_quality_sensor"
     }
 ]

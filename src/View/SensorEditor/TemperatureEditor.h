@@ -15,6 +15,7 @@ class TemperatureEditor: public AbstractSensorEditor {
 
     QComboBox* unit;
     char unit_char;
+    QSpinBox* collection_per_day;
     QDoubleSpinBox* min;
     QDoubleSpinBox* max;
     QDoubleSpinBox* initial;

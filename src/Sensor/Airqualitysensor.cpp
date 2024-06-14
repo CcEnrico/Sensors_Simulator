@@ -107,8 +107,13 @@ void AirQualitySensor::simulate(){
 
     std::random_device rand;
     std::mt19937 gen(rand());
-    std::normal_distribution<> distribution_pm10(0.0, stdDeviation.getPm10());
-    std::normal_distribution<> distribution_n02(0.0, stdDeviation.getNO2());
+
+    double data_std_dev_pm10 = stdDeviation.getPm10() / std::sqrt(static_cast<double>(dataNum));
+    double data_std_dev_n02 = stdDeviation.getNO2() / std::sqrt(static_cast<double>(dataNum));
+
+
+    std::normal_distribution<> distribution_pm10(0.0, data_std_dev_pm10);
+    std::normal_distribution<> distribution_n02(0.0, data_std_dev_n02);
 
     for (unsigned int i = 0; i < dataNum; ++i) {
 

@@ -1,32 +1,33 @@
 [
     {
-        "Initial Temperature K°": 288.2910294117647,
+        "Initial Temperature K°": 289.1093691588785,
         "Simulation Scale": "k",
         "dataNumber": 100,
         "id": 1,
-        "initial Maximum Temp K°": 290.7188235294118,
-        "initial Minimum Temp K°": 285.3829044117647,
+        "initial Maximum Temp K°": 291.7249182242991,
+        "initial Minimum Temp K°": 286.4342289719626,
         "name": "Genova_Temp",
-        "standardDeviation Temp K°": 2.29298539649661,
+        "standardDeviation Temp K°": 2.41111044417341,
+        "Collection per day": 24,
         "type": "temperature_sensor"
     },
     {
-        "Rain Probability": 0.11029411764705882,
+        "Rain Probability": 0.07242990654205607,
         "dataNumber": 100,
         "id": 2,
-        "initial Relative Humidity": 73.13602941176471,
+        "initial Relative Humidity": 77.6822429906542,
         "name": "Genova_Hum",
-        "standardDeviation Relative Humidity": 9.635635245658184,
+        "standardDeviation Relative Humidity": 9.193377473024606,
         "type": "humidity_sensor"
     },
     {
         "dataNumber": 100,
         "id": 3,
-        "initialN02 micro_g/m3": 3.0837132352941174,
-        "initialPm10 micro_g/m3": 6.01952205882353,
+        "initialN02 micro_g/m3": 2.9901518691588787,
+        "initialPm10 micro_g/m3": 7.963621495327104,
         "name": "Genova_AQ",
-        "standardDeviationN02 micro_g/m3": 2.0480388302273336,
-        "standardDeviationPm10 micro_g/m3": 2.9426506395218093,
+        "standardDeviationN02 micro_g/m3": 1.7038414816797858,
+        "standardDeviationPm10 micro_g/m3": 3.628495828608535,
         "type": "air_quality_sensor"
     }
 ]

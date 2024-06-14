@@ -67,6 +67,7 @@ namespace Sensor {
                     temperature_sensor_object.insert("Initial Temperature K°", QJsonValue::fromVariant(temperature.getTempInitial().getKelvin()));
                     temperature_sensor_object.insert("standardDeviation Temp K°", QJsonValue::fromVariant(temperature.getStdDeviation().getKelvin()));
                 }
+                temperature_sensor_object.insert("Collection per day", QJsonValue::fromVariant(temperature.getCollectionPerDay()));
                 temperature_sensor_object.insert("Simulation Scale", QJsonValue(QString(scale)) );
 
                 object = temperature_sensor_object;

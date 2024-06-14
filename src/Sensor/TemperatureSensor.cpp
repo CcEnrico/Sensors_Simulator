@@ -9,6 +9,7 @@ TemperatureSensor::TemperatureSensor(unsigned int id,
     EnviromentalConditions::Temperature mx,
     EnviromentalConditions::Temperature init,
     EnviromentalConditions::Temperature stddev,
+    unsigned int collection_per_day,
     char simulation_scale
 ):
     AbstractSensor(id,n,dn),
@@ -16,6 +17,7 @@ TemperatureSensor::TemperatureSensor(unsigned int id,
     max(mx),
     initial(init),
     stdDeviation(stddev),
+    collection_per_day(collection_per_day),
     simulation_scale(simulation_scale)
 {}
 
@@ -25,6 +27,15 @@ char TemperatureSensor::getSimulationScale()const{
 
 TemperatureSensor& TemperatureSensor::setSimulationScale(const char s){
     this->simulation_scale = s;
+    return *this;
+}
+
+unsigned int TemperatureSensor::getCollectionPerDay() const{
+    return collection_per_day;
+}
+
+TemperatureSensor& TemperatureSensor::setCollectionPerDay(const unsigned int cd){
+    this->collection_per_day = cd;
     return *this;
 }
 
@@ -112,22 +123,25 @@ void TemperatureSensor::simulate() {
 
     std::random_device rand;
     std::mt19937 gen(rand());
-    std::normal_distribution<> distribution_min(0.0, stdDeviation.getTempscale(simulation_scale));
-    std::normal_distribution<> distribution_mean(0.0, stdDeviation.getTempscale(simulation_scale));
-    std::normal_distribution<> distribution_max(0.0, stdDeviation.getTempscale(simulation_scale));
+
+    double data_std_dev = stdDeviation.getTempscale(simulation_scale) / std::sqrt(static_cast<double>(dataNum));
+
+    std::normal_distribution<> distribution_min(0.0, data_std_dev);
+    std::normal_distribution<> distribution_mean(0.0, data_std_dev);
+    std::normal_distribution<> distribution_max(0.0, data_std_dev);
 
     double dist_min = std::abs(current - current_min);
     double dist_max = std::abs(current_max - current);
 
     for (unsigned int i = 0; i < dataNum; ++i) {
-        // assumiamo di avere un ciclo giornaliero di 24 ore che dura 24 iterazioni"
-        double sin_mean = std::sin(static_cast<double>(i) / 24 * 2 * M_PI);
+        // assumiamo di avere un ciclo giornaliero"
+        double sin_mean = std::sin((static_cast<double>(i) / collection_per_day) * 2 * M_PI);
 
         double noise_min = distribution_min(gen);
         double noise_mean = distribution_mean(gen);
         double noise_max = distribution_max(gen);
 
-        current += noise_mean + sin_mean * 1.0;
+        current += (noise_mean + sin_mean) ;
         current_min = current - dist_min + noise_min;
         current_max = current + dist_max + noise_max;
 

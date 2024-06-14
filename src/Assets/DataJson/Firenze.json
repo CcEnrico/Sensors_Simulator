@@ -1,32 +1,33 @@
 [
     {
-        "Initial Temperature K°": 292.98470802919707,
+        "Initial Temperature K°": 294.34717467760845,
         "Simulation Scale": "k",
         "dataNumber": 100,
         "id": 1,
-        "initial Maximum Temp K°": 294.5797445255475,
-        "initial Minimum Temp K°": 290.7688686131387,
+        "initial Maximum Temp K°": 295.80811254396247,
+        "initial Minimum Temp K°": 292.09300117233295,
         "name": "Firenze_Temp",
-        "standardDeviation Temp K°": 3.807882540244707,
+        "standardDeviation Temp K°": 4.1332619688206576,
+        "Collection per day": 24,
         "type": "temperature_sensor"
     },
     {
-        "Rain Probability": 0.06934306569343066,
+        "Rain Probability": 0.0492379835873388,
         "dataNumber": 100,
         "id": 2,
-        "initial Relative Humidity": 65.92335766423358,
+        "initial Relative Humidity": 66.63423212192262,
         "name": "Firenze_Hum",
-        "standardDeviation Relative Humidity": 15.81524148341231,
+        "standardDeviation Relative Humidity": 14.456300338833753,
         "type": "humidity_sensor"
     },
     {
         "dataNumber": 100,
         "id": 3,
-        "initialN02 micro_g/m3": 6.914379562043795,
-        "initialPm10 micro_g/m3": 7.730839416058394,
+        "initialN02 micro_g/m3": 7.478288393903868,
+        "initialPm10 micro_g/m3": 8.252778429073857,
         "name": "Firenze_AQ",
-        "standardDeviationN02 micro_g/m3": 6.740819749290809,
-        "standardDeviationPm10 micro_g/m3": 3.989024498378689,
+        "standardDeviationN02 micro_g/m3": 7.085644826253716,
+        "standardDeviationPm10 micro_g/m3": 3.994836514183826,
         "type": "air_quality_sensor"
     }
 ]
