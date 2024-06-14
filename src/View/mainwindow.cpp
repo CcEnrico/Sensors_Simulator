@@ -32,29 +32,29 @@ MainWindow::MainWindow( Engine::SensorList* mem, QWidget *parent )
 
     // Action
 
-    QAction* create = new QAction(
+    create = new QAction(
         QIcon(QPixmap((":/Assets/icons/new.svg"))),
         "New"
     );
     create->setEnabled(true);
     create->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_N));
-    QAction* open = new QAction(
+    open = new QAction(
         QIcon(QPixmap((":/Assets/icons/open.svg"))),
         "Open"
     );
     open->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_O));
-    QAction* save = new QAction(
+    save = new QAction(
         QIcon(QPixmap((":/Assets/icons/save.svg"))),
         "Save"
     );
     save->setEnabled(true);
     save->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_S));
-    QAction* save_as = new QAction(
+    save_as = new QAction(
         QIcon(QPixmap((":/Assets/icons/save_as.svg"))),
         "Save As"
     );
     save_as->setShortcut(QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_S));
-    QAction* close = new QAction(
+    close = new QAction(
         QIcon(QPixmap((":/Assets/icons/close.svg"))),
         "Close"
     );
@@ -116,7 +116,18 @@ MainWindow::MainWindow( Engine::SensorList* mem, QWidget *parent )
 
 MainWindow::~MainWindow()
 {
+    query->clean();
+    delete query;
     delete sensor_list;
+    delete edit_window;
+
+    // cancella azioni
+    delete create;
+    delete open;
+    delete save;
+    delete save_as;
+    delete close;
+    delete create_item;
 }
 
 MainWindow& MainWindow::ClearMemory(){
@@ -143,6 +154,8 @@ MainWindow& MainWindow::ClearQuery() {
 }
 
 void MainWindow::newDataset(){
+
+    ClearQuery();
 
     QString path = QFileDialog::getSaveFileName(
             this,
@@ -192,6 +205,8 @@ void MainWindow::saveDataset() {
 }
 
 void MainWindow::openDataset(){
+
+    ClearQuery();
 
     QString path = QFileDialog::getOpenFileName(
             this,

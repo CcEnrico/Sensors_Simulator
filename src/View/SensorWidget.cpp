@@ -18,6 +18,12 @@ namespace View{
 
     }
 
+    SensorWidget::~SensorWidget() {
+        delete renderer;
+        delete simulator;
+        delete lookup;
+    }
+
     GraphLookup* SensorWidget::getLookup(){
         return lookup;
     }

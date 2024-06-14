@@ -43,14 +43,16 @@ SensorListWidget::SensorListWidget(SensorWidget* s_w, QWidget* parent)
     scroll_area->setWidget(container);
     vbox->addWidget(scroll_area);
 
-
-
     renderer = new ListRenderer::List();
 
 //    connessioni
     connect(sort_button_id, &QPushButton::clicked, this, &SensorListWidget::sortId);
     connect(sort_button_name, &QPushButton::clicked, this, &SensorListWidget::sortName);
 
+}
+
+SensorListWidget::~SensorListWidget() {
+    delete renderer;
 }
 
 void SensorListWidget::showList(Engine::SensorList* list, Sensor::Repository::JsonRepository* repository, Engine::SensorList* query ){

@@ -24,7 +24,7 @@ namespace Sensor {
             Converter::Json::Reader reader;
             Converter::Json::Json converter(reader);
             DataMapper::JsonFile data_mapper(path, converter);
-            return new JsonRepository(data_mapper);;
+            return new JsonRepository(data_mapper);
         }
         const DataMapper::JsonFile& JsonRepository::getDataMapper() const{
             return data_mapper;

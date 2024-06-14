@@ -1,18 +1,18 @@
 [
     {
         "Collection per day": 25,
-        "Initial Temperature K°": 294.5393257142857,
-        "Simulation Scale": "k",
+        "Initial Temperature C°": 21.38932571428575,
+        "Simulation Scale": "c",
         "dataNumber": 100,
         "id": 1,
-        "initial Maximum Temp K°": 295.5390171428572,
-        "initial Minimum Temp K°": 293.6644,
+        "initial Maximum Temp C°": 22.3890171428572,
+        "initial Minimum Temp C°": 20.51440000000002,
         "name": "Parma_Temp",
-        "standardDeviation Temp K°": 4.53998858427406,
+        "standardDeviation Temp C°": 4.53998858427406,
         "type": "temperature_sensor"
     },
     {
-        "Rain Probability": 0.08685714285714285,
+        "Rain Probability": 0.08685714285714,
         "dataNumber": 100,
         "id": 2,
         "initial Relative Humidity": 69.08457142857142,
@@ -21,13 +21,13 @@
         "type": "humidity_sensor"
     },
     {
-        "dataNumber": 100,
+        "dataNumber": 101,
         "id": 3,
-        "initialN02 micro_g/m3": 2.6548342857142857,
-        "initialPm10 micro_g/m3": 8.340434285714286,
+        "initialN02 micro_g/m3": 2.65483428571429,
+        "initialPm10 micro_g/m3": 8.34043428571429,
         "name": "Parma_AQ",
-        "standardDeviationN02 micro_g/m3": 1.6875782313198076,
-        "standardDeviationPm10 micro_g/m3": 5.366893310975719,
+        "standardDeviationN02 micro_g/m3": 1.68757823131981,
+        "standardDeviationPm10 micro_g/m3": 5.36689331097572,
         "type": "air_quality_sensor"
     }
 ]

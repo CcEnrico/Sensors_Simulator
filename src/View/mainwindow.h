@@ -17,7 +17,6 @@ class MainWindow : public QMainWindow
 
 private:
 
-    QAction* create_item;
     QToolBar* toolbar;
 
     // Concettualmente sensor_list , repository e query condividono la stessa memoria (quando repository(e query) esiste e non nullo)
@@ -34,6 +33,16 @@ private:
     SensorWidget* sensor_widget;
     EditWindow* edit_window;
     SensorListWidget* sensor_list_widget;
+
+    // actions
+
+    QAction* create;
+    QAction* open;
+    QAction* save;
+    QAction* save_as;
+    QAction* close;
+    QAction* create_item;
+
 
     MainWindow& reloadMemory();
     MainWindow& ClearMemory();

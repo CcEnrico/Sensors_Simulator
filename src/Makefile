@@ -13,7 +13,7 @@ EQ            = =
 ####### Compiler, tools and options
 
 CC            = gcc
-CXX           = g++
+CXX           = g++ -g
 DEFINES       = -DQT_NO_DEBUG -DQT_CHARTS_LIB -DQT_OPENGLWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_OPENGL_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -Wextra -fPIC -D_REENTRANT $(DEFINES)
 CXXFLAGS      = -pipe -O2 -std=gnu++1z -Wall -Wextra -fPIC -D_REENTRANT $(DEFINES)
@@ -3165,6 +3165,7 @@ JsonFile.o: Sensor/DataMapper/JsonFile.cpp Sensor/DataMapper/JsonFile.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qurl.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
+		Sensor/Converter/Json/Reader.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/QFile \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qfile.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qfiledevice.h \

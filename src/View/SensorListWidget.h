@@ -24,6 +24,7 @@ private:
 public:
 
     explicit SensorListWidget( SensorWidget* s_w , QWidget* parent = nullptr);
+    ~SensorListWidget() override;
 
     void showList(Engine::SensorList* list, Sensor::Repository::JsonRepository* repository = nullptr, Engine::SensorList* query = nullptr);
     void editSensor(QVector<WidgetLookup>::const_iterator i);

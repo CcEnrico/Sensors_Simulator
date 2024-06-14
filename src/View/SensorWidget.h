@@ -24,6 +24,7 @@ namespace View{
 
     public:
         explicit SensorWidget(QWidget* parent = nullptr);
+        ~SensorWidget() override;
 
         GraphLookup* getLookup();
 
