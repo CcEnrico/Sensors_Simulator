@@ -9,28 +9,24 @@
 #include <QJsonObject>
 #include "SReader.h"
 
-namespace Sensor {
-    namespace Converter {
-        namespace Json {
+namespace Sensor::Converter::Json {
 
-            class Reader : public SReader{
-            private:
-                std::map<unsigned int, AbstractSensor*> cache;
-            public:
-                const std::map<unsigned int, AbstractSensor*>& getCache() const;
-                Reader& clear();
-                AbstractSensor* read(const QJsonObject& object) override;
+    class Reader : public SReader{
+    private:
+        std::map<unsigned int, AbstractSensor*> cache;
+    public:
+        const std::map<unsigned int, AbstractSensor*>& getCache() const;
+        Reader& clear();
+        AbstractSensor* read(const QJsonObject& object) override;
 
-            private:
-                AbstractSensor* readAirQuality(const QJsonObject& object) const;
-                AbstractSensor* readHumidity(const QJsonObject& object) const;
-                AbstractSensor* readTemperature(const QJsonObject& object) const;
+    private:
+        static AbstractSensor* readAirQuality(const QJsonObject& object) ;
+        static AbstractSensor* readHumidity(const QJsonObject& object) ;
+        static AbstractSensor* readTemperature(const QJsonObject& object) ;
 
 
-            };
+    };
 
-        } // Json
-    } // Converter
-} // Sensor
+}
 
 #endif //SENSOR_CONVERTER_JSON_READER_H

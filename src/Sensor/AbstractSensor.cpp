@@ -7,7 +7,7 @@ namespace Sensor{
 AbstractSensor::AbstractSensor(unsigned int id,
                               std::string n,
                               unsigned int dn
-                               ): identifier(id), name(n), dataNum(dn){}
+                               ): identifier(id), name(std::move(n)), dataNum(dn){}
 
 AbstractSensor::~AbstractSensor() = default;
 
@@ -17,7 +17,7 @@ unsigned int AbstractSensor::getIdentifier() const{
 const std::string& AbstractSensor::getName() const{
     return name;
 }
-AbstractSensor& AbstractSensor::setName(const std::string s){
+AbstractSensor& AbstractSensor::setName(const std::string& s){
     this->name = s;
     return *this;
 }

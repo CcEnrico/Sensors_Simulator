@@ -58,12 +58,12 @@ public:
     std::vector<double> getTempDataMax()const;
     std::vector<double> getTempDataMean()const;
 
-    virtual void simulate() override;
-    virtual void clear() override;
-    virtual void modify() override;
+    void simulate() override;
+    void clear() override;
+    void modify() override;
 
 };
 
 }
 
-#endif
+#endif  // SENSOR_TEMPERATURESENSOR_H

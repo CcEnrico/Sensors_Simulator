@@ -1,8 +1,6 @@
 #ifndef SENSOR_ENVIROMENTALCONDITION_TEMPERATURE_H
 #define SENSOR_ENVIROMENTALCONDITION_TEMPERATURE_H
 
-
-
 namespace Sensor::EnviromentalConditions{
 
 class Temperature
@@ -41,6 +39,4 @@ public:
 
 }
 
-
-
-#endif // TEMPERATURE_H
+#endif // SENSOR_ENVIROMENTALCONDITION_TEMPERATURE_H

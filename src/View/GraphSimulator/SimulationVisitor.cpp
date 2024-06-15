@@ -6,10 +6,10 @@
 
 
 #include <vector>
-#include <QLineSeries>
-#include <QBarSet>
-#include <QStackedBarSeries>
-#include <QLegendMarker>
+#include "QtCharts/QLineSeries"
+#include "QtCharts/QBarSet"
+#include "QtCharts/QStackedBarSeries"
+#include "QtCharts/QLegendMarker"
 
 
 
@@ -335,6 +335,7 @@ namespace View::GraphRenderer{
 
         chart->legend()->setVisible(true);
         chart->legend()->setAlignment(Qt::AlignRight);
+        // animazioni disabilitate decommenta per attivare
 //        chart->setAnimationOptions(QChart::SeriesAnimations);
 
     }
@@ -343,8 +344,8 @@ namespace View::GraphRenderer{
         return chart;
     }
 
-    SimulationVisitor& SimulationVisitor::setChart(QChart* chart){
-        this->chart = chart;
+    SimulationVisitor& SimulationVisitor::setChart(QChart* c){
+        this->chart = c;
         return *this;
     }
 
@@ -367,8 +368,8 @@ namespace View::GraphRenderer{
         return view_chart;
     }
 
-    SimulationVisitor& SimulationVisitor::setChartView(QChartView* view_chart){
-        this->view_chart = view_chart;
+    SimulationVisitor& SimulationVisitor::setChartView(QChartView* vc){
+        this->view_chart = vc;
         return *this;
     }
 

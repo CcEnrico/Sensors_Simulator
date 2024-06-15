@@ -1,19 +1,11 @@
 #include "mainwindow.h"
 #include "EditWidget.h"
 
-#include "../Sensor/DataMapper/JsonFile.h"
-#include "../Sensor/Converter/Json/Reader.h"
-#include "../Sensor/Converter/Json/Json.h"
-
-#include <QWidget>
 #include <QStatusBar>
 #include <QMenu>
 #include <QMenuBar>
 #include <QToolBar>
-#include <QAction>
-#include <QIcon>
 #include <QSplitter>
-#include <QScrollArea>
 #include <QLabel>
 #include <QWindow>
 #include <QFileDialog>

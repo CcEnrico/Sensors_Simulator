@@ -3,8 +3,8 @@
 
 #include "SGraphSimulator.h"
 #include "SimulationVisitor.h"
-#include "../../Sensor/AbstractSensor.h"
-#include "../SensorWidget.h"
+#include "Sensor/AbstractSensor.h"
+#include "View/SensorWidget.h"
 
 
 namespace View::GraphRenderer{

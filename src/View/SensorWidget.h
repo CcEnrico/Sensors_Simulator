@@ -6,9 +6,9 @@
 #include <QPushButton>
 #include <QGridLayout>
 
-#include "GraphLookup.h"
+#include "View/SensorLookup/GraphLookup.h"
 #include "GraphRenderer/SGraphRenderer.h"
-#include "GraphRenderer/SGraphSimulator.h"
+#include "View/GraphSimulator/SGraphSimulator.h"
 
 namespace View{
 

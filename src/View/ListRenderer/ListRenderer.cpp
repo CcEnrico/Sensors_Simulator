@@ -1,27 +1,22 @@
-#include "ListSensor.h"
+#include "ListRenderer.h"
 
-#include <QLabel>
-#include <QGridLayout>
-#include <QGroupBox>
-#include <QPixmap>
-#include <QIcon>
-#include <QPushButton>
-#include <QString>
+#include "QtWidgets/QLabel"
+#include "QtWidgets/QGridLayout"
+#include "QtWidgets/QGroupBox"
+#include "QtWidgets/QPushButton"
 
-#include "../../Sensor/Airqualitysensor.h"
-#include "../../Sensor/Humiditysensor.h"
-#include "../../Sensor/TemperatureSensor.h"
-
+#include "Sensor/Airqualitysensor.h"
+#include "Sensor/Humiditysensor.h"
+#include "Sensor/TemperatureSensor.h"
 
 namespace View::SensorRenderer {
 
-ListSensor::ListSensor()
+ListRenderer::ListRenderer()
     : has_controls(true)
 {
 }
 
-
-void ListSensor::visit(const Sensor::AirQualitySensor& air_quality){
+void ListRenderer::visit(const Sensor::AirQualitySensor& air_quality){
     widget = new QGroupBox();
     QGridLayout* grid = new QGridLayout();
 
@@ -48,12 +43,10 @@ void ListSensor::visit(const Sensor::AirQualitySensor& air_quality){
     grid->addWidget(id, 1, 1, 1, 1);   
     grid->addWidget(button_container, 2, 1, 2, 1);  
 
-
     widget->setLayout(grid);
-
 }
 
-void ListSensor::visit(const Sensor::HumiditySensor& humidity){
+void ListRenderer::visit(const Sensor::HumiditySensor& humidity){
     widget = new QGroupBox();
     QGridLayout* grid = new QGridLayout();
 
@@ -78,13 +71,12 @@ void ListSensor::visit(const Sensor::HumiditySensor& humidity){
     grid->addWidget(icon, 0, 0, 4, 1); 
     grid->addWidget(name, 0, 1, 1, 1);  
     grid->addWidget(id, 1, 1, 1, 1);   
-    grid->addWidget(button_container, 2, 1, 2, 1);  
-
+    grid->addWidget(button_container, 2, 1, 2, 1);
 
     widget->setLayout(grid);
 }
 
-void ListSensor::visit(const Sensor::TemperatureSensor& temperature){
+void ListRenderer::visit(const Sensor::TemperatureSensor& temperature){
     widget = new QGroupBox();
     QGridLayout* grid = new QGridLayout();
 
@@ -111,33 +103,31 @@ void ListSensor::visit(const Sensor::TemperatureSensor& temperature){
     grid->addWidget(id, 1, 1, 1, 1);   
     grid->addWidget(button_container, 2, 1, 2, 1);  
 
-
     widget->setLayout(grid);
 }
 
-bool ListSensor::hasControls() const{
+bool ListRenderer::hasControls() const{
     return has_controls;
 }
 
-void ListSensor::setHasControls(const bool c){
+void ListRenderer::setHasControls(const bool c){
     this->has_controls = c;
 }
 
-QWidget* ListSensor::getWidget() const{
+QWidget* ListRenderer::getWidget() const{
     return widget;
 }
 
-QPushButton* ListSensor::getViewButton() const{
+QPushButton* ListRenderer::getViewButton() const{
     return view_button;
 }
 
-QPushButton* ListSensor::getEditButton() const{
+QPushButton* ListRenderer::getEditButton() const{
     return edit_button;
 }
 
-QPushButton* ListSensor::getDeleteButton() const{
+QPushButton* ListRenderer::getDeleteButton() const{
     return delete_button;
 }
-
 
 }

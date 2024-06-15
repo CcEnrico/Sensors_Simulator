@@ -26,8 +26,8 @@ QComboBox* TypeSelector::getComboBox() {
     return combo_box;
 }
 
-TypeSelector& TypeSelector::setComboBox(QComboBox* combo_box) {
-    this->combo_box = combo_box;
+TypeSelector& TypeSelector::setComboBox(QComboBox* cb) {
+    this->combo_box = cb;
     return *this;
 }
 

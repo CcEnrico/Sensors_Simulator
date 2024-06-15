@@ -1,11 +1,11 @@
 #ifndef VIEW_SENSOR_RENDERER_SSENSORRENDERER_H
 #define VIEW_SENSOR_RENDERER_SSENSORRENDERER_H
 
-#include <QWidget>
-#include <QPushButton>
+#include "QtWidgets/QWidget"
+#include "QtWidgets/QPushButton"
 
-#include "../../Sensor/AbstractSensor.h"
-#include "../../Sensor/SConstVisitor.h"
+#include "Sensor/AbstractSensor.h"
+#include "Sensor/SConstVisitor.h"
 
 
 namespace View::SensorRenderer {
@@ -21,4 +21,4 @@ class SSensorRenderer: public Sensor::SConstVisitor {
 }
 
 
-#endif
+#endif  // VIEW_SENSOR_RENDERER_SSENSORRENDERER_H

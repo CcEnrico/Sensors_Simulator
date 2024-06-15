@@ -43,9 +43,9 @@ public:
     std::vector<double> getHumData()const;
     std::vector<unsigned int> getWeatherRainy()const;
 
-    virtual void simulate() override;
-    virtual void clear() override;
-    virtual void modify() override;
+    void simulate() override;
+    void clear() override;
+    void modify() override;
 
 };
 

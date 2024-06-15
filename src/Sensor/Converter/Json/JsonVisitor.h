@@ -11,24 +11,19 @@
 #include "../../Humiditysensor.h"
 #include "../../TemperatureSensor.h"
 
+namespace Sensor::Converter::Json {
 
-namespace Sensor {
-    namespace Converter {
-        namespace Json {
+    class JsonVisitor : public SConstVisitor{
+    private:
+        QJsonObject object;
+    public:
+        QJsonObject getObject() const;
+        void visit(const AirQualitySensor& air_quality) override;
+        void visit(const HumiditySensor& humidity) override;
+        void visit(const TemperatureSensor& temperature) override;
 
-            class JsonVisitor : public SConstVisitor{
-            private:
-                QJsonObject object;
-            public:
-                QJsonObject getObject() const;
-                void visit(const AirQualitySensor& air_quality);
-                void visit(const HumiditySensor& humidity);
-                void visit(const TemperatureSensor& temperature);
+    };
 
-            };
-
-        } // Json
-    } // Converter
-} // Sensor
+}
 
 #endif //SENSOR_CONVERTER_JSON_JSONVISITOR_H

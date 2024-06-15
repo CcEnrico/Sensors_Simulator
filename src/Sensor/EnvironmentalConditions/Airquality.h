@@ -1,8 +1,6 @@
 #ifndef SENSOR_ENVIROMENTALCONDITION_AIRQUALITY_H
 #define SENSOR_ENVIROMENTALCONDITION_AIRQUALITY_H
 
-
-
 namespace Sensor::EnviromentalConditions{
 
 class AirQuality
@@ -38,6 +36,4 @@ private:
 
 }
 
-
-
-#endif // AIRQUALITY_H
+#endif // SENSOR_ENVIROMENTALCONDITION_AIRQUALITY_H

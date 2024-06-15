@@ -17,4 +17,4 @@ public:
 
 }
 
-#endif
+#endif  // SENSOR_VISITOR_H

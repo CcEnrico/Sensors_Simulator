@@ -24,4 +24,4 @@ namespace View {
     };
 }
 
-#endif // SEARCHWIDGET_H
+#endif // VIEW_SEARCHWIDGET_H

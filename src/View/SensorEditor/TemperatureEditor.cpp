@@ -128,6 +128,7 @@ void TemperatureEditor::setValues(const Sensor::TemperatureSensor& temperature_s
 
     setTemperatureValues(unit_char);
 
+    // conversione narrow da unsigned int a int
     collection_per_day->setValue(temperature_sensor.getCollectionPerDay());
 }
 

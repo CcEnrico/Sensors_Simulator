@@ -1,14 +1,14 @@
 #ifndef VIEW_GRAPH_LOOKUP_H
 #define VIEW_GRAPH_LOOKUP_H
 
-#include <QWidget>
-#include <QPushButton>
-#include <QLabel>
-#include <QChart>
-#include <QChartView>
-#include <QValueAxis>
+#include "QtWidgets/QWidget"
+#include "QtWidgets/QPushButton"
+#include "QtWidgets/QLabel"
+#include "QtCharts/QChart"
+#include "QtCharts/QChartView"
+#include "QtCharts/QValueAxis"
 
-#include "../Sensor/AbstractSensor.h"
+#include "Sensor/AbstractSensor.h"
 
 namespace View {
 
@@ -45,7 +45,6 @@ namespace View {
         );
 
         Sensor::AbstractSensor* getSensor() const;
-        GraphLookup& setSensor(QWidget* w);
         QWidget* getWidget() const;
         GraphLookup& setWidget(QWidget* w);
         QLabel* getId()const;

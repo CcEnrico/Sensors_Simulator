@@ -1,7 +1,7 @@
 #include "GraphLookup.h"
 
-#include <QWidget>
-#include <QPushButton>
+#include "QtWidgets/QWidget"
+#include "QtWidgets/QPushButton"
 
 namespace View{
     GraphLookup::GraphLookup(Sensor::AbstractSensor* s,

@@ -16,13 +16,13 @@ class HumidityEditor: public AbstractSensorEditor {
     QDoubleSpinBox* rain_probability;
 
   public:
-    explicit HumidityEditor(QWidget* parent = 0);
+    explicit HumidityEditor(QWidget* parent = nullptr);
     ~HumidityEditor() override;
 
     Sensor::AbstractSensor* create(
-        const unsigned int identifier,
+        unsigned int identifier,
         const QString& name,
-        const unsigned int data_number
+        unsigned int data_number
     ) const override;
     
     void setValues(const Sensor::HumiditySensor& humidity_sensor);
@@ -30,5 +30,4 @@ class HumidityEditor: public AbstractSensorEditor {
 
 }
 
-
-#endif
+#endif // VIEW_SENSOR_EDITOR_HUMIDITY_EDITOR_H

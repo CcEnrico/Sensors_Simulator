@@ -3,8 +3,6 @@
 #include <QFormLayout>
 
 #include "../../Sensor/Airqualitysensor.h"
-#include "../../Sensor/EnvironmentalConditions/Airquality.h"
-
 
 namespace View::SensorEditor {
 

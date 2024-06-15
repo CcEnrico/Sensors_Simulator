@@ -1,15 +1,14 @@
 #ifndef VIEW_GRAPH_RENDERER_SIMULATION_VISITOR_H
 #define VIEW_GRAPH_RENDERER_SIMULATION_VISITOR_H
 
-#include "../../Sensor/SVisitor.h"
+#include "Sensor/SVisitor.h"
 
-#include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QChart>
-#include <QChartView>
-#include <QValueAxis>
-
+#include "QtWidgets/QWidget"
+#include "QtWidgets/QLabel"
+#include "QtWidgets/QPushButton"
+#include "QtCharts/QChart"
+#include "QtCharts/QChartView"
+#include "QtCharts/QValueAxis"
 
 namespace View::GraphRenderer{
 
@@ -37,7 +36,6 @@ namespace View::GraphRenderer{
         virtual QChartView* getChartView() const;
         SimulationVisitor& setChartView(QChartView* view_chart);
     };
-
 }
 
 #endif // VIEW_GRAPH_RENDERER_SIMULATION_VISITOR_H

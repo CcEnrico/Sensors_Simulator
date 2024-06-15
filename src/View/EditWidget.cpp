@@ -1,5 +1,5 @@
 #include"EditWidget.h"
-#include"TypeSelector.h"
+#include"View/SensorEditor/TypeSelector.h"
 #include"SensorEditor/AirQualityEditor.h"
 #include"SensorEditor/HumidityEditor.h"
 #include"SensorEditor/TemperatureEditor.h"
@@ -7,10 +7,6 @@
 
 #include <iostream>
 
-#include <typeinfo>
-
-#include <QHBoxLayout>
-#include <QVBoxLayout>
 #include <QFormLayout>
 #include <QLabel>
 #include <QPushButton>
@@ -45,6 +41,7 @@ EditWidget::EditWidget(
     id_input->setRange(0, 9999);
 
     if(sensor != nullptr){
+        // conversione narrow da unsigned int a int
         id_input->setValue(sensor->getIdentifier());
     }
     form->addRow("Identifier", id_input);
@@ -65,6 +62,7 @@ EditWidget::EditWidget(
     dataNum_input->setValue(100);
 
     if(sensor != nullptr){
+        // conversione narrow da unsigned int a int
         dataNum_input->setValue(sensor->getDataNum());
     }
     form->addRow("Data Number", dataNum_input);
@@ -142,8 +140,6 @@ EditWidget::EditWidget(
     connect(cancel_button, &QPushButton::clicked, this, &EditWidget::closeWindow);
 
 }
-
-void EditWidget::selectImage(){}
 
 void EditWidget::showType(int index){
     stacked_editor->setCurrentIndex(index);

@@ -12,36 +12,36 @@
 #include "../DataMapper/JsonFile.h"
 #include "../Converter/Json/Reader.h"
 
-namespace Sensor {
-    namespace Repository {
 
-        class JsonRepository: public IRepository {
-        private:
-            DataMapper::JsonFile data_mapper;
-            std::map<unsigned int, AbstractSensor*> repository;
+namespace Sensor::Repository {
 
-        public:
-            JsonRepository(DataMapper::JsonFile data_mapper);
-            virtual ~JsonRepository();
+    class JsonRepository: public IRepository {
+    private:
+        DataMapper::JsonFile data_mapper;
+        std::map<unsigned int, AbstractSensor*> repository;
 
-            // warning: This static metod allocates memory (creates an onject JsonRepository)
-            static JsonRepository* fromPath(const std::string path);
+    public:
+        explicit JsonRepository(DataMapper::JsonFile data_mapper);
+        ~JsonRepository() override;
 
-            const DataMapper::JsonFile& getDataMapper() const;
-            const std::map<unsigned int, AbstractSensor*>& getRepository() const;
-            const std::string& getPath() const;
-            JsonRepository& setPath(std::string path);
-            virtual JsonRepository& create(AbstractSensor* item);
-            virtual AbstractSensor* read(const unsigned int identifier) const;
-            virtual JsonRepository& update(AbstractSensor* item);
-            virtual JsonRepository& remove(const unsigned int identifier);  // rimuove e dealloca
-            virtual JsonRepository& erase(const unsigned int identifier); // rimuove senza deallocare
-            virtual std::vector<AbstractSensor*> readAll() const;
-            JsonRepository& store();
-            bool empty();
-        };
+        // warning: This static metod allocates memory (creates an onject JsonRepository) alloca memoria ocio
+        static JsonRepository* fromPath(const std::string path);
 
-    }
+        const DataMapper::JsonFile& getDataMapper() const;
+        const std::map<unsigned int, AbstractSensor*>& getRepository() const;
+        const std::string& getPath() const;
+        JsonRepository& setPath(std::string path);
+        JsonRepository& create(AbstractSensor* item) override;
+        AbstractSensor* read(const unsigned int identifier) const override;
+        JsonRepository& update(AbstractSensor* item) override;
+        JsonRepository& remove(const unsigned int identifier) override;  // rimuove e dealloca
+        virtual JsonRepository& erase(const unsigned int identifier); // rimuove senza deallocare
+        virtual std::vector<AbstractSensor*> readAll() const;
+        JsonRepository& store();
+        bool empty() const;
+    };
+
 }
+
 
 #endif //SENSOR_REPOSITORY_JSON_REPOSITORY_H

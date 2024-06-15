@@ -51,9 +51,9 @@ public:
     std::vector<double> getAQDataN02()const;
     std::vector<double> getAQDataIAQ()const;
 
-    virtual void simulate() override;
-    virtual void clear() override;
-    virtual void modify() override;
+    void simulate() override;
+    void clear() override;
+    void modify() override;
 
 };
 

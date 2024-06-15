@@ -44,7 +44,6 @@ signals:
 
     
   public slots:
-    void selectImage();
     void showType(int index);
     void apply();
     void closeWindow();

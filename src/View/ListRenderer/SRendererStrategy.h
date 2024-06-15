@@ -4,7 +4,7 @@
 #include <QGridLayout>
 #include <QVector>
 
-#include "../WidgetLookup.h"
+#include "View/SensorLookup/WidgetLookup.h"
 #include "../../Engine/SensorList.h"
 
 namespace View::ListRenderer{

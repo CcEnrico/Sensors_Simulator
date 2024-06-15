@@ -77,4 +77,4 @@ public:
 
 }
 
-#endif // MAINWINDOW_H
+#endif // VIEW_MAINWINDOW_H

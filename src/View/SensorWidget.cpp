@@ -1,6 +1,6 @@
 #include "SensorWidget.h"
 #include "GraphRenderer/Graph.h"
-#include "GraphRenderer/StandardSimulator.h"
+#include "View/GraphSimulator/StandardSimulator.h"
 #include "mainwindow.h"
 
 

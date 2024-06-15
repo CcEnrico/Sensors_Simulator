@@ -1,8 +1,8 @@
 #ifndef VIEW_GRAPH_SENDERER_SGRAPH_SIMULATOR_H
 #define VIEW_GRAPH_SENDERER_SGRAPH_SIMULATOR_H
 
-#include "../../Sensor/AbstractSensor.h"
-#include "../GraphLookup.h"
+#include "Sensor/AbstractSensor.h"
+#include "View/SensorLookup/GraphLookup.h"
 
 namespace View::GraphRenderer{
 

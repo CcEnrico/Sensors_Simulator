@@ -80,7 +80,7 @@ namespace Sensor {
             data_mapper.store(readAll());
             return *this;
         }
-        bool JsonRepository::empty(){
+        bool JsonRepository::empty() const{
             return repository.empty();
         }
 

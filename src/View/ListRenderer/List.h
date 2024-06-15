@@ -6,14 +6,14 @@
 #include <QWidget>
 
 #include "SRendererStrategy.h"
-#include "../SensorRenderer/ListSensor.h"
+#include "ListRenderer.h"
 #include "../SensorListWidget.h"
 #include "../../Engine/SensorList.h"
 
 namespace View::ListRenderer {
     class List : public SRendererStrategy{
 
-        SensorRenderer::ListSensor list_sensor;
+        SensorRenderer::ListRenderer list_sensor;
 
     public:
         void render(QGridLayout* grid, Engine::SensorList* list ,QVector<WidgetLookup>* lookup) override;

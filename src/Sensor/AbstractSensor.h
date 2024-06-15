@@ -1,8 +1,8 @@
 #ifndef SENSOR_ABSTRACT_SENSOR_H
 #define SENSOR_ABSTRACT_SENSOR_H
 
-#include<string>
-#include<iostream>
+#include <string>
+#include <iostream>
 #include <random>
 
 #include "SConstVisitor.h"
@@ -27,7 +27,7 @@ public:
 
     unsigned int getIdentifier() const;
     const std::string& getName() const;
-    AbstractSensor& setName(const std::string s);
+    AbstractSensor& setName(const std::string& s);
     unsigned int getDataNum() const;
     AbstractSensor& setDataNum(const unsigned int dn);
 
@@ -38,10 +38,8 @@ public:
     virtual void clear() = 0;
     virtual void modify() = 0;
 
-
 };
-
 
 }
 
-#endif
+#endif  // SENSOR_ABSTRACT_SENSOR_H

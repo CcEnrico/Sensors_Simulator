@@ -1,14 +1,11 @@
-#include"SensorListWidget.h"
+#include "SensorListWidget.h"
 #include "ListRenderer/List.h"
 #include "SensorWidget.h"
-#include "Sensor/AbstractSensor.h"
 #include "mainwindow.h"
 
-#include <QScrollArea>
 #include <QLabel>
 
 #include <functional>
-#include <typeinfo>
 
 namespace View{
 
@@ -103,7 +100,7 @@ void SensorListWidget::showList(Engine::SensorList* list, Sensor::Repository::Js
         list->erase(it->getSensor()); // cancella dalla lista
 
         // se il sensore che voglio cancellare non e' vuoto e è quello che è attualmente nel lookup del sensor widget
-        // ovvero se il sensore che sto cancellando e' quello mostrato nel widget del grafo allora lo nascondo
+        // ovvero se il sensore che sto cancellando e' quello mostrato nel widget del grafico allora lo nascondo
         if ( !(sensor_widget->isEmpty()) && sensor_widget->getLookup()->getSensor()->getIdentifier() == it->getSensor()->getIdentifier() && !sensor_widget->isEmpty() ){
             sensor_widget->hideSensorWidget();
         }

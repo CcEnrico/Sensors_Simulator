@@ -1,5 +1,7 @@
 #include"TemperatureSensor.h"
 
+#include <utility>
+
 namespace Sensor {
 
 TemperatureSensor::TemperatureSensor(unsigned int id,
@@ -12,7 +14,7 @@ TemperatureSensor::TemperatureSensor(unsigned int id,
     unsigned int collection_per_day,
     char simulation_scale
 ):
-    AbstractSensor(id,n,dn),
+    AbstractSensor(id,std::move(n),dn),
     min(mn),
     max(mx),
     initial(init),
@@ -134,7 +136,7 @@ void TemperatureSensor::simulate() {
     double dist_max = std::abs(current_max - current);
 
     for (unsigned int i = 0; i < dataNum; ++i) {
-        // assumiamo di avere un ciclo giornaliero"
+        // assumiamo di avere un ciclo giornaliero
         double sin_mean = std::sin((static_cast<double>(i) / collection_per_day) * 2 * M_PI);
 
         double noise_min = distribution_min(gen);
@@ -167,7 +169,5 @@ void TemperatureSensor::clear() {
 void TemperatureSensor::modify() {
 
 }
-
-
 
 }

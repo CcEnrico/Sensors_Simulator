@@ -1,7 +1,7 @@
 #ifndef VIEW_SENSORLISTWIDGET_H
 #define VIEW_SENSORLISTWIDGET_H
 
-#include"WidgetLookup.h"
+#include "View/SensorLookup/WidgetLookup.h"
 #include "ListRenderer/SRendererStrategy.h"
 #include "SensorWidget.h"
 #include "../Sensor/Repository/JsonRepository.h"
@@ -45,4 +45,4 @@ signals:
 }
 
 
-#endif // SENSORLISTWIDGET_H
+#endif // VIEW_SENSORLISTWIDGET_H

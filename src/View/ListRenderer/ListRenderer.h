@@ -3,12 +3,11 @@
 
 #include"SSensorRenderer.h"
 
-#include "../SensorListWidget.h"
-
+#include "View/SensorListWidget.h"
 
 namespace View::SensorRenderer {
 
-class ListSensor : public SSensorRenderer {
+class ListRenderer : public SSensorRenderer {
   private:
     bool has_controls;
     QWidget* widget;
@@ -17,7 +16,7 @@ class ListSensor : public SSensorRenderer {
     QPushButton* delete_button;
 
   public:
-    ListSensor();
+    ListRenderer();
     void visit(const Sensor::AirQualitySensor& air_quality) override;
     void visit(const Sensor::HumiditySensor& humidity) override;
     void visit(const Sensor::TemperatureSensor& temperature) override;
@@ -31,5 +30,4 @@ class ListSensor : public SSensorRenderer {
 };
 }
 
-
-#endif
+#endif  // VIEW_SENSOR_RENDERER_LISTSENSOR_H

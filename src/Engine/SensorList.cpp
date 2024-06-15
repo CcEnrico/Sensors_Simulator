@@ -59,7 +59,7 @@ namespace Engine{
         return *this;
     }
 
-    bool SensorList::find(const Sensor::AbstractSensor* sensor){
+    bool SensorList::find(const Sensor::AbstractSensor* sensor) const{
         for (std::list<const Sensor::AbstractSensor*>::const_iterator it = sensors.begin(); it != sensors.end(); ++it) {
             const Sensor::AbstractSensor* current = *it;
             if (current->getIdentifier() == sensor->getIdentifier()) return true;

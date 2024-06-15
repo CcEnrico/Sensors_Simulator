@@ -1,5 +1,7 @@
 #include "Airqualitysensor.h"
 
+#include <utility>
+
 namespace Sensor{
 
 AirQualitySensor::AirQualitySensor(unsigned int id,
@@ -8,7 +10,7 @@ AirQualitySensor::AirQualitySensor(unsigned int id,
     EnviromentalConditions::AirQuality init,
     EnviromentalConditions::AirQuality stddev
     ):
-    AbstractSensor(id, n, dn),
+    AbstractSensor(id, std::move(n), dn),
     initial(init),
     stdDeviation(stddev)
 {

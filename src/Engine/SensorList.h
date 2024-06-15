@@ -17,7 +17,8 @@ namespace Engine{
         SensorList& erase(const Sensor::AbstractSensor* sensor);    // rimuove
         SensorList& clean();    // non dealloca memoria pulisce solo il contenitore
         SensorList& clear();    // dealloca memoria e pulisce il contenitore
-        bool find(const Sensor::AbstractSensor* sensor);
+        bool find(const Sensor::AbstractSensor* sensor) const;
+        // sort metodi non costanti complessita O(nlogn) su lista
         SensorList& sortId();
         SensorList& sortName();
         unsigned int size() const;
@@ -35,4 +36,4 @@ namespace Engine{
 }
 
 
-#endif //ENGINE_SENSOR_LIST_H
+#endif //   ENGINE_SENSOR_LIST_H

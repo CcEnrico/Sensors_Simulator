@@ -1,5 +1,7 @@
 #include "Humiditysensor.h"
 
+#include <utility>
+
 namespace Sensor{
 
 HumiditySensor::HumiditySensor(unsigned int id,
@@ -9,7 +11,7 @@ HumiditySensor::HumiditySensor(unsigned int id,
     EnviromentalConditions::Humidity stddev,
     double rp
     ):
-    AbstractSensor(id,n,dn),
+    AbstractSensor(id,std::move(n),dn),
     initial(init),
     stdDeviation(stddev),
     rain_probability(rp)
@@ -121,7 +123,6 @@ void HumiditySensor::clear() {
 void HumiditySensor::modify() {
 
 }
-
 
 const EnviromentalConditions::Humidity HumiditySensor::min = EnviromentalConditions::Humidity(0.0);
 const EnviromentalConditions::Humidity HumiditySensor::max = EnviromentalConditions::Humidity(100.0);

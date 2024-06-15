@@ -6,8 +6,6 @@
 #include "../SensorWidget.h"
 #include "../../Sensor/AbstractSensor.h"
 
-
-
 namespace View::GraphRenderer{
 
     class Graph : public SGraphRenderer{
@@ -18,9 +16,7 @@ namespace View::GraphRenderer{
 
         void render(QGridLayout* grid, const Sensor::AbstractSensor* sensor, GraphLookup*& lookup) override;
 
-
     };
-
 }
 
 #endif // VIEW_GRAPH_RENDERER_GRAPH_H

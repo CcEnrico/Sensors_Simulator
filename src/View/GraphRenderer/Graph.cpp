@@ -20,7 +20,6 @@ namespace View::GraphRenderer {
                 full.getChartView()
                 );
 
-
         QWidget* widget = full.getWidget();
         grid->addWidget(widget, 0, 0);
 

@@ -12,16 +12,15 @@ namespace View::SensorEditor {
 class AbstractSensorEditor: public QWidget {
     Q_OBJECT
   public:
-    AbstractSensorEditor(QWidget* parent = 0);
+    explicit AbstractSensorEditor(QWidget* parent = nullptr);
     ~AbstractSensorEditor() override;
     virtual Sensor::AbstractSensor* create(
-        const unsigned int identifier,
+        unsigned int identifier,
         const QString& name,
-        const unsigned int data_number
+        unsigned int data_number
     ) const = 0;
 };
 
 }
 
-
-#endif
+#endif  // VIEW_SENSOR_EDITOR_ABSTRACT_SENSOR_EDITOR_H

@@ -3,8 +3,6 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 
-
-
 namespace View{
 
     SearchWidget::SearchWidget(QWidget* parent)

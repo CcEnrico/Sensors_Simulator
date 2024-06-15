@@ -11,7 +11,7 @@
 namespace View::SensorEditor{
 
 class TemperatureEditor: public AbstractSensorEditor {
-  private:
+    private:
 
     QComboBox* unit;
     char unit_char;
@@ -28,20 +28,20 @@ class TemperatureEditor: public AbstractSensorEditor {
     void setTemperatureValues(char u);
 
     public:
-    
-    explicit TemperatureEditor(QWidget* parent = 0);
+
+    explicit TemperatureEditor(QWidget* parent = nullptr);
     ~TemperatureEditor() override;
 
     Sensor::AbstractSensor* create(
-        const unsigned int identifier,
+        unsigned int identifier,
         const QString& name,
-        const unsigned int data_number
+        unsigned int data_number
     ) const override;
-    
+
     void setValues(const Sensor::TemperatureSensor& temperature_sensor);
 
     public slots:
-    
+
     void unitChangedIndex(int index);
     void unitChangedChar(char u);
 
@@ -51,4 +51,4 @@ class TemperatureEditor: public AbstractSensorEditor {
 }
 
 
-#endif
+#endif // VIEW_SENSOR_EDITOR_TEMPERATURE_EDITOR_H

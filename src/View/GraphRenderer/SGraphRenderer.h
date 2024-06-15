@@ -2,7 +2,7 @@
 #define VIEW_GRAPH_RENDERER_SGRAPH_RENDERER_H
 
 #include "../../Sensor/AbstractSensor.h"
-#include "../GraphLookup.h"
+#include "View/SensorLookup/GraphLookup.h"
 #include <QGridLayout>
 
 namespace View::GraphRenderer {

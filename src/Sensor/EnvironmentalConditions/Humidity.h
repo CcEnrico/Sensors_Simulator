@@ -1,11 +1,7 @@
 #ifndef SENSOR_ENVIROMENTALCONDITION_HUMIDITY_H
 #define SENSOR_ENVIROMENTALCONDITION_HUMIDITY_H
 
-
-
-
 namespace Sensor::EnviromentalConditions{
-
 
 class Humidity
 {
@@ -23,6 +19,4 @@ public:
 
 }
 
-
-
-#endif // HUMIDITY_H
+#endif // SENSOR_ENVIROMENTALCONDITION_HUMIDITY_H
