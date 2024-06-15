@@ -18,5 +18,6 @@
     <file>Assets/icons/air-quality.svg</file>
     <file>Assets/icons/humidity.svg</file>
     <file>Assets/icons/temperature.svg</file>
+    <file>Assets/icons/help.svg</file>
 </qresource>
 </RCC>

@@ -30,41 +30,47 @@ MainWindow::MainWindow( Engine::SensorList* mem, QWidget *parent )
     // alloca la memoria della query
     query = new Engine::SensorList();
 
-    // Action
+    // azioni
 
     create = new QAction(
         QIcon(QPixmap((":/Assets/icons/new.svg"))),
         "New"
     );
     create->setEnabled(true);
-    create->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_N));
+
     open = new QAction(
         QIcon(QPixmap((":/Assets/icons/open.svg"))),
         "Open"
     );
-    open->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_O));
+
     save = new QAction(
         QIcon(QPixmap((":/Assets/icons/save.svg"))),
         "Save"
     );
     save->setEnabled(true);
-    save->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_S));
+    
     save_as = new QAction(
         QIcon(QPixmap((":/Assets/icons/save_as.svg"))),
         "Save As"
     );
-    save_as->setShortcut(QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_S));
-    close = new QAction(
-        QIcon(QPixmap((":/Assets/icons/close.svg"))),
-        "Close"
-    );
-    close->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_Q));
-    create_item = new QAction(
+    
+    create_sensor = new QAction(
         QIcon(QPixmap((":/Assets/icons/new_item.svg"))),
         "New Item"
     );
-    create_item->setShortcut(QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_N));
-    create_item->setEnabled(true);
+    create_sensor->setEnabled(true);
+    help = new QAction(
+            QIcon(QPixmap((":/Assets/icons/help.svg"))),
+            "Help"
+    );
+    help->setEnabled(true);
+
+    create->setShortcut(QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_C));
+    open->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_O));
+    save->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_S));
+    save_as->setShortcut(QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_S));
+    create_sensor->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_N));
+    help->setShortcut(QKeySequence(Qt::Key_F1));
 
     // toolbar
     toolbar = addToolBar("Toolbar");
@@ -74,8 +80,8 @@ MainWindow::MainWindow( Engine::SensorList* mem, QWidget *parent )
     toolbar->addAction(open);
     toolbar->addAction(save);
     toolbar->addAction(save_as);
-    toolbar->addAction(close);
-    toolbar->addAction(create_item);
+    toolbar->addAction(create_sensor);
+    toolbar->addAction(help);
 
     // panel
 
@@ -105,7 +111,8 @@ MainWindow::MainWindow( Engine::SensorList* mem, QWidget *parent )
     connect(save, &QAction::triggered, this, &MainWindow::saveDataset);
     connect(save_as, &QAction::triggered, this, &MainWindow::saveAsDataset);
     connect(open, &QAction::triggered, this, &MainWindow::openDataset);
-    connect(create_item, &QAction::triggered, this, &MainWindow::createItem);
+    connect(create_sensor, &QAction::triggered, this, &MainWindow::createItem);
+    connect(help, &QAction::triggered, this, &MainWindow::showHelpDialog);
     connect(edit_window, &EditWindow::windowClosed, this, &MainWindow::closeEdit);
     connect(search_widget, &SearchWidget::search_event, this, &MainWindow::search);
     connect(sensor_list_widget, &SensorListWidget::sortId_event, this, &MainWindow::sortSensorsId);
@@ -126,8 +133,7 @@ MainWindow::~MainWindow()
     delete open;
     delete save;
     delete save_as;
-    delete close;
-    delete create_item;
+    delete create_sensor;
 }
 
 MainWindow& MainWindow::ClearMemory(){
@@ -257,7 +263,7 @@ void MainWindow::createItem()
 {
     // svuota query
     ClearQuery();
-    create_item->setEnabled(false);
+    create_sensor->setEnabled(false);
     EditWidget* edit = new EditWidget(nullptr, this, repository);
     edit_window->setCentralWidget(edit);
     edit_window->show();
@@ -265,9 +271,20 @@ void MainWindow::createItem()
     showStatusBar("Creating a new item.");
 }
 
+void MainWindow::showHelpDialog(){
+    QMessageBox::information(this, "Shortcut Information",
+                             "Keyboard Shortcuts:\n"
+                             "Create: Ctrl + Shift + C\n"
+                             "Open: Ctrl + O\n"
+                             "Save: Ctrl + S\n"
+                             "Save As: Ctrl + Shift + S\n"
+                             "Create Sensor: Ctrl + N\n"
+                             "Help: F1");
+}
+
 void MainWindow::editItem(Sensor::AbstractSensor* s)
 {
-    create_item->setEnabled(false);
+    create_sensor->setEnabled(false);
     EditWidget* edit = new EditWidget(s, this, repository);
     edit_window->setCentralWidget(edit);
     edit_window->show();
@@ -278,7 +295,7 @@ void MainWindow::finishEdit()
 {
     edit_window->close();
     delete edit_window->centralWidget();
-    create_item->setEnabled(true);
+    create_sensor->setEnabled(true);
 
     // svuota query
     ClearQuery();
@@ -291,7 +308,7 @@ void MainWindow::finishEdit()
 void MainWindow::closeEdit(){
     edit_window->close();
     delete edit_window->centralWidget();
-    create_item->setEnabled(true);
+    create_sensor->setEnabled(true);
     showStatusBar("Ready.");
 }
 
@@ -343,7 +360,7 @@ Sensor::Repository::JsonRepository* MainWindow::getRepository() const{
 }
 
 QAction* MainWindow::getCreateItem(){
-    return create_item;
+    return create_sensor;
 }
 
 void MainWindow::showStatusBar(const QString& message)

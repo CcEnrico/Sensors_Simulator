@@ -40,8 +40,8 @@ private:
     QAction* open;
     QAction* save;
     QAction* save_as;
-    QAction* close;
-    QAction* create_item;
+    QAction* create_sensor;
+    QAction* help;
 
 
     MainWindow& reloadMemory();
@@ -66,6 +66,7 @@ public:
     void saveDataset();
     void saveAsDataset();
     void createItem();
+    void showHelpDialog();
     void editItem(Sensor::AbstractSensor* s);
     void finishEdit();
     void closeEdit();

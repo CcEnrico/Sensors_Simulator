@@ -13,7 +13,7 @@ EQ            = =
 ####### Compiler, tools and options
 
 CC            = gcc
-CXX           = g++ -g
+CXX           = g++
 DEFINES       = -DQT_NO_DEBUG -DQT_CHARTS_LIB -DQT_OPENGLWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_OPENGL_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -Wextra -fPIC -D_REENTRANT $(DEFINES)
 CXXFLAGS      = -pipe -O2 -std=gnu++1z -Wall -Wextra -fPIC -D_REENTRANT $(DEFINES)
@@ -1126,6 +1126,7 @@ qrc_resources.cpp: resources.qrc \
 		Assets/icons/temperature.svg \
 		Assets/icons/grid.svg \
 		Assets/icons/new.svg \
+		Assets/icons/help.svg \
 		Assets/icons/humidity.svg \
 		Assets/icons/save_as.svg \
 		Assets/icons/edit.svg \
