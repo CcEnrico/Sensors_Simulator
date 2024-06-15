@@ -1123,22 +1123,17 @@ compiler_rcc_clean:
 qrc_resources.cpp: resources.qrc \
 		../../../Qt/6.4.2/gcc_64/libexec/rcc \
 		Assets/icons/temperature.svg \
-		Assets/icons/grid.svg \
 		Assets/icons/new.svg \
 		Assets/icons/help.svg \
 		Assets/icons/humidity.svg \
 		Assets/icons/save_as.svg \
 		Assets/icons/edit.svg \
-		Assets/icons/previous.svg \
 		Assets/icons/delete.svg \
 		Assets/icons/icon.svg \
 		Assets/icons/close.svg \
 		Assets/icons/open.svg \
-		Assets/icons/next.svg \
 		Assets/icons/search.svg \
 		Assets/icons/new_item.svg \
-		Assets/icons/hero.svg \
-		Assets/icons/list.svg \
 		Assets/icons/air-quality.svg \
 		Assets/icons/save.svg
 	/home/enrico/Qt/6.4.2/gcc_64/libexec/rcc -name resources --no-zstd resources.qrc -o qrc_resources.cpp

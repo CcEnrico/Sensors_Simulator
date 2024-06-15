@@ -93,7 +93,7 @@ HEADERS += \
     View/SensorWidget.h
 
 RESOURCES += \
-    resources.qrc
+    resources.qrc \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
