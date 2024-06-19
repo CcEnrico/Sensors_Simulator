@@ -68,8 +68,8 @@ SOURCES       = main.cpp \
 		Sensor/TemperatureSensor.cpp \
 		View/EditWidget.cpp \
 		View/EditWindow.cpp \
-		View/GraphRenderer/Full.cpp \
-		View/GraphRenderer/Graph.cpp \
+		View/SensorRenderer/Full.cpp \
+		View/SensorRenderer/Graph.cpp \
 		View/GraphSimulator/SimulationVisitor.cpp \
 		View/GraphSimulator/StandardSimulator.cpp \
 		View/ListRenderer/List.cpp \
@@ -434,9 +434,9 @@ DIST          = ../../../Qt/6.4.2/gcc_64/mkspecs/features/spec_pre.prf \
 		Sensor/TemperatureSensor.h \
 		View/EditWidget.h \
 		View/EditWindow.h \
-		View/GraphRenderer/Full.h \
-		View/GraphRenderer/Graph.h \
-		View/GraphRenderer/SGraphRenderer.h \
+		View/SensorRenderer/Full.h \
+		View/SensorRenderer/Graph.h \
+		View/SensorRenderer/SGraphRenderer.h \
 		View/GraphSimulator/SGraphSimulator.h \
 		View/GraphSimulator/SimulationVisitor.h \
 		View/ListRenderer/List.h \
@@ -470,8 +470,8 @@ DIST          = ../../../Qt/6.4.2/gcc_64/mkspecs/features/spec_pre.prf \
 		Sensor/TemperatureSensor.cpp \
 		View/EditWidget.cpp \
 		View/EditWindow.cpp \
-		View/GraphRenderer/Full.cpp \
-		View/GraphRenderer/Graph.cpp \
+		View/SensorRenderer/Full.cpp \
+		View/SensorRenderer/Graph.cpp \
 		View/GraphSimulator/SimulationVisitor.cpp \
 		View/GraphSimulator/StandardSimulator.cpp \
 		View/ListRenderer/List.cpp \
@@ -1092,8 +1092,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/6.4.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Engine/SensorList.h Sensor/AbstractSensor.h Sensor/Airqualitysensor.h Sensor/Converter/Json/Json.h Sensor/Converter/Json/JsonVisitor.h Sensor/Converter/Json/Reader.h Sensor/Converter/Json/SReader.h Sensor/DataMapper/JsonFile.h Sensor/EnvironmentalConditions/Airquality.h Sensor/EnvironmentalConditions/Humidity.h Sensor/EnvironmentalConditions/Temperature.h Sensor/Humiditysensor.h Sensor/Repository/IRepository.h Sensor/Repository/JsonRepository.h Sensor/SConstVisitor.h Sensor/SVisitor.h Sensor/TemperatureSensor.h View/EditWidget.h View/EditWindow.h View/GraphRenderer/Full.h View/GraphRenderer/Graph.h View/GraphRenderer/SGraphRenderer.h View/GraphSimulator/SGraphSimulator.h View/GraphSimulator/SimulationVisitor.h View/ListRenderer/List.h View/ListRenderer/ListRenderer.h View/ListRenderer/SRendererStrategy.h View/ListRenderer/SSensorRenderer.h View/mainwindow.h View/SearchWidget.h View/SensorEditor/AbstractSensorEditor.h View/SensorEditor/AirQualityEditor.h View/SensorEditor/HumidityEditor.h View/SensorEditor/SensorInjector.h View/SensorEditor/TemperatureEditor.h View/SensorEditor/TypeSelector.h View/SensorListWidget.h View/SensorLookup/GraphLookup.h View/SensorLookup/WidgetLookup.h View/SensorWidget.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp Engine/SensorList.cpp Sensor/AbstractSensor.cpp Sensor/Airqualitysensor.cpp Sensor/Converter/Json/Json.cpp Sensor/Converter/Json/JsonVisitor.cpp Sensor/Converter/Json/Reader.cpp Sensor/DataMapper/JsonFile.cpp Sensor/EnvironmentalConditions/Airquality.cpp Sensor/EnvironmentalConditions/Humidity.cpp Sensor/EnvironmentalConditions/Temperature.cpp Sensor/Humiditysensor.cpp Sensor/Repository/JsonRepository.cpp Sensor/TemperatureSensor.cpp View/EditWidget.cpp View/EditWindow.cpp View/GraphRenderer/Full.cpp View/GraphRenderer/Graph.cpp View/GraphSimulator/SimulationVisitor.cpp View/GraphSimulator/StandardSimulator.cpp View/ListRenderer/List.cpp View/ListRenderer/ListRenderer.cpp View/mainwindow.cpp View/SearchWidget.cpp View/SensorEditor/AbstractSensorEditor.cpp View/SensorEditor/AirQualityEditor.cpp View/SensorEditor/HumidityEditor.cpp View/SensorEditor/SensorInjector.cpp View/SensorEditor/TemperatureEditor.cpp View/SensorEditor/TypeSelector.cpp View/SensorListWidget.cpp View/SensorLookup/GraphLookup.cpp View/SensorLookup/WidgetLookup.cpp View/SensorWidget.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents Engine/SensorList.h Sensor/AbstractSensor.h Sensor/Airqualitysensor.h Sensor/Converter/Json/Json.h Sensor/Converter/Json/JsonVisitor.h Sensor/Converter/Json/Reader.h Sensor/Converter/Json/SReader.h Sensor/DataMapper/JsonFile.h Sensor/EnvironmentalConditions/Airquality.h Sensor/EnvironmentalConditions/Humidity.h Sensor/EnvironmentalConditions/Temperature.h Sensor/Humiditysensor.h Sensor/Repository/IRepository.h Sensor/Repository/JsonRepository.h Sensor/SConstVisitor.h Sensor/SVisitor.h Sensor/TemperatureSensor.h View/EditWidget.h View/EditWindow.h View/SensorRenderer/Full.h View/SensorRenderer/Graph.h View/SensorRenderer/SGraphRenderer.h View/GraphSimulator/SGraphSimulator.h View/GraphSimulator/SimulationVisitor.h View/ListRenderer/List.h View/ListRenderer/ListRenderer.h View/ListRenderer/SRendererStrategy.h View/ListRenderer/SSensorRenderer.h View/mainwindow.h View/SearchWidget.h View/SensorEditor/AbstractSensorEditor.h View/SensorEditor/AirQualityEditor.h View/SensorEditor/HumidityEditor.h View/SensorEditor/SensorInjector.h View/SensorEditor/TemperatureEditor.h View/SensorEditor/TypeSelector.h View/SensorListWidget.h View/SensorLookup/GraphLookup.h View/SensorLookup/WidgetLookup.h View/SensorWidget.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp Engine/SensorList.cpp Sensor/AbstractSensor.cpp Sensor/Airqualitysensor.cpp Sensor/Converter/Json/Json.cpp Sensor/Converter/Json/JsonVisitor.cpp Sensor/Converter/Json/Reader.cpp Sensor/DataMapper/JsonFile.cpp Sensor/EnvironmentalConditions/Airquality.cpp Sensor/EnvironmentalConditions/Humidity.cpp Sensor/EnvironmentalConditions/Temperature.cpp Sensor/Humiditysensor.cpp Sensor/Repository/JsonRepository.cpp Sensor/TemperatureSensor.cpp View/EditWidget.cpp View/EditWindow.cpp View/SensorRenderer/Full.cpp View/SensorRenderer/Graph.cpp View/GraphSimulator/SimulationVisitor.cpp View/GraphSimulator/StandardSimulator.cpp View/ListRenderer/List.cpp View/ListRenderer/ListRenderer.cpp View/mainwindow.cpp View/SearchWidget.cpp View/SensorEditor/AbstractSensorEditor.cpp View/SensorEditor/AirQualityEditor.cpp View/SensorEditor/HumidityEditor.cpp View/SensorEditor/SensorInjector.cpp View/SensorEditor/TemperatureEditor.cpp View/SensorEditor/TypeSelector.cpp View/SensorListWidget.cpp View/SensorLookup/GraphLookup.cpp View/SensorLookup/WidgetLookup.cpp View/SensorWidget.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1376,7 +1376,7 @@ moc_EditWidget.cpp: View/EditWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
-		View/GraphRenderer/SGraphRenderer.h \
+		View/SensorRenderer/SGraphRenderer.h \
 		View/GraphSimulator/SGraphSimulator.h \
 		View/EditWindow.h \
 		View/SensorEditor/AbstractSensorEditor.h \
@@ -1747,7 +1747,7 @@ moc_mainwindow.cpp: View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
-		View/GraphRenderer/SGraphRenderer.h \
+		View/SensorRenderer/SGraphRenderer.h \
 		View/GraphSimulator/SGraphSimulator.h \
 		View/EditWindow.h \
 		moc_predefs.h \
@@ -2239,7 +2239,7 @@ moc_SensorListWidget.cpp: View/SensorListWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
-		View/GraphRenderer/SGraphRenderer.h \
+		View/SensorRenderer/SGraphRenderer.h \
 		View/GraphSimulator/SGraphSimulator.h \
 		Sensor/Repository/JsonRepository.h \
 		Sensor/Repository/IRepository.h \
@@ -2448,7 +2448,7 @@ moc_SensorWidget.cpp: View/SensorWidget.h \
 		Sensor/AbstractSensor.h \
 		Sensor/SConstVisitor.h \
 		Sensor/SVisitor.h \
-		View/GraphRenderer/SGraphRenderer.h \
+		View/SensorRenderer/SGraphRenderer.h \
 		View/GraphSimulator/SGraphSimulator.h \
 		moc_predefs.h \
 		../../../Qt/6.4.2/gcc_64/libexec/moc
@@ -2690,7 +2690,7 @@ main.o: main.cpp View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
-		View/GraphRenderer/SGraphRenderer.h \
+		View/SensorRenderer/SGraphRenderer.h \
 		View/GraphSimulator/SGraphSimulator.h \
 		View/EditWindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QApplication \
@@ -3519,7 +3519,7 @@ EditWidget.o: View/EditWidget.cpp View/EditWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
-		View/GraphRenderer/SGraphRenderer.h \
+		View/SensorRenderer/SGraphRenderer.h \
 		View/GraphSimulator/SGraphSimulator.h \
 		View/EditWindow.h \
 		View/SensorEditor/AbstractSensorEditor.h \
@@ -3698,7 +3698,7 @@ EditWindow.o: View/EditWindow.cpp View/EditWindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtabwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o EditWindow.o View/EditWindow.cpp
 
-Full.o: View/GraphRenderer/Full.cpp View/GraphRenderer/Full.h \
+Full.o: View/SensorRenderer/Full.cpp View/SensorRenderer/Full.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlabel.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -3894,7 +3894,7 @@ Full.o: View/GraphRenderer/Full.cpp View/GraphRenderer/Full.h \
 		View/SensorLookup/GraphLookup.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
-		View/GraphRenderer/SGraphRenderer.h \
+		View/SensorRenderer/SGraphRenderer.h \
 		View/GraphSimulator/SGraphSimulator.h \
 		Sensor/Repository/JsonRepository.h \
 		Sensor/Repository/IRepository.h \
@@ -3941,10 +3941,10 @@ Full.o: View/GraphRenderer/Full.cpp View/GraphRenderer/Full.h \
 		Sensor/EnvironmentalConditions/Humidity.h \
 		Sensor/TemperatureSensor.h \
 		Sensor/EnvironmentalConditions/Temperature.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Full.o View/GraphRenderer/Full.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Full.o View/SensorRenderer/Full.cpp
 
-Graph.o: View/GraphRenderer/Graph.cpp View/GraphRenderer/Graph.h \
-		View/GraphRenderer/SGraphRenderer.h \
+Graph.o: View/SensorRenderer/Graph.cpp View/SensorRenderer/Graph.h \
+		View/SensorRenderer/SGraphRenderer.h \
 		Sensor/AbstractSensor.h \
 		Sensor/SConstVisitor.h \
 		Sensor/SVisitor.h \
@@ -4131,7 +4131,7 @@ Graph.o: View/GraphRenderer/Graph.cpp View/GraphRenderer/Graph.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlayout.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlayoutitem.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qboxlayout.h \
-		View/GraphRenderer/Full.h \
+		View/SensorRenderer/Full.h \
 		View/ListRenderer/ListRenderer.h \
 		View/ListRenderer/SSensorRenderer.h \
 		View/SensorListWidget.h \
@@ -4158,7 +4158,7 @@ Graph.o: View/GraphRenderer/Graph.cpp View/GraphRenderer/Graph.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCore/quuid.h \
 		Sensor/Converter/Json/Reader.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Graph.o View/GraphRenderer/Graph.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Graph.o View/SensorRenderer/Graph.cpp
 
 SimulationVisitor.o: View/GraphSimulator/SimulationVisitor.cpp View/GraphSimulator/SimulationVisitor.h \
 		Sensor/SVisitor.h \
@@ -4553,7 +4553,7 @@ StandardSimulator.o: View/GraphSimulator/StandardSimulator.cpp View/GraphSimulat
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlayout.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qlayoutitem.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qboxlayout.h \
-		View/GraphRenderer/SGraphRenderer.h
+		View/SensorRenderer/SGraphRenderer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o StandardSimulator.o View/GraphSimulator/StandardSimulator.cpp
 
 List.o: View/ListRenderer/List.cpp View/ListRenderer/List.h \
@@ -4752,7 +4752,7 @@ List.o: View/ListRenderer/List.cpp View/ListRenderer/List.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
-		View/GraphRenderer/SGraphRenderer.h \
+		View/SensorRenderer/SGraphRenderer.h \
 		View/GraphSimulator/SGraphSimulator.h \
 		Sensor/Repository/JsonRepository.h \
 		Sensor/Repository/IRepository.h \
@@ -4967,7 +4967,7 @@ ListRenderer.o: View/ListRenderer/ListRenderer.cpp View/ListRenderer/ListRendere
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
-		View/GraphRenderer/SGraphRenderer.h \
+		View/SensorRenderer/SGraphRenderer.h \
 		View/GraphSimulator/SGraphSimulator.h \
 		Sensor/Repository/JsonRepository.h \
 		Sensor/Repository/IRepository.h \
@@ -5215,7 +5215,7 @@ mainwindow.o: View/mainwindow.cpp View/mainwindow.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
-		View/GraphRenderer/SGraphRenderer.h \
+		View/SensorRenderer/SGraphRenderer.h \
 		View/GraphSimulator/SGraphSimulator.h \
 		View/EditWindow.h \
 		View/EditWidget.h \
@@ -6552,7 +6552,7 @@ SensorListWidget.o: View/SensorListWidget.cpp View/SensorListWidget.h \
 		../../../Qt/6.4.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/QValueAxis \
 		../../../Qt/6.4.2/gcc_64/include/QtCharts/qvalueaxis.h \
-		View/GraphRenderer/SGraphRenderer.h \
+		View/SensorRenderer/SGraphRenderer.h \
 		View/GraphSimulator/SGraphSimulator.h \
 		Sensor/Repository/JsonRepository.h \
 		Sensor/Repository/IRepository.h \
@@ -7101,10 +7101,10 @@ SensorWidget.o: View/SensorWidget.cpp View/SensorWidget.h \
 		Sensor/AbstractSensor.h \
 		Sensor/SConstVisitor.h \
 		Sensor/SVisitor.h \
-		View/GraphRenderer/SGraphRenderer.h \
+		View/SensorRenderer/SGraphRenderer.h \
 		View/GraphSimulator/SGraphSimulator.h \
-		View/GraphRenderer/Graph.h \
-		View/GraphRenderer/Full.h \
+		View/SensorRenderer/Graph.h \
+		View/SensorRenderer/Full.h \
 		View/ListRenderer/ListRenderer.h \
 		View/ListRenderer/SSensorRenderer.h \
 		View/SensorListWidget.h \

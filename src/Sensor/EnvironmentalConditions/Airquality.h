@@ -7,8 +7,8 @@ class AirQuality
 {
     double indexAQ; // il massimo tra gli indici di IPM10=(dx / 50) x 100
                     //                              INO2=(dx / 200) x 100
-    double pm10;    //  micro_g/m3 (micrograms per cubic meter) daily avarage
-    double NO2;     //  micro_g/m3 (micrograms per cubic meter) hour avarage
+    double pm10;    //  micro_g/m3 (micrograms per cubic meter) 
+    double NO2;     //  micro_g/m3 (micrograms per cubic meter) 
 
 public:
     AirQuality( double pm_10,

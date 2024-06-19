@@ -84,8 +84,6 @@ EditWidget::EditWidget(
     stacked_editor = new QStackedLayout();
     layout->addLayout(stacked_editor);
 
-    
-
     SensorEditor::AirQualityEditor* air_quality_editor = new SensorEditor::AirQualityEditor();
     stacked_editor->addWidget(air_quality_editor);
     editors.push_back(air_quality_editor);

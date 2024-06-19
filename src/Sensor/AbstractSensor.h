@@ -36,7 +36,6 @@ public:
 
     virtual void simulate()= 0;
     virtual void clear() = 0;
-    virtual void modify() = 0;
 
 };
 

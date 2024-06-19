@@ -120,9 +120,6 @@ void HumiditySensor::clear() {
     humidities.clear();
     weather_rainy.clear();
 }
-void HumiditySensor::modify() {
-
-}
 
 const EnviromentalConditions::Humidity HumiditySensor::min = EnviromentalConditions::Humidity(0.0);
 const EnviromentalConditions::Humidity HumiditySensor::max = EnviromentalConditions::Humidity(100.0);

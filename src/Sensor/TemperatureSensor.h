@@ -60,7 +60,6 @@ public:
 
     void simulate() override;
     void clear() override;
-    void modify() override;
 
 };
 

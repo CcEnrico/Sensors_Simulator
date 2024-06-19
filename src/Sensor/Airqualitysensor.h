@@ -1,9 +1,9 @@
 #ifndef SENSOR_AIRQUALITYSENSOR_H
 #define SENSOR_AIRQUALITYSENSOR_H
 
-#include"AbstractSensor.h"
-#include"EnvironmentalConditions/Airquality.h"
-#include<vector>
+#include "AbstractSensor.h"
+#include "EnvironmentalConditions/Airquality.h"
+#include <vector>
 
 namespace Sensor{
 
@@ -53,13 +53,9 @@ public:
 
     void simulate() override;
     void clear() override;
-    void modify() override;
 
 };
 
-
 }
-
-
 
 #endif // AIRQUALITYSENSOR_H

@@ -134,9 +134,6 @@ void AirQualitySensor::simulate(){
 void AirQualitySensor::clear(){
     airQualityData.clear();
 }
-void AirQualitySensor::modify(){
-
-}
 
 const EnviromentalConditions::AirQuality AirQualitySensor::optimal = EnviromentalConditions::AirQuality(0.0);
 const EnviromentalConditions::AirQuality AirQualitySensor::good = EnviromentalConditions::AirQuality(50.0);

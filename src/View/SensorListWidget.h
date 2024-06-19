@@ -39,6 +39,7 @@ public slots:
 signals:
     void sortId_event();
     void sortName_event();
+    void edit_event(Sensor::AbstractSensor* s);
 
 };
 

@@ -7,7 +7,7 @@
 #include <QGridLayout>
 
 #include "View/SensorLookup/GraphLookup.h"
-#include "GraphRenderer/SGraphRenderer.h"
+#include "SensorRenderer/SGraphRenderer.h"
 #include "View/GraphSimulator/SGraphSimulator.h"
 
 namespace View{
@@ -41,6 +41,10 @@ namespace View{
         void simulate();
         void clear();
         void edit();
+
+    signals:
+        void edit_event(Sensor::AbstractSensor* s);
+
 
     };
 }

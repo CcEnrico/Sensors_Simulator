@@ -86,11 +86,8 @@ void SensorListWidget::showList(Engine::SensorList* list, Sensor::Repository::Js
 }
 
     void SensorListWidget::editSensor(QVector<WidgetLookup>::const_iterator it ){
-        MainWindow* main = qobject_cast<MainWindow*>(this->parent()->parent()->parent());
         Sensor::AbstractSensor* s = const_cast<Sensor::AbstractSensor*> (it->getSensor());
-        if (main != nullptr) {
-            main->editItem(s);
-        }
+        emit edit_event(s);
     }
 
     void SensorListWidget::deleteSensor(QVector<WidgetLookup>::const_iterator it, Engine::SensorList* list, Sensor::Repository::JsonRepository* repository, Engine::SensorList* query ){

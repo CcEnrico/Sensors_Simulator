@@ -166,8 +166,5 @@ void TemperatureSensor::clear() {
     max_temperatures.clear();
     mean_temperatures.clear();
 }
-void TemperatureSensor::modify() {
-
-}
 
 }

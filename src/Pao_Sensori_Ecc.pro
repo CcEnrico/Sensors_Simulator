@@ -29,8 +29,8 @@ SOURCES += \
     \
     View/EditWidget.cpp \
     View/EditWindow.cpp \
-    View/GraphRenderer/Full.cpp \
-    View/GraphRenderer/Graph.cpp \
+    View/SensorRenderer/Full.cpp \
+    View/SensorRenderer/Graph.cpp \
     View/GraphSimulator/SimulationVisitor.cpp \
     View/GraphSimulator/StandardSimulator.cpp \
     View/ListRenderer/List.cpp \
@@ -70,9 +70,9 @@ HEADERS += \
     \
     View/EditWidget.h \
     View/EditWindow.h \
-    View/GraphRenderer/Full.h \
-    View/GraphRenderer/Graph.h \
-    View/GraphRenderer/SGraphRenderer.h \
+    View/SensorRenderer/Full.h \
+    View/SensorRenderer/Graph.h \
+    View/SensorRenderer/SGraphRenderer.h \
     View/GraphSimulator/SGraphSimulator.h \
     View/GraphSimulator/SimulationVisitor.h \
     View/ListRenderer/List.h \

@@ -109,6 +109,8 @@ MainWindow::MainWindow( Engine::SensorList* mem, QWidget *parent )
     connect(search_widget, &SearchWidget::search_event, this, &MainWindow::search);
     connect(sensor_list_widget, &SensorListWidget::sortId_event, this, &MainWindow::sortSensorsId);
     connect(sensor_list_widget, &SensorListWidget::sortName_event, this, &MainWindow::sortSensorsName);
+    connect(sensor_list_widget, &SensorListWidget::edit_event, this, &MainWindow::editItem);
+    connect(sensor_widget, &SensorWidget::edit_event, this, &MainWindow::editItem);
 
     showStatusBar("Ready.");
 }

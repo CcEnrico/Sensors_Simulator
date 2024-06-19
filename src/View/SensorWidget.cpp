@@ -1,5 +1,5 @@
 #include "SensorWidget.h"
-#include "GraphRenderer/Graph.h"
+#include "SensorRenderer/Graph.h"
 #include "View/GraphSimulator/StandardSimulator.h"
 #include "mainwindow.h"
 
@@ -88,10 +88,7 @@ namespace View{
 
 
     void SensorWidget::edit(){
-        MainWindow* main = qobject_cast<MainWindow*>(this->parent()->parent()->parent());
-        if (main != nullptr) {
-            main->editItem( lookup->getSensor() );
-        }
+        emit edit_event(lookup->getSensor());
     }
 
     void SensorWidget::hideSensorWidget(){
