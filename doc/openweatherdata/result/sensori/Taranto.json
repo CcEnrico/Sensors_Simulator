@@ -1,0 +1,33 @@
+[
+    {
+        "Initial Temperature K°": 296.64906868451686,
+        "Simulation Scale": "k",
+        "dataNumber": 100,
+        "id": 1,
+        "initial Maximum Temp K°": 298.0667403958091,
+        "initial Minimum Temp K°": 294.7031548311991,
+        "name": "Taranto_Temp",
+        "standardDeviation Temp K°": 3.2759780871031468,
+        "Collection per day": 24,
+        "type": "temperature_sensor"
+    },
+    {
+        "Rain Probability": 0.027939464493597205,
+        "dataNumber": 100,
+        "id": 2,
+        "initial Relative Humidity": 61.70896391152503,
+        "name": "Taranto_Hum",
+        "standardDeviation Relative Humidity": 18.702662120804728,
+        "type": "humidity_sensor"
+    },
+    {
+        "dataNumber": 100,
+        "id": 3,
+        "initialN02 micro_g/m3": 2.5005122235157162,
+        "initialPm10 micro_g/m3": 24.10373690337602,
+        "name": "Taranto_AQ",
+        "standardDeviationN02 micro_g/m3": 1.6846636080245092,
+        "standardDeviationPm10 micro_g/m3": 25.871211208373854,
+        "type": "air_quality_sensor"
+    }
+]

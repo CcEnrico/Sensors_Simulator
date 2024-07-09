@@ -1,0 +1,15 @@
+{
+    "temperature_mean": 294.13526377491206,
+    "temp_min_mean": 291.7217584994138,
+    "temp_max_mean": 295.9657327080891,
+    "humidity_mean": 70.52872215709262,
+    "rain_probability": 0.032825322391559206,
+    "no2_mean": 3.0292614302461898,
+    "pm10_mean": 7.148405627198124,
+    "temperature_std_dev": 4.031426439747854,
+    "temp_min_std_dev": 3.9385774954012556,
+    "temp_max_std_dev": 4.211615026769813,
+    "humidity_std_dev": 13.649547111560327,
+    "no2_std_dev": 2.2617468880450664,
+    "pm10_std_dev": 3.855078535875028
+}
