@@ -1,0 +1,33 @@
+[
+    {
+        "Initial Temperature K°": 297.28897260273976,
+        "Simulation Scale": "k",
+        "dataNumber": 100,
+        "id": 1,
+        "initial Maximum Temp K°": 299.0381735159817,
+        "initial Minimum Temp K°": 296.1419292237443,
+        "name": "Bari_Temp",
+        "standardDeviation Temp K°": 3.4426749507615426,
+        "Collection per day": 24,
+        "type": "temperature_sensor"
+    },
+    {
+        "Rain Probability": 0.06050228310502283,
+        "dataNumber": 100,
+        "id": 2,
+        "initial Relative Humidity": 63.66438356164384,
+        "name": "Bari_Hum",
+        "standardDeviation Relative Humidity": 16.354356825539835,
+        "type": "humidity_sensor"
+    },
+    {
+        "dataNumber": 100,
+        "id": 3,
+        "initialN02 micro_g/m3": 3.5981849315068497,
+        "initialPm10 micro_g/m3": 17.92382420091324,
+        "name": "Bari_AQ",
+        "standardDeviationN02 micro_g/m3": 1.885710933253346,
+        "standardDeviationPm10 micro_g/m3": 17.678701781433418,
+        "type": "air_quality_sensor"
+    }
+]

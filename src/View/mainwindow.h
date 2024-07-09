@@ -1,14 +1,13 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef VIEW_MAINWINDOW_H
+#define VIEW_MAINWINDOW_H
 
 #include <QMainWindow>
 #include <QStackedWidget>
 
-
+#include "../Sensor/Repository/JsonRepository.h"
 #include "SearchWidget.h"
 #include "SensorListWidget.h"
-
-#include "SensorRenderer/Full.h"
+#include "EditWindow.h"
 
 namespace View{
 
@@ -18,30 +17,64 @@ class MainWindow : public QMainWindow
 
 private:
 
-    QAction* create_item;
     QToolBar* toolbar;
-    // SearchWidget* search_widget;
-    QStackedWidget* stacked_widget;
-    SensorListWidget* sensor_list_widget;
-    SensorRenderer::Full full_renderer;
 
-    void clearStack();
+    // Concettualmente sensor_list , repository e query condividono la stessa memoria (quando repository(e query) esiste e non nullo)
+    // Quindi la loro copia e' shallow
+    // Altrimenti dovrei fare una deep copy della memoria di sensor_list e repository
+    // Ma non voglio perche andrei a creare degli oggetti AbstractSensor duplicati inutili
+    // Quindi nei metodi che manipolano la memoria come quelli di aggiunta, rimozione o caricamento di nuovi dataset
+    // devo stare attento ad usare la stessa memoria ad aggiungere le stesse locazioni di memoria nei due contenitori
+    Engine::SensorList* sensor_list;
+    Sensor::Repository::JsonRepository* repository;
+    Engine::SensorList* query;
+
+    SearchWidget* search_widget;
+    SensorWidget* sensor_widget;
+    EditWindow* edit_window;
+    SensorListWidget* sensor_list_widget;
+
+    // actions
+
+    QAction* create;
+    QAction* open;
+    QAction* save;
+    QAction* save_as;
+    QAction* create_sensor;
+    QAction* help;
+
+
+    MainWindow& reloadMemory();
+    MainWindow& ClearMemory();
+    MainWindow& ClearQuery();
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    explicit MainWindow(Engine::SensorList* mem, QWidget *parent = nullptr);
+    ~MainWindow() override;
 
     SensorListWidget* getSensorListWidget();
-
-
-    // aggiungi metodi
+    Engine::SensorList* getList() const;
+    Sensor::Repository::JsonRepository* getRepository() const;
+    QAction* getCreateItem();
     
-    void showStatusBar(QString m);
+    void showStatusBar(const QString& m);
 
     public slots:
+
+    void newDataset();
+    void openDataset();
+    void saveDataset();
+    void saveAsDataset();
     void createItem();
+    void showHelpDialog();
+    void editItem(Sensor::AbstractSensor* s);
+    void finishEdit();
+    void closeEdit();
+    void search(const std::string& query_text);
+    void sortSensorsId();
+    void sortSensorsName();
 };
 
 }
 
-#endif // MAINWINDOW_H
+#endif // VIEW_MAINWINDOW_H

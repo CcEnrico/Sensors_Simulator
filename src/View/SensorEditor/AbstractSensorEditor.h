@@ -6,23 +6,21 @@
 
 #include "../../Sensor/AbstractSensor.h"
 
-namespace View {
-namespace SensorEditor {
+
+namespace View::SensorEditor {
 
 class AbstractSensorEditor: public QWidget {
     Q_OBJECT
   public:
-    AbstractSensorEditor(QWidget* parent = 0);
-    virtual ~AbstractSensorEditor();
+    explicit AbstractSensorEditor(QWidget* parent = nullptr);
+    ~AbstractSensorEditor() override;
     virtual Sensor::AbstractSensor* create(
-        const unsigned int identifier,
+        unsigned int identifier,
         const QString& name,
-        const unsigned int data_number,
-        const double variance
+        unsigned int data_number
     ) const = 0;
 };
 
 }
-}
 
-#endif
+#endif  // VIEW_SENSOR_EDITOR_ABSTRACT_SENSOR_EDITOR_H

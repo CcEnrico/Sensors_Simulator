@@ -2,16 +2,15 @@
 
 #include <QWidget>
 
-namespace View {
-namespace SensorEditor {
+
+
+namespace View::SensorEditor {
 
 AbstractSensorEditor::AbstractSensorEditor(QWidget* parent)
     : QWidget(parent)
 {
 }
 
-AbstractSensorEditor::~AbstractSensorEditor() {
-}
+AbstractSensorEditor::~AbstractSensorEditor() = default;
 
-}
 }

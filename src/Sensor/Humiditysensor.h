@@ -9,37 +9,42 @@ namespace Sensor{
 
 class HumiditySensor: public AbstractSensor
 {
+public:
     static const EnviromentalConditions::Humidity min;
     static const EnviromentalConditions::Humidity max;
 
+private:
     EnviromentalConditions::Humidity initial;
     EnviromentalConditions::Humidity stdDeviation;
-    EnviromentalConditions::Humidity target;
+    double rain_probability;
     std::vector<EnviromentalConditions::Humidity> humidities;
+    bool rain;
+    std::vector<unsigned int> weather_rainy;
 
 public:
     HumiditySensor( unsigned int id,
                     std::string  n,
                     unsigned int dn,
-                    double v,
                     EnviromentalConditions::Humidity init,
                     EnviromentalConditions::Humidity stddev,
-                    EnviromentalConditions::Humidity t
+                    double rp
     );
 
     EnviromentalConditions::Humidity getHumInitial()const;
     HumiditySensor& setHumInitial(const EnviromentalConditions::Humidity init);
     EnviromentalConditions::Humidity getHumStdDeviation()const;
     HumiditySensor& setHumStdDeviation(const EnviromentalConditions::Humidity stddev);
-    EnviromentalConditions::Humidity getHumTarget()const;
-    HumiditySensor& setHumTargt(const EnviromentalConditions::Humidity t);
+    double getRainProbability()const;
+    HumiditySensor& setProbability(const double rp);
 
     virtual void accept(SConstVisitor& visitor)const final;
     virtual void accept(SVisitor& visitor) final;
 
-    virtual void simulate() override;
-    virtual void clear() override;
-    virtual void modify() override;
+    std::vector<double> getHumData()const;
+    std::vector<unsigned int> getWeatherRainy()const;
+
+    void simulate() override;
+    void clear() override;
 
 };
 

@@ -1,0 +1,33 @@
+[
+    {
+        "Initial Temperature K°": 294.45447845804995,
+        "Simulation Scale": "k",
+        "dataNumber": 100,
+        "id": 1,
+        "initial Maximum Temp K°": 295.5287188208617,
+        "initial Minimum Temp K°": 293.23040816326534,
+        "name": "Verona_Temp",
+        "standardDeviation Temp K°": 4.39028553068239,
+        "Collection per day": 24,
+        "type": "temperature_sensor"
+    },
+    {
+        "Rain Probability": 0.12811791383219956,
+        "dataNumber": 100,
+        "id": 2,
+        "initial Relative Humidity": 70.90022675736961,
+        "name": "Verona_Hum",
+        "standardDeviation Relative Humidity": 15.095359018392353,
+        "type": "humidity_sensor"
+    },
+    {
+        "dataNumber": 100,
+        "id": 3,
+        "initialN02 micro_g/m3": 2.866451247165533,
+        "initialPm10 micro_g/m3": 6.511428571428572,
+        "name": "Verona_AQ",
+        "standardDeviationN02 micro_g/m3": 1.6002375788762278,
+        "standardDeviationPm10 micro_g/m3": 3.1806183172173603,
+        "type": "air_quality_sensor"
+    }
+]

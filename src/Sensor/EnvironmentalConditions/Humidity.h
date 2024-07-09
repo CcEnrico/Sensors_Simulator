@@ -1,18 +1,16 @@
 #ifndef SENSOR_ENVIROMENTALCONDITION_HUMIDITY_H
 #define SENSOR_ENVIROMENTALCONDITION_HUMIDITY_H
 
-
-namespace Sensor{
-
-namespace EnviromentalConditions{
-
+namespace Sensor::EnviromentalConditions{
 
 class Humidity
 {
     double relativeHumidity;    // %
 
 public:
-    Humidity(double rh);
+    explicit Humidity(double rh);
+
+    explicit operator double()const;
 
     double getRelativeHumidity()const ;
     Humidity& setRelativeHumidity(const double rh);
@@ -21,6 +19,4 @@ public:
 
 }
 
-}
-
-#endif // HUMIDITY_H
+#endif // SENSOR_ENVIROMENTALCONDITION_HUMIDITY_H

@@ -9,7 +9,7 @@ class TemperatureSensor;
 
 class SVisitor {
 public:
-    virtual ~SVisitor() {};
+    virtual ~SVisitor() = default;
     virtual void visit( AirQualitySensor& aQSensor) = 0;
     virtual void visit( HumiditySensor& HmSensor) = 0;
     virtual void visit( TemperatureSensor& TmpSensor) = 0;
@@ -17,4 +17,4 @@ public:
 
 }
 
-#endif
+#endif  // SENSOR_VISITOR_H

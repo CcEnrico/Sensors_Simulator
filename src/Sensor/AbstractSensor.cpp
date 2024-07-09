@@ -1,16 +1,15 @@
 #include "AbstractSensor.h"
 
+#include <utility>
+
 namespace Sensor{
 
 AbstractSensor::AbstractSensor(unsigned int id,
-                              std::string  n,
-                              unsigned int dn,
-                              double v
-                               ): identifier(id), name(n), dataNum(dn), variance(v){}
+                              std::string n,
+                              unsigned int dn
+                               ): identifier(id), name(std::move(n)), dataNum(dn){}
 
-AbstractSensor::~AbstractSensor(){
-
-}
+AbstractSensor::~AbstractSensor() = default;
 
 unsigned int AbstractSensor::getIdentifier() const{
     return identifier;
@@ -18,7 +17,7 @@ unsigned int AbstractSensor::getIdentifier() const{
 const std::string& AbstractSensor::getName() const{
     return name;
 }
-AbstractSensor& AbstractSensor::setName(const std::string s){
+AbstractSensor& AbstractSensor::setName(const std::string& s){
     this->name = s;
     return *this;
 }
@@ -27,13 +26,6 @@ unsigned int AbstractSensor::getDataNum() const{
 }
 AbstractSensor& AbstractSensor::setDataNum(const unsigned int dn){
     this->dataNum = dn;
-    return *this;
-}
-double AbstractSensor::getVariance()const{
-    return variance;
-}
-AbstractSensor& AbstractSensor::setVariance(const double v){
-    this->variance = v;
     return *this;
 }
 

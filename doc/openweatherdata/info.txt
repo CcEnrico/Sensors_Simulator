@@ -1,0 +1,5 @@
+Le temperature delle api call sono di standard in scala kelvin.
+Mentre le concentrazioni di agenti inquinanti no2 e pm10 sono in µg/m³.
+I valori di limite degli indici degli inquinanti cambiano in base al paese in italia sono:
+indexLimitPm10 = 50.0 ;    // micro_g/m3
+indexLimitNO2 = 200.0 ;     // micro_g/m3

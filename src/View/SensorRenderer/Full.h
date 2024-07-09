@@ -1,33 +1,47 @@
 #ifndef VIEW_ITEM_RENDERER_FULL_H
 #define VIEW_ITEM_RENDERER_FULL_H
 
-#include "SSensorRenderer.h"
-#include "ListSensor.h"
+#include "QtWidgets/QLabel"
+#include "QtCharts/QChartView"
+#include "View/ListRenderer/ListRenderer.h"
+#include <QValueAxis>
 
+namespace View::GraphRenderer {
 
+    class Full: public Sensor::SConstVisitor {
+    private:
+        QWidget* widget;
+        QLabel* id;
+        QLabel* name;
+        QLabel* data_num;
+        QPushButton* simulate_button;
+        QPushButton* edit_button;
+        QPushButton* clear_button;
+        QChart* chart;
+        QValueAxis* axisX;
+        QValueAxis* axisY;
+        QChartView* view_chart;
 
-namespace View {
-namespace SensorRenderer {
+    public:
+        Full();
+        void visit(const Sensor::AirQualitySensor& air_quality) override;
+        void visit(const Sensor::HumiditySensor& humidity) override;
+        void visit(const Sensor::TemperatureSensor& temperature) override;
+        virtual QWidget* getWidget() const;
+        virtual QLabel* getId()const;
+        virtual QLabel* getName()const;
+        virtual QLabel* getDataNum()const;
+        virtual QPushButton* getSimulateButton() const;
+        virtual QPushButton* getEditButton() const;
+        virtual QPushButton* getClearButton() const;
+        virtual QChart* getChart() const;
+        QValueAxis* getXAxis();
+        QValueAxis* getYAxis();
+        virtual QChartView* getChartView() const;
 
-class Full: public SSensorRenderer {
-  private:
-    ListSensor list_sensor;
-    QWidget* widget;
-    QPushButton* view_button;
-    QPushButton* edit_button;
-    QPushButton* delete_button;
-
-  public:
-    virtual void visit(const Sensor::AirQualitySensor& air_quality);
-    virtual void visit(const Sensor::HumiditySensor& humidity);
-    virtual void visit(const Sensor::TemperatureSensor& temperature);
-    virtual QWidget* getWidget() const;
-    virtual QPushButton* getViewButton() const;
-    virtual QPushButton* getEditButton() const;
-    virtual QPushButton* getDeleteButton() const; 
-};
+    };
 
 }
-}
+
 
 #endif

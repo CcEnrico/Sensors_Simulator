@@ -1,14 +1,15 @@
 #ifndef SENSOR_AIRQUALITYSENSOR_H
 #define SENSOR_AIRQUALITYSENSOR_H
 
-#include"AbstractSensor.h"
-#include"EnvironmentalConditions/Airquality.h"
-#include<vector>
+#include "AbstractSensor.h"
+#include "EnvironmentalConditions/Airquality.h"
+#include <vector>
 
 namespace Sensor{
 
 class AirQualitySensor: public AbstractSensor
 {
+public:
     static const EnviromentalConditions::AirQuality optimal;
     static const EnviromentalConditions::AirQuality good;
     static const EnviromentalConditions::AirQuality acceptable;
@@ -16,40 +17,45 @@ class AirQualitySensor: public AbstractSensor
     static const EnviromentalConditions::AirQuality poor;
     static const EnviromentalConditions::AirQuality veryBad;
 
+private:
     EnviromentalConditions::AirQuality initial;
     EnviromentalConditions::AirQuality stdDeviation;
-    EnviromentalConditions::AirQuality target;
     std::vector<EnviromentalConditions::AirQuality> airQualityData;
 
 public:
     AirQualitySensor(unsigned int id,
                      std::string  n,
                      unsigned int dn,
-                     double v,
                      EnviromentalConditions::AirQuality init,
-                     EnviromentalConditions::AirQuality stddev,
-                     EnviromentalConditions::AirQuality t
+                     EnviromentalConditions::AirQuality stddev
     );
 
     EnviromentalConditions::AirQuality getAQInitial()const;
+    double getInitialPm10()const;
+    double getInitialNO2()const;
     AirQualitySensor& setAQInitial(const EnviromentalConditions::AirQuality init);
-    EnviromentalConditions::AirQuality getAQStdDeviation()const;
-    AirQualitySensor& setAQStdDeviation(const EnviromentalConditions::AirQuality stddev);
-    EnviromentalConditions::AirQuality getAQTarget()const;
-    AirQualitySensor& setAQTarget(const EnviromentalConditions::AirQuality t);
+    AirQualitySensor& setInitialPm10(const double pm10);
+    AirQualitySensor& setInitialNO2(const double no2);
 
+    EnviromentalConditions::AirQuality getAQStdDeviation()const;
+    double getStdDeviationPm10()const;
+    double getStdDeviationNO2()const;
+    AirQualitySensor& setAQStdDeviation(const EnviromentalConditions::AirQuality stddev);
+    AirQualitySensor& setStdDeviationPm10(const double pm10);
+    AirQualitySensor& setStdDeviationNO2(const double no2);
 
     virtual void accept(SConstVisitor& visitor)const final;
     virtual void accept(SVisitor& visitor) final;
 
-    virtual void simulate() override;
-    virtual void clear() override;
-    virtual void modify() override;
+    std::vector<double> getAQDataPm10()const;
+    std::vector<double> getAQDataN02()const;
+    std::vector<double> getAQDataIAQ()const;
+
+    void simulate() override;
+    void clear() override;
 
 };
 
 }
-
-
 
 #endif // AIRQUALITYSENSOR_H

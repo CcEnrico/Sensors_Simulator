@@ -13,31 +13,41 @@
 #include "mainwindow.h"
 #include "../Sensor/AbstractSensor.h"
 #include "SensorEditor/AbstractSensorEditor.h"
+#include "../Sensor/Repository/JsonRepository.h"
 
 namespace View {
 
 class EditWidget : public QWidget{
     Q_OBJECT
   private:
+    Sensor::AbstractSensor* sensor;
     MainWindow* main_window;
-    const Sensor::AbstractSensor* subject;
     QSpinBox* id_input;
     QLineEdit* name_input;
     QSpinBox* dataNum_input;
-    QDoubleSpinBox* variance_input;
     QStackedLayout* stacked_editor;
     QVector<SensorEditor::AbstractSensorEditor*> editors;
+    Sensor::Repository::JsonRepository* repository;
+
 
   public:
     EditWidget(
-      MainWindow* main_window,
-      const Sensor::AbstractSensor* subject
+      Sensor::AbstractSensor* s,
+      MainWindow* m,
+      Sensor::Repository::JsonRepository* repo = nullptr
     );
+
+signals:
+    void widgetClosed();
+
+    void set_unit_event(int index);
+
     
   public slots:
-    void selectImage();
     void showType(int index);
     void apply();
+    void closeWindow();
+
 };
 
 }

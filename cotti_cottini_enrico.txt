@@ -1,0 +1,34 @@
+Feedback Progetto di Programmazione ad Oggetti
+Studente: Cotti Cottini Enrico
+Valutazione del progetto: Lode
+
+Vincoli obbligatori
++ Soddisfatti
+
+
+Orientamento ad oggetti
++ Incapsulamento
++ Modularità (modello logico e la GUI sono separati)
++ Estensibilità ed evolvibilità, polimorfismo
++ Efficienza e robustezza
+
+
+Funzionalità
++ Funzionalità di ricerca e filtro
++ Complessivamente molto curate, diverse funzionalità elencate nella relazione
+
+
+GUI
++ Visualizza i diversi tipi di dato in maniera opportuna
++ Usabile e intuitiva
++ Robusta, gestisce ridimensionamento
++ Utilizza icone
++ Complessivamente molto curata
+
+
+Relazione
++ Adeguata
+
+
+Suggerimenti non collegati alla valutazione
+Nessuno.

@@ -1,22 +1,20 @@
 #ifndef SENSOR_ENVIROMENTALCONDITION_AIRQUALITY_H
 #define SENSOR_ENVIROMENTALCONDITION_AIRQUALITY_H
 
-namespace Sensor{
-
-namespace EnviromentalConditions{
+namespace Sensor::EnviromentalConditions{
 
 class AirQuality
 {
     double indexAQ; // il massimo tra gli indici di IPM10=(dx / 50) x 100
                     //                              INO2=(dx / 200) x 100
-    double pm10;    //  micro_g/m3 (micrograms per cubic meter) daily avarage
-    double NO2;     //  micro_g/m3 (micrograms per cubic meter) hour avarage
+    double pm10;    //  micro_g/m3 (micrograms per cubic meter) 
+    double NO2;     //  micro_g/m3 (micrograms per cubic meter) 
 
 public:
     AirQuality( double pm_10,
                 double N_O2
     );
-    AirQuality( double IAQ);
+    explicit AirQuality( double IAQ);
 
     double getPm10()const;
     AirQuality& setPm10(const double pm_10);
@@ -26,6 +24,7 @@ public:
     AirQuality& setIndexAQ(const double IAQ);
 
     explicit operator double() const;
+//    AirQuality& operator=(const AirQuality& aq);
 
 private:
     void updateAQ();
@@ -37,6 +36,4 @@ private:
 
 }
 
-}
-
-#endif // AIRQUALITY_H
+#endif // SENSOR_ENVIROMENTALCONDITION_AIRQUALITY_H
