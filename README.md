@@ -18,6 +18,7 @@ To compile Sensor Simulator you need:
 
 To build the project you need to:
 
+- clone the repository at https://github.com/CcEnrico/Sensors_Simulator
 - Enter the `src` folder
 - Use the following command: `qmake`
 - Use the following command: `make`
